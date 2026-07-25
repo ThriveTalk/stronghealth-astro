@@ -7,7 +7,7 @@
  * Sections:
  *  1. Mobile nav drawer toggle (was inline in shared/Nav.astro)
  *  2. Scroll fade-in observer   (was inline in shared/FadeIn.astro)
- *  3. GA4 lead tracking         (was inline in BaseLayout; port of lib/gtag.ts)
+ *  3. Lead tracking             (PostHog CTA click events)
  *  4. LeadConnector chat loader (was inline in BaseLayout; port of
  *     lib/loadChatWidget.ts — inject on scroll ≥ 300px or after 8s)
  */
@@ -81,23 +81,15 @@
 })();
 
 /* 3 — Lead tracking: every CTA carrying data-track-lead fires, via one
-       delegated click listener,
-        - GA4  `generate_lead`
-        - PostHog `book_assessment_cta_clicked` with the page and the CTA's
-          placement (data-cta-placement, set per CTA site) so clicks can be
-          broken down by page × placement.
+       delegated click listener, PostHog `book_assessment_cta_clicked` with
+       the page and the CTA's placement (data-cta-placement, set per CTA
+       site) so clicks can be broken down by page × placement.
        PostHog's stub (BaseLayout head) queues capture() calls made before
        array.js finishes loading, so no readiness check is needed. */
 document.addEventListener("click", (e) => {
   const t = e.target as Element | null;
   const el = t && t.closest ? t.closest<HTMLElement>("[data-track-lead]") : null;
   if (!el) return;
-  if (typeof (window as any).gtag === "function") {
-    (window as any).gtag("event", "generate_lead", {
-      event_category: "cta",
-      event_label: "book_free_assessment",
-    });
-  }
   const posthog = (window as any).posthog;
   if (posthog && typeof posthog.capture === "function") {
     posthog.capture("book_assessment_cta_clicked", {

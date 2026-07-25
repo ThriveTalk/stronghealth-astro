@@ -16,7 +16,7 @@ const ROUTES = Object.keys(fixture.pages);
 
 // Third-party console-error allowlist (Phase 9, tightened from substring
 // matching to exact resource-load failures from exact hosts). The pages
-// intentionally load AdSense / GA4 / Ahrefs analytics / LeadConnector; the
+// intentionally load AdSense / Ahrefs analytics / LeadConnector; the
 // only console *error* those produce is the AdSense ad request 403 from
 // googleads.g.doubleclick.net — the identical 403 exists on live production
 // with the same publisher ID (D8: inherited, excluded narrowly). The other
@@ -31,9 +31,6 @@ const THIRD_PARTY_RESOURCE_HOSTS = new Set([
   "pagead2.googlesyndication.com", // AdSense loader + ping
   "ep1.adtrafficquality.google", // AdSense bot-quality subresources
   "ep2.adtrafficquality.google",
-  "www.googletagmanager.com", // GA4
-  "www.google-analytics.com",
-  "analytics.google.com",
   "analytics.ahrefs.com",
   "widgets.leadconnectorhq.com", // chat widget
 ]);
