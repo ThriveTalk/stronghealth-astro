@@ -82,7 +82,7 @@ const footerColumns = [
   {
     title: "Reviews",
     links: [
-      { label: "All Reviews", href: "/reviews/" },
+      { label: "Peptides Hub", href: "/peptides/" },
       ...reviews.map((r) => ({ label: r.shortTitle, href: r.path })),
     ],
   },
@@ -103,7 +103,6 @@ const year = new Date().getFullYear();
     <JsonLd
       schema={breadcrumbSchema([
         { name: "Home", path: "/" },
-        { name: "Reviews", path: "/reviews/" },
         { name: title, path },
       ])}
     />
@@ -114,8 +113,6 @@ const year = new Date().getFullYear();
         <nav aria-label="Breadcrumb" class="mb-6">
           <ol class="flex items-center gap-2 text-[13px] text-muted">
             <li><a href="/" class="hover:text-cream transition-colors">Home</a></li>
-            <li><span>/</span></li>
-            <li><a href="/reviews/" class="hover:text-cream transition-colors">Reviews</a></li>
             <li><span>/</span></li>
             <li class="text-cream-muted line-clamp-1"><span>{title}</span></li>
           </ol>
