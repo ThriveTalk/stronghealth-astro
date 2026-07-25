@@ -80,15 +80,31 @@
   }
 })();
 
-/* 3 — GA4 lead tracking: every CTA carrying data-track-lead fires
-       generate_lead on click via delegation. */
+/* 3 — Lead tracking: every CTA carrying data-track-lead fires, via one
+       delegated click listener,
+        - GA4  `generate_lead`
+        - PostHog `book_assessment_cta_clicked` with the page and the CTA's
+          placement (data-cta-placement, set per CTA site) so clicks can be
+          broken down by page × placement.
+       PostHog's stub (BaseLayout head) queues capture() calls made before
+       array.js finishes loading, so no readiness check is needed. */
 document.addEventListener("click", (e) => {
   const t = e.target as Element | null;
-  const el = t && t.closest ? t.closest("[data-track-lead]") : null;
-  if (el && typeof (window as any).gtag === "function") {
+  const el = t && t.closest ? t.closest<HTMLElement>("[data-track-lead]") : null;
+  if (!el) return;
+  if (typeof (window as any).gtag === "function") {
     (window as any).gtag("event", "generate_lead", {
       event_category: "cta",
       event_label: "book_free_assessment",
+    });
+  }
+  const posthog = (window as any).posthog;
+  if (posthog && typeof posthog.capture === "function") {
+    posthog.capture("book_assessment_cta_clicked", {
+      placement: el.dataset.ctaPlacement || "unspecified",
+      cta_text: (el.textContent || "").replace(/\s+/g, " ").trim(),
+      page_path: window.location.pathname,
+      page_title: document.title,
     });
   }
 });

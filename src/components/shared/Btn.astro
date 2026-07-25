@@ -3,7 +3,9 @@
  * Port of shared/Btn.tsx. Always renders a real element:
  *  - lead CTAs (trackLead) default to the site-wide booking SMS href and get
  *    `data-track-lead`, which the site-wide delegation script (BaseLayout)
- *    turns into a GA4 `generate_lead` event on click.
+ *    turns into GA4 `generate_lead` + PostHog `book_assessment_cta_clicked`
+ *    events on click. `placement` names where on the page this CTA sits
+ *    (hero, final_cta, pricing_card, …) and is sent as a PostHog property.
  *  - explicit `href` renders an anchor; otherwise a plain button.
  */
 import { BOOKING_SMS_HREF } from "../../lib/booking";
@@ -13,9 +15,16 @@ interface Props {
   class?: string;
   href?: string;
   trackLead?: boolean;
+  placement?: string;
 }
 
-const { variant = "primary", class: className = "", href, trackLead = false } = Astro.props;
+const {
+  variant = "primary",
+  class: className = "",
+  href,
+  trackLead = false,
+  placement,
+} = Astro.props;
 
 const base =
   "inline-flex items-center justify-center px-7 py-3.5 rounded-lg cursor-pointer uppercase tracking-[1.2px] transition-all duration-200 text-sm";
@@ -32,11 +41,20 @@ const resolvedHref = href ?? (trackLead ? BOOKING_SMS_HREF : undefined);
 
 {
   resolvedHref ? (
-    <a href={resolvedHref} class={classes} data-track-lead={trackLead ? "" : undefined}>
+    <a
+      href={resolvedHref}
+      class={classes}
+      data-track-lead={trackLead ? "" : undefined}
+      data-cta-placement={trackLead ? placement : undefined}
+    >
       <slot />
     </a>
   ) : (
-    <button class={classes} data-track-lead={trackLead ? "" : undefined}>
+    <button
+      class={classes}
+      data-track-lead={trackLead ? "" : undefined}
+      data-cta-placement={trackLead ? placement : undefined}
+    >
       <slot />
     </button>
   )
