@@ -232,7 +232,6 @@ const HISTORICAL_LASTMOD = {
   "/peptides/cagrilintide/": "2026-07-23",
   "/peptides/": "2026-04-22",
   "/privacy-policy/": "2026-05-27",
-  "/reviews/": "2026-06-22",
   "/terms-of-use/": "2026-05-27",
 };
 

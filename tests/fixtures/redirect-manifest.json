@@ -336,6 +336,13 @@
       "status": 308,
       "reason": "Low T Center comparison review retired (last remaining review); redirected to the home page",
       "owner": "erik"
+    },
+    {
+      "source": "/reviews/",
+      "target": "/peptides/",
+      "status": 308,
+      "reason": "peptide repositioning: reviews hub retired; hub intent now served by the /peptides/ hub",
+      "owner": "erik"
     }
   ],
   "normalization": [

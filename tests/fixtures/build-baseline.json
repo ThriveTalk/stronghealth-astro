@@ -1258,20 +1258,6 @@
         "priority": "0.8"
       }
     },
-    "/reviews/": {
-      "title": "Supplement & TRT Clinic Reviews | Strong Health",
-      "description": "Physician-reviewed analyses of popular testosterone supplements, hormone products, and TRT clinics. Honest, evidence-based comparisons.",
-      "robots": "index, follow, max-image-preview:large",
-      "lang": "en",
-      "canonical_path": "/reviews/",
-      "h1": "Supplement, Product & Clinic Reviews",
-      "jsonld": {},
-      "sitemap": {
-        "changefreq": "monthly",
-        "lastmod": "2026-06-22",
-        "priority": "0.8"
-      }
-    },
     "/semaglutide-diet/": {
       "title": "Semaglutide Diet: Complete Weight Loss Guide | Strong Health",
       "description": "Evidence-based semaglutide diet guide: foods, meal plans, macro targets, and STEP trial data. How to eat for maximum results on Wegovy or Ozempic.",
