@@ -19,7 +19,6 @@ import AuthorByline from "../components/shared/AuthorByline.astro";
 import ArticleLocationsSection from "../components/shared/ArticleLocationsSection.astro";
 import GoalMoleculesSection from "../components/shared/GoalMoleculesSection.astro";
 import type { GoalSlug } from "../data/molecules/types";
-import PeptideOfferBar from "../components/shared/PeptideOfferBar.astro";
 import { BOOKING_SMS_HREF } from "../lib/booking";
 import { STRONG_HEALTH_PHONE_DISPLAY } from "../data/miamiClinic";
 import type { Author } from "../data/articleAuthors";
@@ -178,14 +177,11 @@ const btnBase =
   "inline-flex items-center justify-center px-7 py-3.5 rounded-lg cursor-pointer uppercase tracking-[1.2px] transition-all duration-200 text-sm";
 ---
 
-<!-- `breadcrumb` marks the peptide-family articles: those pages swap the chat
-     bubble for the sticky certified-pep offer bar. -->
 <BaseLayout
   title={seoTitle || title}
   description={metaDescription}
   path={path}
   ogType="article"
-  hideChatWidget={hasBreadcrumb}
 >
   <div class="min-h-screen bg-surface font-['DM_Sans',sans-serif] selection:bg-gold selection:text-surface text-cream overflow-x-hidden">
     <JsonLd schema={breadcrumbSchema(breadcrumbItems, { parityLastItem: true })} />
@@ -483,6 +479,5 @@ const btnBase =
         </div>
       </div>
     </footer>
-    {hasBreadcrumb && <PeptideOfferBar />}
   </div>
 </BaseLayout>

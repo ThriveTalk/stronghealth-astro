@@ -9,7 +9,6 @@ import Btn from "../components/shared/Btn.astro";
 import Icon from "../components/shared/Icon.astro";
 import JsonLd from "../components/seo/JsonLd.astro";
 import ArticleLocationsSection from "../components/shared/ArticleLocationsSection.astro";
-import PeptideOfferBar from "../components/shared/PeptideOfferBar.astro";
 import {
   breadcrumbSchema,
   collectionPageSchema,
@@ -206,7 +205,6 @@ const collectionItems = [
   title="Peptide Therapy Guides"
   description="Evidence-based peptide therapy guides for healing, body composition, sleep, sexual health, and recovery. Physician-supervised in South Florida."
   path="/peptides/"
-  hideChatWidget
 >
   <PageShell>
     <JsonLd
@@ -503,5 +501,4 @@ const collectionItems = [
       </div>
     </section>
   </PageShell>
-  <PeptideOfferBar />
 </BaseLayout>

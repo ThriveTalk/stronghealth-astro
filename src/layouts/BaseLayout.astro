@@ -25,9 +25,6 @@ interface Props {
   ogImageType?: string;
   ogType?: string;
   noindex?: boolean;
-  /** Skip the LeadConnector chat bubble on this page (peptide pages show the
-      sticky certified-pep offer bar instead). */
-  hideChatWidget?: boolean;
 }
 
 const {
@@ -41,7 +38,6 @@ const {
   ogImageType,
   ogType,
   noindex,
-  hideChatWidget,
 } = Astro.props;
 ---
 
@@ -86,7 +82,7 @@ const {
       gtag('config', 'G-ESG16019L2');
     </script>
   </head>
-  <body data-hide-chat-widget={hideChatWidget ? "" : undefined}>
+  <body>
     <slot />
     <!-- Shared client runtime (mobile nav, fade-ins, GA4 lead tracking, chat
          widget loader) as one hashed, cacheable module — see
