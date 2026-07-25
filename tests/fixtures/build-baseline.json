@@ -1286,20 +1286,6 @@
         "priority": "0.7"
       }
     },
-    "/reviews/revita/": {
-      "title": "Revita Shampoo Review: The Hormone-Hair Link | Strong Health",
-      "description": "Evidence-based review of DS Laboratories Revita: what its ingredients do for thinning hair, why hormones are the missing piece, and the smarter path for men.",
-      "robots": "index, follow, max-image-preview:large",
-      "lang": "en",
-      "canonical_path": "/reviews/revita/",
-      "h1": "Revita Hair Loss Shampoo Review: The Hormone-Hair Connection Most Products Ignore",
-      "jsonld": {},
-      "sitemap": {
-        "changefreq": "monthly",
-        "lastmod": "2026-03-05",
-        "priority": "0.7"
-      }
-    },
     "/semaglutide-diet/": {
       "title": "Semaglutide Diet: Complete Weight Loss Guide | Strong Health",
       "description": "Evidence-based semaglutide diet guide: foods, meal plans, macro targets, and STEP trial data. How to eat for maximum results on Wegovy or Ozempic.",

@@ -189,8 +189,7 @@ byte-parity capture is no longer the spec (see "Parity suite re-baseline").
   manifest (`tests/fixtures/redirect-manifest.json`).
 - The review's entry was removed from `src/data/reviews.ts`, so the /reviews/
   hub, footer, and sitemap drop it together. Related-review links on the
-  remaining review pages (Low T Center, Revita) now point to
-  `/peptides-for-energy/` instead.
+  remaining review pages now point to `/peptides-for-energy/` instead.
 - Parity baseline regenerated (`pnpm test:parity:baseline`); the refresh also
   swept in routes that had shipped since the last regen (`/peptide-therapy/`,
   `/fl/weston/peptide-therapy/`, `/peptides/cagrilintide/`, libido spoke copy).

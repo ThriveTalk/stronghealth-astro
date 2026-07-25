@@ -317,6 +317,13 @@
       "owner": "erik"
     },
     {
+      "source": "/reviews/revita/",
+      "target": "/peptides-for-hair-growth/",
+      "status": 308,
+      "reason": "Revita shampoo review retired; consolidated into the peptides-for-hair-growth page",
+      "owner": "erik"
+    },
+    {
       "source": "/reviews/elysium-basis-review/",
       "target": "/peptides-for-energy/",
       "status": 308,
