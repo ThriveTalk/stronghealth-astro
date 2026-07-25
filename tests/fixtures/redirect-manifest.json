@@ -212,17 +212,59 @@
       "owner": "erik"
     },
     {
-      "source": "/semaglutide-diet/x/",
-      "target": "/semaglutide-diet/",
+      "source": "/semaglutide-diet/",
+      "target": "/diet/semaglutide/",
       "status": 308,
-      "reason": "App.tsx wildcard",
+      "reason": "diet subfolder migration: diet pages moved from /<slug>/ to /diet/<slug>/",
+      "owner": "erik"
+    },
+    {
+      "source": "/semaglutide-diet/x/",
+      "target": "/diet/semaglutide/",
+      "status": 308,
+      "reason": "App.tsx wildcard; retargeted by diet subfolder migration",
+      "owner": "erik"
+    },
+    {
+      "source": "/stillman-diet/",
+      "target": "/diet/stillman/",
+      "status": 308,
+      "reason": "diet subfolder migration: diet pages moved from /<slug>/ to /diet/<slug>/",
       "owner": "erik"
     },
     {
       "source": "/stillman-diet/x/",
-      "target": "/stillman-diet/",
+      "target": "/diet/stillman/",
       "status": 308,
-      "reason": "App.tsx wildcard",
+      "reason": "App.tsx wildcard; retargeted by diet subfolder migration",
+      "owner": "erik"
+    },
+    {
+      "source": "/detox-diet/",
+      "target": "/diet/detox/",
+      "status": 308,
+      "reason": "diet subfolder migration: diet pages moved from /<slug>/ to /diet/<slug>/",
+      "owner": "erik"
+    },
+    {
+      "source": "/detox-diet/x/",
+      "target": "/diet/detox/",
+      "status": 308,
+      "reason": "diet subfolder migration wildcard",
+      "owner": "erik"
+    },
+    {
+      "source": "/pollotarianism/",
+      "target": "/diet/pollotarianism/",
+      "status": 308,
+      "reason": "diet subfolder migration: diet pages moved from /<slug>/ to /diet/<slug>/",
+      "owner": "erik"
+    },
+    {
+      "source": "/pollotarianism/x/",
+      "target": "/diet/pollotarianism/",
+      "status": 308,
+      "reason": "diet subfolder migration wildcard",
       "owner": "erik"
     },
     {
