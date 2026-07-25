@@ -104,6 +104,6 @@ export const CAGRILINTIDE: MoleculeConfig = {
   doNotOfferLinks: [
     { label: "our guide to peptides for weight loss", href: "/peptides-for-weight-loss/" },
     { label: "peptides for belly & visceral fat", href: "/peptides-for-belly-fat/" },
-    { label: "the full molecule library", href: "/molecules/" },
+    { label: "the full molecule library", href: "/peptides/#molecule-library" },
   ],
 };

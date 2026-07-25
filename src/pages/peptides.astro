@@ -18,7 +18,7 @@ import {
 } from "../components/seo/schemas";
 import { articles, type ArticleMeta } from "../data/articles";
 import { ALL_PEPTIDE_CITIES } from "../data/local/cityPeptideConfig";
-import { MOLECULES, moleculePath } from "../data/molecules";
+import { MOLECULES, moleculePath, moleculesByGroup } from "../data/molecules";
 
 const breadcrumbs = [
   { name: "Home", path: "/" },
@@ -181,7 +181,25 @@ const steps = [
   },
 ];
 
-const collectionItems = peptideArticles.map((a) => ({ name: a.title, url: a.path }));
+// Molecule library (moved here from the retired /molecules/ hub). Grouped by
+// category, rendered from the molecules registry so new molecules appear
+// automatically.
+const moleculeGroups = moleculesByGroup();
+
+const groupBlurbs: Record<string, string> = {
+  "Healing & Repair": "Tissue-repair peptides for tendon, ligament, joint, and soft-tissue recovery.",
+  "GH Secretagogues": "Peptides that prompt your pituitary to release more of your own growth hormone.",
+  "Metabolic & GLP-1": "GLP-1 medications and metabolic peptides for weight loss and body composition.",
+  "Sexual Health": "Peptides that act on the neurological pathways behind desire and arousal.",
+  "Sleep": "Peptides studied for deep-sleep architecture and overnight recovery.",
+  "Longevity": "Peptides studied for cellular aging, mitochondrial function, and healthspan.",
+  "Cosmetic & Other": "Peptides for skin, hair, connective tissue, and cognition.",
+};
+
+const collectionItems = [
+  ...peptideArticles.map((a) => ({ name: a.title, url: a.path })),
+  ...MOLECULES.map((m) => ({ name: m.name, url: moleculePath(m.slug) })),
+];
 ---
 
 <BaseLayout
@@ -197,7 +215,7 @@ const collectionItems = peptideArticles.map((a) => ({ name: a.title, url: a.path
         description:
           "Hub page covering peptides used in clinical practice: BPC-157, TB-500, Ipamorelin, CJC-1295, Tesamorelin, PT-141, DSIP, and collagen peptides.",
         url: "/peptides/",
-        lastReviewed: "2026-04-15",
+        lastReviewed: "2026-07-25",
         reviewedBy: {
           name: "Dr. Angel Rivera, M.D.",
           credentials: "Board-Certified",
@@ -322,41 +340,62 @@ const collectionItems = peptideArticles.map((a) => ({ name: a.title, url: a.path
       </div>
     </section>
 
-    <section class="px-8 py-20 bg-surface border-b border-white/5">
+    <section id="molecule-library" class="px-8 py-20 bg-surface border-b border-white/5">
       <div class="max-w-[1000px] mx-auto">
-        <FadeIn class="text-center mb-10">
+        <FadeIn class="text-center mb-12">
           <Tag>Browse by Molecule</Tag>
           <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
-            Prefer to start from a <span class="text-gold">specific peptide?</span>
+            The complete <span class="text-gold">peptide molecule library</span>
           </h2>
           <p class="text-[15px] text-muted max-w-[600px] mx-auto">
-            The guides above are organized by goal. Our molecule library answers "what is this
-            peptide?" — one page each for BPC-157, CJC-1295, Tesamorelin, PT-141, semaglutide, and
-            every other compound we prescribe.
+            The guides above are organized by goal. The library below answers "what is this
+            peptide?" — one physician-reviewed page for every compound we prescribe: what it is,
+            how it works, what the evidence actually shows, and how our physicians prescribe it.
           </p>
         </FadeIn>
-        <FadeIn>
-          <div class="flex flex-wrap justify-center gap-2.5 mb-8">
-            {
-              MOLECULES.map((m) => (
-                <a
-                  href={moleculePath(m.slug)}
-                  class="inline-flex items-center gap-1.5 rounded-lg border border-white/10 bg-surface-card px-3.5 py-2 text-[13px] font-semibold text-cream-muted hover:border-gold/40 hover:text-gold transition-colors"
-                >
-                  {m.name}
-                </a>
-              ))
-            }
-          </div>
-          <div class="text-center">
-            <a
-              href="/molecules/"
-              class="inline-flex items-center justify-center rounded-lg border border-gold/40 px-6 py-3 text-[12px] font-bold uppercase tracking-[1.2px] text-gold hover:bg-gold hover:text-surface transition-colors"
-            >
-              Browse the full molecule library →
-            </a>
-          </div>
-        </FadeIn>
+
+        <div class="flex flex-col gap-12">
+          {
+            moleculeGroups.map((grp) => (
+              <FadeIn>
+                <div>
+                  <div class="mb-5">
+                    <h3 class="text-[22px] font-extrabold text-cream flex items-center gap-2">
+                      <Icon name="pill" size={18} class="text-gold" />
+                      {grp.group}
+                    </h3>
+                    {groupBlurbs[grp.group] && (
+                      <p class="text-[14px] text-muted mt-1.5 max-w-[640px]">
+                        {groupBlurbs[grp.group]}
+                      </p>
+                    )}
+                  </div>
+                  <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                    {grp.items.map((m) => (
+                      <a
+                        href={moleculePath(m.slug)}
+                        class="flex flex-col h-full rounded-xl border border-white/10 bg-surface-card p-5 hover:border-gold/30 transition-colors group"
+                      >
+                        <div class="text-[16px] font-bold text-cream group-hover:text-gold transition-colors">
+                          {m.name}
+                        </div>
+                        {m.aliases.length > 0 && (
+                          <div class="text-[11px] text-text-subtle mt-0.5">{m.aliases[0]}</div>
+                        )}
+                        <div class="text-[13px] text-muted leading-relaxed mt-2 flex-grow">
+                          {m.primaryUse}
+                        </div>
+                        <span class="text-[12px] font-semibold text-gold mt-3">
+                          Read about {m.name} →
+                        </span>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </FadeIn>
+            ))
+          }
+        </div>
       </div>
     </section>
 

@@ -16,6 +16,13 @@
       "owner": "erik"
     },
     {
+      "source": "/molecules/",
+      "target": "/peptides/",
+      "status": 308,
+      "reason": "peptides hub consolidation: /molecules/ hub folded into the /peptides/ hub (molecule library section)",
+      "owner": "erik"
+    },
+    {
       "source": "/molecules/bpc-157/",
       "target": "/peptides/bpc-157/",
       "status": 308,

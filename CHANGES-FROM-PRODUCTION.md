@@ -115,8 +115,8 @@ byte-parity capture is no longer the spec (see "Parity suite re-baseline").
 - `organizationSchema()` description + OfferCatalog → peptide-primary; TRT and
   Sexual Health service offers dropped.
 - `Nav.astro`: Locations dropdown leads with peptide-therapy; Peptides menu now
-  exposes "Browse by Goal" (`/peptides/`) and "Browse by Molecule" (`/molecules/`);
-  Dexascans and Reviews dropdowns removed.
+  exposes "Browse by Goal" (`/peptides/`) and "Browse by Molecule"
+  (`/peptides/#molecule-library`); Dexascans and Reviews dropdowns removed.
 - `/fl/` hub retitled/rewritten peptide-primary; `/about/`, `/careers/`, `/blog/`,
   author bio rethemed. "Men's Health Nutrients" article category → "Nutrients & Supplements".
 - KEPT deliberately: "Strong Health TRT, LLC" in `/terms-of-use/` (registered
@@ -128,12 +128,18 @@ byte-parity capture is no longer the spec (see "Parity suite re-baseline").
   and stay indexable. No peptide-theme page links into a review page.
 
 ### Molecule layer added (US-004/US-005)
-- New `/molecules/` hub + 17 molecule spokes (`/peptides/[slug]/`), driven by
-  `src/data/molecules/` (config-per-molecule + shared `MoleculePage.astro`).
-  Molecule spokes originally shipped at `/molecules/[slug]/` and were moved
-  under `/peptides/[slug]/` (peptides subfolder migration); `vercel.json`
-  301s `/molecules/(.+)` → `/peptides/$1`, and the old `/peptides/(.+)` →
-  `/peptides/` catch-all was removed to make room for the new routes.
+- Molecule spokes (`/peptides/[slug]/`) driven by `src/data/molecules/`
+  (config-per-molecule + shared `MoleculePage.astro`). Spokes originally
+  shipped at `/molecules/[slug]/` and were moved under `/peptides/[slug]/`
+  (peptides subfolder migration); `vercel.json` 301s `/molecules/(.+)` →
+  `/peptides/$1`, and the old `/peptides/(.+)` → `/peptides/` catch-all was
+  removed to make room for the new routes.
+- The standalone `/molecules/` hub was later folded into `/peptides/` (peptides
+  hub consolidation, 2026-07-25): the grouped molecule library now renders as
+  the `#molecule-library` section of `/peptides/`, `/molecules/` 301s to
+  `/peptides/`, and all internal "molecule library" links point at the anchor.
+  `/peptides/` is the single peptides hub — goal guides, molecule library, and
+  location links in one page.
 - Each molecule's `goals[]` field generates bidirectional goal↔molecule links:
   molecule pages link their goal spokes; goal spokes render a "Molecules in this
   guide" module (`GoalMoleculesSection.astro`) from the reverse mapping.
