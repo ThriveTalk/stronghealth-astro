@@ -31,19 +31,6 @@ export const reviews: ReviewMeta[] = [
     structuredDataType: "competitor",
   },
   {
-    path: "/reviews/andro-400/",
-    title: "Andro 400 Review: Does This Testosterone Booster Actually Work?",
-    seoTitle: "Andro 400 Review: Evidence, Risks & Cost",
-    shortTitle: "Andro 400",
-    blurb:
-      "An evidence-based review of Andro 400's eurycoma longifolia formula: what the science says, what it can't do, and when physician TRT is the smarter path.",
-    badge: "Supplement Review",
-    datePublished: "2025-10-20",
-    dateModified: "2026-03-10",
-    readTime: "10 min read",
-    structuredDataType: "product",
-  },
-  {
     path: "/reviews/nugenix-ultimate-testosterone/",
     title: "Nugenix Ultimate Testosterone Review: Hype vs. Evidence",
     seoTitle: "Nugenix Ultimate Review: Evidence & Risks",
