@@ -193,3 +193,22 @@ byte-parity capture is no longer the spec (see "Parity suite re-baseline").
 - Parity baseline regenerated (`pnpm test:parity:baseline`); the refresh also
   swept in routes that had shipped since the last regen (`/peptide-therapy/`,
   `/fl/weston/peptide-therapy/`, `/peptides/cagrilintide/`, libido spoke copy).
+
+## 2026-07-25 — Reviews hub retired
+
+- `/reviews/` (the hub index) removed and 308-redirected (single-hop) to
+  `/peptides/` — after the individual review retirements only one review
+  remained, so the hub no longer earned its keep; hub intent is now served by
+  the peptides hub. Rule added to `vercel.json` and the redirect manifest
+  (`tests/fixtures/redirect-manifest.json`).
+- `/reviews/low-t-center/` stays live at its own URL. Its layout drops the
+  "Reviews" breadcrumb (Home → article, in both the visible trail and the
+  BreadcrumbList JSON-LD) and its footer's "All Reviews" link now points to
+  `/peptides/`.
+- Internal links to `/reviews/` repointed at the surviving review page: the
+  `/about/` editorial link (preserving the US-003 "reachable from /about/"
+  invariant) and Dr. Rivera's reviewed-articles list. `/blog/` continues to
+  list the review via `src/data/articles.ts`, so the page is not orphaned.
+- `/reviews/` dropped from the parity baseline, the mobile screenshot route
+  list, and the sitemap `HISTORICAL_LASTMOD` registry (the sitemap's route
+  list is derived from dist/, so it drops the URL automatically).

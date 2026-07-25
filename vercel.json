@@ -19,6 +19,7 @@
     { "source": "/reviews/andro-400/(.+)", "destination": "/peptides-for-testosterone/", "permanent": true },
     { "source": "/molecules/(.+)", "destination": "/peptides/$1", "permanent": true },
     { "source": "/reviews/nugenix-ultimate-testosterone/", "destination": "/peptides-for-testosterone/", "permanent": true },
+    { "source": "/reviews/", "destination": "/peptides/", "permanent": true },
     { "source": "/peptides-for-tendon-repair/(.+)", "destination": "/peptides-for-tendon-repair/", "permanent": true },
     { "source": "/peptides-for-libido/(.+)", "destination": "/peptides-for-libido/", "permanent": true },
     { "source": "/peptides-for-sleep/(.+)", "destination": "/peptides-for-sleep/", "permanent": true },

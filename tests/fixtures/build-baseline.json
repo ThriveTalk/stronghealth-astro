@@ -1258,20 +1258,6 @@
         "priority": "0.8"
       }
     },
-    "/reviews/": {
-      "title": "Supplement & TRT Clinic Reviews | Strong Health",
-      "description": "Physician-reviewed analyses of popular testosterone supplements, hormone products, and TRT clinics. Honest, evidence-based comparisons.",
-      "robots": "index, follow, max-image-preview:large",
-      "lang": "en",
-      "canonical_path": "/reviews/",
-      "h1": "Supplement, Product & Clinic Reviews",
-      "jsonld": {},
-      "sitemap": {
-        "changefreq": "monthly",
-        "lastmod": "2026-06-22",
-        "priority": "0.8"
-      }
-    },
     "/reviews/low-t-center/": {
       "title": "Low T Center vs. Strong Health: TRT Review | Strong Health",
       "description": "A fair, evidence-based comparison of the Low T Center franchise model and Strong Health's physician-supervised approach to testosterone replacement therapy.",
