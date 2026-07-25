@@ -7,7 +7,8 @@
  * Sections:
  *  1. Mobile nav drawer toggle (was inline in shared/Nav.astro)
  *  2. Scroll fade-in observer   (was inline in shared/FadeIn.astro)
- *  3. LeadConnector chat loader (was inline in BaseLayout; port of
+ *  3. Lead tracking             (PostHog CTA click events)
+ *  4. LeadConnector chat loader (was inline in BaseLayout; port of
  *     lib/loadChatWidget.ts — inject on scroll ≥ 300px or after 8s)
  */
 
@@ -79,7 +80,28 @@
   }
 })();
 
-/* 3 — Chat widget loader: inject the LeadConnector bubble once the user
+/* 3 — Lead tracking: every CTA carrying data-track-lead fires, via one
+       delegated click listener, PostHog `book_assessment_cta_clicked` with
+       the page and the CTA's placement (data-cta-placement, set per CTA
+       site) so clicks can be broken down by page × placement.
+       PostHog's stub (BaseLayout head) queues capture() calls made before
+       array.js finishes loading, so no readiness check is needed. */
+document.addEventListener("click", (e) => {
+  const t = e.target as Element | null;
+  const el = t && t.closest ? t.closest<HTMLElement>("[data-track-lead]") : null;
+  if (!el) return;
+  const posthog = (window as any).posthog;
+  if (posthog && typeof posthog.capture === "function") {
+    posthog.capture("book_assessment_cta_clicked", {
+      placement: el.dataset.ctaPlacement || "unspecified",
+      cta_text: (el.textContent || "").replace(/\s+/g, " ").trim(),
+      page_path: window.location.pathname,
+      page_title: document.title,
+    });
+  }
+});
+
+/* 4 — Chat widget loader: inject the LeadConnector bubble once the user
        scrolls past the hero (300px) or after 8s, whichever comes first. */
 (function chatWidget() {
   const SRC = "https://widgets.leadconnectorhq.com/loader.js";
