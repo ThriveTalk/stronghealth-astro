@@ -126,7 +126,7 @@ export const articles: ArticleMeta[] = [
   {
     title: "Pollotarianism: The Complete Guide to the Pollotarian Diet",
     subtitle: "Poultry stays, every other meat goes. What the research shows about swapping red meat for chicken — heart health, cancer risk, weight, and how to do it right.",
-    path: "/pollotarianism/",
+    path: "/diet/pollotarianism/",
     category: "Diet & Nutrition",
     readTime: "15 min read",
     datePublished: "2026-07-18",
@@ -134,7 +134,7 @@ export const articles: ArticleMeta[] = [
   {
     title: "Detox Diets: What the Evidence Actually Says About Cleansing Your Body",
     subtitle: "Your liver, kidneys, and gut already detoxify you around the clock. Here's what a detox diet can and can't do — and the honest, evidence-based version worth keeping.",
-    path: "/detox-diet/",
+    path: "/diet/detox/",
     category: "Diet & Nutrition",
     readTime: "12 min read",
     datePublished: "2026-07-18",
@@ -142,7 +142,7 @@ export const articles: ArticleMeta[] = [
   {
     title: "The Stillman Diet: History, Risks, and Why Modern Medicine Moved On",
     subtitle: "A 1967 crash diet that sold 5 million copies, raised cholesterol in every study participant, and pioneered ideas that still influence how we think about protein and weight loss.",
-    path: "/stillman-diet/",
+    path: "/diet/stillman/",
     category: "Diet & Nutrition",
     readTime: "16 min read",
     datePublished: "2026-04-04",
@@ -150,7 +150,7 @@ export const articles: ArticleMeta[] = [
   {
     title: "Semaglutide Diet: Complete Guide for Weight Loss (2026)",
     subtitle: "What to eat, what to avoid, and how to structure your nutrition for maximum results on semaglutide — backed by STEP trial data and clinical evidence.",
-    path: "/semaglutide-diet/",
+    path: "/diet/semaglutide/",
     category: "Diet & Nutrition",
     readTime: "18 min read",
     datePublished: "2026-04-01",

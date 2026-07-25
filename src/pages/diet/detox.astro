@@ -1,18 +1,18 @@
 ---
-// /detox-diet/ — Diet & Nutrition cluster page targeting "detox diet"
+// /diet/detox/ — Diet & Nutrition cluster page targeting "detox diet"
 // (5,100/mo US, KD 51, informational). Angle and structure per
 // docs/briefs/detox-diet.md. Body copy is a DRAFT scaffolded from public
 // health-authority guidance and the peer-reviewed citations below; a Strong
 // Health physician must review before publish.
-import BlogArticleLayout from "../layouts/BlogArticleLayout.astro";
-import AccordionFoodList from "../components/diet/AccordionFoodList.astro";
-import { faqPageSchema } from "../components/seo/schemas";
-import { ARTICLE_AUTHORSHIP } from "../data/articleAuthors";
-import body0 from "../content/fragments/detox-diet.0.html?raw";
-import body1 from "../content/fragments/detox-diet.1.html?raw";
-import body2 from "../content/fragments/detox-diet.2.html?raw";
+import BlogArticleLayout from "../../layouts/BlogArticleLayout.astro";
+import AccordionFoodList from "../../components/diet/AccordionFoodList.astro";
+import { faqPageSchema } from "../../components/seo/schemas";
+import { ARTICLE_AUTHORSHIP } from "../../data/articleAuthors";
+import body0 from "../../content/fragments/detox-diet.0.html?raw";
+import body1 from "../../content/fragments/detox-diet.1.html?raw";
+import body2 from "../../content/fragments/detox-diet.2.html?raw";
 
-const path = "/detox-diet/";
+const path = "/diet/detox/";
 const { author, reviewer } = ARTICLE_AUTHORSHIP[path]!;
 
 const faqs = [
@@ -99,8 +99,8 @@ const tocItems = [
 ];
 
 const relatedLinks = [
-  { url: "/semaglutide-diet/", label: "Semaglutide Diet: Complete Guide for Weight Loss" },
-  { url: "/stillman-diet/", label: "The Stillman Diet: History, Risks, and the Verdict" },
+  { url: "/diet/semaglutide/", label: "Semaglutide Diet: Complete Guide for Weight Loss" },
+  { url: "/diet/stillman/", label: "The Stillman Diet: History, Risks, and the Verdict" },
   { url: "/peptides-for-weight-loss/", label: "Peptides for Weight Loss: GLP-1 and Fat-Loss Protocols" },
   { url: "/peptides-for-belly-fat/", label: "Peptides for Belly Fat: How GH Secretagogues Target Visceral Fat" },
   { url: "/foods-that-lower-testosterone/", label: "Foods That Lower Testosterone: Separating Myth from Evidence" },
