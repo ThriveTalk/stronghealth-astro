@@ -20,6 +20,13 @@ export const MAHADEV_MUKHERJEE: Author = {
   profileUrl: "/author/mahadev-mukherjee/",
 };
 
+export const ERIK_RIVERA: Author = {
+  name: "Erik Rivera",
+  credentials: "Health & Wellness Writer",
+  role: "Editorial Team, Strong Health",
+  profileUrl: "/author/erik-rivera/",
+};
+
 export const EDITORIAL_GUIDELINES_URL = "/editorial-guidelines/";
 
 export const ARTICLE_AUTHORSHIP: Record<
@@ -58,9 +65,9 @@ export const ARTICLE_AUTHORSHIP: Record<
   "/peptides-for-gut-health/": { author: MAHADEV_MUKHERJEE, reviewer: DR_ANGEL_RIVERA },
   "/peptides-for-tanning/": { author: MAHADEV_MUKHERJEE, reviewer: DR_ANGEL_RIVERA },
   "/peptides-for-energy/": { author: MAHADEV_MUKHERJEE, reviewer: DR_ANGEL_RIVERA },
-  "/porn-induced-erectile-dysfunction/": { author: DR_ANGEL_RIVERA, reviewer: DR_ANGEL_RIVERA },
-  "/premature-ejaculation-exercises/": { author: DR_ANGEL_RIVERA, reviewer: DR_ANGEL_RIVERA },
-  "/home-remedies-for-premature-ejaculation/": { author: DR_ANGEL_RIVERA, reviewer: DR_ANGEL_RIVERA },
-  "/baking-soda-for-ed/": { author: DR_ANGEL_RIVERA, reviewer: DR_ANGEL_RIVERA },
-  "/garlic-and-honey-for-erectile-dysfunction/": { author: DR_ANGEL_RIVERA, reviewer: DR_ANGEL_RIVERA },
+  "/porn-induced-erectile-dysfunction/": { author: ERIK_RIVERA, reviewer: DR_ANGEL_RIVERA },
+  "/premature-ejaculation-exercises/": { author: ERIK_RIVERA, reviewer: DR_ANGEL_RIVERA },
+  "/home-remedies-for-premature-ejaculation/": { author: ERIK_RIVERA, reviewer: DR_ANGEL_RIVERA },
+  "/baking-soda-for-ed/": { author: ERIK_RIVERA, reviewer: DR_ANGEL_RIVERA },
+  "/garlic-and-honey-for-erectile-dysfunction/": { author: ERIK_RIVERA, reviewer: DR_ANGEL_RIVERA },
 };

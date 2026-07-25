@@ -28,7 +28,11 @@ const LEGAL_ROUTES = new Set([
   "/terms-of-use/",
 ]);
 const REVIEW_ROUTE_RE = /^\/reviews\/[^/]+\/$/;
-const AUTHOR_ROUTES = new Set(["/author/dr-angel-rivera/", "/author/mahadev-mukherjee/"]);
+const AUTHOR_ROUTES = new Set([
+  "/author/dr-angel-rivera/",
+  "/author/mahadev-mukherjee/",
+  "/author/erik-rivera/",
+]);
 
 // Priority/changefreq rules — verbatim port of getSitemapMeta() in
 // the old scripts/prerender.mjs.
@@ -166,6 +170,8 @@ const HISTORICAL_LASTMOD = {
   "/about/": "2026-05-27",
   "/author/dr-angel-rivera/": "2026-05-27",
   "/author/mahadev-mukherjee/": "2026-05-27",
+  // Erik Rivera author profile launch (writer/reviewer separation).
+  "/author/erik-rivera/": "2026-07-25",
   "/blog/": "2026-06-22",
   "/careers/": "2026-06-06",
   "/editorial-guidelines/": "2026-05-27",

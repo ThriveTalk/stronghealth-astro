@@ -14,7 +14,7 @@ import {
 import Nav from "../components/shared/Nav.astro";
 import Icon from "../components/shared/Icon.astro";
 import { reviews } from "../data/reviews";
-import { DR_ANGEL_RIVERA, EDITORIAL_GUIDELINES_URL, type Author } from "../data/articleAuthors";
+import { DR_ANGEL_RIVERA, ERIK_RIVERA, EDITORIAL_GUIDELINES_URL, type Author } from "../data/articleAuthors";
 import { BOOKING_SMS_HREF } from "../lib/booking";
 import { STRONG_HEALTH_PHONE_DISPLAY } from "../data/miamiClinic";
 
@@ -54,7 +54,7 @@ const {
 } = Astro.props;
 
 const byline = {
-  author: author ?? structuredData.author ?? DR_ANGEL_RIVERA,
+  author: author ?? structuredData.author ?? ERIK_RIVERA,
   reviewer: reviewer ?? structuredData.reviewer ?? DR_ANGEL_RIVERA,
 };
 const schemas = buildReviewStructuredData(

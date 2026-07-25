@@ -1,0 +1,194 @@
+---
+// Author profile — Erik Rivera, Health & Wellness Writer.
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PageShell from "../../components/shared/PageShell.astro";
+import FadeIn from "../../components/shared/FadeIn.astro";
+import JsonLd from "../../components/seo/JsonLd.astro";
+import { breadcrumbSchema } from "../../components/seo/schemas";
+
+const SITE_URL = "https://www.stronghealth.com";
+const PAGE_PATH = "/author/erik-rivera/";
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": `${SITE_URL}${PAGE_PATH}#person`,
+  name: "Erik Rivera",
+  givenName: "Erik",
+  familyName: "Rivera",
+  jobTitle: "Health & Wellness Writer",
+  description:
+    "Health and wellness writer on the Strong Health editorial team covering men's sexual health, peptide therapy, and evidence-based wellness. Every article Erik writes is medically reviewed by a licensed physician before publication.",
+  url: `${SITE_URL}${PAGE_PATH}`,
+  image: `${SITE_URL}/opengraph.jpg`,
+  worksFor: { "@id": `${SITE_URL}/#organization` },
+  knowsAbout: [
+    "Men's sexual health",
+    "Erectile dysfunction",
+    "Premature ejaculation",
+    "Peptide therapy",
+    "Evidence-based wellness",
+  ],
+};
+
+const focusAreas = [
+  { label: "Men's Sexual Health", desc: "Evidence-based coverage of ED, premature ejaculation, and recovery" },
+  { label: "Peptide Therapy", desc: "Plain-language guides to individual peptides and how they're prescribed" },
+  { label: "Myth vs. Evidence", desc: "Separating internet health claims from what clinical research supports" },
+  { label: "Home Remedies", desc: "Honest assessments of popular remedies — what works and what doesn't" },
+];
+
+const articles = [
+  { url: "/porn-induced-erectile-dysfunction/", label: "Porn-Induced Erectile Dysfunction (PIED): Understanding, Recovery & Treatment" },
+  { url: "/premature-ejaculation-exercises/", label: "Premature Ejaculation Exercises: Step-by-Step Kegel & Reverse Kegel Guide" },
+  { url: "/home-remedies-for-premature-ejaculation/", label: "Home Remedies for Premature Ejaculation: What Actually Works" },
+  { url: "/garlic-and-honey-for-erectile-dysfunction/", label: "Garlic and Honey for Erectile Dysfunction: Fact vs. Fiction" },
+  { url: "/baking-soda-for-ed/", label: "Baking Soda for Erectile Dysfunction: What the Science Actually Says" },
+  { url: "/peptides/", label: "Peptide Guides: BPC-157, TB-500, PT-141 & More" },
+];
+---
+
+<BaseLayout
+  title="Erik Rivera, Health & Wellness Writer"
+  description="Erik Rivera writes evidence-based men's health and peptide therapy content for Strong Health. Every article is medically reviewed by a licensed physician."
+  path={PAGE_PATH}
+  ogType="profile"
+>
+  <PageShell>
+    <JsonLd
+      schema={breadcrumbSchema([
+        { name: "Home", path: "/" },
+        { name: "Our Team", path: "/about/" },
+        { name: "Erik Rivera", path: PAGE_PATH },
+      ])}
+    />
+    <JsonLd schema={personSchema} />
+
+    <div class="max-w-[720px] mx-auto px-6 py-12">
+      <!-- Hero -->
+      <FadeIn>
+        <header class="mb-10">
+          <nav class="flex items-center gap-2 text-xs text-muted mb-8">
+            <a href="/" class="hover:text-cream transition-colors">
+              Home
+            </a>
+            <span>/</span>
+            <span class="text-gold">Erik Rivera</span>
+          </nav>
+
+          <div class="flex flex-col sm:flex-row items-start gap-6">
+            <div class="w-20 h-20 rounded-full bg-gradient-to-br from-[#C9A84C]/30 to-[#C9A84C]/10 flex items-center justify-center text-2xl font-bold text-gold shrink-0 border border-gold/20">
+              ER
+            </div>
+            <div>
+              <div class="flex flex-wrap items-center gap-3 mb-1">
+                <h1 class="text-3xl md:text-4xl font-extrabold text-cream">
+                  Erik Rivera
+                </h1>
+              </div>
+              <p class="text-gold font-semibold text-sm mb-2">
+                Health &amp; Wellness Writer &middot; Strong Health Editorial Team
+              </p>
+              <div class="flex flex-wrap gap-2 mb-4">
+                <span class="text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full border border-gold/30 text-gold bg-gold/5">
+                  Men's Health
+                </span>
+                <span class="text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full border border-white/10 text-muted bg-white/5">
+                  Peptide Therapy
+                </span>
+              </div>
+              <p class="text-sm text-body leading-relaxed">
+                Writes evidence-based guides to men's sexual health and peptide therapy.
+                Every article is medically reviewed by a licensed physician before publication.
+              </p>
+            </div>
+          </div>
+        </header>
+      </FadeIn>
+
+      <div class="border-t border-white/10 my-8"></div>
+
+      <!-- About -->
+      <FadeIn delay={100}>
+        <section class="mb-12">
+          <h2 class="text-xl md:text-2xl font-extrabold text-cream mb-6 flex items-center gap-3">
+            <span class="w-1 h-6 bg-gold rounded-full"></span>
+            About
+          </h2>
+          <div class="text-sm text-body leading-[1.8] space-y-4">
+            <p>
+              Erik Rivera is a health and wellness writer on the Strong Health editorial team.
+              His work focuses on men's sexual health and peptide therapy — topics where
+              internet claims routinely outrun the evidence — with an emphasis on separating
+              what clinical research actually supports from what it doesn't.
+            </p>
+            <p>
+              Erik's articles follow Strong Health's editorial standards: claims are sourced
+              to published research, folk remedies and popular protocols are assessed honestly,
+              and every piece is medically reviewed by a licensed physician —
+              <a href="/author/dr-angel-rivera/" class="text-gold hover:underline">Dr. Angel Rivera, M.D.</a>
+              — before publication.
+            </p>
+          </div>
+        </section>
+      </FadeIn>
+
+      <!-- Areas of Focus -->
+      <FadeIn delay={150}>
+        <section class="mb-12">
+          <h2 class="text-xl md:text-2xl font-extrabold text-cream mb-6 flex items-center gap-3">
+            <span class="w-1 h-6 bg-gold rounded-full"></span>
+            Areas of Focus
+          </h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {
+              focusAreas.map((item) => (
+                <div class="p-4 rounded-xl border border-white/5 bg-white/[0.02] hover:border-gold/20 transition-colors">
+                  <div class="text-sm font-semibold text-cream mb-1">{item.label}</div>
+                  <div class="text-xs text-muted leading-relaxed">{item.desc}</div>
+                </div>
+              ))
+            }
+          </div>
+        </section>
+      </FadeIn>
+
+      <!-- Articles by Erik -->
+      <FadeIn delay={200}>
+        <section class="mb-12">
+          <h2 class="text-xl md:text-2xl font-extrabold text-cream mb-6 flex items-center gap-3">
+            <span class="w-1 h-6 bg-gold rounded-full"></span>
+            Articles by Erik Rivera
+          </h2>
+          <p class="text-xs text-muted mb-4">
+            Evidence-based writing on men's sexual health and peptide therapy,
+            medically reviewed by Dr. Angel Rivera, M.D.
+          </p>
+          <ul class="space-y-2">
+            {
+              articles.map((a) => (
+                <li class="p-3 rounded-lg border border-white/5 bg-white/[0.02] hover:border-gold/20 transition-colors">
+                  <a href={a.url} class="text-sm text-cream hover:text-gold transition-colors">
+                    {a.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </section>
+      </FadeIn>
+
+      <!-- Trust Footer -->
+      <FadeIn delay={250}>
+        <div class="p-5 rounded-xl border border-gold/10 bg-gold/[0.03] text-center">
+          <p class="text-xs text-body leading-relaxed">
+            Erik's profile is maintained by the Strong Health editorial team. All of his
+            articles are medically reviewed before publication. For more information about
+            our editorial standards, please visit our
+            <a href="/editorial-guidelines/" class="text-gold hover:underline">editorial guidelines</a>.
+          </p>
+        </div>
+      </FadeIn>
+    </div>
+  </PageShell>
+</BaseLayout>

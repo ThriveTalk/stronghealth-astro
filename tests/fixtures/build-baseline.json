@@ -54,6 +54,20 @@
         "priority": "0.7"
       }
     },
+    "/author/erik-rivera/": {
+      "title": "Erik Rivera, Health & Wellness Writer | Strong Health",
+      "description": "Erik Rivera writes evidence-based men's health and peptide therapy content for Strong Health. Every article is medically reviewed by a licensed physician.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/author/erik-rivera/",
+      "h1": "Erik Rivera",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-25",
+        "priority": "0.7"
+      }
+    },
     "/author/mahadev-mukherjee/": {
       "title": "Mahadev Mukherjee, Scientific Writer | Strong Health",
       "description": "Scientific content writer with 17 years in pharma sales, marketing, product management, and clinical data — focused on peptides, GLP-1/GIP/GCGR, and obesity Rx.",
