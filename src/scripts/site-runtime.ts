@@ -97,6 +97,49 @@ document.addEventListener("click", (e) => {
        scrolls past the hero (300px) or after 8s, whichever comes first. */
 (function chatWidget() {
   const SRC = "https://widgets.leadconnectorhq.com/loader.js";
+
+  /* Below md (768px) the sticky mobile CTA bar (StickyMobileCta.astro, 72px
+     + iOS safe area) owns the bottom edge, and the widget's default
+     bottom:20px bubble lands on top of its button, blocking taps. Lift the
+     bubble (and the prompt/chat-box container, so the prompt keeps riding
+     above the bubble) clear of the bar with a 12px gap. The widget positions
+     itself via inline styles inside an open shadow root, so this stylesheet
+     is appended to the shadow root and needs !important to win. The
+     full-screen open-chat state on mobile (.lc_text-widget--mobile) and
+     embedded/inline placements are left untouched. */
+  const OFFSET_STYLE_ID = "sh-chat-widget-offset";
+  const OFFSET_CSS = `
+@media (max-width: 767px) {
+  .lc_text-widget--bubble:not(.inline) {
+    bottom: calc(84px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+  .lc_text-widget:not(.lc_text-widget--mobile):not(.lc_text-widget--inline) {
+    bottom: calc(84px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+}`;
+
+  function applyOffset(): boolean {
+    const root = document.querySelector("chat-widget")?.shadowRoot;
+    if (!root) return false;
+    if (!root.getElementById(OFFSET_STYLE_ID)) {
+      const style = document.createElement("style");
+      style.id = OFFSET_STYLE_ID;
+      style.textContent = OFFSET_CSS;
+      root.appendChild(style);
+    }
+    return true;
+  }
+
+  /* The widget element (and its shadow root) appears some time after the
+     loader script runs; poll briefly until it does. */
+  function watchForWidget() {
+    if (applyOffset()) return;
+    let tries = 0;
+    const poll = window.setInterval(() => {
+      if (applyOffset() || ++tries >= 120) window.clearInterval(poll);
+    }, 250);
+  }
+
   let injected = false;
   function inject() {
     if (injected || document.querySelector(`script[src="${SRC}"]`)) return;
@@ -111,6 +154,7 @@ document.addEventListener("click", (e) => {
     s.setAttribute("data-widget-id", "69fcc800d663de762a50e94d");
     s.setAttribute("data-source", "WEB_USER");
     document.body.appendChild(s);
+    watchForWidget();
   }
   let timer: number | undefined;
   function cleanup() {
