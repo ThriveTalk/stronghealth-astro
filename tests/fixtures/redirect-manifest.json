@@ -301,6 +301,13 @@
       "status": 308,
       "reason": "peptide repositioning: weight-loss service pages retired",
       "owner": "erik"
+    },
+    {
+      "source": "/reviews/revita/",
+      "target": "/peptides-for-hair-growth/",
+      "status": 308,
+      "reason": "Revita shampoo review retired; consolidated into the peptides-for-hair-growth page",
+      "owner": "erik"
     }
   ],
   "normalization": [

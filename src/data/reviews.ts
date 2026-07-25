@@ -70,20 +70,6 @@ export const reviews: ReviewMeta[] = [
     readTime: "10 min read",
     structuredDataType: "product",
   },
-  {
-    path: "/reviews/revita/",
-    title:
-      "Revita Hair Loss Shampoo Review: The Hormone-Hair Connection Most Products Ignore",
-    seoTitle: "Revita Shampoo Review: The Hormone-Hair Link",
-    shortTitle: "Revita",
-    blurb:
-      "Evidence-based review of DS Laboratories Revita: what its ingredients do for thinning hair, why hormones are the missing piece, and the smarter path for men.",
-    badge: "Product Review",
-    datePublished: "2025-07-25",
-    dateModified: "2026-03-05",
-    readTime: "9 min read",
-    structuredDataType: "product",
-  },
 ];
 
 export function getReview(path: string): ReviewMeta {

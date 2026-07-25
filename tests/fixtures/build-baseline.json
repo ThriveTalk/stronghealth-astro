@@ -334,6 +334,20 @@
         "priority": "0.8"
       }
     },
+    "/fl/weston/peptide-therapy/": {
+      "title": "Peptide Therapy in Weston, FL | Strong Health",
+      "description": "Physician-supervised peptide therapy for Weston, FL — telehealth with in-person labs at our Miami Brickell clinic. BPC-157, CJC-1295, PT-141. Bilingual care.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/fl/weston/peptide-therapy/",
+      "h1": "Peptide Therapy in Weston, FL.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-23",
+        "priority": "0.8"
+      }
+    },
     "/foods-that-lower-testosterone/": {
       "title": "Foods That Lower Testosterone: Myth vs Fact | Strong Health",
       "description": "Do soy, flaxseed, mint, or alcohol actually lower testosterone? We review the clinical evidence on foods linked to reduced T levels and separate myth from fact.",
@@ -572,6 +586,20 @@
         "priority": "0.8"
       }
     },
+    "/peptide-therapy/": {
+      "title": "Peptide Therapy Near Me & Telehealth | Strong Health",
+      "description": "Find physician-supervised peptide therapy near you — in-person in Miami and via telehealth across Florida, New York, California, Texas, and more states.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/peptide-therapy/",
+      "h1": "Peptide therapy near you, done like real medicine.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-23",
+        "priority": "0.8"
+      }
+    },
     "/peptides-for-acne/": {
       "title": "Peptides for Acne: Do They Help? | Strong Health",
       "description": "A physician’s honest look at peptides for acne: what copper peptides can and can’t do, why they aren’t first-line, and how to treat breakouts safely.",
@@ -699,12 +727,12 @@
       }
     },
     "/peptides-for-libido/": {
-      "title": "Peptides for Libido: PT-141 Explained | Strong Health",
-      "description": "How PT-141 (bremelanotide) treats low libido via the central nervous system. PT-141 vs Viagra/Cialis, clinical evidence, and protocols.",
+      "title": "Peptides for Libido & Sex Drive | Strong Health",
+      "description": "How peptides like PT-141 support libido and sex drive in men and women, address erectile dysfunction and sexual performance, and compare to Viagra and Cialis.",
       "robots": "index, follow, max-image-preview:large",
       "lang": "en",
       "canonical_path": "/peptides-for-libido/",
-      "h1": "Peptides for Libido: How PT-141 Addresses Sexual Desire at the Neurological Level",
+      "h1": "Peptides for Libido and Sex Drive: How PT-141 Targets Sexual Desire in the Brain",
       "jsonld": {},
       "sitemap": {
         "changefreq": "monthly",
@@ -894,6 +922,20 @@
         "priority": "0.8"
       }
     },
+    "/peptides/cagrilintide/": {
+      "title": "Cagrilintide: Amylin Analog for Weight | Strong Health",
+      "description": "Cagrilintide (AM833) is an investigational amylin analog studied for weight loss, alone and paired with semaglutide as CagriSema. What the evidence shows.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/peptides/cagrilintide/",
+      "h1": "Cagrilintide",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-23",
+        "priority": "0.8"
+      }
+    },
     "/peptides/cjc-1295/": {
       "title": "CJC-1295 Peptide: Uses, Evidence & Safety | Strong Health",
       "description": "CJC-1295 is a GHRH analog studied to raise natural growth hormone and IGF-1 for body composition, recovery, and sleep. See how Strong Health prescribes it.",
@@ -1034,6 +1076,20 @@
         "priority": "0.8"
       }
     },
+    "/peptides/retatrutide/": {
+      "title": "Retatrutide: Triple-Agonist Weight Loss | Strong Health",
+      "description": "Retatrutide (LY3437943) is an investigational GIP, GLP-1, and glucagon triple agonist that drove up to 24% weight loss in a phase 2 obesity trial.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/peptides/retatrutide/",
+      "h1": "Retatrutide",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-23",
+        "priority": "0.8"
+      }
+    },
     "/peptides/selank/": {
       "title": "Selank Peptide: Uses, Evidence & Safety | Strong Health",
       "description": "Selank is a synthetic anxiolytic peptide studied for anxiety, calm, and cognition. Review its mechanism, evidence, and how Strong Health prescribes it.",
@@ -1101,6 +1157,20 @@
       "sitemap": {
         "changefreq": "monthly",
         "lastmod": "2026-07-18",
+        "priority": "0.8"
+      }
+    },
+    "/peptides/tesofensine/": {
+      "title": "Tesofensine: What It Is & the Evidence | Strong Health",
+      "description": "Tesofensine is an investigational triple monoamine reuptake inhibitor — not a peptide — studied for weight loss, with notable blood-pressure and safety caveats.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/peptides/tesofensine/",
+      "h1": "Tesofensine",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-23",
         "priority": "0.8"
       }
     },
@@ -1255,20 +1325,6 @@
       "sitemap": {
         "changefreq": "monthly",
         "lastmod": "2026-03-12",
-        "priority": "0.7"
-      }
-    },
-    "/reviews/revita/": {
-      "title": "Revita Shampoo Review: The Hormone-Hair Link | Strong Health",
-      "description": "Evidence-based review of DS Laboratories Revita: what its ingredients do for thinning hair, why hormones are the missing piece, and the smarter path for men.",
-      "robots": "index, follow, max-image-preview:large",
-      "lang": "en",
-      "canonical_path": "/reviews/revita/",
-      "h1": "Revita Hair Loss Shampoo Review: The Hormone-Hair Connection Most Products Ignore",
-      "jsonld": {},
-      "sitemap": {
-        "changefreq": "monthly",
-        "lastmod": "2026-03-05",
         "priority": "0.7"
       }
     },
