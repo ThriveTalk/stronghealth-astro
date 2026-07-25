@@ -1272,20 +1272,6 @@
         "priority": "0.8"
       }
     },
-    "/reviews/andro-400/": {
-      "title": "Andro 400 Review: Evidence, Risks & Cost | Strong Health",
-      "description": "An evidence-based review of Andro 400's eurycoma longifolia formula: what the science says, what it can't do, and when physician TRT is the smarter path.",
-      "robots": "index, follow, max-image-preview:large",
-      "lang": "en",
-      "canonical_path": "/reviews/andro-400/",
-      "h1": "Andro 400 Review: Does This Testosterone Booster Actually Work?",
-      "jsonld": {},
-      "sitemap": {
-        "changefreq": "monthly",
-        "lastmod": "2026-03-10",
-        "priority": "0.7"
-      }
-    },
     "/reviews/low-t-center/": {
       "title": "Low T Center vs. Strong Health: TRT Review | Strong Health",
       "description": "A fair, evidence-based comparison of the Low T Center franchise model and Strong Health's physician-supervised approach to testosterone replacement therapy.",
@@ -1297,20 +1283,6 @@
       "sitemap": {
         "changefreq": "monthly",
         "lastmod": "2026-03-15",
-        "priority": "0.7"
-      }
-    },
-    "/reviews/nugenix-ultimate-testosterone/": {
-      "title": "Nugenix Ultimate Review: Evidence & Risks | Strong Health",
-      "description": "A critical review of Nugenix Ultimate Testosterone's Testofen formula: what the studies show, the real cost, and how it compares to physician-led TRT.",
-      "robots": "index, follow, max-image-preview:large",
-      "lang": "en",
-      "canonical_path": "/reviews/nugenix-ultimate-testosterone/",
-      "h1": "Nugenix Ultimate Testosterone Review: Hype vs. Evidence",
-      "jsonld": {},
-      "sitemap": {
-        "changefreq": "monthly",
-        "lastmod": "2026-03-12",
         "priority": "0.7"
       }
     },

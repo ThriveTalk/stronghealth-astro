@@ -31,32 +31,6 @@ export const reviews: ReviewMeta[] = [
     structuredDataType: "competitor",
   },
   {
-    path: "/reviews/andro-400/",
-    title: "Andro 400 Review: Does This Testosterone Booster Actually Work?",
-    seoTitle: "Andro 400 Review: Evidence, Risks & Cost",
-    shortTitle: "Andro 400",
-    blurb:
-      "An evidence-based review of Andro 400's eurycoma longifolia formula: what the science says, what it can't do, and when physician TRT is the smarter path.",
-    badge: "Supplement Review",
-    datePublished: "2025-10-20",
-    dateModified: "2026-03-10",
-    readTime: "10 min read",
-    structuredDataType: "product",
-  },
-  {
-    path: "/reviews/nugenix-ultimate-testosterone/",
-    title: "Nugenix Ultimate Testosterone Review: Hype vs. Evidence",
-    seoTitle: "Nugenix Ultimate Review: Evidence & Risks",
-    shortTitle: "Nugenix",
-    blurb:
-      "A critical review of Nugenix Ultimate Testosterone's Testofen formula: what the studies show, the real cost, and how it compares to physician-led TRT.",
-    badge: "Supplement Review",
-    datePublished: "2025-09-15",
-    dateModified: "2026-03-12",
-    readTime: "11 min read",
-    structuredDataType: "product",
-  },
-  {
     path: "/reviews/revita/",
     title:
       "Revita Hair Loss Shampoo Review: The Hormone-Hair Connection Most Products Ignore",
