@@ -24,7 +24,7 @@ const MOBILE_ROUTES = [
   "/blog/",
   "/peptides-for-healing/",
   "/reviews/",
-  "/reviews/revita/",
+  "/reviews/low-t-center/",
   "/peptides/bpc-157/",
   "/privacy-policy/",
   "/fl/",
