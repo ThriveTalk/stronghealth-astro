@@ -281,7 +281,12 @@ const medicalClinicSchema = {
 };
 ---
 
-<BaseLayout title={config.seoTitle} description={config.seoDescription} path={pagePath}>
+<BaseLayout
+  title={config.seoTitle}
+  description={config.seoDescription}
+  path={pagePath}
+  smsContext={`peptide therapy in ${config.cityName}, ${stateName}`}
+>
   <PageShell>
     <JsonLd
       schema={medicalWebPageSchema({

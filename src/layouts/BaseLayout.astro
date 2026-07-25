@@ -13,6 +13,7 @@
  */
 import "../styles/global.css";
 import Seo from "../components/seo/Seo.astro";
+import StickyMobileCta from "../components/shared/StickyMobileCta.astro";
 
 interface Props {
   title: string;
@@ -25,6 +26,13 @@ interface Props {
   ogImageType?: string;
   ogType?: string;
   noindex?: boolean;
+  /**
+   * Topic for the sticky mobile footer CTA's pre-filled SMS ("I would like to
+   * learn more about {smsContext}"). Layouts with structured data pass e.g.
+   * "peptide therapy in Miami, Florida" or "BPC-157"; when omitted the
+   * context is derived from `path`.
+   */
+  smsContext?: string;
 }
 
 const {
@@ -38,6 +46,7 @@ const {
   ogImageType,
   ogType,
   noindex,
+  smsContext,
 } = Astro.props;
 ---
 
@@ -84,6 +93,7 @@ const {
   </head>
   <body>
     <slot />
+    <StickyMobileCta path={path} smsContext={smsContext} />
     <!-- Shared client runtime (mobile nav, fade-ins, GA4 lead tracking, chat
          widget loader) as one hashed, cacheable module — see
          src/scripts/site-runtime.ts (Phase 8). -->
