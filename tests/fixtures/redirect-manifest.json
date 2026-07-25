@@ -301,6 +301,13 @@
       "status": 308,
       "reason": "peptide repositioning: weight-loss service pages retired",
       "owner": "erik"
+    },
+    {
+      "source": "/reviews/elysium-basis-review/",
+      "target": "/peptides-for-energy/",
+      "status": 308,
+      "reason": "Elysium Basis review retired; NAD+/energy intent now served by the peptides-for-energy spoke",
+      "owner": "erik"
     }
   ],
   "normalization": [

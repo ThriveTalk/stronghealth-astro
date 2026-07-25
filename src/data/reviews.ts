@@ -57,20 +57,6 @@ export const reviews: ReviewMeta[] = [
     structuredDataType: "product",
   },
   {
-    path: "/reviews/elysium-basis-review/",
-    title:
-      "Elysium Basis Review: Can an NAD+ Supplement Replace Hormone Therapy?",
-    seoTitle: "Elysium Basis Review: NAD+ vs. Hormones",
-    shortTitle: "Elysium Basis",
-    blurb:
-      "An honest look at Elysium Basis: the science behind NAD+ and Nicotinamide Riboside, what it can and can't do for men, and where hormone therapy fits in.",
-    badge: "Supplement Review",
-    datePublished: "2025-08-10",
-    dateModified: "2026-03-08",
-    readTime: "10 min read",
-    structuredDataType: "product",
-  },
-  {
     path: "/reviews/revita/",
     title:
       "Revita Hair Loss Shampoo Review: The Hormone-Hair Connection Most Products Ignore",
