@@ -201,14 +201,21 @@ byte-parity capture is no longer the spec (see "Parity suite re-baseline").
   remained, so the hub no longer earned its keep; hub intent is now served by
   the peptides hub. Rule added to `vercel.json` and the redirect manifest
   (`tests/fixtures/redirect-manifest.json`).
-- `/reviews/low-t-center/` stays live at its own URL. Its layout drops the
-  "Reviews" breadcrumb (Home → article, in both the visible trail and the
-  BreadcrumbList JSON-LD) and its footer's "All Reviews" link now points to
-  `/peptides/`.
-- Internal links to `/reviews/` repointed at the surviving review page: the
-  `/about/` editorial link (preserving the US-003 "reachable from /about/"
-  invariant) and Dr. Rivera's reviewed-articles list. `/blog/` continues to
-  list the review via `src/data/articles.ts`, so the page is not orphaned.
 - `/reviews/` dropped from the parity baseline, the mobile screenshot route
   list, and the sitemap `HISTORICAL_LASTMOD` registry (the sitemap's route
   list is derived from dist/, so it drops the URL automatically).
+
+## 2026-07-25 — Low T Center review retired (last review)
+
+- `/reviews/low-t-center/` removed and 308-redirected (single-hop) to the
+  home page `/`. Rule added to `vercel.json` and the redirect manifest
+  (`tests/fixtures/redirect-manifest.json`).
+- The review's entry was removed from `src/data/reviews.ts`, so the footer,
+  sitemap, and `/blog/` article list drop it together. This was the last
+  remaining review, landing alongside the hub retirement above — the two
+  internal links the hub retirement had repointed at this review are updated:
+  the `/about/` editorial link now points to `/peptides/` (preserving the
+  US-003 "reachable from /about/" invariant) and Dr. Rivera's
+  reviewed-articles list drops the entry.
+- Parity baseline regenerated (`pnpm test:parity:baseline`); the mobile
+  screenshot route list dropped the retired page.

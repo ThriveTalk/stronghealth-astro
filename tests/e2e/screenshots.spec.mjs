@@ -1,7 +1,7 @@
 // @visual — full-page screenshot baselines.
 //
-// Desktop project: all 48 fixture routes (47 production + the post-cutover
-// NYC page). Mobile project: 9 representative routes. Baselines live in tests/e2e/screenshots.spec.mjs-snapshots/ and are
+// Desktop project: all fixture routes. Mobile project: 7 representative
+// routes. Baselines live in tests/e2e/screenshots.spec.mjs-snapshots/ and are
 // committed; run `pnpm run test:visual -- --update-snapshots` after an
 // intentional visual change.
 //
@@ -23,7 +23,6 @@ const MOBILE_ROUTES = [
   "/",
   "/blog/",
   "/peptides-for-healing/",
-  "/reviews/low-t-center/",
   "/peptides/bpc-157/",
   "/privacy-policy/",
   "/fl/",

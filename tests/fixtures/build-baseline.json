@@ -1258,20 +1258,6 @@
         "priority": "0.8"
       }
     },
-    "/reviews/low-t-center/": {
-      "title": "Low T Center vs. Strong Health: TRT Review | Strong Health",
-      "description": "A fair, evidence-based comparison of the Low T Center franchise model and Strong Health's physician-supervised approach to testosterone replacement therapy.",
-      "robots": "index, follow, max-image-preview:large",
-      "lang": "en",
-      "canonical_path": "/reviews/low-t-center/",
-      "h1": "Low T Center vs. Strong Health: An Honest Comparison of TRT Providers",
-      "jsonld": {},
-      "sitemap": {
-        "changefreq": "monthly",
-        "lastmod": "2026-03-15",
-        "priority": "0.7"
-      }
-    },
     "/semaglutide-diet/": {
       "title": "Semaglutide Diet: Complete Weight Loss Guide | Strong Health",
       "description": "Evidence-based semaglutide diet guide: foods, meal plans, macro targets, and STEP trial data. How to eat for maximum results on Wegovy or Ozempic.",
