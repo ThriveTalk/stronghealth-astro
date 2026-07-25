@@ -31,19 +31,6 @@ export const reviews: ReviewMeta[] = [
     structuredDataType: "competitor",
   },
   {
-    path: "/reviews/nugenix-ultimate-testosterone/",
-    title: "Nugenix Ultimate Testosterone Review: Hype vs. Evidence",
-    seoTitle: "Nugenix Ultimate Review: Evidence & Risks",
-    shortTitle: "Nugenix",
-    blurb:
-      "A critical review of Nugenix Ultimate Testosterone's Testofen formula: what the studies show, the real cost, and how it compares to physician-led TRT.",
-    badge: "Supplement Review",
-    datePublished: "2025-09-15",
-    dateModified: "2026-03-12",
-    readTime: "11 min read",
-    structuredDataType: "product",
-  },
-  {
     path: "/reviews/elysium-basis-review/",
     title:
       "Elysium Basis Review: Can an NAD+ Supplement Replace Hormone Therapy?",
