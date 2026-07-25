@@ -13,6 +13,7 @@
     { "source": "/fl/miami/weight-loss-clinic/(.+)", "destination": "/fl/miami/peptide-therapy/", "permanent": true },
     { "source": "/fl/delray-beach/weight-loss-clinic/", "destination": "/fl/delray-beach/peptide-therapy/", "permanent": true },
     { "source": "/fl/delray-beach/weight-loss-clinic/(.+)", "destination": "/fl/delray-beach/peptide-therapy/", "permanent": true },
+    { "source": "/reviews/elysium-basis-review/", "destination": "/peptides-for-energy/", "permanent": true },
     { "source": "/reviews/revita/", "destination": "/peptides-for-hair-growth/", "permanent": true },
     { "source": "/reviews/andro-400/", "destination": "/peptides-for-testosterone/", "permanent": true },
     { "source": "/reviews/andro-400/(.+)", "destination": "/peptides-for-testosterone/", "permanent": true },
