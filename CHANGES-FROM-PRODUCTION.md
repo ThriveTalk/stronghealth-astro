@@ -219,3 +219,29 @@ byte-parity capture is no longer the spec (see "Parity suite re-baseline").
   reviewed-articles list drops the entry.
 - Parity baseline regenerated (`pnpm test:parity:baseline`); the mobile
   screenshot route list dropped the retired page.
+
+## 2026-07-25 — Diet pages moved under /diet/ (diet subfolder migration)
+
+- The four diet articles moved from root-level slugs into a `/diet/` subfolder
+  so every current and future diet guide lives under one path prefix:
+  - `/stillman-diet/` → `/diet/stillman/`
+  - `/semaglutide-diet/` → `/diet/semaglutide/`
+  - `/detox-diet/` → `/diet/detox/`
+  - `/pollotarianism/` → `/diet/pollotarianism/`
+- Each old URL 308-redirects (single-hop) to its new home; the pre-existing
+  `/<slug>/(.+)` App.tsx-wildcard rules were retargeted to the new URLs so
+  deep links stay single-hop too. Rules added to `vercel.json` and the
+  redirect manifest (`tests/fixtures/redirect-manifest.json`).
+- Page modules now live in `src/pages/diet/` (`stillman.astro`,
+  `semaglutide.astro`, `detox.astro`, `pollotarianism.astro`); new diet
+  articles should be added there. Content fragments keep their existing
+  names under `src/content/fragments/`.
+- All internal links repointed (`src/data/articles.ts`,
+  `src/data/articleAuthors.ts`, author pages, dexa-scan,
+  peptides-for-weight-loss, peptides-for-belly-fat, and cross-links inside
+  the diet fragments themselves).
+- The sitemap `/blog/` hub-aggregation regex now matches `diet/[a-z-]+`
+  (this also sweeps `/diet/pollotarianism/` into the hub lastmod
+  aggregation — the old regex had missed pollotarianism).
+- Parity baseline regenerated (`pnpm test:parity:baseline`); the two
+  existing desktop visual snapshots renamed to the new route names.

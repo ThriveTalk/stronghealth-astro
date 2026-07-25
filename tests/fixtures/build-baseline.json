@@ -166,20 +166,6 @@
         "priority": "0.8"
       }
     },
-    "/detox-diet/": {
-      "title": "Detox Diet: What Works, What Doesn't | Strong Health",
-      "description": "Do detox diets actually remove toxins? A physician-reviewed look at how your body really detoxifies, which foods help, and what the evidence shows works.",
-      "robots": "index, follow, max-image-preview:large",
-      "lang": "en",
-      "canonical_path": "/detox-diet/",
-      "h1": "Detox Diets: What the Evidence Actually Says About Cleansing Your Body",
-      "jsonld": {},
-      "sitemap": {
-        "changefreq": "monthly",
-        "lastmod": "2026-07-18",
-        "priority": "0.8"
-      }
-    },
     "/dexa-scan/": {
       "title": "DEXA Scan: Body Composition Analysis | Strong Health",
       "description": "How DEXA scans measure body fat, muscle mass, and bone density with clinical precision. Compare DEXA to other methods and its role in TRT monitoring.",
@@ -191,6 +177,62 @@
       "sitemap": {
         "changefreq": "monthly",
         "lastmod": "2025-03-28",
+        "priority": "0.8"
+      }
+    },
+    "/diet/detox/": {
+      "title": "Detox Diet: What Works, What Doesn't | Strong Health",
+      "description": "Do detox diets actually remove toxins? A physician-reviewed look at how your body really detoxifies, which foods help, and what the evidence shows works.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/diet/detox/",
+      "h1": "Detox Diets: What the Evidence Actually Says About Cleansing Your Body",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-18",
+        "priority": "0.8"
+      }
+    },
+    "/diet/pollotarianism/": {
+      "title": "Pollotarian Diet: Benefits, Foods & Plan | Strong Health",
+      "description": "Pollotarianism explained: what pollotarians eat, evidence-based benefits of a poultry-only meat diet, full food list, sample meal plan, and comparisons.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/diet/pollotarianism/",
+      "h1": "Pollotarianism: The Complete Guide to the Pollotarian Diet (2026)",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-07-18",
+        "priority": "0.8"
+      }
+    },
+    "/diet/semaglutide/": {
+      "title": "Semaglutide Diet: Complete Weight Loss Guide | Strong Health",
+      "description": "Evidence-based semaglutide diet guide: foods, meal plans, macro targets, and STEP trial data. How to eat for maximum results on Wegovy or Ozempic.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/diet/semaglutide/",
+      "h1": "Semaglutide Diet: Complete Guide for Weight Loss (2026)",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-04-01",
+        "priority": "0.8"
+      }
+    },
+    "/diet/stillman/": {
+      "title": "The Stillman Diet: History, Risks & Verdict | Strong Health",
+      "description": "Complete guide to the Stillman Diet: 1967 high-protein origins, extreme restrictions, documented health risks, and how it compares to modern weight loss.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/diet/stillman/",
+      "h1": "The Stillman Diet: History, Risks, and Why Modern Medicine Moved On (2026)",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-04-04",
         "priority": "0.8"
       }
     },
@@ -1188,20 +1230,6 @@
         "priority": "0.8"
       }
     },
-    "/pollotarianism/": {
-      "title": "Pollotarian Diet: Benefits, Foods & Plan | Strong Health",
-      "description": "Pollotarianism explained: what pollotarians eat, evidence-based benefits of a poultry-only meat diet, full food list, sample meal plan, and comparisons.",
-      "robots": "index, follow, max-image-preview:large",
-      "lang": "en",
-      "canonical_path": "/pollotarianism/",
-      "h1": "Pollotarianism: The Complete Guide to the Pollotarian Diet (2026)",
-      "jsonld": {},
-      "sitemap": {
-        "changefreq": "monthly",
-        "lastmod": "2026-07-18",
-        "priority": "0.8"
-      }
-    },
     "/porn-induced-erectile-dysfunction/": {
       "title": "Porn-Induced ED (PIED): Recovery & Treatment | Strong Health",
       "description": "Understand how porn-induced erectile dysfunction (PIED) develops, recognize the signs, and explore evidence-based recovery strategies and treatment options.",
@@ -1255,34 +1283,6 @@
       "sitemap": {
         "changefreq": "monthly",
         "lastmod": "2026-03-28",
-        "priority": "0.8"
-      }
-    },
-    "/semaglutide-diet/": {
-      "title": "Semaglutide Diet: Complete Weight Loss Guide | Strong Health",
-      "description": "Evidence-based semaglutide diet guide: foods, meal plans, macro targets, and STEP trial data. How to eat for maximum results on Wegovy or Ozempic.",
-      "robots": "index, follow, max-image-preview:large",
-      "lang": "en",
-      "canonical_path": "/semaglutide-diet/",
-      "h1": "Semaglutide Diet: Complete Guide for Weight Loss (2026)",
-      "jsonld": {},
-      "sitemap": {
-        "changefreq": "monthly",
-        "lastmod": "2026-04-01",
-        "priority": "0.8"
-      }
-    },
-    "/stillman-diet/": {
-      "title": "The Stillman Diet: History, Risks & Verdict | Strong Health",
-      "description": "Complete guide to the Stillman Diet: 1967 high-protein origins, extreme restrictions, documented health risks, and how it compares to modern weight loss.",
-      "robots": "index, follow, max-image-preview:large",
-      "lang": "en",
-      "canonical_path": "/stillman-diet/",
-      "h1": "The Stillman Diet: History, Risks, and Why Modern Medicine Moved On (2026)",
-      "jsonld": {},
-      "sitemap": {
-        "changefreq": "monthly",
-        "lastmod": "2026-04-04",
         "priority": "0.8"
       }
     },
