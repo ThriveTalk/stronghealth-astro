@@ -1,0 +1,41 @@
+---
+/**
+ * Site-wide sticky mobile footer CTA (rendered once from BaseLayout).
+ * Opens the visitor's SMS app to the booking line with a message naming the
+ * page they were on — "peptide therapy in {City}, {State}" on local pages,
+ * the page topic ("peptides for weight loss", "BPC-157") elsewhere. Layouts
+ * with richer data (city configs, molecule configs) pass `smsContext` through
+ * BaseLayout; otherwise the context is derived from the page path.
+ *
+ * Mobile-only (hidden ≥ md). z-40 keeps it under the nav (z-50) and the
+ * mobile drawer/backdrop (z-[60]/z-[70]). The spacer div reserves the bar's
+ * height in normal flow so it never covers the last content on the page, and
+ * pb-[env(safe-area-inset-bottom)] clears the iOS home indicator.
+ */
+import {
+  STICKY_CTA_LABEL,
+  stickyCtaContextFromPath,
+  stickyCtaSmsHref,
+} from "../../lib/booking";
+
+interface Props {
+  path: string;
+  smsContext?: string;
+}
+
+const { path, smsContext } = Astro.props;
+const href = stickyCtaSmsHref(smsContext ?? stickyCtaContextFromPath(path));
+---
+
+<div class="md:hidden h-[72px]" aria-hidden="true"></div>
+<div
+  class="md:hidden fixed inset-x-0 bottom-0 z-40 bg-surface/95 backdrop-blur-md border-t border-white/10 px-3 pt-2.5 pb-[calc(0.625rem+env(safe-area-inset-bottom))]"
+>
+  <a
+    href={href}
+    data-track-lead
+    class="flex items-center justify-center w-full rounded-lg bg-gold text-surface font-bold text-sm max-[339px]:text-[13px] whitespace-nowrap px-2 py-3.5 hover:bg-gold-hover transition-all duration-200"
+  >
+    {STICKY_CTA_LABEL}
+  </a>
+</div>

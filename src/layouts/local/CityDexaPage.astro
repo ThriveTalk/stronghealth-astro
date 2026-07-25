@@ -186,7 +186,12 @@ const steps = [
 ];
 ---
 
-<BaseLayout title={seoTitle} description={seoDescription} path={pagePath}>
+<BaseLayout
+  title={seoTitle}
+  description={seoDescription}
+  path={pagePath}
+  smsContext={`peptide therapy in ${city}, ${stateName}`}
+>
   <PageShell>
     <JsonLd
       schema={medicalWebPageSchema({
