@@ -6,7 +6,6 @@
  * Third-party scripts (same IDs as production index.html):
  *  - Google AdSense (ca-pub-7951814481749634)
  *  - Ahrefs analytics (mUsqdURGMvgEYUov5WFjXw)
- *  - GA4 (G-ESG16019L2)
  * plus the LeadConnector chat widget, injected on scroll ≥ 300px or after
  * 8s (port of src/lib/loadChatWidget.ts — now in src/scripts/site-runtime.ts,
  * loaded once at the end of <body> as a shared external module).
@@ -83,19 +82,12 @@ const {
       src="https://analytics.ahrefs.com/analytics.js"
       data-key="mUsqdURGMvgEYUov5WFjXw"
       async></script>
-    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-ESG16019L2"></script>
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-ESG16019L2');
-    </script>
   </head>
   <body>
     <slot />
     <StickyMobileCta path={path} smsContext={smsContext} />
-    <!-- Shared client runtime (mobile nav, fade-ins, GA4 lead tracking, chat
-         widget loader) as one hashed, cacheable module — see
+    <!-- Shared client runtime (mobile nav, fade-ins, chat widget loader) as
+         one hashed, cacheable module — see
          src/scripts/site-runtime.ts (Phase 8). -->
     <script src="../scripts/site-runtime.ts"></script>
   </body>

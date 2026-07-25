@@ -7,8 +7,7 @@
  * Sections:
  *  1. Mobile nav drawer toggle (was inline in shared/Nav.astro)
  *  2. Scroll fade-in observer   (was inline in shared/FadeIn.astro)
- *  3. GA4 lead tracking         (was inline in BaseLayout; port of lib/gtag.ts)
- *  4. LeadConnector chat loader (was inline in BaseLayout; port of
+ *  3. LeadConnector chat loader (was inline in BaseLayout; port of
  *     lib/loadChatWidget.ts — inject on scroll ≥ 300px or after 8s)
  */
 
@@ -80,20 +79,7 @@
   }
 })();
 
-/* 3 — GA4 lead tracking: every CTA carrying data-track-lead fires
-       generate_lead on click via delegation. */
-document.addEventListener("click", (e) => {
-  const t = e.target as Element | null;
-  const el = t && t.closest ? t.closest("[data-track-lead]") : null;
-  if (el && typeof (window as any).gtag === "function") {
-    (window as any).gtag("event", "generate_lead", {
-      event_category: "cta",
-      event_label: "book_free_assessment",
-    });
-  }
-});
-
-/* 4 — Chat widget loader: inject the LeadConnector bubble once the user
+/* 3 — Chat widget loader: inject the LeadConnector bubble once the user
        scrolls past the hero (300px) or after 8s, whichever comes first. */
 (function chatWidget() {
   const SRC = "https://widgets.leadconnectorhq.com/loader.js";

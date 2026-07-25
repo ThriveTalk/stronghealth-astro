@@ -2,8 +2,8 @@
 /**
  * Port of shared/Btn.tsx. Always renders a real element:
  *  - lead CTAs (trackLead) default to the site-wide booking SMS href and get
- *    `data-track-lead`, which the site-wide delegation script (BaseLayout)
- *    turns into a GA4 `generate_lead` event on click.
+ *    `data-track-lead`, an inert marker identifying booking CTAs (no
+ *    analytics listener is currently attached to it).
  *  - explicit `href` renders an anchor; otherwise a plain button.
  */
 import { BOOKING_SMS_HREF } from "../../lib/booking";
