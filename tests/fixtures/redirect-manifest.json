@@ -329,6 +329,13 @@
       "status": 308,
       "reason": "Elysium Basis review retired; NAD+/energy intent now served by the peptides-for-energy spoke",
       "owner": "erik"
+    },
+    {
+      "source": "/reviews/low-t-center/",
+      "target": "/",
+      "status": 308,
+      "reason": "Low T Center comparison review retired (last remaining review); redirected to the home page",
+      "owner": "erik"
     }
   ],
   "normalization": [

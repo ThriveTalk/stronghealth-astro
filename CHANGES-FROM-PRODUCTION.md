@@ -193,3 +193,15 @@ byte-parity capture is no longer the spec (see "Parity suite re-baseline").
 - Parity baseline regenerated (`pnpm test:parity:baseline`); the refresh also
   swept in routes that had shipped since the last regen (`/peptide-therapy/`,
   `/fl/weston/peptide-therapy/`, `/peptides/cagrilintide/`, libido spoke copy).
+
+## 2026-07-25 — Low T Center review retired (last review)
+
+- `/reviews/low-t-center/` removed and 308-redirected (single-hop) to the
+  home page `/`. Rule added to `vercel.json` and the redirect manifest
+  (`tests/fixtures/redirect-manifest.json`).
+- The review's entry was removed from `src/data/reviews.ts`, so the /reviews/
+  hub, footer, and sitemap drop it together. This was the last remaining
+  review — the `/reviews/` hub still builds but now renders an empty list
+  ("0 reviews").
+- Parity baseline regenerated (`pnpm test:parity:baseline`); the mobile
+  screenshot route list dropped the retired page.

@@ -15,22 +15,7 @@ export interface ReviewMeta {
   structuredDataType: ReviewStructuredDataType;
 }
 
-export const reviews: ReviewMeta[] = [
-  {
-    path: "/reviews/low-t-center/",
-    title:
-      "Low T Center vs. Strong Health: An Honest Comparison of TRT Providers",
-    seoTitle: "Low T Center vs. Strong Health: TRT Review",
-    shortTitle: "Low T Center",
-    blurb:
-      "A fair, evidence-based comparison of the Low T Center franchise model and Strong Health's physician-supervised approach to testosterone replacement therapy.",
-    badge: "Competitor Comparison",
-    datePublished: "2025-11-15",
-    dateModified: "2026-03-15",
-    readTime: "12 min read",
-    structuredDataType: "competitor",
-  },
-];
+export const reviews: ReviewMeta[] = [];
 
 export function getReview(path: string): ReviewMeta {
   const normalized = path.endsWith("/") ? path : `${path}/`;
