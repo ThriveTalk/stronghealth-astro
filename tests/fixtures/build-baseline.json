@@ -502,20 +502,6 @@
         "priority": "0.8"
       }
     },
-    "/molecules/": {
-      "title": "Peptide Molecule Library | Strong Health",
-      "description": "Browse every peptide Strong Health prescribes by molecule — BPC-157, CJC-1295, Tesamorelin, PT-141, semaglutide, and more. Physician-reviewed, evidence-based.",
-      "robots": "index, follow, max-image-preview:large",
-      "lang": "en",
-      "canonical_path": "/molecules/",
-      "h1": "The Strong Health peptide molecule library.",
-      "jsonld": {},
-      "sitemap": {
-        "changefreq": "monthly",
-        "lastmod": "2026-07-18",
-        "priority": "0.8"
-      }
-    },
     "/nac-benefits-men/": {
       "title": "NAC Benefits for Men: The Complete Guide | Strong Health",
       "description": "How NAC (N-acetylcysteine) benefits men: glutathione production, liver support, fertility, respiratory health. Dosing and safety reviewed.",
@@ -932,7 +918,7 @@
       "jsonld": {},
       "sitemap": {
         "changefreq": "monthly",
-        "lastmod": "2026-04-22",
+        "lastmod": "2026-07-25",
         "priority": "0.9"
       }
     },

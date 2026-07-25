@@ -177,7 +177,7 @@ export function defaultRelatedInternalLinks(
     { label: "BPC-157 for healing & recovery", href: "/peptides/bpc-157/" },
     { label: "CJC-1295 / Ipamorelin for body composition", href: "/peptides/cjc-1295/" },
     { label: "Tesamorelin for visceral fat", href: "/peptides/tesamorelin/" },
-    { label: "Browse the full molecule library", href: "/molecules/" },
+    { label: "Browse the full molecule library", href: "/peptides/#molecule-library" },
   );
   const hubs: RelatedInternalLink[] =
     statePrefix === "fl"

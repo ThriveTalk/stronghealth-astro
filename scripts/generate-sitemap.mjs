@@ -206,8 +206,8 @@ const HISTORICAL_LASTMOD = {
   "/nv/las-vegas/dexascan/": "2026-07-18",
   "/ga/atlanta/dexascan/": "2026-07-18",
   "/tx/austin/dexascan/": "2026-07-18",
-  // Peptide molecule library launch (peptide repositioning).
-  "/molecules/": "2026-07-18",
+  // Peptide molecule library launch (peptide repositioning). The /molecules/
+  // hub was folded into /peptides/ on 2026-07-25 and now redirects there.
   "/peptides/bpc-157/": "2026-07-18",
   "/peptides/tb-500/": "2026-07-18",
   "/peptides/cjc-1295/": "2026-07-18",
@@ -230,7 +230,9 @@ const HISTORICAL_LASTMOD = {
   "/peptides/tesofensine/": "2026-07-23",
   "/peptides/retatrutide/": "2026-07-23",
   "/peptides/cagrilintide/": "2026-07-23",
-  "/peptides/": "2026-04-22",
+  // Bumped 2026-07-25: /molecules/ hub folded into /peptides/ (molecule
+  // library section added to the hub).
+  "/peptides/": "2026-07-25",
   "/privacy-policy/": "2026-05-27",
   "/terms-of-use/": "2026-05-27",
 };
