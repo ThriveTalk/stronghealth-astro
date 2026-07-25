@@ -51,6 +51,13 @@
       "owner": "erik"
     },
     {
+      "source": "/reviews/andro-400/",
+      "target": "/peptides-for-testosterone/",
+      "status": 308,
+      "reason": "Andro 400 review retired; consolidated into the peptides-for-testosterone guide",
+      "owner": "erik"
+    },
+    {
       "source": "/molecules/sermorelin/",
       "target": "/peptides/sermorelin/",
       "status": 308,
