@@ -29,21 +29,21 @@ const goals = [
     icon: "scale",
     title: "Visceral Belly Fat",
     peptides: "Tesamorelin",
-    desc: "Deep abdominal fat that ignores diet and cardio — targeted at the hormonal level.",
+    desc: "Deep abdominal fat that ignores diet and cardio. Tesamorelin targets it at the hormonal level.",
     href: "/peptides-for-belly-fat/",
   },
   {
     icon: "moon",
     title: "Sleep Quality",
     peptides: "DSIP · Ipamorelin",
-    desc: "Broken sleep architecture — falling asleep, staying asleep, and waking up rested.",
+    desc: "For sleep that breaks down at any stage: falling asleep, staying asleep, or waking up rested.",
     href: "/peptides-for-sleep/",
   },
   {
     icon: "heart-pulse",
     title: "Libido & Sexual Health",
     peptides: "PT-141",
-    desc: "Desire and arousal — PT-141 works on the nervous system, not just blood flow.",
+    desc: "PT-141 works on desire and arousal through the nervous system rather than blood flow alone.",
     href: "/peptides-for-libido/",
   },
   {
@@ -57,7 +57,7 @@ const goals = [
     icon: "sparkles",
     title: "Aging & Longevity",
     peptides: "GH Secretagogues · Collagen",
-    desc: "Skin, connective tissue, and healthy GH pulsatility — supported, not overridden.",
+    desc: "Support for skin, connective tissue, and the natural GH rhythm your body already has.",
     href: "/peptides-for-anti-aging/",
   },
 ];
@@ -66,13 +66,13 @@ const goals = [
 const solutionCards = [
   {
     icon: "hospital",
-    title: "Bloodwork First, Not a Sales Script",
-    desc: "Your protocol starts with a physician evaluation and a baseline lab panel — hormones, IGF-1, metabolic markers. No peptide is prescribed until we've seen your labs.",
+    title: "Bloodwork Before Any Prescription",
+    desc: "Your protocol starts with a physician evaluation and a baseline panel covering hormones, IGF-1, and metabolic markers. We prescribe after we've seen your labs, never before.",
   },
   {
     icon: "flask-conical",
     title: "Pharmacy-Grade, Not Research-Grade",
-    desc: "Every compound comes from a licensed 503A/503B compounding pharmacy under physician orders. No gray-market vials. No \"research use only\" product.",
+    desc: "Every compound comes from a licensed 503A/503B compounding pharmacy under physician orders. You will never get a gray-market or \"research use only\" vial from us.",
   },
   {
     icon: "smartphone",
@@ -89,7 +89,7 @@ const phases = [
     color: "#C9A84C",
     items: [
       "Physician evaluation and full history",
-      "Baseline labs — IGF-1, hormones, metabolic",
+      "Baseline labs: IGF-1, hormones, metabolic",
       "Contraindication screening",
       "Individualized protocol designed",
     ],
@@ -112,7 +112,7 @@ const phases = [
     items: [
       "Tendon and soft-tissue protocols complete",
       "Body-composition changes become visible",
-      "Follow-up labs — IGF-1, glucose, hormones",
+      "Follow-up labs: IGF-1, glucose, hormones",
       "Lab-driven dose adjustments",
     ],
   },
@@ -122,7 +122,7 @@ const phases = [
     color: "#D4B96A",
     items: [
       "Visceral fat and lean-mass shifts on repeat labs",
-      "Maintain, taper, or cycle off — planned, not guessed",
+      "A planned decision to maintain, taper, or cycle off",
       "Ongoing telehealth optimization",
       "In-person visits available anytime",
     ],
@@ -131,14 +131,14 @@ const phases = [
 
 // --- BiomarkerGrid data ---
 const markers = [
-  { name: "IGF-1", desc: "The key growth-hormone-axis marker — tracked before and during any secretagogue protocol", icon: "activity" },
-  { name: "Total & Free Testosterone", desc: "Hormonal baseline — peptide and TRT protocols are monitored together, not in silos", icon: "syringe" },
-  { name: "Estradiol (E2)", desc: "Estrogen balance — affects mood, joints, and body composition", icon: "scale" },
-  { name: "Glucose & HbA1c", desc: "GH secretagogues can shift glucose — we measure it, we don't guess", icon: "droplets" },
-  { name: "Complete Thyroid Panel", desc: "TSH, Free T3, Free T4 — thyroid dysfunction mimics low energy and slow recovery", icon: "activity" },
-  { name: "Comprehensive Metabolic Panel", desc: "Liver, kidney, electrolytes — whole-body baseline before any protocol", icon: "flask-conical" },
-  { name: "Lipid Panel", desc: "Cholesterol, triglycerides — cardiovascular risk monitoring", icon: "heart-pulse" },
-  { name: "CBC", desc: "Complete blood count — a standard safety marker throughout treatment", icon: "test-tubes" },
+  { name: "IGF-1", desc: "The key growth-hormone-axis marker, tracked before and during any secretagogue protocol", icon: "activity" },
+  { name: "Total & Free Testosterone", desc: "Your hormonal baseline, monitored alongside any TRT protocol you're running", icon: "syringe" },
+  { name: "Estradiol (E2)", desc: "Estrogen balance affects mood, joints, and body composition", icon: "scale" },
+  { name: "Glucose & HbA1c", desc: "GH secretagogues can shift glucose, so we track it on every follow-up panel", icon: "droplets" },
+  { name: "Complete Thyroid Panel", desc: "TSH, Free T3, and Free T4, because thyroid dysfunction mimics low energy and slow recovery", icon: "activity" },
+  { name: "Comprehensive Metabolic Panel", desc: "Liver, kidney, and electrolyte function, checked before any protocol begins", icon: "flask-conical" },
+  { name: "Lipid Panel", desc: "Cholesterol and triglycerides for cardiovascular risk monitoring", icon: "heart-pulse" },
+  { name: "CBC", desc: "A standard safety check we repeat throughout treatment", icon: "test-tubes" },
 ];
 const labBadges = ["CLIA-Certified Labs", "Results in 48–72 hrs", "Same-Visit Draw", "Physician-Reviewed", "Repeated Every 4–12 Weeks"];
 
@@ -146,7 +146,7 @@ const labBadges = ["CLIA-Certified Labs", "Results in 48–72 hrs", "Same-Visit 
 const comparisonRows = [
   { label: "Physician", sh: "Board-certified, named", online: "Often none on-site", supp: "None" },
   { label: "Bloodwork", sh: "Baseline + monitoring labs", online: "Rarely required", supp: "None" },
-  { label: "Product Source", sh: "Licensed 503A/503B pharmacy", online: "Varies — often unverified", supp: '"Research use only" vials' },
+  { label: "Product Source", sh: "Licensed 503A/503B pharmacy", online: "Varies, often unverified", supp: '"Research use only" vials' },
   { label: "Protocol Design", sh: "Individualized to your labs", online: "One-size-fits-all stacks", supp: "You're on your own" },
   { label: "Dosing", sh: "Physician-titrated", online: "Set menu", supp: "Internet forums" },
   { label: "Monitoring", sh: "Scheduled lab reviews", online: "None", supp: "None" },
@@ -156,10 +156,10 @@ const comparisonRows = [
 
 // --- CommitmentSection data ---
 const commitments = [
-  { icon: "microscope", title: "Comprehensive labs — always", desc: "Baseline and monitoring labs with every protocol. No peptide is prescribed without bloodwork." },
-  { icon: "user-check", title: "Named physicians — always", desc: "You'll know your doctor's name, credentials, and training. No anonymous providers." },
-  { icon: "shield-check", title: "Pharmacy-grade — always", desc: "Licensed 503A/503B compounding pharmacies under physician orders. Never research-grade product." },
-  { icon: "shield", title: "Honest answers — even uncomfortable ones", desc: "If a peptide isn't indicated for your goals, we won't prescribe it. If the evidence is early, we'll say so." },
+  { icon: "microscope", title: "Labs with every protocol", desc: "Baseline and monitoring bloodwork come standard, and prescriptions only happen after your physician has reviewed the results." },
+  { icon: "user-check", title: "Physicians you can name", desc: "You'll know your doctor's name, credentials, and training before you start." },
+  { icon: "shield-check", title: "Pharmacy-grade, every time", desc: "Licensed 503A/503B compounding pharmacies fill every order under physician direction." },
+  { icon: "shield", title: "Honest answers, even uncomfortable ones", desc: "If a peptide isn't indicated for your goals, we won't prescribe it. If the evidence is early, we'll say so." },
 ];
 
 // --- TrustSection data ---
@@ -179,14 +179,14 @@ const plans = [
     name: "Initial Assessment",
     price: "$0",
     priceNote: "free",
-    features: ["Physician evaluation & goal review", "Full health history and symptom review", "Baseline lab panel ordered", "No commitment, no pressure"],
+    features: ["Physician evaluation & goal review", "Full health history and symptom review", "Baseline lab panel ordered", "No commitment required"],
     featured: false,
   },
   {
     name: "Peptide Protocols",
     price: "Month-to-Month",
     priceNote: "no contracts",
-    features: ["Priced per peptide, dose, and duration", "Full cost quoted before you start", "Cancel anytime — no long-term contracts", "Itemized superbills for reimbursement"],
+    features: ["Priced per peptide, dose, and duration", "Full cost quoted before you start", "Cancel anytime, with no long-term contract", "Itemized superbills for reimbursement"],
     featured: true,
   },
   {
@@ -200,19 +200,19 @@ const plans = [
 
 // --- FAQ data ---
 const faqs = [
-  { q: "What is peptide therapy?", a: "Peptides are short chains of amino acids that act as targeted signaling molecules in the body. Physician-supervised peptide therapy uses pharmacy-compounded peptides — prescribed after bloodwork and a medical evaluation — to target specific goals like tissue healing, visceral fat reduction, sleep quality, sexual health, and body composition." },
-  { q: "What peptides does Strong Health prescribe?", a: "Our physicians prescribe pharmacy-grade peptides selected for your specific goals and labs. The most common protocols include BPC-157 and TB-500 for tendon, joint, and soft-tissue healing; CJC-1295 with Ipamorelin for body composition, sleep, and recovery; Tesamorelin for visceral (belly) fat; PT-141 for sexual desire and arousal; DSIP for deep-sleep architecture; and clinical-grade collagen peptides for connective tissue and skin. Every protocol is individualized — we don't use one-size-fits-all stacks." },
-  { q: "Are peptides legal and safe?", a: "Yes — when prescribed by a licensed physician and dispensed through a licensed 503A or 503B compounding pharmacy, which is the only way we work. We never use research-only or gray-market product. Side effects are generally mild and protocol-specific (injection-site irritation, transient water retention or hunger with GH secretagogues, brief flushing with PT-141), and we screen for contraindications and monitor relevant labs throughout treatment." },
-  { q: "How is peptide therapy different from TRT or GLP-1 weight loss medications?", a: "Peptides are targeted signaling molecules — distinct from steroid hormones like testosterone and from GLP-1 agonists like semaglutide. Healing peptides work on tissue-repair pathways with no androgenic effect. GH-secretagogue peptides prompt your pituitary to release more of your own growth hormone in its natural pulsatile pattern, rather than introducing exogenous hormone. Peptide therapy can also be combined with TRT or a GLP-1 program, monitored by the same physician." },
+  { q: "What is peptide therapy?", a: "Peptides are short chains of amino acids that act as targeted signaling molecules in the body. Physician-supervised peptide therapy uses pharmacy-compounded peptides, prescribed after bloodwork and a medical evaluation, to target specific goals like tissue healing, visceral fat reduction, sleep quality, sexual health, and body composition." },
+  { q: "What peptides does Strong Health prescribe?", a: "Our physicians prescribe pharmacy-grade peptides selected for your specific goals and labs. The most common protocols include BPC-157 and TB-500 for tendon, joint, and soft-tissue healing; CJC-1295 with Ipamorelin for body composition, sleep, and recovery; Tesamorelin for visceral (belly) fat; PT-141 for sexual desire and arousal; DSIP for deep-sleep architecture; and clinical-grade collagen peptides for connective tissue and skin. Every protocol is individualized to your labs and goals." },
+  { q: "Are peptides legal and safe?", a: "Yes, when prescribed by a licensed physician and dispensed through a licensed 503A or 503B compounding pharmacy, which is the only way we work. We never use research-only or gray-market product. Side effects are generally mild and protocol-specific (injection-site irritation, transient water retention or hunger with GH secretagogues, brief flushing with PT-141), and we screen for contraindications and monitor relevant labs throughout treatment." },
+  { q: "How is peptide therapy different from TRT or GLP-1 weight loss medications?", a: "Peptides are targeted signaling molecules, distinct from steroid hormones like testosterone and GLP-1 agonists like semaglutide. Healing peptides work on tissue-repair pathways with no androgenic effect. GH-secretagogue peptides prompt your pituitary to release more of your own growth hormone in its natural pulsatile pattern, rather than introducing exogenous hormone. Peptide therapy can also be combined with TRT or a GLP-1 program, monitored by the same physician." },
   { q: "How long does it take to see results?", a: "It depends on the peptide and the goal. Sleep and recovery improvements (DSIP, Ipamorelin) are often noticeable within 2–4 weeks. Body-composition changes from CJC-1295/Ipamorelin or Tesamorelin typically appear at 8–12 weeks, with fuller shifts at 3–6 months. Tendon and joint healing protocols generally run 4–12 weeks. PT-141 works on demand, typically within 30–90 minutes. Every protocol includes scheduled lab reassessments to confirm progress." },
-  { q: "Do I need an in-person visit, or can I start by telehealth?", a: "It depends on your state. Florida patients complete an in-person baseline — physical exam and on-site labs — at our Miami Brickell clinic, with telehealth follow-ups after. In our telehealth states (New York, California, Nevada, Georgia, Texas), the physician evaluation happens by video with baseline and monitoring labs drawn at local lab sites near you." },
-  { q: "Can peptide therapy be combined with TRT?", a: "Yes — many of our patients run combined protocols, pairing TRT with GH-secretagogue peptides for body composition and recovery, or with BPC-157 during soft-tissue injury rehab. Because both therapies are designed and monitored by the same physician using the same lab panels, interactions and overall response are tracked together rather than in silos." },
+  { q: "Do I need an in-person visit, or can I start by telehealth?", a: "It depends on your state. Florida patients complete an in-person baseline visit, with a physical exam and on-site labs, at our Miami Brickell clinic, then move to telehealth follow-ups. In our telehealth states (New York, California, Nevada, Georgia, Texas), the physician evaluation happens by video with baseline and monitoring labs drawn at local lab sites near you." },
+  { q: "Can peptide therapy be combined with TRT?", a: "Yes. Many of our patients run combined protocols, pairing TRT with GH-secretagogue peptides for body composition and recovery, or with BPC-157 during soft-tissue injury rehab. Because both therapies are designed and monitored by the same physician using the same lab panels, interactions and overall response are tracked together rather than in silos." },
 ];
 ---
 
 <BaseLayout
   title="Physician-Supervised Peptide Therapy | Strong Health"
-  description="Physician-supervised peptide therapy — BPC-157, CJC-1295, Tesamorelin, PT-141. Pharmacy-grade compounds, real labs, ongoing monitoring. Book a free assessment."
+  description="Physician-supervised peptide therapy: BPC-157, CJC-1295, Tesamorelin, PT-141. Prescribed after labs and filled by licensed pharmacies. Book a free assessment."
   path="/"
 >
   <JsonLd slot="head" schema={organizationSchema()} />
@@ -237,20 +237,20 @@ const faqs = [
           <Tag>Physician-Supervised Peptide Therapy · In-Person + Telehealth</Tag>
 
           <h1 class="text-[36px] md:text-[56px] font-black text-cream leading-[1.08] mt-4 md:mt-6 mb-5 max-w-[700px] tracking-[-1.5px]">
-            Peptide Therapy.<br />
-            <span class="text-gold">Not gray-market vials.<br />Not guesswork.</span>
+            Peptide Therapy,<br />
+            <span class="text-gold">Prescribed Like<br />Real Medicine.</span>
           </h1>
 
           <p class="text-[17px] text-muted leading-relaxed max-w-[540px] mb-8">
-            Physician-designed peptide protocols — BPC-157, CJC-1295/Ipamorelin, Tesamorelin,
-            PT-141, DSIP — built around your bloodwork, not a generic stack. Pharmacy-grade
-            compounds, real labs, ongoing monitoring.
+            Our physicians build protocols with BPC-157, CJC-1295/Ipamorelin, Tesamorelin,
+            PT-141, and DSIP around your bloodwork instead of a generic stack. Compounds come
+            from licensed pharmacies, and monitoring labs are part of every protocol.
           </p>
 
           <div class="flex flex-col gap-3.5 mb-9">
             {
               [
-                "Bloodwork first — no peptide is prescribed without baseline labs",
+                "Your physician orders baseline labs before prescribing anything",
                 "Pharmacy-grade compounds from licensed 503A/503B compounders",
                 "Telehealth follow-ups and dose adjustments after your baseline visit",
               ].map((item) => (
@@ -282,8 +282,8 @@ const faqs = [
               <span class="text-gold">There's a specific peptide for that.</span>
             </h2>
             <p class="text-[15px] text-muted max-w-[560px] mx-auto">
-              Peptide therapy isn't one treatment — it's targeted signaling molecules matched
-              to specific clinical goals. Pick yours.
+              Peptide therapy covers a family of signaling molecules, each matched to a
+              specific clinical goal. Pick yours.
             </p>
           </FadeIn>
 
@@ -319,11 +319,11 @@ const faqs = [
         <div class="max-w-[1000px] mx-auto">
           <FadeIn class="text-center mb-10">
             <h2 class="text-[34px] font-extrabold text-cream mb-3">
-              The solution? <span class="text-gold">Actual medicine.</span>
+              The solution? <span class="text-gold">Real medicine.</span>
             </h2>
             <p class="text-[15px] text-muted max-w-[560px] mx-auto">
-              A vial without labs is a gamble. Here's what physician-supervised peptide
-              therapy actually looks like.
+              A vial without labs is a gamble. Here's how physician-supervised peptide
+              therapy works at Strong Health.
             </p>
           </FadeIn>
 
@@ -354,7 +354,7 @@ const faqs = [
           <FadeIn class="text-center mb-10">
             <h2 class="text-[34px] font-extrabold text-cream mb-3">What to Expect</h2>
             <p class="text-[15px] text-muted max-w-[500px] mx-auto">
-              Real timelines based on clinical data — not marketing promises.
+              Here's how a supervised protocol typically unfolds, based on published clinical data.
             </p>
           </FadeIn>
 
@@ -398,7 +398,7 @@ const faqs = [
             </h2>
             <p class="text-[15px] text-muted max-w-[540px] mx-auto">
               Med spas hand you a vial after an intake form. We draw a comprehensive baseline
-              panel first — and repeat the relevant markers throughout your protocol.
+              panel first, then repeat the relevant markers throughout your protocol.
             </p>
           </FadeIn>
 
@@ -487,9 +487,9 @@ const faqs = [
                 <span class="text-gold">Clinical Commitment</span>
               </h2>
               <p class="text-[15px] text-muted leading-[1.7] mb-6">
-                We don't guarantee results — that's not how medicine works.
-                What we guarantee is thoroughness, transparency, and honesty.
-                If peptide therapy isn't right for you, we'll tell you.
+                We can't guarantee results. No honest clinic can. What we can promise
+                is a thorough workup, straight answers, and a physician who will tell
+                you if peptide therapy isn't the right fit.
               </p>
               <Btn trackLead placement="clinical_commitment_section">Book Your Free Assessment →</Btn>
             </FadeIn>
@@ -519,7 +519,7 @@ const faqs = [
           <FadeIn class="text-center mb-8">
             <h2 class="text-[34px] font-extrabold text-cream mb-2">Our Physicians</h2>
             <p class="text-[15px] text-muted">
-              Named doctors with verifiable credentials — not anonymous "licensed providers."
+              Every patient works with a named, board-certified doctor whose credentials you can verify.
             </p>
           </FadeIn>
 
@@ -601,7 +601,7 @@ const faqs = [
           <FadeIn class="text-center mb-10">
             <h2 class="text-[34px] font-extrabold text-cream mb-3">Transparent Pricing</h2>
             <p class="text-[15px] text-muted max-w-[560px] mx-auto">
-              Protocols are priced per peptide, dose, and duration — and you'll know the full
+              Protocols are priced per peptide, dose, and duration. You'll know the full
               cost of yours before you commit to anything.
             </p>
           </FadeIn>
@@ -682,11 +682,11 @@ const faqs = [
         <div class="max-w-[1000px] mx-auto text-center relative z-10">
           <FadeIn>
             <h2 class="text-[38px] md:text-[46px] font-black text-cream mb-4 tracking-tight leading-tight">
-              Ready to Find Out What's Possible?
+              Ready to See What Your Labs Say?
             </h2>
             <p class="text-[17px] text-muted mb-10 max-w-[500px] mx-auto">
-              Book your free assessment. Real exam, real labs, and a real protocol —
-              if peptide therapy is the right fit for your goals.
+              Book your free assessment. You'll get a physician exam, baseline labs,
+              and an honest read on whether peptide therapy fits your goals.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Btn trackLead placement="final_cta" class="!text-[15px] !px-9 !py-4 w-full sm:w-auto">Book Your Free Assessment →</Btn>
