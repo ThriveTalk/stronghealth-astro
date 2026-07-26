@@ -69,6 +69,13 @@ export interface CityPeptideConfig {
   physicianAvailability?: string;
   /** Override for "Appointment expectations" in the local-proof block. */
   appointmentExpectations?: string;
+  /**
+   * Exact Google Business Profile listing name for the map embed, e.g.
+   * "Strong Health Peptide Therapy Delrey Beach". When set, the GMB iframe
+   * targets this listing instead of the derived `clinic.name + address` query,
+   * and service-area pages (`physicalClinic: false`) render the embed too.
+   */
+  gmbListingName?: string;
   /** Page-specific external review-source links. Falls back to derived defaults. */
   reviewLinks?: { label: string; url: string }[];
   /** Page-specific internal cross-links rendered in the local-proof block. Falls back to derived defaults. */
@@ -576,6 +583,10 @@ export const DELRAY_BEACH_PEPTIDE_CONFIG: CityPeptideConfig = {
   finalCtaCopy:
     "Book a free assessment. Telehealth visits for Delray Beach patients with on-site labs and in-person evaluations at our Miami Brickell clinic.",
     physicalClinic: false,
+    // Delray Beach GBP listing (kgmid /g/11y339_zdf). "Delrey" spelling matches
+    // the live listing name exactly — do not "fix" it here or the embed query
+    // stops resolving to the profile.
+    gmbListingName: "Strong Health Peptide Therapy Delrey Beach",
     parkingTransit:
       "No Delray Beach storefront. In-person visits and on-site labs are conducted at the Strong Health Miami Brickell clinic; telehealth follow-ups are available statewide.",
     physicianAvailability:
