@@ -146,6 +146,14 @@ const relatedServicesHeadingHtml = `\n${escapeHtml(relatedServicesHeadingIntro)}
 const isPhysicalClinic = config.physicalClinic ?? true;
 const tel = config.clinic.phone.replace(/[^\d+]/g, "");
 
+// GMB map embed. When the config names an exact Google Business Profile
+// listing, the keyless embed query targets it directly; otherwise fall back to
+// the derived clinic name + address query (byte-identical for existing pages).
+const mapEmbedQuery =
+  config.gmbListingName ??
+  `${config.clinic.name}, ${config.clinic.streetAddress}, ${config.clinic.city}, ${config.clinic.state} ${config.clinic.postalCode}`;
+const mapEmbedSrc = `https://maps.google.com/maps?q=${encodeURIComponent(mapEmbedQuery)}&output=embed`;
+
 const localProof: LocalProofData = {
   physicalClinic: isPhysicalClinic,
   cityName: config.cityName,
@@ -267,7 +275,7 @@ const medicalClinicSchema = {
     { "@type": "City", name: config.cityName },
     { "@type": "AdministrativeArea", name: config.county },
   ],
-  hasMap: `https://maps.google.com/maps?q=${encodeURIComponent(`${config.clinic.name}, ${fullAddress}`)}`,
+  hasMap: `https://maps.google.com/maps?q=${encodeURIComponent(config.gmbListingName ?? `${config.clinic.name}, ${fullAddress}`)}`,
   isAcceptingNewPatients: true,
   currenciesAccepted: "USD",
   paymentAccepted: "Cash, Credit Card, Debit Card",
@@ -399,69 +407,7 @@ const medicalClinicSchema = {
               <div class="mt-6 rounded-2xl overflow-hidden border border-white/10">
                 <iframe
                   title={`Map to ${config.clinic.name}`}
-                  src={
-                    config.mapEmbedUrl ??
-                    `https://maps.google.com/maps?q=${encodeURIComponent(
-                      `${config.clinic.name}, ${config.clinic.streetAddress}, ${config.clinic.city}, ${config.clinic.state} ${config.clinic.postalCode}`,
-                    )}&output=embed`
-                  }
-                  width="100%"
-                  height="320"
-                  style="border:0;"
-                  loading="lazy"
-                  referrerpolicy="no-referrer-when-downgrade"
-                ></iframe>
-              </div>
-            </FadeIn>
-          </div>
-        </section>
-      )
-    }
-
-    {/* Service-area map — rendered only when a Google Business Profile embed
-        is configured (mapEmbedUrl), since service-area pages have no street
-        address to derive a map from. */}
-    {
-      !isPhysicalClinic && config.mapEmbedUrl && (
-        <section class="px-8 py-12 bg-surface border-b border-white/5">
-          <div class="max-w-[1000px] mx-auto">
-            <FadeIn>
-              <div class="bg-surface-card rounded-2xl p-7 border border-white/10 grid md:grid-cols-3 gap-6">
-                <div>
-                  <div class="text-[12px] font-bold uppercase tracking-[0.08em] text-gold mb-2">
-                    {config.clinic.name}
-                  </div>
-                  <div class="text-[15px] text-cream font-semibold leading-snug flex items-start gap-2">
-                    <Icon name="map-pin" size={16} class="text-gold flex-shrink-0 mt-0.5" />
-                    <span>Serving {config.cityName}, {config.clinic.state} — telehealth with in-person labs at our Miami Brickell clinic</span>
-                  </div>
-                </div>
-                <div>
-                  <div class="text-[12px] font-bold uppercase tracking-[0.08em] text-gold mb-2">
-                    Phone
-                  </div>
-                  <a
-                    href={`tel:${tel}`}
-                    class="text-[15px] text-cream font-semibold flex items-center gap-2 hover:text-gold transition-colors"
-                  >
-                    <Icon name="phone" size={16} class="text-gold" />
-                    {config.clinic.phone}
-                  </a>
-                </div>
-                <div>
-                  <div class="text-[12px] font-bold uppercase tracking-[0.08em] text-gold mb-2">
-                    Hours
-                  </div>
-                  <div class="text-[14px] text-cream font-semibold flex items-start gap-2">
-                    <Icon name="clock" size={16} class="text-gold flex-shrink-0 mt-0.5" />
-                    <span>{config.clinic.hoursWeekday}<br />{config.clinic.hoursSaturday}</span>
-                  </div>
-                </div>
-              </div>
-              <div class="mt-6 rounded-2xl overflow-hidden border border-white/10">
-                <iframe
-                  title={`${config.clinic.name} on Google Maps`}
-                  src={config.mapEmbedUrl}
+                  src={mapEmbedSrc}
                   width="100%"
                   height="320"
                   style="border:0;"
@@ -669,6 +615,26 @@ const medicalClinicSchema = {
             }
           </div>
         </FadeIn>
+        {
+          /* Service-area pages have no clinic card, so the GMB listing embed
+             renders here instead. Physical-clinic pages already show the map
+             in the clinic card above. */
+          !isPhysicalClinic && config.gmbListingName && (
+            <FadeIn delay={300}>
+              <div class="mt-10 rounded-2xl overflow-hidden border border-white/10">
+                <iframe
+                  title={`Map for ${config.gmbListingName}`}
+                  src={mapEmbedSrc}
+                  width="100%"
+                  height="320"
+                  style="border:0;"
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
+            </FadeIn>
+          )
+        }
       </div>
     </section>
 

@@ -69,22 +69,19 @@ export interface CityPeptideConfig {
   physicianAvailability?: string;
   /** Override for "Appointment expectations" in the local-proof block. */
   appointmentExpectations?: string;
+  /**
+   * Exact Google Business Profile listing name for the map embed, e.g.
+   * "Strong Health Peptide Therapy Delrey Beach". When set, the GMB iframe
+   * targets this listing instead of the derived `clinic.name + address` query,
+   * and service-area pages (`physicalClinic: false`) render the embed too.
+   */
+  gmbListingName?: string;
   /** Page-specific external review-source links. Falls back to derived defaults. */
   reviewLinks?: { label: string; url: string }[];
   /** Page-specific internal cross-links rendered in the local-proof block. Falls back to derived defaults. */
   relatedInternalLinks?: { label: string; href: string }[];
   /** 2–3 credible outbound citations rendered as a "References" section. Falls back to a shared peptide default list. */
   outboundCitations?: { label: string; url: string }[];
-  /**
-   * Optional Google Maps embed src override — typically the city's Google
-   * Business Profile pinned by CID (`https://maps.google.com/maps?cid=…&output=embed`)
-   * so the map shows the exact GBP listing instead of a name+address text
-   * match. When set on a physical-clinic page it replaces the derived iframe
-   * src; when set on a service-area page (physicalClinic: false) it also
-   * causes the otherwise-suppressed map section to render.
-   */
-  mapEmbedUrl?: string;
-
   /** URL slug, e.g. "miami" */
   slug: string;
   /** Human-readable city name, e.g. "Miami" */
@@ -585,6 +582,10 @@ export const DELRAY_BEACH_PEPTIDE_CONFIG: CityPeptideConfig = {
   finalCtaCopy:
     "Book a free assessment. Telehealth visits for Delray Beach patients with on-site labs and in-person evaluations at our Miami Brickell clinic.",
     physicalClinic: false,
+    // Delray Beach GBP listing (kgmid /g/11y339_zdf). "Delrey" spelling matches
+    // the live listing name exactly — do not "fix" it here or the embed query
+    // stops resolving to the profile.
+    gmbListingName: "Strong Health Peptide Therapy Delrey Beach",
     parkingTransit:
       "No Delray Beach storefront. In-person visits and on-site labs are conducted at the Strong Health Miami Brickell clinic; telehealth follow-ups are available statewide.",
     physicianAvailability:
@@ -862,9 +863,9 @@ export const POMPANO_BEACH_PEPTIDE_CONFIG: CityPeptideConfig = {
     lat: 26.2518214,
     lng: -80.1384465,
   },
-  // GBP listing pinned by CID so the iframe always resolves to the exact
-  // "Strong Health Peptide Therapy Pompano Beach" profile.
-  mapEmbedUrl: "https://maps.google.com/maps?cid=17733331699639354910&output=embed",
+  // Exact GBP listing name (CID 17733331699639354910) — drives the keyless
+  // map embed query so the iframe resolves to the exact profile.
+  gmbListingName: "Strong Health Peptide Therapy Pompano Beach",
 
   seoTitle: "Peptide Therapy in Pompano Beach, FL",
   seoDescription:
