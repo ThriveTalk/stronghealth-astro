@@ -185,6 +185,9 @@ const HISTORICAL_LASTMOD = {
   "/fl/tampa/peptide-therapy/": "2026-07-15",
   // Weston (west Broward) telehealth service-area peptide launch.
   "/fl/weston/peptide-therapy/": "2026-07-23",
+  // Pompano Beach (northeast Broward) telehealth service-area peptide launch
+  // with the Google Business Profile map embed.
+  "/fl/pompano-beach/peptide-therapy/": "2026-07-26",
   // National "peptide therapy near me" locations hub.
   "/peptide-therapy/": "2026-07-23",
   "/hipaa-policy/": "2026-05-27",
