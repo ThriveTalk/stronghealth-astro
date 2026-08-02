@@ -1,0 +1,60 @@
+---
+/**
+ * Sitewide DEXA scan block rendered directly above the footer (included by
+ * Footer.astro so it appears on every page). City links are derived from
+ * ALL_PEPTIDE_CITIES — a city is listed exactly when its config cross-links a
+ * `/dexascan/` related service, which is the same signal the city pages
+ * themselves use — so this list can never drift from the live DEXA pages.
+ */
+import Icon from "./Icon.astro";
+import { ALL_PEPTIDE_CITIES } from "../../data/local/cityPeptideConfig";
+
+const dexaCities = ALL_PEPTIDE_CITIES.flatMap((c) => {
+  const dexaService = c.relatedServices.find((s) => s.href.includes("/dexascan/"));
+  if (!dexaService) return [];
+  return [
+    {
+      label: `${c.cityName}, ${c.clinic.state}`,
+      href: dexaService.href,
+    },
+  ];
+});
+---
+
+<section
+  aria-label="DEXA scan locations"
+  class="bg-surface-card/40 border-t border-white/5 px-8 py-12"
+>
+  <div class="max-w-[1000px] mx-auto">
+    <div class="flex items-center justify-between flex-wrap gap-3 mb-2">
+      <h2 class="text-lg font-bold text-cream flex items-center gap-2">
+        <Icon name="activity" size={18} class="text-gold shrink-0" />
+        DEXA scans near you
+      </h2>
+      <a
+        href="/dexa-scan/"
+        class="text-[12px] font-semibold text-gold hover:text-gold-hover transition-colors"
+      >
+        What is a DEXA scan? →
+      </a>
+    </div>
+    <p class="text-[13px] text-muted leading-relaxed mb-5 max-w-[620px]">
+      Gold-standard body-composition and bone-density imaging — lean mass, body
+      fat %, and visceral fat — ordered by a Strong Health physician and
+      reviewed with you. Pick the city nearest you.
+    </p>
+    <div class="flex flex-wrap gap-2.5">
+      {
+        dexaCities.map((city) => (
+          <a
+            href={city.href}
+            class="inline-flex items-center gap-1.5 rounded-lg border border-white/10 bg-surface-card/60 px-3.5 py-2 text-[12px] font-semibold text-cream hover:border-gold/40 hover:text-gold transition-colors"
+          >
+            <Icon name="map-pin" size={12} class="text-gold shrink-0" />
+            DEXA Scan {city.label}
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>
