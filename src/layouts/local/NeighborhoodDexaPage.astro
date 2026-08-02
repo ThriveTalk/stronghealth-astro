@@ -77,28 +77,22 @@ const nearbyHoods = hood.nearby
   .map((slug) => city.neighborhoods.find((h) => h.slug === slug))
   .filter((h): h is DexaNeighborhoodConfig => Boolean(h));
 
-// Neighborhood-specific FAQs lead; shared core questions (parameterized where
-// it reads naturally) follow so the FAQPage schema stays substantive.
+// Full interlink mesh: every neighborhood page links every sibling — the
+// adjacent ones as featured cards, the rest as a compact link cloud.
+const otherHoods = city.neighborhoods.filter(
+  (h) => h.slug !== hood.slug && !hood.nearby.includes(h.slug),
+);
+
+// FAQ set is deliberately neighborhood-only (plus one parameterized pricing
+// question): the generic science/prep/safety questions live on the city hub
+// and /dexa-scan/ guide, so the hub — not 17 children — ranks for citywide
+// and informational queries, and the children never emit near-duplicate
+// FAQPage schema against each other.
 const FAQS = [
   ...hood.faqs,
   {
     question: `How much does a DEXA scan cost for ${hood.name} patients?`,
     answer: `The same transparent direct-pay pricing as every Strong Health scan: most patients pay under $200 per body composition scan, with bundled pricing available if you plan to track progress across multiple scans per year. No referral or insurance is needed. Bone density DEXA scans (for osteoporosis screening) may be covered by insurance for eligible patients.`,
-  },
-  {
-    question: "What does a DEXA scan measure?",
-    answer:
-      "A DEXA (Dual-Energy X-ray Absorptiometry) scan precisely measures three things across your entire body: lean muscle mass (in pounds, broken down by limb and trunk), fat mass (total and visceral), and bone mineral density. It's the clinical gold standard for body composition with a margin of error of roughly 1–2%, far more accurate than BIA scales or skinfold calipers.",
-  },
-  {
-    question: "How should I prepare for my DEXA scan?",
-    answer:
-      "Wear comfortable clothing without metal (no zippers, underwire bras, or metal buttons). Avoid eating a large meal within 2 hours of the scan, hydrate normally, skip calcium supplements for 24 hours, and avoid intense exercise the night before. Consistency between scans matters more than perfect prep — try to repeat the same conditions for follow-up scans.",
-  },
-  {
-    question: "Is the DEXA scan safe?",
-    answer:
-      "Yes. A DEXA scan uses an extremely low dose of ionizing radiation — roughly 1/10th of a standard chest X-ray and less than a single day of natural background exposure in South Florida. It's FDA-approved for repeated use and considered one of the safest medical imaging technologies available.",
   },
 ];
 
@@ -108,15 +102,6 @@ const whyDexaPoints = [
   { icon: "bone", text: "Bone density scoring (T-score, Z-score)" },
   { icon: "scale", text: "Visceral fat measurement, not just total body fat" },
   { icon: "heart-pulse", text: "FDA-approved, low-dose, repeatable for trend data" },
-];
-
-const whatYouGetItems = [
-  { icon: "microscope", title: "Total & Regional Body Fat %", desc: "Body fat broken down by arms, legs, trunk, and android/gynoid regions. Track exactly where you're losing fat." },
-  { icon: "activity", title: "Lean Muscle Mass", desc: "Pound-precise lean mass for each limb. Verify TRT, peptide, or training programs are actually building muscle." },
-  { icon: "scale", title: "Visceral Adipose Tissue", desc: "The dangerous fat around your organs, separated from subcutaneous. The single best metric for metabolic risk." },
-  { icon: "bone", title: "Bone Mineral Density", desc: "T-score and Z-score for hip and spine. Catch early osteopenia before it becomes osteoporosis." },
-  { icon: "shield-check", title: "Symmetry Analysis", desc: "Left vs. right comparisons by limb. Spot muscle imbalances from old injuries or training asymmetries." },
-  { icon: "clipboard-check", title: "Trend Tracking", desc: "Side-by-side comparison reports across every scan, so you can see real change over months and years." },
 ];
 
 const steps = [
@@ -434,31 +419,20 @@ const medicalClinicSchema = {
       </div>
     </section>
 
-    {/* WhatYouGet */}
-    <section class="px-8 py-20 bg-surface-card border-b border-white/5">
-      <div class="max-w-[1000px] mx-auto">
-        <FadeIn class="text-center mb-10">
-          <Tag>Your Report</Tag>
-          <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
-            What you get from a <span class="text-gold">Strong Health DEXA scan</span>
-          </h2>
-          <p class="text-[15px] text-muted max-w-[560px] mx-auto">
-            Your DEXA report goes far beyond a body fat percentage. Here's everything included
-            with every scan at our {clinicArea} clinic.
+    {/* Report pointer — full report breakdown lives on the city hub, so the
+        hub stays the canonical citywide page and the children stay local. */}
+    <section class="px-8 py-14 bg-surface-card border-b border-white/5">
+      <div class="max-w-[800px] mx-auto text-center">
+        <FadeIn>
+          <p class="text-[15px] text-muted leading-[1.8]">
+            Every scan includes total and regional body fat, pound-precise lean mass by limb,
+            visceral fat, bone density (T-score and Z-score), and left-right symmetry analysis —
+            see the full report breakdown on the{" "}
+            <a href={city.hubPath} class="text-gold hover:underline">DEXA Scan {city.cityName}</a> page,
+            or the science behind it in our{" "}
+            <a href="/dexa-scan/" class="text-gold hover:underline">complete DEXA guide</a>.
           </p>
         </FadeIn>
-
-        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {whatYouGetItems.map((u, i) => (
-            <FadeIn delay={i * 80}>
-              <div class="bg-surface rounded-xl p-6 border border-white/10 h-full hover:bg-surface-raised transition-colors">
-                <div class="text-gold mb-4 p-3 rounded-xl bg-surface-raised border border-white/5 w-fit"><Icon name={u.icon} size={28} /></div>
-                <h3 class="text-[15px] font-bold text-cream mb-2">{u.title}</h3>
-                <p class="text-[13px] text-muted leading-relaxed">{u.desc}</p>
-              </div>
-            </FadeIn>
-          ))}
-        </div>
       </div>
     </section>
 
@@ -545,9 +519,24 @@ const medicalClinicSchema = {
               </a>
             ))}
           </div>
+          <div class="mt-8 text-center">
+            <div class="text-[12px] text-muted uppercase tracking-wider font-semibold mb-3">
+              All {city.cityName} neighborhoods we serve
+            </div>
+            <div class="flex flex-wrap gap-2 justify-center max-w-[820px] mx-auto">
+              {otherHoods.map((n) => (
+                <a
+                  href={`${city.hubPath}${n.slug}/`}
+                  class="text-[12px] text-cream-muted bg-surface-card border border-white/10 rounded-full px-3.5 py-1.5 hover:border-gold/40 hover:text-gold transition-colors"
+                >
+                  {n.name}
+                </a>
+              ))}
+            </div>
+          </div>
           <p class="text-[13px] text-muted text-center mt-6">
-            See all neighborhoods on the{" "}
-            <a href={city.hubPath} class="text-gold hover:underline">DEXA Scan {city.cityName}</a> page,
+            One clinic, every neighborhood: start from the{" "}
+            <a href={city.hubPath} class="text-gold hover:underline">DEXA Scan {city.cityName}</a> hub,
             or read the science in our <a href="/dexa-scan/" class="text-gold hover:underline">full DEXA guide</a>.
           </p>
         </FadeIn>
@@ -564,6 +553,13 @@ const medicalClinicSchema = {
           </h2>
         </FadeIn>
         <FAQSection items={FAQS} />
+        <FadeIn delay={300}>
+          <p class="text-[13px] text-muted text-center mt-4">
+            General questions — what the scan measures, how to prepare, safety — are answered on
+            the <a href={city.hubPath} class="text-gold hover:underline">DEXA Scan {city.cityName}</a> page
+            and in our <a href="/dexa-scan/" class="text-gold hover:underline">full DEXA guide</a>.
+          </p>
+        </FadeIn>
       </div>
     </section>
 
