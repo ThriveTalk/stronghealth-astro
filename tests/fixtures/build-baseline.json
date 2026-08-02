@@ -320,6 +320,244 @@
         "priority": "0.8"
       }
     },
+    "/fl/miami/dexascan/aventura/": {
+      "title": "DEXA Scan Near Aventura — Miami | Strong Health",
+      "description": "DEXA scan near Aventura, Miami — just 30 min from our Brickell clinic. Body fat %, lean mass, visceral fat & bone density. Walk-ins welcome.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/fl/miami/dexascan/aventura/",
+      "h1": "DEXA Scan Near Aventura. Gold-standard body composition, 30 min away.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-08-02",
+        "priority": "0.8"
+      }
+    },
+    "/fl/miami/dexascan/brickell/": {
+      "title": "DEXA Scan Near Brickell — Miami | Strong Health",
+      "description": "DEXA scan near Brickell, Miami — just 2 min from our Brickell clinic. Body fat %, lean mass, visceral fat & bone density. Walk-ins welcome.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/fl/miami/dexascan/brickell/",
+      "h1": "DEXA Scan Near Brickell. Gold-standard body composition, 2 min away.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-08-02",
+        "priority": "0.8"
+      }
+    },
+    "/fl/miami/dexascan/coconut-grove/": {
+      "title": "DEXA Scan Near Coconut Grove — Miami | Strong Health",
+      "description": "DEXA scan near Coconut Grove, Miami — just 12 min from our Brickell clinic. Body fat %, lean mass, visceral fat & bone density. Walk-ins welcome.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/fl/miami/dexascan/coconut-grove/",
+      "h1": "DEXA Scan Near Coconut Grove. Gold-standard body composition, 12 min away.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-08-02",
+        "priority": "0.8"
+      }
+    },
+    "/fl/miami/dexascan/coral-gables/": {
+      "title": "DEXA Scan Near Coral Gables — Miami | Strong Health",
+      "description": "DEXA scan near Coral Gables, Miami — just 15 min from our Brickell clinic. Body fat %, lean mass, visceral fat & bone density. Walk-ins welcome.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/fl/miami/dexascan/coral-gables/",
+      "h1": "DEXA Scan Near Coral Gables. Gold-standard body composition, 15 min away.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-08-02",
+        "priority": "0.8"
+      }
+    },
+    "/fl/miami/dexascan/design-district/": {
+      "title": "DEXA Scan Near Design District — Miami | Strong Health",
+      "description": "DEXA scan near Design District, Miami — just 14 min from our Brickell clinic. Body fat %, lean mass, visceral fat & bone density. Walk-ins welcome.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/fl/miami/dexascan/design-district/",
+      "h1": "DEXA Scan Near Design District. Gold-standard body composition, 14 min away.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-08-02",
+        "priority": "0.8"
+      }
+    },
+    "/fl/miami/dexascan/doral/": {
+      "title": "DEXA Scan Near Doral — Miami | Strong Health",
+      "description": "DEXA scan near Doral, Miami — just 22 min from our Brickell clinic. Body fat %, lean mass, visceral fat & bone density. Walk-ins welcome.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/fl/miami/dexascan/doral/",
+      "h1": "DEXA Scan Near Doral. Gold-standard body composition, 22 min away.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-08-02",
+        "priority": "0.8"
+      }
+    },
+    "/fl/miami/dexascan/downtown/": {
+      "title": "DEXA Scan Near Downtown Miami | Strong Health",
+      "description": "DEXA scan near Downtown Miami — just 6 min from our Brickell clinic. Body fat %, lean mass, visceral fat & bone density. Walk-ins welcome.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/fl/miami/dexascan/downtown/",
+      "h1": "DEXA Scan Near Downtown Miami. Gold-standard body composition, 6 min away.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-08-02",
+        "priority": "0.8"
+      }
+    },
+    "/fl/miami/dexascan/edgewater/": {
+      "title": "DEXA Scan Near Edgewater — Miami | Strong Health",
+      "description": "DEXA scan near Edgewater, Miami — just 10 min from our Brickell clinic. Body fat %, lean mass, visceral fat & bone density. Walk-ins welcome.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/fl/miami/dexascan/edgewater/",
+      "h1": "DEXA Scan Near Edgewater. Gold-standard body composition, 10 min away.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-08-02",
+        "priority": "0.8"
+      }
+    },
+    "/fl/miami/dexascan/hialeah/": {
+      "title": "DEXA Scan Near Hialeah — Miami | Strong Health",
+      "description": "DEXA scan near Hialeah, Miami — just 22 min from our Brickell clinic. Body fat %, lean mass, visceral fat & bone density. Walk-ins welcome.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/fl/miami/dexascan/hialeah/",
+      "h1": "DEXA Scan Near Hialeah. Gold-standard body composition, 22 min away.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-08-02",
+        "priority": "0.8"
+      }
+    },
+    "/fl/miami/dexascan/kendall/": {
+      "title": "DEXA Scan Near Kendall — Miami | Strong Health",
+      "description": "DEXA scan near Kendall, Miami — just 25 min from our Brickell clinic. Body fat %, lean mass, visceral fat & bone density. Walk-ins welcome.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/fl/miami/dexascan/kendall/",
+      "h1": "DEXA Scan Near Kendall. Gold-standard body composition, 25 min away.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-08-02",
+        "priority": "0.8"
+      }
+    },
+    "/fl/miami/dexascan/key-biscayne/": {
+      "title": "DEXA Scan Near Key Biscayne — Miami | Strong Health",
+      "description": "DEXA scan near Key Biscayne, Miami — just 16 min from our Brickell clinic. Body fat %, lean mass, visceral fat & bone density. Walk-ins welcome.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/fl/miami/dexascan/key-biscayne/",
+      "h1": "DEXA Scan Near Key Biscayne. Gold-standard body composition, 16 min away.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-08-02",
+        "priority": "0.8"
+      }
+    },
+    "/fl/miami/dexascan/little-havana/": {
+      "title": "DEXA Scan Near Little Havana — Miami | Strong Health",
+      "description": "DEXA scan near Little Havana, Miami — just 8 min from our Brickell clinic. Body fat %, lean mass, visceral fat & bone density. Walk-ins welcome.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/fl/miami/dexascan/little-havana/",
+      "h1": "DEXA Scan Near Little Havana. Gold-standard body composition, 8 min away.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-08-02",
+        "priority": "0.8"
+      }
+    },
+    "/fl/miami/dexascan/miami-beach/": {
+      "title": "DEXA Scan Near Miami Beach | Strong Health",
+      "description": "DEXA scan near Miami Beach — just 15 min from our Brickell clinic. Body fat %, lean mass, visceral fat & bone density. Walk-ins welcome.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/fl/miami/dexascan/miami-beach/",
+      "h1": "DEXA Scan Near Miami Beach. Gold-standard body composition, 15 min away.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-08-02",
+        "priority": "0.8"
+      }
+    },
+    "/fl/miami/dexascan/midtown/": {
+      "title": "DEXA Scan Near Midtown Miami | Strong Health",
+      "description": "DEXA scan near Midtown Miami — just 13 min from our Brickell clinic. Body fat %, lean mass, visceral fat & bone density. Walk-ins welcome.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/fl/miami/dexascan/midtown/",
+      "h1": "DEXA Scan Near Midtown Miami. Gold-standard body composition, 13 min away.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-08-02",
+        "priority": "0.8"
+      }
+    },
+    "/fl/miami/dexascan/pinecrest/": {
+      "title": "DEXA Scan Near Pinecrest — Miami | Strong Health",
+      "description": "DEXA scan near Pinecrest, Miami — just 22 min from our Brickell clinic. Body fat %, lean mass, visceral fat & bone density. Walk-ins welcome.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/fl/miami/dexascan/pinecrest/",
+      "h1": "DEXA Scan Near Pinecrest. Gold-standard body composition, 22 min away.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-08-02",
+        "priority": "0.8"
+      }
+    },
+    "/fl/miami/dexascan/south-miami/": {
+      "title": "DEXA Scan Near South Miami | Strong Health",
+      "description": "DEXA scan near South Miami — just 18 min from our Brickell clinic. Body fat %, lean mass, visceral fat & bone density. Walk-ins welcome.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/fl/miami/dexascan/south-miami/",
+      "h1": "DEXA Scan Near South Miami. Gold-standard body composition, 18 min away.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-08-02",
+        "priority": "0.8"
+      }
+    },
+    "/fl/miami/dexascan/wynwood/": {
+      "title": "DEXA Scan Near Wynwood — Miami | Strong Health",
+      "description": "DEXA scan near Wynwood, Miami — just 12 min from our Brickell clinic. Body fat %, lean mass, visceral fat & bone density. Walk-ins welcome.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/fl/miami/dexascan/wynwood/",
+      "h1": "DEXA Scan Near Wynwood. Gold-standard body composition, 12 min away.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-08-02",
+        "priority": "0.8"
+      }
+    },
     "/fl/miami/peptide-therapy/": {
       "title": "Peptide Therapy in Miami, FL | Strong Health",
       "description": "Physician-supervised peptide therapy in Miami, FL. Brickell clinic prescribing BPC-157, CJC-1295, Ipamorelin, Tesamorelin, and PT-141. Book a free assessment.",

@@ -1,0 +1,25 @@
+---
+// /fl/miami/dexascan/{neighborhood}/ — neighborhood children of the Miami
+// DEXA hub. All content lives in src/data/local/dexaNeighborhoods.ts; the
+// layout is city-agnostic so other metros can reuse it once Miami validates.
+import NeighborhoodDexaPage from "../../../../layouts/local/NeighborhoodDexaPage.astro";
+import {
+  MIAMI_DEXA_CITY,
+  type DexaNeighborhoodConfig,
+} from "../../../../data/local/dexaNeighborhoods";
+
+export function getStaticPaths() {
+  return MIAMI_DEXA_CITY.neighborhoods.map((hood) => ({
+    params: { neighborhood: hood.slug },
+    props: { hood },
+  }));
+}
+
+interface Props {
+  hood: DexaNeighborhoodConfig;
+}
+
+const { hood } = Astro.props;
+---
+
+<NeighborhoodDexaPage city={MIAMI_DEXA_CITY} hood={hood} />
