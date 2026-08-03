@@ -97,21 +97,21 @@ export const MIAMI_DEXA_NEIGHBORHOODS: DexaNeighborhoodConfig[] = [
     driveTime: "2 min",
     distance: "0.2 miles",
     route:
-      "We're on Brickell Plaza at SE 10th Street, one block west of Brickell Avenue — a 5-minute walk from Brickell City Centre and most of the Brickell office towers. If you're driving from south Brickell, head north on Brickell Avenue and turn left on SE 10th Street.",
+      "We're on Brickell Plaza at SE 10th Street, one block west of Brickell Avenue. That's a 5-minute walk from Brickell City Centre and most of the Brickell office towers. Driving from south Brickell, head north on Brickell Avenue and turn left on SE 10th Street.",
     transit:
       "Metromover: Tenth Street/Promenade station is 2 blocks away. Metrorail: Brickell station is a 6-minute walk (0.3 mi) via SW 10th Street.",
     localTip:
-      "Most Brickell patients book a lunch-hour slot — check-in to walk-out is usually under 30 minutes, so you can be back at your desk within the hour.",
+      "Most Brickell patients book a lunch-hour slot. Check-in to walk-out usually runs under 30 minutes, so you can be back at your desk within the hour.",
     landmarks: ["Brickell City Centre", "Mary Brickell Village", "Simpson Park", "Brickell Key"],
     intro:
-      "Strong Health's DEXA clinic is in the heart of Brickell — at 1000 Brickell Plaza, a short walk from Brickell City Centre, Mary Brickell Village, and the office towers along Brickell Avenue. No causeway, no highway: if you live or work in Brickell, this is your neighborhood scan.",
+      "Strong Health's DEXA clinic is in Brickell itself, at 1000 Brickell Plaza, a short walk from Brickell City Centre, Mary Brickell Village, and the office towers along Brickell Avenue. If you live or work in the neighborhood, you can get scanned without touching a causeway or a highway.",
     whyLocal:
-      "Brickell runs on data — and your body composition deserves better numbers than a gym InBody scale. Residents of the condo towers along Brickell Bay Drive and workers from the financial district walk in, scan in 15 minutes, and get research-grade lean mass, body fat, and bone density numbers the same week.",
+      "A gym InBody scale will hand you a different body fat number every week. Residents of the condo towers along Brickell Bay Drive and workers from the financial district walk in, spend 15 minutes on the table, and leave with research-grade lean mass, body fat, and bone density numbers instead.",
     faqs: [
       {
         question: "Is there a DEXA scan clinic in Brickell?",
         answer:
-          "Yes — Strong Health's Miami DEXA clinic is located in Brickell itself, at 1000 Brickell Plaza (SE 10th Street), Miami, FL 33131. It's a 5-minute walk from Brickell City Centre and 2 blocks from the Tenth Street/Promenade Metromover station. Walk-ins are welcome and same-week appointments are typically available.",
+          "Yes. Strong Health's Miami DEXA clinic is located in Brickell itself, at 1000 Brickell Plaza (SE 10th Street), Miami, FL 33131. It's a 5-minute walk from Brickell City Centre and 2 blocks from the Tenth Street/Promenade Metromover station. Walk-ins are welcome and same-week appointments are typically available.",
       },
       {
         question: "Can I get a DEXA scan on my lunch break in Brickell?",
@@ -121,7 +121,7 @@ export const MIAMI_DEXA_NEIGHBORHOODS: DexaNeighborhoodConfig[] = [
       {
         question: "Where do I park for a DEXA scan at 1000 Brickell Plaza?",
         answer:
-          "Validated parking is available at the Brickell Plaza garage attached to the building. If you're walking from Brickell City Centre, Mary Brickell Village, or the Metromover, no parking is needed — most Brickell patients arrive on foot.",
+          "Validated parking is available at the Brickell Plaza garage attached to the building. If you're walking from Brickell City Centre, Mary Brickell Village, or the Metromover, you won't need parking at all. Most Brickell patients arrive on foot.",
       },
     ],
     testimonial: {
@@ -141,27 +141,27 @@ export const MIAMI_DEXA_NEIGHBORHOODS: DexaNeighborhoodConfig[] = [
     transit:
       "Metromover is the easiest option: ride the Brickell Loop from Bayfront Park or Government Center directly to Tenth Street/Promenade — the clinic is 2 blocks from the station.",
     localTip:
-      "If you're near the courthouse or Government Center, the Metromover beats driving — you'll skip the Brickell Avenue bridge openings that can add 10 minutes at rush hour.",
+      "If you're near the courthouse or Government Center, the Metromover beats driving. You'll skip the Brickell Avenue bridge openings that can add 10 minutes at rush hour.",
     landmarks: ["Bayside Marketplace", "Kaseya Center", "Flagler Street", "Bayfront Park"],
     intro:
-      "Working near Flagler Street, Government Center, or the arena? Strong Health's DEXA clinic is one Metromover loop away in Brickell — 6 minutes by car, or a direct ride to the Tenth Street/Promenade station. Gold-standard body composition without leaving the urban core.",
+      "Working near Flagler Street, Government Center, or the arena? Strong Health's DEXA clinic is one Metromover loop away in Brickell: six minutes by car, or a direct ride to the Tenth Street/Promenade station.",
     whyLocal:
-      "Downtown Miami professionals track everything — billables, markets, macros. A DEXA scan closes the loop on the one dataset that matters most: what your body is actually made of. Skip the guesswork of gym scales and get clinical numbers a bridge-crossing away from your office.",
+      "If you spend your workday staring at numbers, it makes no sense to guess at the ones that describe your own body. A DEXA scan replaces gym-scale estimates with clinical measurements, one bridge crossing from your office.",
     faqs: [
       {
         question: "Where can I get a DEXA scan near Downtown Miami?",
         answer:
-          "The closest DEXA clinic to Downtown Miami is Strong Health's Brickell location at 1000 Brickell Plaza — about 1.5 miles from Flagler Street, 6 minutes by car or a direct Metromover ride to Tenth Street/Promenade. Same-week appointments are typically available and walk-ins are welcome.",
+          "The closest DEXA clinic to Downtown Miami is Strong Health's Brickell location at 1000 Brickell Plaza, about 1.5 miles from Flagler Street. That's 6 minutes by car or a direct Metromover ride to Tenth Street/Promenade. Same-week appointments are typically available and walk-ins are welcome.",
       },
       {
         question: "Can I take the Metromover to my DEXA scan from Downtown?",
         answer:
-          "Yes. Board the Metromover at Bayfront Park, First Street, or Government Center and ride the Brickell Loop to Tenth Street/Promenade. The clinic is a 2-block walk from the station, making the total trip from most of Downtown about 15 minutes — often faster than driving and parking.",
+          "Yes. Board the Metromover at Bayfront Park, First Street, or Government Center and ride the Brickell Loop to Tenth Street/Promenade. The clinic is a 2-block walk from the station, so the total trip from most of Downtown is about 15 minutes, often faster than driving and parking.",
       },
       {
         question: "How long will a DEXA scan visit take if I work Downtown?",
         answer:
-          "Plan about 30 minutes at the clinic — check-in, a 10–15 minute scan, and a brief review of highlights. With the Metromover ride each way, most Downtown patients are away from the office for under an hour. Your full PDF report is emailed within 24 hours.",
+          "Plan about 30 minutes at the clinic: check-in, a 10–15 minute scan, and a brief review of highlights. With the Metromover ride each way, most Downtown patients are away from the office for under an hour. Your full PDF report is emailed within 24 hours.",
       },
     ],
     testimonial: {
@@ -181,17 +181,17 @@ export const MIAMI_DEXA_NEIGHBORHOODS: DexaNeighborhoodConfig[] = [
     transit:
       "Ride the Miami Trolley (Wynwood route) or a quick rideshare to Brickell; from the Adrienne Arsht Metromover station it's a direct ride to Tenth Street/Promenade, 2 blocks from the clinic.",
     localTip:
-      "Weekday mornings are the move — Wynwood-to-Brickell traffic is light before 11 AM, and you'll beat both the gallery crowds and the lunch rush.",
+      "Weekday mornings are the move. Wynwood-to-Brickell traffic is light before 11 AM, and you'll beat both the gallery crowds and the lunch rush.",
     landmarks: ["Wynwood Walls", "NW 2nd Avenue arts district", "Wynwood Marketplace"],
     intro:
-      "Wynwood takes fitness seriously — the neighborhood is packed with CrossFit boxes, climbing gyms, and studios. Strong Health's Brickell DEXA clinic is 12 minutes down Biscayne, giving Wynwood athletes the same body composition data pro sports teams use.",
+      "Half of Wynwood seems to train at a CrossFit box or a climbing gym. Strong Health's Brickell DEXA clinic is 12 minutes down Biscayne, and it gives those athletes the same body composition data pro sports teams use.",
     whyLocal:
-      "If you train in Wynwood, you've probably stood on an InBody scale at your gym and gotten three different body fat numbers in a week. DEXA ends that: 1–2% precision, limb-by-limb lean mass, and visceral fat — real numbers you can program against.",
+      "If you train in Wynwood, you've probably stood on an InBody scale at your gym and gotten three different body fat numbers in a week. DEXA ends that, with 1–2% precision, limb-by-limb lean mass, and a visceral fat reading you can actually program against.",
     faqs: [
       {
         question: "Is there a DEXA scan near Wynwood?",
         answer:
-          "The nearest DEXA clinic to Wynwood is Strong Health's Brickell location at 1000 Brickell Plaza — about 3.5 miles south, a 12-minute drive down Biscayne Boulevard or I-95. Same-week appointments are typically available, and Saturday morning walk-ins work well for Wynwood's gym crowd.",
+          "The nearest DEXA clinic to Wynwood is Strong Health's Brickell location at 1000 Brickell Plaza, about 3.5 miles south, a 12-minute drive down Biscayne Boulevard or I-95. Same-week appointments are typically available, and Saturday morning walk-ins work well for Wynwood's gym crowd.",
       },
       {
         question: "Should I scan before or after training at my Wynwood gym?",
@@ -206,7 +206,7 @@ export const MIAMI_DEXA_NEIGHBORHOODS: DexaNeighborhoodConfig[] = [
     ],
     testimonial: {
       name: "Tyler B.",
-      text: "My box in Wynwood has an InBody and it told me a different number every Monday. One DEXA at Strong Health settled it — 16.8% body fat, 2 lbs more muscle in my right leg from an old injury compensation. Now I actually know what to fix.",
+      text: "My box in Wynwood has an InBody and it told me a different number every Monday. One DEXA at Strong Health settled it: 16.8% body fat, 2 lbs more muscle in my right leg from an old injury compensation. Now I actually know what to fix.",
     },
     nearby: ["midtown", "design-district", "edgewater"],
   },
@@ -226,22 +226,22 @@ export const MIAMI_DEXA_NEIGHBORHOODS: DexaNeighborhoodConfig[] = [
     intro:
       "Midtown Miami residents are 13 minutes down Biscayne from Strong Health's Brickell DEXA clinic. Whether you train at the neighborhood's boutique studios or you're tracking a GLP-1 or TRT protocol, this is the closest clinical-grade body composition scan to Midtown.",
     whyLocal:
-      "Between Equinox-style studios and the Wynwood gym scene next door, Midtown is full of people training hard on estimated numbers. A DEXA scan replaces estimates with limb-level lean mass, regional fat, visceral fat, and bone density — measured, not guessed.",
+      "Between the Equinox-style studios and the Wynwood gym scene next door, Midtown is full of people training hard on estimated numbers. A DEXA scan swaps those estimates for limb-level lean mass, regional fat, visceral fat, and bone density.",
     faqs: [
       {
         question: "Where's the closest DEXA scan to Midtown Miami?",
         answer:
-          "Strong Health's Brickell clinic at 1000 Brickell Plaza is the closest DEXA location to Midtown — about 4 miles, a 13-minute drive down Biscayne Boulevard or North Miami Avenue. Walk-ins are welcome and same-week appointments are typically available.",
+          "Strong Health's Brickell clinic at 1000 Brickell Plaza is the closest DEXA location to Midtown, about 4 miles away — a 13-minute drive down Biscayne Boulevard or North Miami Avenue. Walk-ins are welcome and same-week appointments are typically available.",
       },
       {
         question: "Can I track my GLP-1 progress with DEXA scans from Midtown?",
         answer:
-          "Yes — that's one of the most common reasons Midtown patients book. On semaglutide or tirzepatide, a DEXA every 3–6 months verifies you're losing fat rather than muscle, which total scale weight can't tell you. Many patients pair the scan with a physician consult to adjust protein and training targets.",
+          "Yes. It's one of the most common reasons Midtown patients book. On semaglutide or tirzepatide, a DEXA every 3–6 months verifies you're losing fat rather than muscle, which total scale weight can't tell you. Many patients pair the scan with a physician consult to adjust protein and training targets.",
       },
       {
         question: "Is parking easy for Midtown patients driving to the scan?",
         answer:
-          "Yes — validated parking is available at the Brickell Plaza garage attached to the clinic, so the 13-minute drive from Midtown doesn't end with a parking hunt. Off-peak (mid-morning or early afternoon) the door-to-door round trip is usually under an hour.",
+          "Yes. Validated parking is available at the Brickell Plaza garage attached to the clinic, so the 13-minute drive from Midtown doesn't end with a parking hunt. Off-peak, mid-morning or early afternoon, the door-to-door round trip is usually under an hour.",
       },
     ],
     testimonial: {
@@ -261,17 +261,17 @@ export const MIAMI_DEXA_NEIGHBORHOODS: DexaNeighborhoodConfig[] = [
     transit:
       "From the Adrienne Arsht Center Metromover station (Omni Loop), transfer to the Brickell Loop and ride to Tenth Street/Promenade — 2 blocks from the clinic. Total trip from most of Edgewater: about 20 minutes.",
     localTip:
-      "Edgewater's Biscayne corridor moves fast outside rush hour — a mid-morning appointment means a 10-minute drive each way and a garage spot waiting.",
+      "Edgewater's Biscayne corridor moves fast outside rush hour. A mid-morning appointment means a 10-minute drive each way and a garage spot waiting.",
     landmarks: ["Margaret Pace Park", "Biscayne Boulevard corridor", "Paraiso district"],
     intro:
-      "From the condo towers along Margaret Pace Park and the Paraiso district, Strong Health's Brickell DEXA clinic is a 10-minute straight shot down Biscayne Boulevard. Clinical body composition — lean mass, body fat, visceral fat, bone density — without crossing a single causeway.",
+      "From the condo towers along Margaret Pace Park and the Paraiso district, Strong Health's Brickell DEXA clinic is a 10-minute straight shot down Biscayne Boulevard. One scan covers lean mass, body fat, visceral fat, and bone density, and you never cross a causeway.",
     whyLocal:
-      "Edgewater's waterfront running paths and tower gyms keep the neighborhood moving, but treadmill miles don't tell you what you're made of. A 15-minute DEXA scan does — with the precision to show whether your training and nutrition are actually changing your body.",
+      "Edgewater's waterfront running paths and tower gyms keep the neighborhood moving, but treadmill miles don't tell you what you're made of. A 15-minute DEXA scan does, with enough precision to show whether your training and nutrition are actually changing your body.",
     faqs: [
       {
         question: "How far is the DEXA clinic from Edgewater?",
         answer:
-          "About 3 miles — a 10-minute drive straight down Biscayne Boulevard from the Margaret Pace Park area to 1000 Brickell Plaza in Brickell. By Metromover, ride from Adrienne Arsht Center to Tenth Street/Promenade in about 20 minutes door to door.",
+          "About 3 miles: a 10-minute drive straight down Biscayne Boulevard from the Margaret Pace Park area to 1000 Brickell Plaza in Brickell. By Metromover, ride from Adrienne Arsht Center to Tenth Street/Promenade in about 20 minutes door to door.",
       },
       {
         question: "Do Edgewater patients need a referral for a body composition scan?",
@@ -281,12 +281,12 @@ export const MIAMI_DEXA_NEIGHBORHOODS: DexaNeighborhoodConfig[] = [
       {
         question: "What's the best first scan for someone new to tracking, from Edgewater?",
         answer:
-          "A baseline body composition DEXA. It captures your starting lean mass, regional body fat, visceral fat, and bone density in one 15-minute scan. From there, re-scan every 3–6 months — the trend between scans, on the same machine, is where the insight lives.",
+          "A baseline body composition DEXA. It captures your starting lean mass, regional body fat, visceral fat, and bone density in one 15-minute scan. From there, re-scan every 3–6 months; the trend between scans on the same machine tells you more than any single reading.",
       },
     ],
     testimonial: {
       name: "Jonas K.",
-      text: "I run the Margaret Pace loop every morning and thought I was lean. DEXA said 24% body fat with most of it visceral. Eight months later I'm at 17% and my bone density is up. Ten minutes down Biscayne — no excuse not to know.",
+      text: "I run the Margaret Pace loop every morning and thought I was lean. DEXA said 24% body fat with most of it visceral. Eight months later I'm at 17% and my bone density is up. It's ten minutes down Biscayne, so I had no excuse not to know.",
     },
     nearby: ["downtown", "midtown", "wynwood"],
   },
@@ -301,17 +301,17 @@ export const MIAMI_DEXA_NEIGHBORHOODS: DexaNeighborhoodConfig[] = [
     transit:
       "Rideshare is simplest (about 14 minutes down Biscayne). Transit riders can catch the Metromover at Adrienne Arsht and ride the Brickell Loop to Tenth Street/Promenade, 2 blocks from the clinic.",
     localTip:
-      "Weekday mornings before the shops open (most open at 11 AM) are the quietest window — scan at 9, coffee in Palm Court by 10.",
+      "Weekday mornings before the shops open (most open at 11 AM) are the quietest window. Scan at 9, coffee in Palm Court by 10.",
     landmarks: ["Palm Court", "ICA Miami", "Buena Vista"],
     intro:
-      "The Design District curates everything carefully — your health data should get the same treatment. Strong Health's Brickell DEXA clinic, 14 minutes south on Biscayne, delivers the gold-standard body composition scan: lean mass, regional fat, visceral fat, and bone density in one 15-minute visit.",
+      "Strong Health's Brickell DEXA clinic is 14 minutes south of the Design District on Biscayne. One 15-minute visit covers the gold-standard body composition scan: lean mass, regional fat, visceral fat, and bone density.",
     whyLocal:
-      "Design District and Buena Vista residents already invest in longevity — trainers, nutrition, recovery. DEXA is the measurement layer that shows whether that investment is working, with 1–2% precision no boutique gym scale can match.",
+      "Plenty of Design District and Buena Vista residents already pay for trainers and nutrition coaching. DEXA shows whether any of it is working, with 1–2% precision no boutique gym scale can match.",
     faqs: [
       {
         question: "Where do Design District residents go for a DEXA scan?",
         answer:
-          "The closest clinical DEXA scan to the Design District is Strong Health's Brickell clinic at 1000 Brickell Plaza — about 4.5 miles, a 14-minute drive down Biscayne Boulevard. Same-week appointments are typical, and Saturday morning walk-ins are available.",
+          "The closest clinical DEXA scan to the Design District is Strong Health's Brickell clinic at 1000 Brickell Plaza, about 4.5 miles away — a 14-minute drive down Biscayne Boulevard. Same-week appointments are typical, and Saturday morning walk-ins are available.",
       },
       {
         question: "Is a DEXA scan worth it if I already work with a personal trainer?",
@@ -341,32 +341,32 @@ export const MIAMI_DEXA_NEIGHBORHOODS: DexaNeighborhoodConfig[] = [
     transit:
       "Metrorail is a direct ride: board at Douglas Road or University station, exit at Brickell station, and walk 6 minutes to the clinic. About 25 minutes door to door from most of the Gables.",
     localTip:
-      "Skip US-1 between 4 and 7 PM — take Coral Way east instead, or ride Metrorail from Douglas Road and avoid the traffic entirely.",
+      "Skip US-1 between 4 and 7 PM. Take Coral Way east instead, or ride Metrorail from Douglas Road and avoid the traffic entirely.",
     landmarks: ["Miracle Mile", "Shops at Merrick Park", "Biltmore Hotel", "University of Miami"],
     intro:
-      "From Miracle Mile or Merrick Park, Strong Health's Brickell DEXA clinic is 15 minutes east — or one direct Metrorail ride from Douglas Road station. Coral Gables patients get the clinical gold standard for body composition: lean mass, body fat, visceral fat, and bone density, physician-supervised.",
+      "From Miracle Mile or Merrick Park, Strong Health's Brickell DEXA clinic is 15 minutes east, or one direct Metrorail ride from Douglas Road station. Every scan is physician-supervised and covers lean mass, body fat, visceral fat, and bone density.",
     whyLocal:
-      "Coral Gables patients tend to think long-term — estate plans, education, health span. Bone density is where DEXA earns its keep here: the same 15-minute scan that maps your body composition also screens hip and spine density, catching osteopenia years before it becomes osteoporosis.",
+      "Bone density is where DEXA earns its keep in Coral Gables. The same 15-minute scan that maps your body composition also screens hip and spine density, which can catch osteopenia years before it becomes osteoporosis.",
     faqs: [
       {
         question: "Is there a DEXA scan in Coral Gables?",
         answer:
-          "The nearest walk-in DEXA clinic to Coral Gables is Strong Health's Brickell location at 1000 Brickell Plaza — about 6 miles east via Coral Way or US-1, a 15-minute drive from Miracle Mile, or a direct Metrorail ride from Douglas Road station to Brickell. Same-week appointments are typically available.",
+          "The nearest walk-in DEXA clinic to Coral Gables is Strong Health's Brickell location at 1000 Brickell Plaza, about 6 miles east via Coral Way or US-1. That's a 15-minute drive from Miracle Mile, or a direct Metrorail ride from Douglas Road station to Brickell. Same-week appointments are typically available.",
       },
       {
         question: "Does the DEXA scan include bone density for osteoporosis screening?",
         answer:
-          "Yes. Every Strong Health DEXA includes bone mineral density with T-scores and Z-scores for hip and spine — the same measurement used for osteoporosis screening. Many Coral Gables patients in their 50s and 60s book specifically for this, and bone-density scans may be covered by insurance for eligible patients.",
+          "Yes. Every Strong Health DEXA includes bone mineral density with T-scores and Z-scores for hip and spine, the same measurement used for osteoporosis screening. Many Coral Gables patients in their 50s and 60s book specifically for this, and bone-density scans may be covered by insurance for eligible patients.",
       },
       {
         question: "Can University of Miami students and staff get scanned?",
         answer:
-          "Absolutely — the clinic is one Metrorail stop chain away (University station to Brickell station, no transfer). Student athletes use DEXA for limb-level lean mass and symmetry data; no referral is needed for a body composition scan, and direct-pay pricing keeps it under $200 for most patients.",
+          "Yes. Metrorail runs direct from University station to Brickell with no transfer. Student athletes use DEXA for limb-level lean mass and symmetry data; a body composition scan requires no referral, and direct-pay pricing keeps it under $200 for most patients.",
       },
     ],
     testimonial: {
       name: "Andrea P.",
-      text: "I was on tirzepatide and worried I was losing muscle. Strong Health's DEXA confirmed I'd kept almost all my lean mass while losing 32 lbs of fat. I ride Metrorail from Douglas Road — easier than parking anywhere near the Mile.",
+      text: "I was on tirzepatide and worried I was losing muscle. Strong Health's DEXA confirmed I'd kept almost all my lean mass while losing 32 lbs of fat. I ride Metrorail from Douglas Road, which beats parking anywhere near the Mile.",
     },
     nearby: ["coconut-grove", "south-miami", "little-havana"],
   },
@@ -381,32 +381,32 @@ export const MIAMI_DEXA_NEIGHBORHOODS: DexaNeighborhoodConfig[] = [
     transit:
       "Metrorail from Coconut Grove station to Brickell station is one direct ride (about 8 minutes), then a 6-minute walk to the clinic.",
     localTip:
-      "The Bayshore Drive route past Vizcaya is both the prettiest and usually the fastest — save US-1 for days when a Grove event closes Bayshore.",
+      "The Bayshore Drive route past Vizcaya is both the prettiest and usually the fastest. Save US-1 for days when a Grove event closes Bayshore.",
     landmarks: ["CocoWalk", "Vizcaya Museum & Gardens", "Peacock Park", "Dinner Key Marina"],
     intro:
-      "Coconut Grove lives outdoors — sailing off Dinner Key, running Kennedy Park, cycling Old Cutler. Strong Health's Brickell DEXA clinic is 12 minutes up Bayshore Drive, putting research-grade body composition data within a bayfront drive of the Grove.",
+      "The Grove spends its free time outside, on the water off Dinner Key or the running paths at Kennedy Park. Strong Health's Brickell DEXA clinic is 12 minutes up Bayshore Drive, close enough that plenty of Grove patients fold a scan into a normal Saturday.",
     whyLocal:
-      "Grove athletes log serious volume, but endurance training can quietly cost you muscle and bone if nutrition lags. DEXA catches both: limb-level lean mass to spot losses, and hip/spine bone density that runners and cyclists in particular should track yearly.",
+      "Grove athletes log serious volume, but endurance training can quietly cost you muscle and bone if nutrition lags. DEXA catches both: limb-level lean mass to spot losses, and the hip and spine bone density that runners and cyclists in particular should track yearly.",
     faqs: [
       {
         question: "How far is the DEXA clinic from Coconut Grove?",
         answer:
-          "About 4 miles — a 12-minute drive up South Bayshore Drive from CocoWalk to 1000 Brickell Plaza in Brickell, or one direct Metrorail ride from Coconut Grove station to Brickell station plus a 6-minute walk. Walk-ins are welcome and same-week appointments are typical.",
+          "About 4 miles. Drive 12 minutes up South Bayshore Drive from CocoWalk to 1000 Brickell Plaza in Brickell, or take one direct Metrorail ride from Coconut Grove station to Brickell station plus a 6-minute walk. Walk-ins are welcome and same-week appointments are typical.",
       },
       {
         question: "Why should Grove runners and cyclists get a DEXA scan?",
         answer:
-          "Two reasons: lean mass and bone density. High-volume endurance training with inadequate protein can erode muscle, and low-impact sports like cycling don't load bone — DEXA tracks both with clinical precision. A yearly scan catches downward trends while they're still easy to reverse.",
+          "Two reasons: lean mass and bone density. High-volume endurance training with inadequate protein can erode muscle, and low-impact sports like cycling don't load bone. DEXA tracks both with clinical precision, and a yearly scan catches downward trends while they're still easy to reverse.",
       },
       {
         question: "Can I book a Saturday scan after a morning at the Grove farmers market?",
         answer:
-          "Yes — the Brickell clinic accepts Saturday walk-ins from 9 AM to 1 PM. It's a 12-minute drive up Bayshore Drive, so plenty of Grove patients pair a Saturday market or Kennedy Park workout with their scan. Just avoid intense exercise right before scanning for the cleanest numbers.",
+          "Yes. The Brickell clinic takes Saturday walk-ins from 9 AM to 1 PM, and it's a 12-minute drive up Bayshore Drive, so plenty of Grove patients pair a Saturday market or Kennedy Park workout with their scan. Just avoid intense exercise right before scanning for the cleanest numbers.",
       },
     ],
     testimonial: {
       name: "Marco T.",
-      text: "I've used InBody scales at my gym for years and the numbers were all over the place. The DEXA report I got from Strong Health was on a different level — broken down by arm, leg, trunk, plus visceral fat and bone density. Twelve minutes up Bayshore from the Grove.",
+      text: "I've used InBody scales at my gym for years and the numbers were all over the place. The DEXA report I got from Strong Health was on a different level: broken down by arm, leg, trunk, plus visceral fat and bone density. Twelve minutes up Bayshore from the Grove.",
     },
     nearby: ["coral-gables", "brickell", "south-miami"],
   },
@@ -421,32 +421,32 @@ export const MIAMI_DEXA_NEIGHBORHOODS: DexaNeighborhoodConfig[] = [
     transit:
       "The Route 8 Metrobus runs straight down SW 8th Street into Brickell; exit at Brickell Avenue and walk 3 blocks south. From the west end, Metrorail from Culmer or a quick rideshare works too.",
     localTip:
-      "Calle Ocho traffic builds after 5 PM and on festival weekends — a weekday morning scan is an easy 8-minute hop east.",
+      "Calle Ocho traffic builds after 5 PM and on festival weekends. A weekday morning scan is an easy 8-minute hop east.",
     landmarks: ["Calle Ocho", "Domino Park (Máximo Gómez)", "Ball & Chain", "Cuban Memorial Boulevard"],
     intro:
-      "Little Havana is 8 minutes from Strong Health's Brickell DEXA clinic — straight east down Calle Ocho. One 15-minute scan measures lean muscle, body fat, visceral fat, and bone density with clinical precision, no referral needed.",
+      "Little Havana is 8 minutes from Strong Health's Brickell DEXA clinic, straight east down Calle Ocho. One 15-minute scan measures lean muscle, body fat, visceral fat, and bone density, and you don't need a referral.",
     whyLocal:
-      "Type 2 diabetes and heart disease run through too many Little Havana families, and visceral fat — the fat around your organs — is the earliest measurable warning sign. A DEXA scan isolates it precisely, so you can act on a number instead of a family history.",
+      "Type 2 diabetes and heart disease run through too many Little Havana families, and visceral fat (the fat around your organs) is the earliest measurable warning sign. A DEXA scan isolates it precisely, so you can act on a number instead of a family history.",
     faqs: [
       {
         question: "Where can I get a DEXA scan near Little Havana?",
         answer:
-          "Strong Health's Brickell clinic at 1000 Brickell Plaza is about 2.5 miles east of Domino Park — an 8-minute drive down SW 8th Street, or a Route 8 Metrobus ride into Brickell. Walk-ins are welcome, and direct-pay pricing keeps body composition scans under $200 for most patients.",
+          "Strong Health's Brickell clinic at 1000 Brickell Plaza is about 2.5 miles east of Domino Park, an 8-minute drive down SW 8th Street or a Route 8 Metrobus ride into Brickell. Walk-ins are welcome, and direct-pay pricing keeps body composition scans under $200 for most patients.",
       },
       {
         question: "Why does visceral fat matter for Little Havana patients?",
         answer:
-          "Visceral fat — fat stored around the organs — is the strongest body-composition predictor of type 2 diabetes and cardiovascular risk, both of which disproportionately affect Cuban-American and broader Hispanic communities. DEXA measures it directly, separately from the subcutaneous fat you can pinch, so you and your physician can track real metabolic risk.",
+          "Visceral fat (fat stored around the organs) is the strongest body-composition predictor of type 2 diabetes and cardiovascular risk, both of which disproportionately affect Cuban-American and broader Hispanic communities. DEXA measures it directly, separately from the subcutaneous fat you can pinch, so you and your physician can track real metabolic risk.",
       },
       {
         question: "Do I need insurance for a DEXA scan?",
         answer:
-          "No. Body composition DEXA scans at Strong Health are direct-pay with transparent pricing — no insurance, referral, or prior authorization needed. Most patients pay under $200 per scan. Bone-density scans for osteoporosis screening may be covered by insurance for eligible patients.",
+          "No. Body composition DEXA scans at Strong Health are direct-pay with transparent pricing: no insurance, referral, or prior authorization. Most patients pay under $200 per scan. Bone-density scans for osteoporosis screening may be covered by insurance for eligible patients.",
       },
     ],
     testimonial: {
       name: "Rafael G.",
-      text: "My father and both uncles are diabetic. My DEXA showed my visceral fat was already in the warning zone at 34 — nobody could see it, I'm not heavy. A year of work later it's down 40%. Eight minutes from my place off Calle Ocho. Best money I've spent on my health.",
+      text: "My father and both uncles are diabetic. My DEXA showed my visceral fat was already in the warning zone at 34. Nobody could see it, I'm not heavy. A year of work later it's down 40%. Eight minutes from my place off Calle Ocho. Best money I've spent on my health.",
     },
     nearby: ["brickell", "downtown", "coral-gables"],
   },
@@ -461,17 +461,17 @@ export const MIAMI_DEXA_NEIGHBORHOODS: DexaNeighborhoodConfig[] = [
     transit:
       "The Miami Beach Airport Flyer or Route 119/120 buses connect to Downtown; transfer to the Metromover Brickell Loop and exit at Tenth Street/Promenade, 2 blocks from the clinic.",
     localTip:
-      "Causeway traffic peaks 8–10 AM and 4–7 PM heading off the Beach — an 11 AM or early-afternoon appointment usually means a smooth 15-minute run over MacArthur.",
+      "Causeway traffic peaks 8–10 AM and 4–7 PM heading off the Beach. An 11 AM or early-afternoon appointment usually means a smooth 15-minute run over MacArthur.",
     landmarks: ["Ocean Drive", "Lincoln Road", "Flamingo Park", "Mount Sinai Medical Center"],
     intro:
-      "Miami Beach bodies are built in Flamingo Park, Muscle Beach, and the studios off Lincoln Road — but the mirror can't measure visceral fat or bone density. Strong Health's Brickell DEXA clinic is one causeway away: 15 minutes over MacArthur for the most accurate body composition scan in South Florida.",
+      "Mirrors and gym scales can't measure visceral fat or bone density, no matter how many hours you log at Flamingo Park or the studios off Lincoln Road. Strong Health's Brickell DEXA clinic is one causeway away: 15 minutes over MacArthur from South Beach.",
     whyLocal:
-      "Beach physiques deserve better data than mirror checks and gym scales. DEXA gives you limb-by-limb lean mass, regional body fat, and visceral fat with 1–2% precision — the difference between looking lean and verifiably being lean.",
+      "DEXA gives you limb-by-limb lean mass, regional body fat, and visceral fat with 1–2% precision. If you're cutting for a competition or a shoot, that's the data that keeps you from burning muscle along with the fat.",
     faqs: [
       {
         question: "Is there a DEXA scan on Miami Beach?",
         answer:
-          "The closest walk-in DEXA clinic to Miami Beach is Strong Health's Brickell location at 1000 Brickell Plaza — a 15-minute drive over the MacArthur Causeway from South Beach, or via Julia Tuttle from Mid-Beach. Same-week appointments are typical, with validated parking at the Brickell Plaza garage.",
+          "The closest walk-in DEXA clinic to Miami Beach is Strong Health's Brickell location at 1000 Brickell Plaza, a 15-minute drive over the MacArthur Causeway from South Beach or via Julia Tuttle from Mid-Beach. Same-week appointments are typical, with validated parking at the Brickell Plaza garage.",
       },
       {
         question: "When's the best time to drive from the Beach for a scan?",
@@ -481,7 +481,7 @@ export const MIAMI_DEXA_NEIGHBORHOODS: DexaNeighborhoodConfig[] = [
       {
         question: "Can DEXA help with contest prep or a photoshoot cut?",
         answer:
-          "Yes — it's the standard tool for it. DEXA tracks exactly how much of your cut is fat versus muscle, region by region, so you can adjust calories and training before you lose hard-won lean mass. Physique competitors typically scan at the start of prep, mid-prep, and peak week.",
+          "Yes, it's the standard tool for exactly this. DEXA tracks how much of your cut is fat versus muscle, region by region, so you can adjust calories and training before you lose hard-won lean mass. Physique competitors typically scan at the start of prep, mid-prep, and peak week.",
       },
     ],
     testimonial: {
@@ -501,32 +501,32 @@ export const MIAMI_DEXA_NEIGHBORHOODS: DexaNeighborhoodConfig[] = [
     transit:
       "Route 102 (B) Metrobus runs from the Key across the Rickenbacker to Brickell station, a 6-minute walk from the clinic — though most Key Biscayne patients drive.",
     localTip:
-      "Combine the trip with your Rickenbacker ride — cyclists coming off the bridge loop are 5 minutes from the clinic, and Saturday walk-in hours (9 AM–1 PM) fit right after a morning ride.",
+      "Combine the trip with your Rickenbacker ride. Cyclists coming off the bridge loop are 5 minutes from the clinic, and Saturday walk-in hours (9 AM–1 PM) fit right after a morning ride.",
     landmarks: ["Crandon Park", "Bill Baggs Cape Florida State Park", "Rickenbacker Causeway", "Key Biscayne Village Green"],
     intro:
-      "Key Biscayne is one causeway from clinical-grade body composition: Strong Health's Brickell DEXA clinic sits just off the Rickenbacker exit, 16 minutes from the Village Green. Lean mass, body fat, visceral fat, and bone density — measured, not estimated.",
+      "Key Biscayne is one causeway from Strong Health's Brickell DEXA clinic, which sits just off the Rickenbacker exit, 16 minutes from the Village Green. One 15-minute scan covers lean mass, body fat, visceral fat, and bone density.",
     whyLocal:
-      "The Key's cyclists, paddlers, and tennis players train year-round, and Brickell is literally the first stop off the island. A DEXA baseline plus a yearly re-scan tracks whether all those Rickenbacker miles are building the body they should — including the bone density cycling alone won't protect.",
+      "Brickell is literally the first stop off the island, which makes a yearly scan easy to keep up. That matters for the Key's cyclists in particular: Rickenbacker miles build fitness without loading bone, and DEXA tracks the bone density that riding alone won't protect.",
     faqs: [
       {
         question: "How far is the DEXA clinic from Key Biscayne?",
         answer:
-          "About 7 miles — 16 minutes via Crandon Boulevard and the Rickenbacker Causeway to 1000 Brickell Plaza, the first exit area off the causeway. It's the closest clinical DEXA scan to the Key, with validated parking at the Brickell Plaza garage.",
+          "About 7 miles, or 16 minutes via Crandon Boulevard and the Rickenbacker Causeway to 1000 Brickell Plaza, the first exit area off the causeway. It's the closest clinical DEXA scan to the Key, with validated parking at the Brickell Plaza garage.",
       },
       {
         question: "Why do Key Biscayne cyclists need bone density scans?",
         answer:
-          "Cycling is non-impact, so it builds fitness without loading bone — studies consistently show competitive cyclists have lower bone density than runners. If the Rickenbacker loop is your main training, a yearly DEXA tracks hip and spine T-scores so you can add resistance training before low density becomes osteopenia.",
+          "Cycling is non-impact, so it builds fitness without loading bone, and competitive cyclists routinely test lower for bone density than runners. If the Rickenbacker loop is your main training, a yearly DEXA tracks hip and spine T-scores so you can add resistance training before low density becomes osteopenia.",
       },
       {
         question: "Can my family get scanned together?",
         answer:
-          "Yes — back-to-back appointments are easy to book, and each scan takes only 10–15 minutes. Key Biscayne families often book two or three consecutive Saturday slots. DEXA is FDA-approved and ultra-low radiation (about 1/10th of a chest X-ray), appropriate for adults of all ages.",
+          "Yes. Back-to-back appointments are easy to book, and each scan takes only 10–15 minutes. Key Biscayne families often book two or three consecutive Saturday slots. DEXA is FDA-approved and ultra-low radiation (about 1/10th of a chest X-ray), appropriate for adults of all ages.",
       },
     ],
     testimonial: {
       name: "Felipe A.",
-      text: "I ride the Rickenbacker four mornings a week and figured I was in perfect shape. DEXA said otherwise — great body fat, but my hip T-score was borderline. Two years of lifting later it's back in the normal range. The clinic is literally on my way home off the bridge.",
+      text: "I ride the Rickenbacker four mornings a week and figured I was in perfect shape. DEXA said otherwise: great body fat, borderline hip T-score. Two years of lifting later it's back in the normal range. The clinic is literally on my way home off the bridge.",
     },
     nearby: ["brickell", "downtown", "coconut-grove"],
   },
@@ -541,32 +541,32 @@ export const MIAMI_DEXA_NEIGHBORHOODS: DexaNeighborhoodConfig[] = [
     transit:
       "Drive or rideshare is the practical option from Doral. Transit riders can take Route 36 or the Doral Trolley to Metrorail (Palmetto station), then ride the Green Line direct to Brickell station.",
     localTip:
-      "836 eastbound is smooth outside 7–9 AM — Doral patients who book 10 AM slots consistently make it in 22 minutes. Pair the trip with any Brickell errand to make the drive count double.",
+      "836 eastbound is smooth outside 7–9 AM. Doral patients who book 10 AM slots consistently make it in 22 minutes, and many pair the trip with a Brickell errand.",
     landmarks: ["CityPlace Doral", "Downtown Doral", "Trump National Doral", "Doral Central Park"],
     intro:
-      "Doral trains hard — the neighborhood's gyms, golf, and running clubs are packed. Strong Health's Brickell DEXA clinic is a straight 836 run east: 22 minutes to the most accurate body composition scan in Miami, with same-week appointments and validated parking.",
+      "From Doral, Strong Health's Brickell DEXA clinic is a straight run east on 836, about 22 minutes outside rush hour. Same-week appointments are usually available, and parking at the clinic is validated.",
     whyLocal:
-      "Doral's fitness culture runs on numbers — pace, handicap, PRs. DEXA adds the number that underlies them all: exactly how much lean muscle, fat, and bone you're carrying, limb by limb, with 1–2% clinical precision.",
+      "A lot of Doral trains seriously, and serious training deserves better than a gym scale's guess. DEXA tells you exactly how much lean muscle, fat, and bone you're carrying, limb by limb, with 1–2% precision.",
     faqs: [
       {
         question: "Is there a DEXA scan in Doral?",
         answer:
-          "The nearest walk-in DEXA clinic to Doral is Strong Health's Brickell location at 1000 Brickell Plaza — about 13 miles east via SR-836, a 22-minute drive outside rush hour. Same-week appointments are typically available, and the scan plus check-in takes about 30 minutes total.",
+          "The nearest walk-in DEXA clinic to Doral is Strong Health's Brickell location at 1000 Brickell Plaza, about 13 miles east via SR-836, a 22-minute drive outside rush hour. Same-week appointments are typically available, and the scan plus check-in takes about 30 minutes total.",
       },
       {
         question: "Is the drive from Doral worth it versus a gym InBody scale?",
         answer:
-          "For anything you'll make decisions on, yes. InBody and other BIA scales swing 5–8% with hydration; DEXA's margin of error is 1–2% with limb-level detail and visceral fat isolation. One accurate scan every 3–6 months beats weekly numbers you can't trust — and it's a 22-minute drive, not a commitment.",
+          "For anything you'll make decisions on, yes. InBody and other BIA scales swing 5–8% with hydration; DEXA's margin of error is 1–2% with limb-level detail and visceral fat isolation. One accurate scan every 3–6 months beats weekly numbers you can't trust.",
       },
       {
         question: "Can Doral golfers use DEXA to check muscle imbalances?",
         answer:
-          "Yes — DEXA's left-right symmetry analysis is built for rotational athletes. A golf swing loads one side asymmetrically, and the scan quantifies lean-mass differences between arms and legs in pounds. Several Doral golfers re-scan seasonally to confirm their gym work is keeping both sides balanced.",
+          "Yes. DEXA's left-right symmetry analysis is built for rotational athletes. A golf swing loads one side asymmetrically, and the scan quantifies lean-mass differences between arms and legs in pounds. Several Doral golfers re-scan seasonally to confirm their gym work is keeping both sides balanced.",
       },
     ],
     testimonial: {
       name: "Alejandro V.",
-      text: "I play off a 6 handicap at Doral and lift three days a week. The DEXA found almost 5 lbs more muscle on my trail side — explained the back tightness my trainer couldn't figure out. Twenty minutes down 836. We fixed the imbalance in one offseason.",
+      text: "I play off a 6 handicap at Doral and lift three days a week. The DEXA found almost 5 lbs more muscle on my trail side, which explained the back tightness my trainer couldn't figure out. Twenty minutes down 836. We fixed the imbalance in one offseason.",
     },
     nearby: ["hialeah", "little-havana", "coral-gables"],
   },
@@ -581,27 +581,27 @@ export const MIAMI_DEXA_NEIGHBORHOODS: DexaNeighborhoodConfig[] = [
     transit:
       "Metrorail is the Kendall cheat code: park free at Dadeland North or Dadeland South and ride the direct line to Brickell station — about 25 minutes, no traffic, then a 6-minute walk.",
     localTip:
-      "Skip US-1 entirely during rush hour — the Dadeland Metrorail park-and-ride gets you to the clinic's neighborhood faster than driving between 4 and 7 PM.",
+      "Skip US-1 entirely during rush hour. Between 4 and 7 PM, the Dadeland Metrorail park-and-ride gets you to the clinic's neighborhood faster than driving.",
     landmarks: ["Dadeland Mall", "Baptist Hospital", "The Falls", "Dadeland Metrorail stations"],
     intro:
-      "Kendall to Brickell is one Metrorail line — park at Dadeland, ride 25 minutes, and walk into Strong Health's DEXA clinic for the most accurate body composition scan in Miami. Lean mass, body fat, visceral fat, and bone density, physician-supervised, no referral needed.",
+      "Kendall to Brickell is one Metrorail line: park at Dadeland, ride 25 minutes, and walk into Strong Health's DEXA clinic. The scan is physician-supervised, needs no referral, and covers lean mass, body fat, visceral fat, and bone density.",
     whyLocal:
-      "Kendall families juggle a lot, and health tracking usually gets the leftovers. DEXA is efficient by design: one 15-minute scan a couple of times a year replaces months of unreliable scale readings — and the Metrorail ride from Dadeland makes it a half-morning errand, not a day trip.",
+      "Kendall families juggle a lot, and health tracking usually gets the leftovers. DEXA fits the schedule: one 15-minute scan a couple of times a year replaces months of unreliable scale readings, and the Metrorail ride from Dadeland makes it a half-morning errand.",
     faqs: [
       {
         question: "What's the easiest way to get a DEXA scan from Kendall?",
         answer:
-          "Ride Metrorail: park free at Dadeland North or Dadeland South and take the direct line to Brickell station — about 25 minutes — then walk 6 minutes to 1000 Brickell Plaza. Driving via US-1 takes about the same outside rush hour. Same-week appointments are typically available.",
+          "Ride Metrorail: park free at Dadeland North or Dadeland South and take the direct line to Brickell station, about 25 minutes, then walk 6 minutes to 1000 Brickell Plaza. Driving via US-1 takes about the same outside rush hour. Same-week appointments are typically available.",
       },
       {
         question: "Should both parents in a Kendall family get baseline scans?",
         answer:
-          "It's a common booking. A baseline DEXA for each adult captures lean mass, visceral fat, and bone density — three numbers that drive most midlife health decisions. Women approaching menopause especially benefit from an early bone-density baseline, since post-menopausal bone loss is fastest in the first few years.",
+          "It's a common booking. A baseline DEXA for each adult captures lean mass, visceral fat, and bone density, three numbers that drive most midlife health decisions. Women approaching menopause especially benefit from an early bone-density baseline, since post-menopausal bone loss is fastest in the first few years.",
       },
       {
-        question: "How much does a DEXA scan cost for Kendall patients?",
+        question: "Are Saturday DEXA appointments available for Kendall patients?",
         answer:
-          "The same transparent direct-pay pricing as all Strong Health scans — most patients pay under $200, with bundle pricing if you plan follow-up scans across the year. No referral or insurance needed for body composition scans; bone-density screening may be insurance-eligible for qualifying patients.",
+          "Yes. The Brickell clinic takes Saturday walk-ins from 9 AM to 1 PM, and weekend traffic makes the drive up US-1 noticeably quicker than a weekday trip. Metrorail from Dadeland runs on Saturdays too, with free parking at the park-and-ride. Couples often book back-to-back slots and make a morning of it.",
       },
     ],
     testimonial: {
@@ -624,24 +624,24 @@ export const MIAMI_DEXA_NEIGHBORHOODS: DexaNeighborhoodConfig[] = [
       "Mid-morning US-1 is forgiving; pair the scan with a Brickell lunch and you've turned a checkup into an outing. School-hours appointments are quietest for Pinecrest parents.",
     landmarks: ["Pinecrest Gardens", "The Falls", "Suniland Shops", "Evelyn Greer Park"],
     intro:
-      "Pinecrest invests in the long game — schools, gardens, health. Strong Health's Brickell DEXA clinic, 22 minutes up US-1 or a direct Metrorail ride from Dadeland South, delivers the clinical baseline that longevity planning should start with: lean mass, visceral fat, and bone density in one 15-minute scan.",
+      "Strong Health's Brickell DEXA clinic is 22 minutes up US-1 from Pinecrest, or a direct Metrorail ride from Dadeland South. One 15-minute scan sets the baselines long-term health planning actually needs: lean mass, visceral fat, and bone density.",
     whyLocal:
-      "For Pinecrest patients in their 40s and 50s, DEXA answers the two questions that matter most for the next thirty years: is your muscle mass holding (the strongest predictor of healthy aging), and is your bone density on track? One scan a year keeps both honest.",
+      "For Pinecrest patients in their 40s and 50s, DEXA answers two questions: is your muscle mass holding, and is your bone density on track? Muscle mass is one of the strongest predictors of healthy aging, and one scan a year keeps both honest.",
     faqs: [
       {
         question: "Where do Pinecrest residents get DEXA scans?",
         answer:
-          "Strong Health's Brickell clinic at 1000 Brickell Plaza — about 10 miles north via US-1, a 22-minute drive from Pinecrest Gardens, or Metrorail from the Dadeland South park-and-ride direct to Brickell station. Walk-ins are welcome and same-week appointments are typical.",
+          "Strong Health's Brickell clinic at 1000 Brickell Plaza, about 10 miles north via US-1 — a 22-minute drive from Pinecrest Gardens, or Metrorail from the Dadeland South park-and-ride direct to Brickell station. Walk-ins are welcome and same-week appointments are typical.",
       },
       {
         question: "At what age should I start tracking bone density?",
         answer:
-          "Earlier than most people think. Peak bone mass arrives around 30 and declines after — for women, sharply after menopause. A baseline DEXA in your 40s gives you a personal reference point, so later scans show your trend rather than comparing you only to population averages. Pinecrest patients often make it part of their annual physical rhythm.",
+          "Earlier than most people think. Peak bone mass arrives around 30 and declines after; for women, the drop steepens after menopause. A baseline DEXA in your 40s gives you a personal reference point, so later scans show your own trend rather than comparing you only to population averages. Many Pinecrest patients pair it with their annual physical.",
       },
       {
         question: "Is DEXA appropriate for teenagers in competitive sports?",
         answer:
-          "For older teen athletes it can be, with physician guidance — the scan is ultra-low radiation (about 1/10th of a chest X-ray) and gives useful lean mass and symmetry data for injury-prone sports. Call the clinic first; our physicians will advise whether a scan makes sense for your athlete's age and situation.",
+          "For older teen athletes it can be, with physician guidance. The scan is ultra-low radiation (about 1/10th of a chest X-ray) and gives useful lean mass and symmetry data for injury-prone sports. Call the clinic first; our physicians will advise whether a scan makes sense for your athlete's age and situation.",
       },
     ],
     testimonial: {
@@ -661,12 +661,12 @@ export const MIAMI_DEXA_NEIGHBORHOODS: DexaNeighborhoodConfig[] = [
     transit:
       "Board Metrorail at South Miami station (next to Sunset Place) and ride direct to Brickell station — about 20 minutes, no transfer — then walk 6 minutes to the clinic.",
     localTip:
-      "The South Miami Metrorail station is the easiest play: no US-1 traffic, and you step off one line at Brickell. Hospital-district workers can be scanned and back within a long lunch.",
+      "The South Miami Metrorail station is the easiest play: no US-1 traffic, and you step off one line at Brickell. Hospital-district workers can get scanned and back within a long lunch.",
     landmarks: ["Shops at Sunset Place", "South Miami Hospital", "Sunset Drive", "South Miami Metrorail station"],
     intro:
-      "South Miami sits one direct Metrorail ride from Strong Health's Brickell DEXA clinic — board at Sunset Place, step off at Brickell, and get the clinical gold standard for body composition: lean mass, body fat, visceral fat, and bone density in a 15-minute scan.",
+      "South Miami is one direct Metrorail ride from Strong Health's Brickell DEXA clinic: board at Sunset Place, step off at Brickell station, walk six minutes. The 15-minute scan covers lean mass, body fat, visceral fat, and bone density.",
     whyLocal:
-      "With South Miami Hospital anchoring the neighborhood, locals know the difference between wellness marketing and clinical measurement. DEXA is the latter — the same dual-energy X-ray technology used in research, with numbers precise enough to base real decisions on.",
+      "With South Miami Hospital anchoring the neighborhood, locals know the difference between wellness marketing and clinical measurement. DEXA is the latter: the same dual-energy X-ray technology used in research, precise enough to base real decisions on.",
     faqs: [
       {
         question: "How do I get to the DEXA clinic from South Miami?",
@@ -676,17 +676,17 @@ export const MIAMI_DEXA_NEIGHBORHOODS: DexaNeighborhoodConfig[] = [
       {
         question: "Can healthcare workers from the hospital district book around shifts?",
         answer:
-          "Yes — the clinic is open 8 AM to 6 PM weekdays and Saturday mornings 9 AM to 1 PM, and the full visit takes about 30 minutes. Nurses and staff from the South Miami Hospital area often book post-shift morning slots or Saturday walk-ins. Your PDF report arrives within 24 hours.",
+          "Yes. The clinic is open 8 AM to 6 PM weekdays and Saturday mornings 9 AM to 1 PM, and the full visit takes about 30 minutes. Nurses and staff from the South Miami Hospital area often book post-shift morning slots or Saturday walk-ins. Your PDF report arrives within 24 hours.",
       },
       {
         question: "How does DEXA compare to the body fat testing at local gyms?",
         answer:
-          "Gym methods — BIA scales, handheld devices, calipers — carry 5–8% error and swing with hydration. DEXA's margin is 1–2%, with regional breakdowns (arms, legs, trunk), visceral fat isolation, and bone density that no gym test provides. It's the difference between an estimate and a measurement.",
+          "Gym methods like BIA scales, handheld devices, and calipers carry 5–8% error and swing with hydration. DEXA's margin is 1–2%, with regional breakdowns (arms, legs, trunk), visceral fat isolation, and bone density that no gym test provides.",
       },
     ],
     testimonial: {
       name: "Naomi H.",
-      text: "I'm an RN near South Miami Hospital and I've seen what bad metabolic health does. Took the Metrorail up after a night shift, scanned in fifteen minutes. My visceral fat was higher than my BMI suggested — exactly the early warning I preach to patients.",
+      text: "I'm an RN near South Miami Hospital and I've seen what bad metabolic health does. Took the Metrorail up after a night shift, scanned in fifteen minutes. My visceral fat was higher than my BMI suggested, exactly the early warning I preach to patients.",
     },
     nearby: ["coral-gables", "coconut-grove", "pinecrest"],
   },
@@ -701,32 +701,32 @@ export const MIAMI_DEXA_NEIGHBORHOODS: DexaNeighborhoodConfig[] = [
     transit:
       "The Brightline from Aventura station to MiamiCentral is the traffic-proof option — 20 minutes to Downtown, then a Metromover Brickell Loop ride to Tenth Street/Promenade, 2 blocks from the clinic.",
     localTip:
-      "Brightline from Aventura station turns the worst drive on this list into the easiest trip — many Aventura patients ride down, scan, lunch in Brickell, and ride back before school pickup.",
+      "Brightline from Aventura station turns the longest drive of any neighborhood we serve into the easiest trip. Many patients ride down, scan, have lunch in Brickell, and ride back before school pickup.",
     landmarks: ["Aventura Mall", "Turnberry Isle", "Founders Park", "Aventura Brightline station"],
     intro:
-      "Aventura to Brickell is 30 minutes on I-95 — or a 20-minute Brightline ride from Aventura station. Either way, Strong Health's DEXA clinic delivers what no scale in an Aventura gym can: clinical-grade lean mass, body fat, visceral fat, and bone density, physician-supervised.",
+      "Aventura to Brickell is 30 minutes on I-95, or a 20-minute Brightline ride from Aventura station. Either way, you get numbers no gym scale near the Mall can give you: clinical-grade lean mass, body fat, visceral fat, and bone density.",
     whyLocal:
-      "Aventura's fitness scene skews serious — personal training studios, pilates, longevity clinics. DEXA is the measurement those programs should be built on: a 15-minute scan twice a year that tells you, with 1–2% precision, whether the investment is producing muscle, losing fat, and protecting bone.",
+      "If you're already paying for personal training or a longevity program in Aventura, DEXA is how you check the receipts: a 15-minute scan twice a year that shows, with 1–2% precision, whether the investment is adding muscle and protecting bone.",
     faqs: [
       {
         question: "Is the trip from Aventura worth it for a DEXA scan?",
         answer:
-          "For a scan you act on 2–4 times a year, yes. Strong Health's Brickell clinic is 30 minutes down I-95 or a 20-minute Brightline ride from Aventura station — and DEXA's 1–2% precision, visceral fat isolation, and bone density make it categorically different from any body composition testing available near Aventura Mall.",
+          "For a scan you act on 2–4 times a year, yes. Strong Health's Brickell clinic is 30 minutes down I-95 or a 20-minute Brightline ride from Aventura station, and nothing available near Aventura Mall matches DEXA's 1–2% precision, visceral fat isolation, or bone density measurement.",
       },
       {
         question: "Can I take the Brightline to my scan from Aventura?",
         answer:
-          "Yes, and it's the best route: Brightline from Aventura station to MiamiCentral takes about 20 minutes, then ride the Metromover Brickell Loop to Tenth Street/Promenade — the clinic is 2 blocks from the station. Total door-to-door is about 45 minutes with zero traffic risk.",
+          "Yes, and it's the best route: Brightline from Aventura station to MiamiCentral takes about 20 minutes, then ride the Metromover Brickell Loop to Tenth Street/Promenade. The clinic is 2 blocks from the station, and total door to door is about 45 minutes with zero traffic risk.",
       },
       {
         question: "How often should Aventura patients re-scan?",
         answer:
-          "Every 3–6 months on an active protocol (TRT, GLP-1 weight loss, serious training blocks); once a year for general health and bone-density tracking. Book your follow-ups at the same clinic — same-scanner consistency is what makes the trend data reliable.",
+          "Every 3–6 months on an active protocol (TRT, GLP-1 weight loss, serious training blocks); once a year for general health and bone-density tracking. Book your follow-ups at the same clinic, since same-scanner consistency is what makes the trend data reliable.",
       },
     ],
     testimonial: {
       name: "Gabrielle N.",
-      text: "I train five days a week at a studio near Aventura Mall and still had no real numbers. Took the Brightline down on a Tuesday — the whole trip was easier than crossing 826 at rush hour. My report showed exactly where two years of pilates put muscle on me.",
+      text: "I train five days a week at a studio near Aventura Mall and still had no real numbers. Took the Brightline down on a Tuesday, and the whole trip was easier than crossing 826 at rush hour. My report showed exactly where two years of pilates put muscle on me.",
     },
     nearby: ["miami-beach", "edgewater", "design-district"],
   },
@@ -741,32 +741,32 @@ export const MIAMI_DEXA_NEIGHBORHOODS: DexaNeighborhoodConfig[] = [
     transit:
       "Metrorail runs from Hialeah and Okeechobee stations direct to Brickell station on the Green Line — about 30 minutes, then a 6-minute walk to the clinic. No transfers.",
     localTip:
-      "The Metrorail Green Line from Hialeah station goes straight to Brickell — for most of Hialeah it beats fighting 112 and I-95, and the park-and-ride is free.",
+      "The Metrorail Green Line from Hialeah station goes straight to Brickell. For most of Hialeah it beats fighting 112 and I-95, and the park-and-ride is free.",
     landmarks: ["Hialeah Park Racing & Casino", "Amelia Earhart Park", "Westland Mall", "Leah Arts District"],
     intro:
-      "Hialeah is a direct Metrorail Green Line ride from Strong Health's Brickell DEXA clinic — or 22 minutes via 112 and I-95. One 15-minute scan measures lean muscle, body fat, visceral fat, and bone density with clinical precision, direct-pay, no referral needed.",
+      "Hialeah is a direct Metrorail Green Line ride from Strong Health's Brickell DEXA clinic, or 22 minutes by car via 112 and I-95. One 15-minute scan measures lean muscle, body fat, visceral fat, and bone density. Pricing is direct-pay, and you don't need a referral.",
     whyLocal:
-      "Hialeah works hard and eats well — and type 2 diabetes quietly runs through too many of its families. Visceral fat is the earliest measurable warning, and DEXA is the only common test that isolates it precisely. One scan turns family history into a number you can track and beat.",
+      "Type 2 diabetes quietly runs through too many Hialeah families. Visceral fat is the earliest measurable warning sign, and DEXA is the only common test that isolates it precisely. One scan turns family history into a number you can track and beat.",
     faqs: [
       {
         question: "Where can Hialeah residents get a DEXA scan?",
         answer:
-          "Strong Health's Brickell clinic at 1000 Brickell Plaza — a direct Metrorail Green Line ride from Hialeah or Okeechobee stations to Brickell station (about 30 minutes), or a 22-minute drive via SR-112 and I-95. Direct-pay pricing keeps body composition scans under $200 for most patients, no insurance needed.",
+          "Strong Health's Brickell clinic at 1000 Brickell Plaza, a direct Metrorail Green Line ride from Hialeah or Okeechobee stations to Brickell station (about 30 minutes), or a 22-minute drive via SR-112 and I-95. Direct-pay pricing keeps body composition scans under $200 for most patients, and you don't need insurance.",
       },
       {
         question: "Why is visceral fat the number Hialeah patients should watch?",
         answer:
-          "Visceral fat — fat around the organs — is the strongest body-composition predictor of type 2 diabetes and heart disease, both of which affect Hispanic communities at above-average rates. You can carry high visceral fat at a normal weight, and no scale or mirror will show it. DEXA measures it directly, so you can track it down with diet and training.",
+          "Visceral fat (fat around the organs) is the strongest body-composition predictor of type 2 diabetes and heart disease, both of which affect Hispanic communities at above-average rates. You can carry high visceral fat at a normal weight, and no scale or mirror will show it. DEXA measures it directly, so you can track it down with diet and training.",
       },
       {
         question: "Is the scan available without a doctor's order?",
         answer:
-          "Yes. Body composition DEXA scans at Strong Health require no referral, no insurance, and no prior authorization — book by phone or text, walk in, and your full PDF report arrives within 24 hours. If results warrant it, you can add a physician consultation to go through them in detail.",
+          "Yes. Body composition DEXA scans at Strong Health require no referral, no insurance, and no prior authorization. Book by phone or text, walk in, and your full PDF report arrives within 24 hours. If results warrant it, you can add a physician consultation to go through them in detail.",
       },
     ],
     testimonial: {
       name: "Osmany P.",
-      text: "Took the Metrorail from Hialeah station on my day off. I'm 42, normal weight my whole life, and my visceral fat came back high — same pattern as my mother before her diagnosis. A year of changes later I re-scanned and it dropped by half. That train ride may have saved me.",
+      text: "Took the Metrorail from Hialeah station on my day off. I'm 42, normal weight my whole life, and my visceral fat came back high, the same pattern as my mother before her diagnosis. A year of changes later I re-scanned and it dropped by half. That train ride may have saved me.",
     },
     nearby: ["doral", "little-havana", "wynwood"],
   },
