@@ -10,22 +10,22 @@ export const TESOFENSINE: MoleculeConfig = {
   metaDescription:
     "Tesofensine is an investigational triple monoamine reuptake inhibitor — not a peptide — studied for weight loss, with notable blood-pressure and safety caveats.",
   tagline:
-    "An investigational, orally administered appetite suppressant studied for obesity — often marketed alongside peptides, though it is not a peptide and is not FDA-approved.",
+    "An investigational, orally administered appetite suppressant studied for obesity. It is often marketed alongside peptides, though it is not a peptide and is not FDA-approved.",
   primaryUse: "Investigational appetite suppressant for weight loss (not FDA-approved)",
   datePublishedISO: "2026-07-23",
   dateModifiedISO: "2026-07-23",
   whatItIs: [
-    "Tesofensine (development code NS2330) is frequently searched for as a 'peptide,' but it is not one. It is a small-molecule, orally administered triple monoamine reuptake inhibitor — it blocks the reuptake of noradrenaline, dopamine, and serotonin in the brain, which is a fundamentally different class of drug from the peptides in this library.",
+    "Tesofensine (development code NS2330) is frequently searched for as a 'peptide,' but it is not one. It is a small-molecule, orally administered triple monoamine reuptake inhibitor that blocks the reuptake of noradrenaline, dopamine, and serotonin in the brain, which is a fundamentally different class of drug from the peptides in this library.",
     "It was originally investigated for neurological conditions and later studied for obesity after weight loss was noticed as a side effect. As of 2026 it is not FDA-approved in the United States. It is an investigational compound, and Strong Health does not prescribe or provide it.",
   ],
   mechanism: [
     "By slowing the reuptake of noradrenaline, dopamine, and serotonin, tesofensine raises the levels of these neurotransmitters in the brain. Preclinical work suggests its appetite-suppressing effect is driven largely by indirect stimulation of alpha-1 adrenergic and dopamine D1 receptor pathways, reducing food intake.",
-    "This central, stimulant-like mechanism is also the source of its safety concerns. The same neurotransmitter systems that curb appetite also influence blood pressure, heart rate, mood, and sleep — which is why the drug's cardiovascular and psychiatric effects have received close scrutiny.",
+    "This central, stimulant-like mechanism is also the source of its safety concerns. The same neurotransmitter systems that curb appetite also influence blood pressure, heart rate, mood, and sleep, which is why the drug's cardiovascular and psychiatric effects have received close scrutiny.",
   ],
   usedFor: [
     {
       heading: "Obesity and weight management",
-      desc: "The main context in which tesofensine has been studied — appetite suppression and weight loss in adults with obesity, alongside diet.",
+      desc: "The main context in which tesofensine has been studied: appetite suppression and weight loss in adults with obesity, alongside diet.",
     },
     {
       heading: "Neurological research (historical)",
@@ -35,7 +35,7 @@ export const TESOFENSINE: MoleculeConfig = {
   evidence: [
     "In a 24-week phase 2, randomized, double-blind, placebo-controlled trial published in The Lancet in 2008, tesofensine combined with an energy-restricted diet produced dose-dependent weight loss substantially greater than placebo, with the middle dose (0.5 mg) yielding roughly 10% weight reduction [1]. Its appetite-suppressing mechanism has been characterized in preclinical models as acting through alpha-1 adrenergic and dopamine D1 pathways [2].",
     "That evidence comes with important caveats. The same trial noted increases in blood pressure and heart rate at higher doses, and the drug's monoaminergic activity has been linked to psychiatric effects such as agitation, mood changes, and sleep disturbance. A published expression of concern later questioned the completeness of adverse-event reporting for tesofensine, which is a further reason for caution.",
-    "Tesofensine has not completed the large phase 3 outcome trials that regulators require, and it is not FDA-approved. We present it as a compound patients ask about — with its real risks stated — not as a treatment we endorse or provide.",
+    "Tesofensine has not completed the large phase 3 outcome trials that regulators require, and it is not FDA-approved. We present it as a compound patients ask about, with its real risks stated, not as a treatment we endorse or provide.",
   ],
   dosingContext: [
     "In trials, tesofensine was taken as a once-daily oral tablet alongside a calorie-restricted diet, with dosing set by study protocols. There is no FDA-approved label or approved dose in the United States.",
@@ -60,14 +60,14 @@ export const TESOFENSINE: MoleculeConfig = {
     "Use outside a clinical trial (tesofensine is investigational and not FDA-approved)",
   ],
   howWePrescribe: [
-    "Strong Health does not prescribe or provide tesofensine. It is not FDA-approved in the United States, it is not a peptide, and its cardiovascular and psychiatric risk profile — together with published concerns about adverse-event reporting — puts it outside the standard of care we hold to.",
+    "Strong Health does not prescribe or provide tesofensine. It is not FDA-approved in the United States, it is not a peptide, and its cardiovascular and psychiatric risk profile, together with published concerns about adverse-event reporting, puts it outside the standard of care we hold to.",
     "We document tesofensine because it is heavily marketed and searched for, sometimes mislabeled as a peptide, and patients deserve an honest, physician-reviewed explanation. If you want medically supervised weight loss, our physicians evaluate FDA-cleared and appropriately compounded options and monitor you with real labs and follow-up.",
   ],
   faqs: [
     {
       question: "Is tesofensine a peptide?",
       answer:
-        "No. Despite being marketed alongside peptides, tesofensine is a small-molecule triple monoamine reuptake inhibitor — it acts on noradrenaline, dopamine, and serotonin in the brain. It is a different class of drug entirely from the peptides in this library.",
+        "No. Despite being marketed alongside peptides, tesofensine is a small-molecule triple monoamine reuptake inhibitor that acts on noradrenaline, dopamine, and serotonin in the brain. It is a different class of drug entirely from the peptides in this library.",
     },
     {
       question: "Is tesofensine FDA-approved for weight loss?",
@@ -77,7 +77,7 @@ export const TESOFENSINE: MoleculeConfig = {
     {
       question: "How much weight did people lose on tesofensine?",
       answer:
-        "In a 24-week phase 2 trial, the 0.5 mg dose plus a calorie-restricted diet produced roughly 10% weight loss — more than placebo. However, the same trial showed dose-dependent increases in blood pressure and heart rate, and the drug carries psychiatric risks, so those figures have to be read alongside the safety concerns.",
+        "In a 24-week phase 2 trial, the 0.5 mg dose plus a calorie-restricted diet produced roughly 10% weight loss, more than placebo. However, the same trial showed dose-dependent increases in blood pressure and heart rate, and the drug carries psychiatric risks, so those figures have to be read alongside the safety concerns.",
     },
     {
       question: "Can I get tesofensine at Strong Health?",
@@ -98,10 +98,10 @@ export const TESOFENSINE: MoleculeConfig = {
     },
   ],
   regulatoryNote:
-    "Tesofensine is not a peptide and is not FDA-approved. This page is educational, physician-reviewed context — not medical advice, a dosing guide, or an offer to prescribe. Strong Health does not provide tesofensine.",
+    "Tesofensine is not a peptide and is not FDA-approved. This page is educational, physician-reviewed context, not medical advice, a dosing guide, or an offer to prescribe. Strong Health does not provide tesofensine.",
   weDoNotOffer: true,
   doNotOfferBody:
-    "Interested in medically supervised weight loss? Talk to one of our physicians about FDA-approved and appropriately compounded options with real clinical monitoring — or explore our physician-reviewed guides.",
+    "Interested in medically supervised weight loss? Talk to one of our physicians about FDA-approved and appropriately compounded options with real clinical monitoring, or explore our physician-reviewed guides.",
   doNotOfferCtaLabel: "Talk to a physician about weight loss →",
   doNotOfferLinks: [
     { label: "our guide to peptides for weight loss", href: "/peptides-for-weight-loss/" },

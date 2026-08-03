@@ -10,22 +10,22 @@ export const SEMAGLUTIDE: MoleculeConfig = {
   metaDescription:
     "Semaglutide (Wegovy, Ozempic) is a GLP-1 medication for weight loss. Review the mechanism, STEP-trial evidence, safety, and how Strong Health prescribes it.",
   tagline:
-    "A GLP-1 receptor agonist and one of the most rigorously studied weight-loss medications available — FDA-approved and backed by large randomized trials.",
+    "A GLP-1 receptor agonist and one of the most rigorously studied weight-loss medications available. It is FDA-approved and backed by large randomized trials.",
   primaryUse: "GLP-1 medication for weight loss and metabolic health",
   datePublishedISO: "2026-07-18",
   dateModifiedISO: "2026-07-18",
   whatItIs: [
-    "Semaglutide is a GLP-1 (glucagon-like peptide-1) receptor agonist — a peptide medication that mimics a gut hormone your body releases after eating. It is FDA-approved under the brand name Wegovy for chronic weight management and under Ozempic and Rybelsus for type 2 diabetes.",
-    "Unlike most peptides used in wellness settings, semaglutide sits on a deep foundation of human evidence. It is a manufactured, FDA-approved medication with well-characterized dosing, safety, and efficacy — not a research compound. Strong Health prescribes it as part of a physician-supervised weight-management program.",
+    "Semaglutide is a GLP-1 (glucagon-like peptide-1) receptor agonist, a peptide medication that mimics a gut hormone your body releases after eating. It is FDA-approved under the brand name Wegovy for chronic weight management and under Ozempic and Rybelsus for type 2 diabetes.",
+    "Unlike most peptides used in wellness settings, semaglutide sits on a deep foundation of human evidence. It is a manufactured, FDA-approved medication with well-characterized dosing, safety, and efficacy, not a research compound. Strong Health prescribes it as part of a physician-supervised weight-management program.",
   ],
   mechanism: [
     "Semaglutide activates GLP-1 receptors in the brain, pancreas, and gastrointestinal tract. Centrally, it acts on appetite-regulating centers in the hypothalamus to reduce hunger and food cravings; peripherally, it slows gastric emptying so you feel full longer.",
-    "In the pancreas it enhances glucose-dependent insulin secretion and suppresses glucagon — which is why it improves blood-sugar control in type 2 diabetes. The combined effect is reduced caloric intake and improved metabolic markers, producing sustained weight loss when paired with nutrition and activity changes.",
+    "In the pancreas it enhances glucose-dependent insulin secretion and suppresses glucagon, which is why it improves blood-sugar control in type 2 diabetes. The combined effect is reduced caloric intake and improved metabolic markers, producing sustained weight loss when paired with nutrition and activity changes.",
   ],
   usedFor: [
     {
       heading: "Chronic weight management",
-      desc: "The primary FDA-approved use of Wegovy — for adults with obesity, or overweight with a weight-related condition, alongside diet and exercise.",
+      desc: "The primary FDA-approved use of Wegovy, for adults with obesity, or overweight with a weight-related condition, alongside diet and exercise.",
     },
     {
       heading: "Visceral & abdominal fat",
@@ -33,7 +33,7 @@ export const SEMAGLUTIDE: MoleculeConfig = {
     },
     {
       heading: "Type 2 diabetes",
-      desc: "As Ozempic/Rybelsus, semaglutide improves glycemic control and lowers HbA1c — this is a separate FDA-approved indication.",
+      desc: "As Ozempic/Rybelsus, semaglutide improves glycemic control and lowers HbA1c. This is a separate FDA-approved indication.",
     },
     {
       heading: "Cardiometabolic risk reduction",
@@ -41,16 +41,16 @@ export const SEMAGLUTIDE: MoleculeConfig = {
     },
   ],
   evidence: [
-    "Semaglutide's weight-loss evidence comes from the STEP program — large, placebo-controlled randomized trials. In STEP 1, adults without diabetes lost a mean of about 15% of body weight over 68 weeks on 2.4 mg weekly semaglutide, versus roughly 2.4% on placebo [1].",
+    "Semaglutide's weight-loss evidence comes from the STEP program of large, placebo-controlled randomized trials. In STEP 1, adults without diabetes lost a mean of about 15% of body weight over 68 weeks on 2.4 mg weekly semaglutide, versus roughly 2.4% on placebo [1].",
     "Later trials extended these findings to people with type 2 diabetes (STEP 2) and demonstrated that continued treatment sustains the loss while discontinuation leads to regain [2]. Separately, the SELECT trial showed cardiovascular event reduction in patients with established cardiovascular disease and overweight/obesity [3].",
     "This is a genuinely different evidence tier from most peptides discussed on this site: semaglutide's efficacy and safety are established in tens of thousands of trial participants, which is why we can speak about expected results with far more confidence.",
   ],
   dosingContext: [
     "For weight management, semaglutide is a once-weekly subcutaneous injection titrated slowly upward over months to a maintenance dose, minimizing gastrointestinal side effects. The oral form (Rybelsus) is dosed daily and is approved for diabetes rather than weight management.",
-    "The exact starting dose, titration schedule, and target are set by the prescribing physician based on your response and tolerance — the slow ramp is deliberate and matters. Because this is an FDA-approved medication, we prioritize dispensing manufactured product; compounded semaglutide is a separate regulatory situation tied to shortage status and state rules.",
+    "The exact starting dose, titration schedule, and target are set by the prescribing physician based on your response and tolerance. The slow ramp is deliberate and matters. Because this is an FDA-approved medication, we prioritize dispensing manufactured product; compounded semaglutide is a separate regulatory situation tied to shortage status and state rules.",
   ],
   safety: [
-    "The most common side effects are gastrointestinal — nausea, diarrhea, constipation, and vomiting — usually mild to moderate and most pronounced during dose escalation. Slow titration and dietary adjustments reduce them substantially.",
+    "The most common side effects are gastrointestinal (nausea, diarrhea, constipation, and vomiting), usually mild to moderate and most pronounced during dose escalation. Slow titration and dietary adjustments reduce them substantially.",
     "More serious but uncommon concerns include pancreatitis, gallbladder disease, and a boxed warning regarding thyroid C-cell tumors (based on rodent studies), which makes a personal or family history of medullary thyroid carcinoma or MEN 2 a contraindication. We screen for these before prescribing and monitor throughout treatment.",
   ],
   commonSideEffects: [
@@ -67,8 +67,8 @@ export const SEMAGLUTIDE: MoleculeConfig = {
     "Known hypersensitivity to semaglutide",
   ],
   howWePrescribe: [
-    "At Strong Health, semaglutide is prescribed only within a physician-supervised weight-management program — an evaluation, a metabolic lab panel, screening for contraindications, and a plan that pairs the medication with nutrition and lean-mass preservation. We treat weight loss as medicine, not a monthly vial.",
-    "We prioritize FDA-approved manufactured product where available and appropriate. Availability, formulation, and whether a compounded option is permissible depend on current shortage status and the rules of the state you're in — your physician will walk you through what applies to you before anything is prescribed.",
+    "At Strong Health, semaglutide is prescribed only within a physician-supervised weight-management program: an evaluation, a metabolic lab panel, screening for contraindications, and a plan that pairs the medication with nutrition and lean-mass preservation. We treat weight loss as medicine, not a monthly vial.",
+    "We prioritize FDA-approved manufactured product where available and appropriate. Availability, formulation, and whether a compounded option is permissible depend on current shortage status and the rules of the state you're in, and your physician will walk you through what applies to you before anything is prescribed.",
   ],
   faqs: [
     {
@@ -79,7 +79,7 @@ export const SEMAGLUTIDE: MoleculeConfig = {
     {
       question: "How much weight can I expect to lose on semaglutide?",
       answer:
-        "In the STEP 1 trial, adults without diabetes lost an average of about 15% of body weight over 68 weeks on the 2.4 mg weekly dose, versus about 2.4% on placebo. Individual results vary with dose, adherence, and lifestyle, and weight tends to return if the medication is stopped — which is why we frame it as long-term metabolic treatment.",
+        "In the STEP 1 trial, adults without diabetes lost an average of about 15% of body weight over 68 weeks on the 2.4 mg weekly dose, versus about 2.4% on placebo. Individual results vary with dose, adherence, and lifestyle, and weight tends to return if the medication is stopped, which is why we frame it as long-term metabolic treatment.",
     },
     {
       question: "What happens if I stop taking semaglutide?",

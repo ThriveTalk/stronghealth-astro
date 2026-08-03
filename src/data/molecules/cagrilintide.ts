@@ -10,7 +10,7 @@ export const CAGRILINTIDE: MoleculeConfig = {
   metaDescription:
     "Cagrilintide (AM833) is an investigational amylin analog studied for weight loss, alone and paired with semaglutide as CagriSema. What the evidence shows.",
   tagline:
-    "An investigational once-weekly amylin analog studied for weight management on its own and, more prominently, in combination with semaglutide — not yet FDA-approved.",
+    "An investigational once-weekly amylin analog studied for weight management on its own and, more prominently, in combination with semaglutide. It is not yet FDA-approved.",
   primaryUse: "Investigational amylin analog for weight loss (not FDA-approved)",
   datePublishedISO: "2026-07-23",
   dateModifiedISO: "2026-07-23",
@@ -25,7 +25,7 @@ export const CAGRILINTIDE: MoleculeConfig = {
   usedFor: [
     {
       heading: "Obesity and weight management",
-      desc: "The central focus of cagrilintide's development — reducing body weight in adults with overweight or obesity, dose-dependently in early trials.",
+      desc: "The central focus of cagrilintide's development: reducing body weight in adults with overweight or obesity, dose-dependently in early trials.",
     },
     {
       heading: "Combination with semaglutide (CagriSema)",
@@ -42,11 +42,11 @@ export const CAGRILINTIDE: MoleculeConfig = {
     "As with any investigational agent, phase 2 data establish a signal, not a settled treatment. Long-term safety, durability, and the full CagriSema outcome picture depend on phase 3 results, and we present this honestly rather than as an available therapy.",
   ],
   dosingContext: [
-    "In trials, cagrilintide is administered as a once-weekly subcutaneous injection with gradual dose escalation, and — in the combination program — co-administered with semaglutide. Trial dosing follows study protocols, not patient self-titration.",
-    "Because cagrilintide is investigational, there is no approved label, no approved dose, and no legitimate compounded or retail supply. Product sold online as 'cagrilintide' outside a trial is unverified for identity, purity, and sterility — the gray-market risk our clinical model exists to avoid.",
+    "In trials, cagrilintide is administered as a once-weekly subcutaneous injection with gradual dose escalation, and in the combination program it is co-administered with semaglutide. Trial dosing follows study protocols, not patient self-titration.",
+    "Because cagrilintide is investigational, there is no approved label, no approved dose, and no legitimate compounded or retail supply. Product sold online as 'cagrilintide' outside a trial is unverified for identity, purity, and sterility. That is the gray-market risk our clinical model exists to avoid.",
   ],
   safety: [
-    "The most common side effects reported in trials are gastrointestinal — nausea, reduced appetite, and related symptoms — consistent with appetite-regulating therapies and generally dose-related. Injection-site reactions have also been reported.",
+    "The most common side effects reported in trials are gastrointestinal: nausea, reduced appetite, and related symptoms, consistent with appetite-regulating therapies and generally dose-related. Injection-site reactions have also been reported.",
     "Long-term safety is not established, since cagrilintide remains in development. Its complete risk profile and outcomes over years of use are not yet known, which is a central reason we do not offer it.",
   ],
   commonSideEffects: [
@@ -63,7 +63,7 @@ export const CAGRILINTIDE: MoleculeConfig = {
     "Use outside a clinical trial (cagrilintide is investigational and not FDA-approved)",
   ],
   howWePrescribe: [
-    "Strong Health does not prescribe or provide cagrilintide or CagriSema. Both are investigational, not FDA-approved, and available only through clinical trials — not as compounded or research-grade products. Providing an unapproved novel molecule outside a trial would be inconsistent with the law and with our standards.",
+    "Strong Health does not prescribe or provide cagrilintide or CagriSema. Both are investigational, not FDA-approved, and available only through clinical trials, not as compounded or research-grade products. Providing an unapproved novel molecule outside a trial would be inconsistent with the law and with our standards.",
     "We document cagrilintide because patients ask about it and deserve a clear, physician-reviewed picture of where the evidence stands. For medically supervised weight loss now, our physicians evaluate FDA-cleared and appropriately compounded options and build a monitored protocol around your labs rather than chasing the newest unapproved compound.",
   ],
   faqs: [
@@ -96,10 +96,10 @@ export const CAGRILINTIDE: MoleculeConfig = {
     },
   ],
   regulatoryNote:
-    "Cagrilintide is investigational and not FDA-approved. This page is educational, physician-reviewed context — not medical advice, a dosing guide, or an offer to prescribe. Strong Health does not provide cagrilintide.",
+    "Cagrilintide is investigational and not FDA-approved. This page is educational, physician-reviewed context, not medical advice, a dosing guide, or an offer to prescribe. Strong Health does not provide cagrilintide.",
   weDoNotOffer: true,
   doNotOfferBody:
-    "Interested in medically supervised weight loss? Talk to one of our physicians about FDA-approved and appropriately compounded options with real clinical monitoring — or explore our physician-reviewed guides.",
+    "Interested in medically supervised weight loss? Talk to one of our physicians about FDA-approved and appropriately compounded options with real clinical monitoring, or explore our physician-reviewed guides.",
   doNotOfferCtaLabel: "Talk to a physician about weight loss →",
   doNotOfferLinks: [
     { label: "our guide to peptides for weight loss", href: "/peptides-for-weight-loss/" },
