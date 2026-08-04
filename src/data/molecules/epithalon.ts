@@ -10,7 +10,7 @@ export const EPITHALON: MoleculeConfig = {
   metaDescription:
     "Epithalon is a synthetic tetrapeptide studied for telomerase activation and pineal-melatonin regulation. See the evidence, safety, and how we prescribe it.",
   tagline:
-    "A synthetic tetrapeptide (Ala-Glu-Asp-Gly) studied for telomerase activation and regulation of the pineal gland's melatonin rhythm — investigated as a longevity peptide, primarily in Russian research and small studies.",
+    "A synthetic tetrapeptide (Ala-Glu-Asp-Gly) studied for telomerase activation and regulation of the pineal gland's melatonin rhythm. It has been investigated as a longevity peptide, primarily in Russian research and small studies.",
   primaryUse: "Telomerase and pineal-axis longevity peptide",
   datePublishedISO: "2026-07-18",
   dateModifiedISO: "2026-07-18",
@@ -25,7 +25,7 @@ export const EPITHALON: MoleculeConfig = {
   usedFor: [
     {
       heading: "General longevity interest",
-      desc: "The most common reason patients ask about Epithalon — interest in the telomere and cellular-aging hypothesis as part of a broader healthy-aging conversation, rather than any specific approved indication.",
+      desc: "The most common reason patients ask about Epithalon: interest in the telomere and cellular-aging hypothesis as part of a broader healthy-aging conversation, rather than any specific approved indication.",
     },
     {
       heading: "Sleep & circadian rhythm",
@@ -39,15 +39,15 @@ export const EPITHALON: MoleculeConfig = {
   evidence: [
     "Most Epithalon research originates from a single group of investigators in Russia and appears in that country's literature, spanning cell-culture, animal, and some human studies. Laboratory work reports telomerase induction and telomere lengthening in human cell lines, and rodent studies have described effects on lifespan and tumor incidence [1][2].",
     "A frequently cited long-term human observation reported reduced mortality over several years of follow-up in older patients given the pineal peptide preparation [3]. These findings are genuinely interesting, but they come with important caveats: much of the work is decades old, has not been widely replicated by independent groups outside Russia, and the modern human data are limited in size and rigor.",
-    "We present this candidly to every patient. Epithalon sits in the category of a preliminary compound with a plausible mechanism and suggestive early data — not one supported by large, replicated randomized trials. That distinction matters when you are deciding whether it fits your goals.",
+    "We present this candidly to every patient. Epithalon sits in the category of a preliminary compound with a plausible mechanism and suggestive early data, not one supported by large, replicated randomized trials. That distinction matters when you are deciding whether it fits your goals.",
   ],
   dosingContext: [
     "In the published protocols and clinical use, Epithalon is most often given as a short course of subcutaneous injections, sometimes repeated once or twice a year, with the dose expressed in milligrams per course. Some studies used intranasal or intramuscular routes of the parent pineal preparation.",
-    "The specific dose, route, frequency, and duration are individualized by the prescribing physician — which is why we frame this as clinical context, not a self-dosing guide. Epithalon obtained without a prescription (research-only vials, gray-market powders) carries no guarantee of identity, purity, or sterility, and the peptide is a common target for counterfeit product.",
+    "The specific dose, route, frequency, and duration are individualized by the prescribing physician, which is why we frame this as clinical context rather than a self-dosing guide. Epithalon obtained without a prescription (research-only vials, gray-market powders) carries no guarantee of identity, purity, or sterility, and the peptide is a common target for counterfeit product.",
   ],
   safety: [
     "In the reported studies and in clinical use, Epithalon has generally been described as well tolerated, with no consistent pattern of serious toxicity at the doses used. Reported effects are typically mild and self-limiting.",
-    "Because the human safety database is small and comes largely from one research tradition, we screen carefully before prescribing and monitor throughout a course. As with any peptide, the most important safety principle is source control — a pharmacy-compounded product from a licensed 503A/503B pharmacy is a fundamentally different risk profile than a research vial of unknown origin. Telomerase activation is also a theoretical concern in the setting of active cancer.",
+    "Because the human safety database is small and comes largely from one research tradition, we screen carefully before prescribing and monitor throughout a course. As with any peptide, the most important safety principle is source control: a pharmacy-compounded product from a licensed 503A/503B pharmacy is a fundamentally different risk profile than a research vial of unknown origin. Telomerase activation is also a theoretical concern in the setting of active cancer.",
   ],
   commonSideEffects: [
     "Transient injection-site irritation, redness, or soreness",
@@ -67,17 +67,17 @@ export const EPITHALON: MoleculeConfig = {
     {
       question: "Is Epithalon FDA-approved?",
       answer:
-        "No. Epithalon is not an FDA-approved drug. In the United States it is available only as a pharmacy-compounded preparation prescribed under physician supervision. Strong Health works exclusively with licensed 503A and 503B compounding pharmacies — never research-only or gray-market product.",
+        "No. Epithalon is not an FDA-approved drug. In the United States it is available only as a pharmacy-compounded preparation prescribed under physician supervision. Strong Health works exclusively with licensed 503A and 503B compounding pharmacies, never research-only or gray-market product.",
     },
     {
       question: "Does Epithalon really lengthen telomeres?",
       answer:
-        "Laboratory studies have reported that Epithalon can activate telomerase and lengthen telomeres in human cells, which is the basis for the interest in it. Whether that translates into meaningful anti-aging effects in healthy people is not established — the human evidence is preliminary and has not been widely replicated, so we describe it honestly as promising but unproven.",
+        "Laboratory studies have reported that Epithalon can activate telomerase and lengthen telomeres in human cells, which is the basis for the interest in it. Whether that translates into meaningful anti-aging effects in healthy people is not established. The human evidence is preliminary and has not been widely replicated, so we describe it honestly as promising but unproven.",
     },
     {
       question: "What is the difference between Epithalon and Epitalon?",
       answer:
-        "None — they are two spellings of the same synthetic tetrapeptide (Ala-Glu-Asp-Gly), also called the AEDG peptide. It is a short, stable analog of Epithalamin, a natural pineal-gland extract studied in Russia.",
+        "No difference. They are two spellings of the same synthetic tetrapeptide (Ala-Glu-Asp-Gly), also called the AEDG peptide. It is a short, stable analog of Epithalamin, a natural pineal-gland extract studied in Russia.",
     },
     {
       question: "How is Epithalon taken?",
@@ -108,5 +108,5 @@ export const EPITHALON: MoleculeConfig = {
     },
   ],
   regulatoryNote:
-    "Epithalon is not an FDA-approved medication. Content on this page is clinical context for physician-supervised, pharmacy-compounded use — not a dosing guide or a substitute for medical advice. The evidence base is preliminary and not widely replicated.",
+    "Epithalon is not an FDA-approved medication. Content on this page is clinical context for physician-supervised, pharmacy-compounded use, not a dosing guide or a substitute for medical advice. The evidence base is preliminary and not widely replicated.",
 };

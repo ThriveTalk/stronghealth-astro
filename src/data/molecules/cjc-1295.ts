@@ -10,24 +10,24 @@ export const CJC_1295: MoleculeConfig = {
   metaDescription:
     "CJC-1295 is a GHRH analog studied to raise natural growth hormone and IGF-1 for body composition, recovery, and sleep. See how Strong Health prescribes it.",
   tagline:
-    "A synthetic growth-hormone-releasing hormone (GHRH) analog studied for its ability to increase the body's own pulsatile release of growth hormone and IGF-1 — used in clinical practice for body composition, recovery, and sleep quality.",
+    "A synthetic growth-hormone-releasing hormone (GHRH) analog studied for its ability to increase the body's own pulsatile release of growth hormone and IGF-1, used in clinical practice for body composition, recovery, and sleep quality.",
   primaryUse: "Growth-hormone support for body composition, recovery, and sleep",
   datePublishedISO: "2026-07-18",
   dateModifiedISO: "2026-07-18",
   whatItIs: [
-    "CJC-1295 is a synthetic analog of growth-hormone-releasing hormone (GHRH), the signal your hypothalamus normally uses to tell the pituitary gland to release growth hormone. It is built on the first 29 amino acids of natural GHRH — the fragment that carries its biological activity — with substitutions that make it far more stable than the native hormone, which the body breaks down within minutes.",
+    "CJC-1295 is a synthetic analog of growth-hormone-releasing hormone (GHRH), the signal your hypothalamus normally uses to tell the pituitary gland to release growth hormone. It is built on the first 29 amino acids of natural GHRH, the fragment that carries its biological activity, with substitutions that make it far more stable than the native hormone, which the body breaks down within minutes.",
     "Two forms are commonly discussed. The plain modified sequence, often called Modified GRF (1-29) or mod-GRF 1-29, is short-acting. The version with a Drug Affinity Complex (\"CJC-1295 DAC\") binds to albumin in the bloodstream, extending its half-life to roughly a week and raising baseline GH output over a longer window.",
     "CJC-1295 is not an FDA-approved drug. In the United States it is available only as a pharmacy-compounded preparation prescribed under physician supervision; it is frequently paired with a growth-hormone secretagogue such as Ipamorelin, which works through a complementary pathway.",
   ],
   mechanism: [
-    "CJC-1295 binds to GHRH receptors on the pituitary and stimulates the gland to synthesize and release growth hormone. Crucially, it amplifies the body's own signaling rather than replacing it — the GH is still released in pulses, and downstream feedback loops remain in play, which is a meaningfully different physiology than injecting recombinant growth hormone directly.",
+    "CJC-1295 binds to GHRH receptors on the pituitary and stimulates the gland to synthesize and release growth hormone. Crucially, it amplifies the body's own signaling rather than replacing it. The GH is still released in pulses, and downstream feedback loops remain in play, which is a meaningfully different physiology than injecting recombinant growth hormone directly.",
     "The rise in growth hormone in turn drives the liver to produce insulin-like growth factor 1 (IGF-1), the main mediator of GH's effects on muscle protein synthesis, fat metabolism, and tissue repair. The DAC version sustains this elevation over days; the non-DAC form produces a sharper, shorter pulse that more closely mimics natural secretion.",
     "Because it acts \"upstream\" and preserves pulsatility, CJC-1295 is often combined with a ghrelin-mimetic secretagogue like Ipamorelin: the GHRH analog raises the amplitude of each GH pulse while the secretagogue increases pulse frequency, and the two together produce a larger, more physiologic GH release than either alone.",
   ],
   usedFor: [
     {
       heading: "Body composition & muscle",
-      desc: "The most common reason patients ask about CJC-1295 — supporting lean muscle and a lower body-fat percentage in active adults through a sustained, physiologic rise in GH and IGF-1.",
+      desc: "The most common reason patients ask about CJC-1295: support for lean muscle and a lower body-fat percentage in active adults through a sustained, physiologic rise in GH and IGF-1.",
     },
     {
       heading: "Recovery & tissue repair",
@@ -44,13 +44,13 @@ export const CJC_1295: MoleculeConfig = {
   ],
   evidence: [
     "The clearest human data come from early pharmacology studies of CJC-1295 DAC. In healthy adults, single subcutaneous doses produced sustained, dose-dependent increases in growth hormone and IGF-1 lasting up to about two weeks, confirming that the albumin-binding design does prolong activity as intended [1][2].",
-    "Beyond those pharmacodynamic studies, high-quality clinical trials measuring hard outcomes — muscle mass, strength, fat loss, or long-term safety — are limited. Much of the enthusiasm rests on the well-established biology of the GH/IGF-1 axis rather than on large randomized trials of CJC-1295 itself, and one early development program was discontinued after a safety signal, which is part of why it never reached approval [1][3].",
+    "Beyond those pharmacodynamic studies, high-quality clinical trials measuring hard outcomes such as muscle mass, strength, fat loss, or long-term safety are limited. Much of the enthusiasm rests on the well-established biology of the GH/IGF-1 axis rather than on large randomized trials of CJC-1295 itself, and one early development program was discontinued after a safety signal, which is part of why it never reached approval [1][3].",
     "We present this honestly. CJC-1295 reliably raises GH and IGF-1 in humans, which is a real and measurable effect; what is far less certain is how those changes translate into the body-composition and longevity benefits patients hope for. That gap between mechanism and proven outcome is exactly why it belongs under physician supervision with monitoring, not casual use.",
   ],
   dosingContext: [
     "CJC-1295 is given by subcutaneous injection. The non-DAC (mod-GRF 1-29) form is typically dosed more frequently and often timed before sleep or paired with Ipamorelin, while the DAC form is dosed less often because of its longer half-life. Doses are expressed in micrograms and individualized rather than fixed.",
-    "Because GH secretion is blunted by food — particularly carbohydrate and fat — protocols in clinical use often specify a fasting window around the injection. These are the kinds of details a prescriber tailors to your goals, labs, and response; we describe them as clinical context, not as a self-dosing guide.",
-    "CJC-1295 obtained outside a prescription — research-only vials or gray-market powders — carries no assurance of identity, purity, dose accuracy, or sterility, and mislabeled GH-peptide products are common. Source control is a core part of using this compound safely.",
+    "Because GH secretion is blunted by food, particularly carbohydrate and fat, protocols in clinical use often specify a fasting window around the injection. These are the kinds of details a prescriber tailors to your goals, labs, and response; we describe them as clinical context, not as a self-dosing guide.",
+    "CJC-1295 obtained outside a prescription, whether research-only vials or gray-market powders, carries no assurance of identity, purity, dose accuracy, or sterility, and mislabeled GH-peptide products are common. Source control is a core part of using this compound safely.",
   ],
   safety: [
     "The most frequently reported effects are related to the injection and to the GH rise itself: injection-site reactions, transient flushing or warmth, headache, and fluid retention that can show up as mild swelling or joint achiness. These are usually dose-dependent and improve when the dose is adjusted.",
@@ -72,20 +72,20 @@ export const CJC_1295: MoleculeConfig = {
     "Known hypersensitivity to the compound",
   ],
   howWePrescribe: [
-    "At Strong Health, CJC-1295 is prescribed only after a physician evaluation — in person at our Miami (Brickell) clinic or by telehealth — that includes your goals, health history, and baseline labs such as IGF-1 and glucose. It is dispensed exclusively through licensed 503A or 503B compounding pharmacies under physician orders; we do not sell or recommend research-only product.",
+    "At Strong Health, CJC-1295 is prescribed only after a physician evaluation, in person at our Miami (Brickell) clinic or by telehealth, that includes your goals, health history, and baseline labs such as IGF-1 and glucose. It is dispensed exclusively through licensed 503A or 503B compounding pharmacies under physician orders; we do not sell or recommend research-only product.",
     "We most often use CJC-1295 as part of a growth-hormone-support protocol rather than in isolation, frequently combined with Ipamorelin so the two peptides raise GH pulse amplitude and frequency together. Timing, form (DAC vs. non-DAC), and dose are matched to your goals and tolerance.",
-    "Follow-up is built in. Your physician rechecks IGF-1 and relevant metabolic markers at scheduled intervals, reviews how you feel and respond, and adjusts, pauses, or stops treatment accordingly. The aim is a physiologic, monitored increase — not the highest possible GH level.",
+    "Follow-up is built in. Your physician rechecks IGF-1 and relevant metabolic markers at scheduled intervals, reviews how you feel and respond, and adjusts, pauses, or stops treatment accordingly. The aim is a physiologic, monitored increase, not the highest possible GH level.",
   ],
   faqs: [
     {
       question: "Is CJC-1295 FDA-approved?",
       answer:
-        "No. CJC-1295 is not an FDA-approved drug, and an early development program was discontinued. In the United States it is available only as a pharmacy-compounded preparation prescribed under physician supervision. Strong Health works exclusively with licensed 503A and 503B compounding pharmacies — never research-only or gray-market product.",
+        "No. CJC-1295 is not an FDA-approved drug, and an early development program was discontinued. In the United States it is available only as a pharmacy-compounded preparation prescribed under physician supervision. Strong Health works exclusively with licensed 503A and 503B compounding pharmacies, never research-only or gray-market product.",
     },
     {
       question: "What's the difference between CJC-1295 with and without DAC?",
       answer:
-        "The DAC (Drug Affinity Complex) version binds to albumin in your blood, which extends its half-life to about a week and raises baseline growth hormone over a longer window. The non-DAC form — Modified GRF (1-29), or mod-GRF 1-29 — is short-acting and produces a sharper, more natural GH pulse, which is why it is often dosed at night or paired with Ipamorelin.",
+        "The DAC (Drug Affinity Complex) version binds to albumin in your blood, which extends its half-life to about a week and raises baseline growth hormone over a longer window. The non-DAC form, Modified GRF (1-29), or mod-GRF 1-29, is short-acting and produces a sharper, more natural GH pulse, which is why it is often dosed at night or paired with Ipamorelin.",
     },
     {
       question: "How is CJC-1295 different from taking growth hormone (HGH)?",
@@ -105,7 +105,7 @@ export const CJC_1295: MoleculeConfig = {
     {
       question: "Is CJC-1295 safe?",
       answer:
-        "Short-term side effects are usually mild — injection-site reactions, flushing, headache, and fluid retention. The bigger considerations are effects on blood sugar and the limited long-term safety data, so we check IGF-1 and glucose, screen for contraindications such as active cancer, use only pharmacy-grade product, and monitor throughout treatment.",
+        "Short-term side effects are usually mild: injection-site reactions, flushing, headache, and fluid retention. The bigger considerations are effects on blood sugar and the limited long-term safety data, so we check IGF-1 and glucose, screen for contraindications such as active cancer, use only pharmacy-grade product, and monitor throughout treatment.",
     },
   ],
   citations: [
@@ -126,5 +126,5 @@ export const CJC_1295: MoleculeConfig = {
     },
   ],
   regulatoryNote:
-    "CJC-1295 is not an FDA-approved medication. Content on this page is clinical context for physician-supervised, pharmacy-compounded use — not a dosing guide or a substitute for medical advice.",
+    "CJC-1295 is not an FDA-approved medication. Content on this page is clinical context for physician-supervised, pharmacy-compounded use, not a dosing guide or a substitute for medical advice.",
 };

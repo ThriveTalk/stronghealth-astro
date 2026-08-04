@@ -92,12 +92,12 @@ const FAQS = [
   {
     question: `Do I need a doctor's referral for a DEXA scan in ${city}?`,
     answer:
-      `You don't need to bring your own referral — the physician order is part of the service. A Strong Health physician orders your body composition DEXA scan at a partner imaging center near you in ${metro}. If you're already a Strong Health patient on a TRT, peptide, or weight loss protocol, the scan is folded into your treatment plan and your physician reviews the results with you at your next telehealth visit.`,
+      `You don't need to bring your own referral; the physician order is part of the service. A Strong Health physician orders your body composition DEXA scan at a partner imaging center near you in ${metro}. If you're already a Strong Health patient on a TRT, peptide, or weight loss protocol, the scan is folded into your treatment plan and your physician reviews the results with you at your next telehealth visit.`,
   },
   {
     question: "How should I prepare for my DEXA scan?",
     answer:
-      "Wear comfortable clothing without metal (no zippers, underwire bras, or metal buttons). Avoid eating a large meal within 2 hours of the scan, hydrate normally, skip calcium supplements for 24 hours, and avoid intense exercise the night before. Consistency between scans matters more than perfect prep — try to repeat the same conditions for follow-up scans.",
+      "Wear comfortable clothing without metal (no zippers, underwire bras, or metal buttons). Avoid eating a large meal within 2 hours of the scan, hydrate normally, skip calcium supplements for 24 hours, and avoid intense exercise the night before. Consistency between scans matters more than perfect prep, so try to repeat the same conditions for follow-up scans.",
   },
   {
     question: "How often should I get a DEXA scan?",
@@ -112,7 +112,7 @@ const FAQS = [
   {
     question: "Is the DEXA scan safe?",
     answer:
-      "Yes. A DEXA scan uses an extremely low dose of ionizing radiation — roughly 1/10th of a standard chest X-ray and less than a single day of natural background exposure. It's FDA-approved for repeated use and considered one of the safest medical imaging technologies available.",
+      "Yes. A DEXA scan uses an extremely low dose of ionizing radiation, roughly 1/10th of a standard chest X-ray and less than a single day of natural background exposure. It's FDA-approved for repeated use and considered one of the safest medical imaging technologies available.",
   },
 ];
 
@@ -136,7 +136,7 @@ const whatYouGetItems = [
 const useCases = [
   {
     title: "Muscle-growth protocols",
-    desc: "Verify that a GH-secretagogue protocol is producing real lean mass gains and reducing fat — not just moving the scale.",
+    desc: "Verify that a GH-secretagogue protocol is producing real lean mass gains and reducing fat, rather than just moving the scale.",
     href: "/peptides-for-muscle-growth/",
     cta: "Peptides for muscle growth →",
   },
@@ -164,7 +164,7 @@ const steps = [
   {
     num: "01",
     title: `Book Your ${city} Scan`,
-    desc: `Text or call ${phone}. We schedule your scan at a partner imaging center near you in ${metro} — same-week appointments are typically available.`,
+    desc: `Text or call ${phone}. We schedule your scan at a partner imaging center near you in ${metro}. Same-week appointments are typically available.`,
     color: "#C9A84C",
   },
   {
@@ -263,7 +263,7 @@ const steps = [
         <p class="text-[17px] text-muted leading-relaxed max-w-[600px] mb-8">
           Book a precise, physician-ordered DEXA scan at a partner imaging center near you in
           {" " + metro}. See exactly how much lean muscle, body fat, visceral fat, and bone
-          density you carry — broken down region by region — with your results reviewed by a
+          density you carry, broken down region by region, with your results reviewed by a
           Strong Health physician.
         </p>
 
@@ -301,7 +301,7 @@ const steps = [
               The scale lies. <span class="text-gold">DEXA tells the truth.</span>
             </h2>
             <p class="text-[15px] text-muted leading-[1.7] mb-4">
-              {city} is full of body composition gimmicks — InBody scales at the gym, calipers
+              {city} is full of body composition gimmicks: InBody scales at the gym, calipers
               at "longevity" clinics, smart scales at home. None of them come close to the
               precision of a clinical DEXA scan.
             </p>
@@ -446,7 +446,7 @@ const steps = [
         <FAQSection items={FAQS} />
         <FadeIn delay={300}>
           <p class="text-[13px] text-muted text-center mt-4">
-            Want a deeper dive on the science? Read our full <a href="/dexa-scan/" class="text-gold hover:underline">guide to DEXA scans</a>.
+            Want more detail on the science? Read our full <a href="/dexa-scan/" class="text-gold hover:underline">guide to DEXA scans</a>.
           </p>
         </FadeIn>
       </div>
@@ -461,7 +461,8 @@ const steps = [
           </h2>
           <p class="text-[17px] text-muted leading-relaxed mb-8 max-w-[520px] mx-auto">
             The most accurate body composition test available, at a partner imaging center
-            near you. 15 minutes. No referral needed. Results reviewed by a physician.
+            near you. The scan takes 15 minutes, you don't need a referral, and a Strong
+            Health physician reviews your results with you.
           </p>
           <div class="flex items-center justify-center gap-2 mb-6 text-[13px] text-muted">
             <Icon name="phone" size={14} class="text-gold" />

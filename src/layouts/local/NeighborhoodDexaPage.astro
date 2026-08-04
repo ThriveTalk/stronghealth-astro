@@ -308,7 +308,7 @@ const medicalClinicSchema = {
             {hood.name} to <span class="text-gold">{clinic.streetAddress}</span>
           </h2>
           <p class="text-[15px] text-muted max-w-[560px] mx-auto">
-            Our {clinicArea} clinic is {hood.distance} from {hood.name} — about {hood.driveTime} door
+            Our {clinicArea} clinic is {hood.distance} from {hood.name}, about {hood.driveTime} door
             to door. Serving ZIP {hood.zips.length > 1 ? "codes" : "code"} {hood.zips.join(", ")}.
           </p>
         </FadeIn>
@@ -430,8 +430,8 @@ const medicalClinicSchema = {
         <FadeIn>
           <p class="text-[15px] text-muted leading-[1.8]">
             Every scan includes total and regional body fat, pound-precise lean mass by limb,
-            visceral fat, bone density (T-score and Z-score), and left-right symmetry analysis —
-            see the full report breakdown on the{" "}
+            visceral fat, bone density (T-score and Z-score), and left-right symmetry analysis.
+            See the full report breakdown on the{" "}
             <a href={city.hubPath} class="text-gold hover:underline">DEXA Scan {city.cityName}</a> page,
             or the science behind it in our{" "}
             <a href="/dexa-scan/" class="text-gold hover:underline">complete DEXA guide</a>.
