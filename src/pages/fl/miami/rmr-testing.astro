@@ -1,0 +1,668 @@
+---
+// /fl/miami/rmr-testing/ — city conversion page for RMR / metabolic testing.
+// Primary conversion is test bookings; secondary is qualification into the
+// GLP-1/peptide programs (the "who needs this" section carries that bridge).
+// Template note: only the intro sentence, cost/prep section, locations module,
+// and one local proof point are Miami-specific — everything else stays
+// identical when this page is cloned for future cities.
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import PageShell from "../../../components/shared/PageShell.astro";
+import JsonLd from "../../../components/seo/JsonLd.astro";
+import {
+  articleSchema,
+  breadcrumbSchema,
+  faqPageSchema,
+  medicalWebPageSchema,
+} from "../../../components/seo/schemas";
+import FadeIn from "../../../components/shared/FadeIn.astro";
+import Btn from "../../../components/shared/Btn.astro";
+import Tag from "../../../components/shared/Tag.astro";
+import Icon from "../../../components/shared/Icon.astro";
+import AuthorByline from "../../../components/shared/AuthorByline.astro";
+import { MAHADEV_MUKHERJEE, DR_ANGEL_RIVERA } from "../../../data/articleAuthors";
+import {
+  MIAMI_BRICKELL_CLINIC,
+  MIAMI_BRICKELL_FULL_ADDRESS,
+  STRONG_HEALTH_PHONE_DISPLAY,
+  STRONG_HEALTH_PHONE_HREF,
+} from "../../../data/miamiClinic";
+import { BOOKING_SMS_NUMBER } from "../../../lib/booking";
+
+const CLINIC = MIAMI_BRICKELL_CLINIC;
+const FULL_ADDRESS = MIAMI_BRICKELL_FULL_ADDRESS;
+const PUBLISH_DATE = "2026-08-04";
+const MAPS_QUERY = encodeURIComponent(`${CLINIC.name}, ${FULL_ADDRESS}`);
+const SITE_URL = "https://www.stronghealth.com";
+const PAGE_PATH = "/fl/miami/rmr-testing/";
+
+const CTA_PHONE = STRONG_HEALTH_PHONE_DISPLAY;
+const TEL_HREF = STRONG_HEALTH_PHONE_HREF;
+const BOOKING_SMS_HREF = `sms:${BOOKING_SMS_NUMBER}?&body=${encodeURIComponent(
+  "I would like to book an RMR test with Strong Health",
+)}`;
+
+const breadcrumbs = [
+  { name: "Home", path: "/" },
+  { name: "Florida", path: "/fl/" },
+  { name: "RMR Testing Miami", path: PAGE_PATH },
+];
+
+// RMR vs. BMR vs. TDEE — the "what is rmr" section table. Ahrefs parents
+// "what is rmr" to "bmr", so the comparison sub-section is required to compete.
+const TERM_ROWS = [
+  {
+    term: "RMR",
+    name: "Resting Metabolic Rate",
+    meaning: "Calories your body burns at rest during a normal day",
+    how: "Measured directly by a breath test (indirect calorimetry)",
+  },
+  {
+    term: "BMR",
+    name: "Basal Metabolic Rate",
+    meaning: "Calories burned under strict lab conditions after an overnight stay",
+    how: "Rarely measured outside research; slightly lower than RMR",
+  },
+  {
+    term: "TDEE",
+    name: "Total Daily Energy Expenditure",
+    meaning: "RMR plus everything else: activity, exercise, digestion",
+    how: "Calculated from measured RMR and your activity level",
+  },
+];
+
+const PERSONAS = [
+  {
+    icon: "trending-down",
+    title: "The weight-loss plateau",
+    desc: "You're eating what the app says and the scale won't move. An RMR test tells you whether your target is wrong or your adherence is, which are two very different problems.",
+  },
+  {
+    icon: "syringe",
+    title: "GLP-1 patients",
+    desc: "On semaglutide or tirzepatide, appetite drops so fast that many patients under-eat protein and lose muscle along with fat. Measured RMR anchors a calorie and protein floor that protects lean mass through the cut.",
+  },
+  {
+    icon: "dumbbell",
+    title: "Athletes cutting weight",
+    desc: "A cut based on a guessed RMR risks cutting into performance. Measuring it lets you drop fat on the smallest deficit that works.",
+  },
+  {
+    icon: "heart-pulse",
+    title: "Post-menopause changes",
+    desc: "Hormonal shifts change energy expenditure in ways formulas don't capture. A measurement replaces the frustration of \"nothing works anymore\" with a number you can plan around.",
+  },
+];
+
+const FAQS = [
+  {
+    question: "How accurate is RMR testing?",
+    answer:
+      "Indirect calorimetry is the clinical reference method for measuring resting energy expenditure, with test-retest variation of roughly 3–5% under good conditions. Prediction formulas like Mifflin-St Jeor miss by 10% or more in a large share of people, and by 20–30% in people with a long dieting history or unusual body composition.",
+  },
+  {
+    question: "Can medications affect my RMR results?",
+    answer:
+      "Yes. Stimulants, thyroid medication, beta-blockers, and GLP-1 drugs can all shift measured RMR. That's an argument for testing, not against it: the test captures your metabolism as it actually runs on your current medications, which is exactly the number your nutrition plan should be built on. Tell us what you take and we'll note it in your result.",
+  },
+  {
+    question: "Is this the same as a metabolic blood panel?",
+    answer:
+      "No. A metabolic blood panel measures markers in your blood, like glucose and electrolytes. An RMR test measures the oxygen you consume and the carbon dioxide you produce to calculate how many calories you burn at rest. They answer different questions and complement each other.",
+  },
+  {
+    question: "How is this different from what my Apple Watch says?",
+    answer:
+      "Wearables estimate calorie burn from heart rate and motion, run through population formulas, which is the same kind of estimate an RMR test exists to replace. Lab studies consistently find wearable energy-expenditure error rates of 20% or more. A calorimeter measures your actual gas exchange rather than inferring it.",
+  },
+  {
+    question: "Do I need a doctor's referral for an RMR test in Miami?",
+    answer:
+      `No referral is needed. Book directly with our Brickell clinic by phone or text at ${CTA_PHONE}, and you'll have your measured RMR the same visit.`,
+  },
+  {
+    question: "How should I prepare for the test?",
+    answer:
+      "Fast for 12 hours beforehand (water is fine), skip caffeine and alcohol that day, and avoid exercise for 24 hours before your appointment. Wear whatever is comfortable. Most patients book a morning slot so the fast happens overnight.",
+  },
+];
+
+const clinicSchema = {
+  "@context": "https://schema.org",
+  "@type": "MedicalBusiness",
+  "@id": `${SITE_URL}${PAGE_PATH}#clinic`,
+  name: `${CLINIC.name} — RMR Testing`,
+  url: `${SITE_URL}${PAGE_PATH}`,
+  telephone: CLINIC.phoneTel,
+  image: `${SITE_URL}/opengraph.jpg`,
+  parentOrganization: { "@id": `${SITE_URL}/#organization` },
+  branchOf: { "@id": CLINIC.schemaId },
+  sameAs: [
+    "https://www.trustpilot.com/review/stronghealth.com",
+    `https://www.google.com/maps/search/?api=1&query=${MAPS_QUERY}`,
+  ],
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: CLINIC.streetAddress,
+    addressLocality: CLINIC.city,
+    addressRegion: CLINIC.state,
+    postalCode: CLINIC.postalCode,
+    addressCountry: "US",
+  },
+  geo: { "@type": "GeoCoordinates", latitude: CLINIC.lat, longitude: CLINIC.lng },
+  areaServed: { "@type": "City", name: "Miami" },
+  medicalSpecialty: ["PreventiveMedicine"],
+  availableService: [
+    {
+      "@type": "MedicalTest",
+      name: "Resting Metabolic Rate (RMR) Test",
+      description:
+        "Indirect calorimetry breath test measuring resting energy expenditure, with a physician-reviewed calorie and protein target based on the result.",
+    },
+  ],
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: CLINIC.hoursWeekday.opens,
+      closes: CLINIC.hoursWeekday.closes,
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Saturday"],
+      opens: CLINIC.hoursSaturday.opens,
+      closes: CLINIC.hoursSaturday.closes,
+    },
+  ],
+  priceRange: "$$",
+};
+
+const medicalTestSchema = {
+  "@context": "https://schema.org",
+  "@type": "MedicalTest",
+  name: "Resting Metabolic Rate (RMR) Test",
+  alternateName: ["Metabolic Rate Test", "Indirect Calorimetry", "Metabolism Test"],
+  description:
+    "A 15-minute breath test that measures oxygen consumed and carbon dioxide produced at rest to calculate resting metabolic rate, the calories the body burns at rest. It replaces formula estimates that can miss by 20–30%.",
+  usesDevice: { "@type": "MedicalDevice", name: "Indirect calorimeter" },
+  usedToDiagnose: {
+    "@type": "MedicalCondition",
+    name: "Metabolic adaptation / abnormal resting energy expenditure",
+  },
+};
+---
+
+<BaseLayout
+  title="Resting Metabolic Rate (RMR) Test in Miami"
+  description="Stop guessing your calories. A 15-minute RMR test in Miami measures what your body actually burns at rest, not a formula estimate. Book your test today."
+  path={PAGE_PATH}
+  smsContext="RMR testing in Miami, Florida"
+>
+  <PageShell>
+    <JsonLd schema={clinicSchema} />
+    <JsonLd schema={medicalTestSchema} />
+    <JsonLd
+      schema={medicalWebPageSchema({
+        name: "Resting Metabolic Rate (RMR) Test in Miami",
+        description:
+          "RMR testing in Miami at Strong Health's Brickell clinic. A 15-minute indirect calorimetry breath test measures your real resting metabolic rate, with a physician-reviewed calorie target.",
+        url: PAGE_PATH,
+        lastReviewed: PUBLISH_DATE,
+        reviewedBy: DR_ANGEL_RIVERA,
+      })}
+    />
+    <JsonLd
+      schema={articleSchema({
+        headline: "RMR Testing in Miami, FL: Measure Your Real Metabolism",
+        description:
+          "RMR testing in Miami at Strong Health's Brickell clinic. A 15-minute indirect calorimetry breath test measures your real resting metabolic rate, with a physician-reviewed calorie target.",
+        author: MAHADEV_MUKHERJEE,
+        reviewer: DR_ANGEL_RIVERA,
+        publishDate: PUBLISH_DATE,
+        url: PAGE_PATH,
+      })}
+    />
+    <JsonLd schema={faqPageSchema(FAQS)} />
+    <JsonLd schema={breadcrumbSchema(breadcrumbs)} />
+
+    {/* Breadcrumbs */}
+    <nav aria-label="Breadcrumb" class="px-8 pt-4 pb-0">
+      <div class="max-w-[1000px] mx-auto">
+        <ol class="flex items-center gap-1.5 text-[12px] text-muted">
+          {breadcrumbs.map((crumb, i) => {
+            const isLast = i === breadcrumbs.length - 1;
+            return (
+              <li class="flex items-center gap-1.5">
+                {i > 0 && <Icon name="chevron-right" size={12} class="text-text-subtle" />}
+                {isLast ? (
+                  <span class="text-gold font-semibold">{crumb.name}</span>
+                ) : (
+                  <a href={crumb.path} class="hover:text-gold transition-colors">
+                    {crumb.name}
+                  </a>
+                )}
+              </li>
+            );
+          })}
+        </ol>
+      </div>
+    </nav>
+
+    {/* Hero / Intro */}
+    <section class="relative px-8 pt-12 pb-20 overflow-hidden border-b border-white/5">
+      <div aria-hidden="true" class="hidden md:block absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-navy/20 rounded-full blur-[100px] pointer-events-none"></div>
+      <div aria-hidden="true" class="hidden md:block absolute bottom-0 right-1/4 translate-x-1/2 translate-y-1/4 w-[500px] h-[500px] bg-gold/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+      <div class="max-w-[1000px] mx-auto relative z-10">
+        <Tag>Miami RMR Testing · Brickell Clinic · 15-Minute Breath Test</Tag>
+
+        <h1 class="text-4xl md:text-[48px] font-black text-cream leading-[1.08] mt-6 mb-5 max-w-[820px] tracking-[-1.5px]">
+          RMR Testing in Miami, FL: <span class="text-gold">Measure Your Real Metabolism</span>
+        </h1>
+
+        <p class="text-[17px] text-muted leading-relaxed max-w-[640px] mb-4">
+          The calorie target in your fitness app is a formula guess, and for a lot of people
+          it misses by 20–30%. A resting metabolic rate test measures what your body actually
+          burns — a 15-minute breath test at our Brickell clinic, with your number in hand
+          before you leave.
+        </p>
+
+        <Btn trackLead placement="hero" href={BOOKING_SMS_HREF}>Book Your RMR Test →</Btn>
+        <div class="mt-4 text-xs text-muted">
+          15-minute test · Results the same visit · No referral needed
+        </div>
+      </div>
+    </section>
+
+    {/* Byline */}
+    <section class="px-8 pt-2 pb-6 bg-surface">
+      <div class="max-w-[800px] mx-auto">
+        <AuthorByline
+          author={MAHADEV_MUKHERJEE}
+          reviewer={DR_ANGEL_RIVERA}
+          publishDate={PUBLISH_DATE}
+        />
+      </div>
+    </section>
+
+    {/* What is RMR */}
+    <section class="px-8 py-16 bg-surface-card border-b border-white/5">
+      <div class="max-w-[800px] mx-auto">
+        <FadeIn>
+          <Tag>The Basics</Tag>
+          <h2 class="text-[30px] font-extrabold text-cream leading-[1.15] mt-4 mb-4">
+            What is <span class="text-gold">resting metabolic rate?</span>
+          </h2>
+          <p class="text-[15px] text-muted leading-[1.7] mb-4">
+            Resting metabolic rate (RMR) is the number of calories your body burns at complete
+            rest: keeping your heart beating, lungs breathing, brain running, and temperature
+            stable. It accounts for 60–75% of everything you burn in a day, which makes it the
+            foundation every calorie target is built on.
+          </p>
+          <p class="text-[15px] text-muted leading-[1.7] mb-5">
+            RMR gets tangled up with two related terms, so here's the short version:
+          </p>
+          <div class="overflow-x-auto rounded-xl border border-white/10 mb-4">
+            <table class="w-full text-left text-sm min-w-[600px]">
+              <caption class="sr-only">RMR vs. BMR vs. TDEE compared</caption>
+              <thead>
+                <tr class="bg-white/[0.04] text-cream text-xs uppercase tracking-wider">
+                  <th scope="col" class="px-4 py-3 font-semibold">Term</th>
+                  <th scope="col" class="px-4 py-3 font-semibold">Stands for</th>
+                  <th scope="col" class="px-4 py-3 font-semibold">What it covers</th>
+                  <th scope="col" class="px-4 py-3 font-semibold">How you get it</th>
+                </tr>
+              </thead>
+              <tbody class="text-muted divide-y divide-white/5">
+                {TERM_ROWS.map((r) => (
+                  <tr>
+                    <td class="px-4 py-3 font-bold text-gold whitespace-nowrap">{r.term}</td>
+                    <td class="px-4 py-3 text-cream-muted whitespace-nowrap">{r.name}</td>
+                    <td class="px-4 py-3">{r.meaning}</td>
+                    <td class="px-4 py-3">{r.how}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p class="text-[14px] text-muted leading-[1.7]">
+            In practice, RMR and BMR differ by only a few percent. RMR is the one that can be
+            measured in a regular clinic visit, which is why it's the number worth testing.
+          </p>
+        </FadeIn>
+      </div>
+    </section>
+
+    {/* Why calculators get it wrong */}
+    <section class="px-8 py-16 bg-surface border-b border-white/5">
+      <div class="max-w-[800px] mx-auto">
+        <FadeIn>
+          <Tag>The Problem</Tag>
+          <h2 class="text-[30px] font-extrabold text-cream leading-[1.15] mt-4 mb-4">
+            Why calorie calculators <span class="text-gold">get it wrong</span>
+          </h2>
+          <p class="text-[15px] text-muted leading-[1.7] mb-4">
+            Every online calculator and fitness app uses a prediction equation (usually
+            Mifflin-St Jeor) built from population averages of height, weight, age, and sex.
+            Those equations work fine for the average person. The problem is how many people
+            aren't average.
+          </p>
+          <p class="text-[15px] text-muted leading-[1.7] mb-4">
+            Years of on-and-off dieting can suppress your metabolism below what the formula
+            predicts, a phenomenon called metabolic adaptation, documented dramatically in
+            studies of former "Biggest Loser" contestants. Muscle mass pushes it the other way:
+            two people at the same height and weight can burn very different amounts at rest.
+            Age, thyroid status, and medications shift it further.
+          </p>
+          <p class="text-[15px] text-muted leading-[1.7]">
+            This is why "I eat 1,200 calories and don't lose weight" is often literally true.
+            If your real RMR is 400 calories below the formula estimate, the deficit you think
+            you're running doesn't exist. No amount of discipline fixes a target that was
+            wrong to begin with.
+          </p>
+        </FadeIn>
+      </div>
+    </section>
+
+    {/* How the test works */}
+    <section class="px-8 py-16 bg-surface-card border-b border-white/5">
+      <div class="max-w-[800px] mx-auto">
+        <FadeIn>
+          <Tag>The Test</Tag>
+          <h2 class="text-[30px] font-extrabold text-cream leading-[1.15] mt-4 mb-4">
+            How the RMR test works: <span class="text-gold">15 minutes of breathing</span>
+          </h2>
+          <p class="text-[15px] text-muted leading-[1.7] mb-4">
+            The test is indirect calorimetry, the same method used in clinical research. You
+            sit reclined in a quiet room and breathe normally through a mouthpiece (or mask)
+            for about 15 minutes while the calorimeter measures the oxygen you take in and
+            the carbon dioxide you breathe out. From that gas exchange, it calculates exactly
+            how many calories your body is burning at rest.
+          </p>
+          <p class="text-[15px] text-muted leading-[1.7]">
+            Unlike a wearable, the calorimeter doesn't infer anything from heart rate. It
+            measures your actual metabolism, in the unit you plan your nutrition in: calories
+            per day.
+          </p>
+        </FadeIn>
+      </div>
+    </section>
+
+    {/* Who needs it */}
+    <section class="px-8 py-16 bg-surface border-b border-white/5">
+      <div class="max-w-[1000px] mx-auto">
+        <FadeIn class="text-center mb-10">
+          <Tag>Who It's For</Tag>
+          <h2 class="text-[32px] font-extrabold text-cream mt-4 mb-3">
+            Who actually needs an <span class="text-gold">RMR test</span>
+          </h2>
+        </FadeIn>
+        <div class="grid md:grid-cols-2 gap-5">
+          {PERSONAS.map((p, i) => (
+            <FadeIn delay={i * 80}>
+              <div class="bg-surface-card rounded-2xl p-6 border border-white/10 h-full">
+                <div class="text-gold mb-4 p-3 rounded-xl bg-surface-raised border border-white/5 w-fit">
+                  <Icon name={p.icon} size={24} />
+                </div>
+                <h3 class="text-lg font-bold text-cream mb-3">{p.title}</h3>
+                <p class="text-[14px] text-muted leading-relaxed">{p.desc}</p>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+        <FadeIn delay={300}>
+          <div class="mt-8 rounded-2xl border border-gold/30 bg-gold/[0.04] p-6 md:p-7 max-w-[800px] mx-auto">
+            <h3 class="text-lg font-bold text-cream mb-2">On a GLP-1, or considering one?</h3>
+            <p class="text-[14px] text-muted leading-[1.7] mb-4">
+              This is the group where the test changes decisions the most. Rapid weight loss pulls
+              from muscle as well as fat, and lost muscle drags your metabolism down with it.
+              That's the classic setup for regain after the medication stops. A measured RMR at the
+              start of treatment, rechecked as you lose, lets your physician set a protein and
+              calorie floor that protects lean mass the whole way down. Strong Health runs
+              physician-supervised
+              <a href="/peptides-for-weight-loss/" class="text-gold hover:underline"> GLP-1 weight loss programs</a> from
+              our <a href="/fl/miami/peptide-therapy/" class="text-gold hover:underline">Miami clinic</a>, with RMR and
+              DEXA tracking built in.
+            </p>
+          </div>
+        </FadeIn>
+      </div>
+    </section>
+
+    {/* Reading your results */}
+    <section class="px-8 py-16 bg-surface-card border-b border-white/5">
+      <div class="max-w-[800px] mx-auto">
+        <FadeIn>
+          <Tag>Your Result</Tag>
+          <h2 class="text-[30px] font-extrabold text-cream leading-[1.15] mt-4 mb-4">
+            Reading your <span class="text-gold">RMR results</span>
+          </h2>
+          <p class="text-[15px] text-muted leading-[1.7] mb-4">
+            Your report shows your measured RMR in calories per day, alongside the range
+            predicted for your height, weight, age, and sex. Within about 10% of predicted
+            counts as typical; meaningfully below suggests metabolic adaptation or low lean
+            mass, and meaningfully above usually reflects more muscle than the formula
+            assumes.
+          </p>
+          <p class="text-[15px] text-muted leading-[1.7] mb-4">
+            The useful part is what happens next. Your measured RMR becomes the anchor for a
+            real daily calorie target: multiply by your activity level for maintenance, then
+            subtract a sane deficit (usually 300–500 calories) for fat loss. We also translate
+            it into a daily protein target, because holding onto muscle in a deficit is what
+            keeps your RMR from sliding as you lose.
+          </p>
+          <p class="text-[15px] text-muted leading-[1.7]">
+            You leave with numbers you can act on the same day.
+          </p>
+        </FadeIn>
+      </div>
+    </section>
+
+    {/* RMR + DEXA */}
+    <section class="px-8 py-16 bg-surface border-b border-white/5">
+      <div class="max-w-[800px] mx-auto">
+        <FadeIn>
+          <Tag>The Complete Picture</Tag>
+          <h2 class="text-[30px] font-extrabold text-cream leading-[1.15] mt-4 mb-4">
+            RMR + DEXA: <span class="text-gold">the complete picture</span>
+          </h2>
+          <p class="text-[15px] text-muted leading-[1.7] mb-4">
+            An RMR test tells you how much you burn; a DEXA scan tells you why. Lean mass is
+            the biggest driver of resting metabolism, so pairing the two turns one number
+            into a diagnosis. Low RMR with low lean mass means the fix is building muscle.
+            Low RMR with normal lean mass points to adaptation from dieting history, and the
+            plan changes accordingly.
+          </p>
+          <p class="text-[15px] text-muted leading-[1.7]">
+            Both tests run at the same Brickell clinic and are commonly booked as one visit,
+            about 35 minutes total, for a full metabolic baseline. See our
+            <a href="/fl/miami/dexascan/" class="text-gold hover:underline"> Miami DEXA scan page</a> for
+            what the body composition side covers.
+          </p>
+        </FadeIn>
+      </div>
+    </section>
+
+    {/* Cost + prep */}
+    <section class="px-8 py-16 bg-surface-card border-b border-white/5">
+      <div class="max-w-[800px] mx-auto">
+        <FadeIn>
+          <Tag>Cost & Prep</Tag>
+          <h2 class="text-[30px] font-extrabold text-cream leading-[1.15] mt-4 mb-4">
+            Cost and preparation <span class="text-gold">in Miami</span>
+          </h2>
+          <p class="text-[15px] text-muted leading-[1.7] mb-4">
+            RMR testing at our Brickell clinic uses transparent direct-pay pricing: most
+            patients pay well under $150, and bundled pricing with a DEXA scan brings the
+            per-test cost down further. Call <a href={TEL_HREF} class="text-gold hover:underline">{CTA_PHONE}</a> for
+            current pricing.
+          </p>
+          <p class="text-[15px] text-muted leading-[1.7] mb-2">Preparation is simple but matters for accuracy:</p>
+          <ul class="text-[15px] text-muted leading-[1.7] mb-4 list-disc pl-5 flex flex-col gap-1">
+            <li>Fast for 12 hours before the test (water is fine)</li>
+            <li>No caffeine or alcohol the day of the test</li>
+            <li>No exercise for 24 hours beforehand</li>
+            <li>Wear normal, comfortable clothes</li>
+          </ul>
+          <p class="text-[15px] text-muted leading-[1.7]">
+            Morning appointments make the fast painless: sleep, drive to Brickell, test, then
+            go get breakfast.
+          </p>
+        </FadeIn>
+      </div>
+    </section>
+
+    {/* Retesting cadence */}
+    <section class="px-8 py-16 bg-surface border-b border-white/5">
+      <div class="max-w-[800px] mx-auto">
+        <FadeIn>
+          <Tag>Tracking</Tag>
+          <h2 class="text-[30px] font-extrabold text-cream leading-[1.15] mt-4 mb-4">
+            How often to <span class="text-gold">retest</span>
+          </h2>
+          <p class="text-[15px] text-muted leading-[1.7] mb-4">
+            Your RMR is not a fixed trait — it moves as your weight, muscle mass, and
+            medications change. During an active cut or a GLP-1 protocol, retesting every
+            8–12 weeks catches metabolic slowdown early enough to adjust your calories before
+            a plateau sets in.
+          </p>
+          <p class="text-[15px] text-muted leading-[1.7]">
+            Outside of active weight change, an annual check is plenty. Repeat tests at the
+            same clinic under the same conditions (fasted, morning, no prior exercise) give
+            the cleanest trend line.
+          </p>
+        </FadeIn>
+      </div>
+    </section>
+
+    {/* Location + booking */}
+    <section class="px-8 py-16 bg-surface-card border-b border-white/5">
+      <div class="max-w-[1000px] mx-auto">
+        <FadeIn class="text-center mb-10">
+          <Tag>Our Miami Clinic</Tag>
+          <h2 class="text-[32px] font-extrabold text-cream mt-4 mb-3">
+            Get tested in <span class="text-gold">{CLINIC.area}</span>
+          </h2>
+          <p class="text-[15px] text-muted max-w-[540px] mx-auto">
+            Our clinic sits in Miami's Brickell financial district, with validated parking and
+            the Brickell Metrorail station a three-block walk away.
+          </p>
+        </FadeIn>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <FadeIn>
+            <div class="bg-surface rounded-2xl border border-white/10 overflow-hidden h-full">
+              <iframe
+                src={`https://maps.google.com/maps?q=${MAPS_QUERY}&output=embed`}
+                class="w-full h-[240px] border-0"
+                allowfullscreen
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title={`Map to ${CLINIC.name} RMR testing at ${CLINIC.streetAddress}`}
+              ></iframe>
+              <div class="p-6 flex flex-col gap-4">
+                <div class="flex items-start gap-3">
+                  <Icon name="map-pin" size={16} class="text-gold shrink-0 mt-0.5" />
+                  <div>
+                    <div class="text-sm font-bold text-cream">{CLINIC.name}</div>
+                    <div class="text-sm text-cream-muted mt-0.5">{FULL_ADDRESS}</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <Icon name="phone" size={16} class="text-gold shrink-0 mt-0.5" />
+                  <a href={TEL_HREF} class="text-sm text-cream-muted hover:text-gold transition-colors">
+                    {CTA_PHONE}
+                  </a>
+                </div>
+                <div class="flex items-start gap-3">
+                  <Icon name="clock" size={16} class="text-gold shrink-0 mt-0.5" />
+                  <div class="text-sm text-cream-muted">{CLINIC.hours}</div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <Icon name="navigation" size={16} class="text-gold shrink-0 mt-0.5" />
+                  <div class="text-xs text-muted leading-relaxed">{CLINIC.directions}</div>
+                </div>
+              </div>
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={200}>
+            <div class="bg-surface rounded-2xl border border-white/10 p-7 h-full flex flex-col">
+              <h3 class="text-lg font-bold text-cream mb-4">What to expect at your appointment</h3>
+              <div class="flex flex-col gap-4 text-[14px] text-cream-muted leading-[1.7]">
+                <div class="flex items-start gap-3">
+                  <div class="w-7 h-7 rounded-full bg-gold/10 flex items-center justify-center shrink-0 text-[11px] font-bold text-gold">1</div>
+                  <span>Arrive fasted (12 hours), no caffeine or exercise beforehand. Check in at the Brickell front desk.</span>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="w-7 h-7 flex rounded-full bg-gold/10 items-center justify-center shrink-0 text-[11px] font-bold text-gold">2</div>
+                  <span>Recline in a quiet room and breathe through the mouthpiece for about 15 minutes. That's the whole test.</span>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="w-7 h-7 rounded-full bg-gold/10 flex items-center justify-center shrink-0 text-[11px] font-bold text-gold">3</div>
+                  <span>Get your measured RMR, a daily calorie target, and a protein target before you leave.</span>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="w-7 h-7 rounded-full bg-gold/10 flex items-center justify-center shrink-0 text-[11px] font-bold text-gold">4</div>
+                  <span>Add a <a href="/fl/miami/dexascan/" class="text-gold hover:underline">DEXA scan</a> or <a href="/fl/miami/calcium-score-test/" class="text-gold hover:underline">calcium score test</a> in the same visit for a complete baseline.</span>
+                </div>
+              </div>
+              <div class="mt-6 pt-5 border-t border-white/5 text-[12px] text-muted">
+                Same-week appointments are typically available, including Saturday mornings
+                (9 AM – 1 PM).
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+      </div>
+    </section>
+
+    {/* FAQ */}
+    <section class="px-8 py-16 bg-surface border-b border-white/5">
+      <div class="max-w-[800px] mx-auto">
+        <FadeIn class="text-center mb-10">
+          <Tag>RMR Testing FAQs</Tag>
+          <h2 class="text-[32px] font-extrabold text-cream mt-4 mb-3">
+            Common questions about <span class="text-gold">RMR testing</span>
+          </h2>
+        </FadeIn>
+        <div class="flex flex-col gap-4">
+          {FAQS.map((faq, i) => (
+            <FadeIn delay={i * 30}>
+              <details class="bg-surface-card rounded-xl border border-white/10 group">
+                <summary class="cursor-pointer p-5 list-none flex items-start justify-between gap-4">
+                  <h3 class="text-[15px] font-bold text-cream pr-2">{faq.question}</h3>
+                  <Icon
+                    name="chevron-right"
+                    size={18}
+                    class="text-gold flex-shrink-0 transition-transform group-open:rotate-90 mt-0.5"
+                  />
+                </summary>
+                <div class="px-5 pb-5 text-[14px] text-muted leading-[1.7]">{faq.answer}</div>
+              </details>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* FinalCTA */}
+    <section class="px-8 py-24 bg-gradient-to-br from-[#C9A84C]/[0.08] to-[#0D0F12] border-b border-white/5">
+      <div class="max-w-[700px] mx-auto text-center">
+        <FadeIn>
+          <h2 class="text-[36px] font-black text-cream leading-[1.1] mb-4">
+            Book your RMR test in Miami
+          </h2>
+          <p class="text-[17px] text-muted leading-relaxed mb-8 max-w-[520px] mx-auto">
+            Fifteen minutes at our Brickell clinic and you'll know your real number, plus a
+            calorie and protein target built on it. No referral needed.
+          </p>
+          <div class="flex items-center justify-center gap-2 mb-6 text-[13px] text-muted">
+            <Icon name="phone" size={14} class="text-gold" />
+            <a href={TEL_HREF} class="hover:text-gold transition-colors">{CTA_PHONE}</a>
+          </div>
+          <Btn trackLead placement="final_cta" href={BOOKING_SMS_HREF}>Book Your RMR Test →</Btn>
+        </FadeIn>
+      </div>
+    </section>
+  </PageShell>
+</BaseLayout>
