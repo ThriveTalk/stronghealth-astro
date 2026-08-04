@@ -31,6 +31,11 @@ import type {
   DexaNeighborhoodCity,
   DexaNeighborhoodConfig,
 } from "../../data/local/dexaNeighborhoods";
+import {
+  DEXA_BOOKING_SMS_HREF,
+  DEXA_CTA_PHONE_DISPLAY,
+  DEXA_CTA_PHONE_HREF,
+} from "../../data/dexaCta";
 
 interface Props {
   city: DexaNeighborhoodCity;
@@ -47,12 +52,11 @@ const clinicArea = city.clinicArea;
 const pagePath = `${city.hubPath}${hood.slug}/`;
 const FULL_ADDRESS = `${clinic.streetAddress}, ${clinic.city}, ${clinic.state} ${clinic.postalCode}`;
 const MAPS_QUERY = encodeURIComponent(`${clinic.name}, ${FULL_ADDRESS}`);
-const TEL_HREF = `tel:${clinic.phoneTel}`;
-
-// Same SMS form as the city hub: "?&body=" pre-fills on iOS and Android.
-const BOOKING_SMS_HREF = `sms:${clinic.phoneTel}?&body=${encodeURIComponent(
-  "I would like to book a Dexascan with Strong Health",
-)}`;
+// DEXA pages call and text their own tracked line (see src/data/dexaCta.ts),
+// not clinic.phoneTel — that stays the clinic NAP used by schema.
+const CTA_PHONE = DEXA_CTA_PHONE_DISPLAY;
+const TEL_HREF = DEXA_CTA_PHONE_HREF;
+const BOOKING_SMS_HREF = DEXA_BOOKING_SMS_HREF;
 
 // "Downtown Miami — Miami" reads badly; drop the city suffix when the
 // neighborhood name already contains it. Title budget: check-seo enforces
@@ -108,7 +112,7 @@ const steps = [
   {
     num: "01",
     title: "Book Your Scan",
-    desc: `Reserve online or call ${clinic.phone}. Our ${clinicArea} clinic is ${hood.driveTime} from ${hood.name}, and same-week appointments are typically available.`,
+    desc: `Reserve online or call ${CTA_PHONE}. Our ${clinicArea} clinic is ${hood.driveTime} from ${hood.name}, and same-week appointments are typically available.`,
     color: "#C9A84C",
   },
   {
@@ -331,7 +335,7 @@ const medicalClinicSchema = {
                 <div class="flex items-start gap-3">
                   <Icon name="phone" size={16} class="text-gold shrink-0 mt-0.5" />
                   <a href={TEL_HREF} class="text-sm text-cream-muted hover:text-gold transition-colors">
-                    {clinic.phone}
+                    {CTA_PHONE}
                   </a>
                 </div>
                 <div class="flex items-start gap-3">
@@ -578,7 +582,7 @@ const medicalClinicSchema = {
           <div class="flex items-center justify-center gap-2 mb-6 text-[13px] text-muted">
             <Icon name="phone" size={14} class="text-gold" />
             <a href={TEL_HREF} class="hover:text-gold transition-colors">
-              {clinic.phone}
+              {CTA_PHONE}
             </a>
           </div>
           <Btn trackLead placement="final_cta" href={BOOKING_SMS_HREF}>Book Your DEXA Scan →</Btn>

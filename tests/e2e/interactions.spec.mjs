@@ -3,12 +3,15 @@
 //   - mobile: drawer opens via the menu button (aria-expanded flips) and
 //     closes on Escape
 //   - homepage FAQ <details> toggles open/closed by click and keyboard
-//   - all sms: CTAs use the production booking number
+//   - all sms: CTAs use the production booking number (DEXA pages route their
+//     own Book-a-DEXA-Scan CTAs to the dedicated DEXA line; site chrome on
+//     those pages still uses the main booking number)
 //   - unknown URLs return a real HTTP 404 (approved correction — production's
 //     soft-404 is intentionally not preserved)
 import { test, expect } from "@playwright/test";
 
 const BOOKING_SMS_PREFIX = "sms:+17542636026";
+const DEXA_SMS_PREFIX = "sms:+17864206630";
 
 test.describe("desktop nav dropdown", () => {
   test.skip(({ isMobile }) => isMobile, "desktop-only interaction");
@@ -87,18 +90,41 @@ test.describe("homepage FAQ accordion", () => {
 });
 
 test.describe("sms booking CTAs", () => {
-  for (const route of ["/", "/fl/miami/dexascan/"]) {
-    test(`all sms: hrefs on ${route} use the booking number`, async ({ page }) => {
+  // DEXA pages carry two numbers on purpose: their own "Book Your DEXA Scan"
+  // CTAs text the dedicated DEXA line, while the shared header/footer/sticky
+  // chrome still texts the main booking number.
+  const ROUTES = [
+    { route: "/", allowed: [BOOKING_SMS_PREFIX] },
+    { route: "/fl/miami/dexascan/", allowed: [BOOKING_SMS_PREFIX, DEXA_SMS_PREFIX] },
+  ];
+
+  for (const { route, allowed } of ROUTES) {
+    test(`all sms: hrefs on ${route} use a Strong Health number`, async ({ page }) => {
       await page.goto(route);
       const hrefs = await page.$$eval('a[href^="sms:"]', (as) =>
         as.map((a) => a.getAttribute("href")),
       );
       expect(hrefs.length, `expected sms: CTAs on ${route}`).toBeGreaterThan(0);
       for (const href of hrefs) {
-        expect(href.startsWith(BOOKING_SMS_PREFIX), `bad sms href: ${href}`).toBe(true);
+        expect(
+          allowed.some((prefix) => href.startsWith(prefix)),
+          `bad sms href: ${href}`,
+        ).toBe(true);
       }
     });
   }
+
+  test("the DEXA booking CTAs text the DEXA line", async ({ page }) => {
+    await page.goto("/fl/miami/dexascan/");
+    const hrefs = await page.$$eval('a[href^="sms:"]', (as) =>
+      as.map((a) => a.getAttribute("href")),
+    );
+    const dexaBookingHrefs = hrefs.filter((h) => h.includes("book%20a%20Dexascan"));
+    expect(dexaBookingHrefs.length, "expected DEXA booking CTAs").toBeGreaterThan(0);
+    for (const href of dexaBookingHrefs) {
+      expect(href.startsWith(DEXA_SMS_PREFIX), `bad DEXA sms href: ${href}`).toBe(true);
+    }
+  });
 });
 
 test.describe("unknown route", () => {
