@@ -16,6 +16,11 @@ import Icon from "../../../components/shared/Icon.astro";
 import AuthorByline from "../../../components/shared/AuthorByline.astro";
 import { MAHADEV_MUKHERJEE, DR_ANGEL_RIVERA } from "../../../data/articleAuthors";
 import { MIAMI_BRICKELL_CLINIC, MIAMI_BRICKELL_FULL_ADDRESS } from "../../../data/miamiClinic";
+import {
+  DEXA_BOOKING_SMS_HREF,
+  DEXA_CTA_PHONE_DISPLAY,
+  DEXA_CTA_PHONE_HREF,
+} from "../../../data/dexaCta";
 import { MIAMI_DEXA_NEIGHBORHOODS } from "../../../data/local/dexaNeighborhoods";
 
 const CLINIC = MIAMI_BRICKELL_CLINIC;
@@ -23,16 +28,11 @@ const FULL_ADDRESS = MIAMI_BRICKELL_FULL_ADDRESS;
 const PUBLISH_DATE = "2026-05-01";
 const MAPS_QUERY = encodeURIComponent(`${CLINIC.name}, ${FULL_ADDRESS}`);
 
-// Normalized per remediation D4: production source used the bare local number;
-// SMS URIs must carry the country code to work across devices.
-const BOOKING_SMS_NUMBER = "+17542636026";
-const BOOKING_SMS_BODY = "I would like to book a Dexascan with Strong Health";
-// Use the "?&body=" form so the pre-filled message works on both iOS and Android.
-const BOOKING_SMS_HREF = `sms:${BOOKING_SMS_NUMBER}?&body=${encodeURIComponent(
-  BOOKING_SMS_BODY,
-)}`;
-
-const TEL_HREF = `tel:${CLINIC.phone.replace(/[^\d+]/g, "")}`;
+// DEXA pages call and text their own tracked line (see src/data/dexaCta.ts),
+// not the site-wide clinic number.
+const CTA_PHONE = DEXA_CTA_PHONE_DISPLAY;
+const BOOKING_SMS_HREF = DEXA_BOOKING_SMS_HREF;
+const TEL_HREF = DEXA_CTA_PHONE_HREF;
 
 const breadcrumbs = [
   { name: "Home", path: "/" },
@@ -44,7 +44,7 @@ const FAQS = [
   {
     question: "Where can I get a DEXA scan in Miami?",
     answer:
-      "Strong Health offers DEXA scan body composition analysis at our Brickell clinic at 1000 Brickell Plaza, Miami, FL 33131. We're centrally located in the heart of Miami's financial district with validated parking and Metrorail access (Brickell station, 0.3 mi). Walk-ins are welcome and same-week appointments are typically available. Call (754) 263-6026 to book.",
+      `Strong Health offers DEXA scan body composition analysis at our Brickell clinic at 1000 Brickell Plaza, Miami, FL 33131. We're centrally located in the heart of Miami's financial district with validated parking and Metrorail access (Brickell station, 0.3 mi). Walk-ins are welcome and same-week appointments are typically available. Call ${CTA_PHONE} to book.`,
   },
   {
     question: "How much does a DEXA scan cost in Miami?",
@@ -163,7 +163,7 @@ const steps = [
   {
     num: "01",
     title: "Book Your Miami Scan",
-    desc: "Reserve a time online or call (754) 263-6026. Same-week appointments are typically available at our Brickell clinic.",
+    desc: `Reserve a time online or call ${CTA_PHONE}. Same-week appointments are typically available at our Brickell clinic.`,
     color: "#C9A84C",
   },
   {
@@ -435,7 +435,7 @@ const medicalClinicSchema = {
                     href={TEL_HREF}
                     class="text-sm text-cream-muted hover:text-gold transition-colors"
                   >
-                    {CLINIC.phone}
+                    {CTA_PHONE}
                   </a>
                 </div>
                 <div class="flex items-start gap-3">
@@ -680,7 +680,7 @@ const medicalClinicSchema = {
               href={TEL_HREF}
               class="hover:text-gold transition-colors"
             >
-              {CLINIC.phone}
+              {CTA_PHONE}
             </a>
           </div>
           <Btn trackLead placement="final_cta" href={BOOKING_SMS_HREF}>Book Your DEXA Scan →</Btn>

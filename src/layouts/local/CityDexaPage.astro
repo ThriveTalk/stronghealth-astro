@@ -7,8 +7,9 @@
  * the patient and reviews the results via telehealth — no local storefront is
  * implied, so MedicalBusiness JSON-LD is deliberately omitted (matching the
  * physicalClinic:false convention in CityPeptidePage). City facts (name,
- * state, neighborhoods, phone) come from the already-maintained
- * CityPeptideConfig so the two pages can never drift.
+ * state, neighborhoods) come from the already-maintained CityPeptideConfig so
+ * the two pages can never drift; the call/text number is the DEXA-only CTA
+ * line from src/data/dexaCta.ts.
  */
 import BaseLayout from "../BaseLayout.astro";
 import PageShell from "../../components/shared/PageShell.astro";
@@ -27,6 +28,11 @@ import AuthorByline from "../../components/shared/AuthorByline.astro";
 import FAQSection from "../../components/shared/FAQSection.astro";
 import { MAHADEV_MUKHERJEE, DR_ANGEL_RIVERA } from "../../data/articleAuthors";
 import type { CityPeptideConfig } from "../../data/local/cityPeptideConfig";
+import {
+  DEXA_BOOKING_SMS_HREF,
+  DEXA_CTA_PHONE_DISPLAY,
+  DEXA_CTA_PHONE_HREF,
+} from "../../data/dexaCta";
 
 interface Props {
   config: CityPeptideConfig;
@@ -43,15 +49,11 @@ const stateHubPath = statePrefix === "fl" ? "/fl/" : undefined;
 const pagePath = `/${statePrefix}/${config.slug}/dexascan/`;
 const city = config.cityName;
 const metro = config.neighborhoodAreaName;
-const phone = config.clinic.phone;
-const TEL_HREF = `tel:${phone.replace(/[^\d+]/g, "")}`;
-
-// Same SMS form as the Miami DEXA page: "?&body=" pre-fills on iOS and Android.
-const BOOKING_SMS_NUMBER = "+17542636026";
-const BOOKING_SMS_BODY = "I would like to book a Dexascan with Strong Health";
-const BOOKING_SMS_HREF = `sms:${BOOKING_SMS_NUMBER}?&body=${encodeURIComponent(
-  BOOKING_SMS_BODY,
-)}`;
+// DEXA pages call and text their own tracked line (see src/data/dexaCta.ts),
+// not config.clinic.phone — that number stays the NAP for the peptide pages.
+const phone = DEXA_CTA_PHONE_DISPLAY;
+const TEL_HREF = DEXA_CTA_PHONE_HREF;
+const BOOKING_SMS_HREF = DEXA_BOOKING_SMS_HREF;
 
 const seoTitle = `DEXA Scan ${city} — Body Composition`;
 const seoDescription = `Physician-ordered DEXA scans for ${city}, ${stateAbbr} patients at partner imaging centers near you. Lean mass, body fat %, visceral fat & bone density.`;
