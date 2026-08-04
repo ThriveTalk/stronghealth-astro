@@ -164,57 +164,57 @@ export const MIAMI_PRP_CONFIG: CityPRPConfig = {
   reviewCount: "from 850+ Miami patient reviews",
   aggregateReviewCount: 850,
   heroDescription1:
-    "Physician-supervised platelet-rich plasma at our Brickell clinic — PRP hair restoration, PRP facials and microneedling, under-eye rejuvenation, and PRP injections for joints, tendons, and sports injuries. Your own blood, processed on-site, injected by a physician.",
+    "Physician-supervised platelet-rich plasma at our Brickell clinic: PRP hair restoration, PRP facials and microneedling, under-eye rejuvenation, and PRP injections for joints, tendons, and sports injuries. We draw your blood, process it on-site, and a physician performs the treatment.",
   heroDescription2:
-    "PRP uses the growth factors in your own platelets to stimulate tissue repair — no synthetic filler, no foreign donor material. Every treatment at Strong Health Miami starts with a physician consultation, an on-site blood draw, and a plan built around your goals, whether that's thinning hair, aging skin, dark under-eye hollows, or a knee that won't recover.",
+    "PRP uses the growth factors in your own platelets to stimulate tissue repair, with no synthetic filler or donor material involved. Every treatment at Strong Health Miami starts with a physician consultation, an on-site blood draw, and a plan built around your goals, whether that's thinning hair, aging skin, dark under-eye hollows, or a knee that won't recover.",
   heroCtaMeta:
     "In-office physician injections · On-site blood processing · Bilingual (English/Spanish) · Saturday hours",
 
   introHeadingHtml:
     "What Miami patients should know about <gold>platelet-rich plasma (PRP)</gold>",
   introParagraphs: [
-    "Miami is saturated with places offering \"PRP\" — med spas in Brickell and South Beach, mobile IV lounges, aesthetic studios, and hair clinics that run PRP as an add-on to whatever else they're selling. The quality gap is enormous. PRP is only as good as the blood processing behind it (the centrifuge spin, the platelet concentration, the technique) and the clinician holding the needle.",
+    "Miami is saturated with places offering \"PRP\": med spas in Brickell and South Beach, mobile IV lounges, aesthetic studios, and hair clinics that run PRP as an add-on to whatever else they're selling. The quality gap is enormous. PRP is only as good as the blood processing behind it (the centrifuge spin, the platelet concentration, the technique) and the clinician holding the needle.",
     "Platelet-rich plasma is autologous, meaning it comes from you. We draw a small amount of your blood, spin it in a centrifuge to concentrate the platelets and their growth factors, and inject that concentrate into the scalp, face, under-eye area, or an injured joint or tendon. Because it's your own plasma, allergic reaction and rejection are not concerns the way they are with synthetic fillers.",
     "Strong Health Miami runs PRP as a physician-led medical service, not a walk-in spa menu item. Your blood is drawn and processed on-site at our Brickell clinic, and every injection is performed by or under a physician who has evaluated whether PRP is actually the right treatment for your goal. If it isn't, we'll tell you.",
   ],
 
   applicationsSubtitle:
-    "The same platelet-rich plasma, applied to different problems. Each Strong Health Miami PRP protocol is matched to your goal, your anatomy, and realistic expectations about results.",
+    "The same platelet-rich plasma can be applied to very different problems. We match each Strong Health Miami protocol to your goal and your anatomy, and we're upfront about what results you can realistically expect.",
 
   whyHeadingHtml:
-    "PRP in Miami, done as <gold>real medicine — not a spa add-on</gold>",
+    "PRP in Miami, done as <gold>real medicine, not a spa add-on</gold>",
   whyParagraphs: [
-    "Brickell and greater Miami have no shortage of PRP providers. What's rare is a clinic where a physician draws and processes your blood on-site, performs the injections, and follows your results across a treatment series — instead of a technician running a discounted \"vampire facial\" between other bookings.",
-    "PRP is genuinely useful for the right patient and the right indication — androgenetic hair thinning, early skin aging, periorbital (under-eye) hollowing, and low-to-moderate joint and tendon problems all have published evidence behind them. It is not a miracle, and it is not right for everyone. We built Strong Health Miami's PRP program to be honest about both.",
+    "Brickell and greater Miami have no shortage of PRP providers. What's rare is a clinic where a physician draws and processes your blood on-site, performs the injections, and follows your results across a treatment series, instead of a technician running a discounted \"vampire facial\" between other bookings.",
+    "PRP is genuinely useful for the right patient and the right indication: androgenetic hair thinning, early skin aging, periorbital (under-eye) hollowing, and low-to-moderate joint and tendon problems all have published evidence behind them. It is not a miracle, though, and for some patients it's simply the wrong choice. We built Strong Health Miami's PRP program to be honest about both.",
   ],
   whyStandardBullets: [
     "Board-certified physicians at our Brickell clinic",
-    "Your blood drawn and processed on-site — never shipped or pre-made",
-    "Physician-performed injections, not delegated to a spa technician",
+    "Your blood is drawn and processed on-site, never shipped or pre-made",
+    "A physician performs the injections rather than a spa technician",
     "Honest assessment: we recommend PRP only when the evidence supports it",
     "Treatment series planned and tracked, with progress photos",
     "Combined protocols available (PRP + microneedling, PRP + TRT/peptides)",
     "Bilingual care (English & Spanish)",
     "Saturday morning appointments for working professionals",
-    "Transparent, up-front pricing — no memberships or subscriptions",
+    "Transparent, up-front pricing with no memberships or subscriptions",
   ],
 
   steps: [
     {
       title: "Physician consultation at our Brickell clinic",
-      desc: "Your first visit is in person at 1000 Brickell Plaza. A physician evaluates your scalp, skin, under-eye area, or affected joint, reviews your goals and history, and confirms whether PRP is the right treatment — or whether something else fits better.",
+      desc: "Your first visit is in person at 1000 Brickell Plaza. A physician evaluates your scalp, skin, under-eye area, or affected joint, reviews your goals and history, and confirms whether PRP is the right treatment or whether something else fits better.",
     },
     {
       title: "On-site blood draw & PRP processing",
-      desc: "We draw a small amount of your blood and spin it in a centrifuge on-site to concentrate the platelets and growth factors. Nothing is shipped, pre-made, or pooled — your PRP is prepared fresh, in the room, from your own blood.",
+      desc: "We draw a small amount of your blood and spin it in a centrifuge on-site to concentrate the platelets and growth factors. Your PRP is prepared fresh, in the room, from your own blood; nothing is shipped in, pre-made, or pooled.",
     },
     {
       title: "Physician-performed treatment",
-      desc: "The concentrated plasma is injected into the scalp, face, or joint — or applied with medical microneedling for skin and hair. We use topical numbing and fine needles to keep it comfortable, and the whole visit typically runs 45–75 minutes.",
+      desc: "The concentrated plasma is injected into the scalp, face, or joint, or applied with medical microneedling for skin and hair. We use topical numbing and fine needles to keep it comfortable, and the whole visit typically runs 45–75 minutes.",
     },
     {
       title: "Treatment series & follow-up",
-      desc: "Most PRP goals need a short series (commonly 3 sessions, 4–6 weeks apart) with maintenance afterward. We track progress with standardized photos and reassess at each visit, adjusting the plan to how you actually respond.",
+      desc: "Most PRP goals need a short series (commonly 3 sessions, 4–6 weeks apart) with maintenance afterward. We track progress with standardized photos, reassess at each visit, and adjust the plan to how you actually respond.",
     },
   ],
 
@@ -254,18 +254,18 @@ export const MIAMI_PRP_CONFIG: CityPRPConfig = {
   ],
   neighborhoodAreaName: "Miami-Dade",
   neighborhoodsSubtitle:
-    "Our Brickell clinic is central and easy to reach for PRP patients from across Miami-Dade — from Miami Beach and Aventura to Coral Gables, South Miami, and Doral.",
+    "Our Brickell clinic is central and easy to reach from most of Miami-Dade, including Miami Beach, Aventura, Coral Gables, South Miami, and Doral.",
 
   relatedServices: [
     {
       name: "Peptide Therapy in Miami",
-      desc: "BPC-157, CJC-1295/Ipamorelin, and tissue-repair peptides — frequently combined with PRP joint and tendon injections to support recovery.",
+      desc: "BPC-157, CJC-1295/Ipamorelin, and tissue-repair peptides, frequently combined with PRP joint and tendon injections to support recovery.",
       href: "/fl/miami/peptide-therapy/",
       cta: "Miami peptide therapy →",
     },
     {
       name: "Peptides for Healing & Recovery",
-      desc: "How healing peptides work on tendon, ligament, and soft-tissue repair pathways — the clinical companion to a PRP injection plan.",
+      desc: "How healing peptides work on tendon, ligament, and soft-tissue repair pathways. Useful reading if you're planning a PRP injection series.",
       href: "/peptides-for-healing/",
       cta: "Peptides for healing →",
     },
@@ -277,12 +277,12 @@ export const MIAMI_PRP_CONFIG: CityPRPConfig = {
     },
   ],
   relatedServicesSubtitle:
-    "Many Miami PRP patients also see us for peptide-supported recovery or body-composition tracking — all at the same Brickell clinic, designed by the same physicians.",
+    "Many Miami PRP patients also see us for peptide-supported recovery or body-composition tracking, all at the same Brickell clinic with the same physicians.",
 
   pricingHeadingHtml:
     "What does PRP <gold>cost in Miami?</gold>",
   pricingIntro:
-    "PRP pricing in Miami varies widely because the product and the clinician vary widely. These are typical ranges for physician-performed PRP at Strong Health Miami. Your exact quote depends on the treatment area, the number of sessions, and whether PRP is combined with microneedling. We confirm the full price before anything is booked — no surprises.",
+    "PRP pricing in Miami varies widely because the product and the clinician vary widely. These are typical ranges for physician-performed PRP at Strong Health Miami. Your exact quote depends on the treatment area, the number of sessions, and whether PRP is combined with microneedling, and we confirm the full price before anything is booked.",
   pricingRows: [
     {
       label: "PRP hair restoration (per session)",
@@ -312,32 +312,32 @@ export const MIAMI_PRP_CONFIG: CityPRPConfig = {
     {
       question: "Where can I get PRP therapy in Miami?",
       answer:
-        "Strong Health Miami offers physician-supervised PRP therapy at our Brickell clinic, located at 1000 Brickell Plaza, Miami, FL 33131. We treat patients from across Miami-Dade — Brickell, Miami Beach, Coral Gables, South Miami, Aventura, Doral, and beyond. Every PRP visit includes a physician consultation, an on-site blood draw and processing, and a physician-performed treatment. Call (754) 263-6026 to book a consultation.",
+        "Strong Health Miami offers physician-supervised PRP therapy at our Brickell clinic, located at 1000 Brickell Plaza, Miami, FL 33131. We treat patients from across Miami-Dade, including Brickell, Miami Beach, Coral Gables, South Miami, Aventura, and Doral. Every PRP visit includes a physician consultation, an on-site blood draw and processing, and a physician-performed treatment. Call (754) 263-6026 to book a consultation.",
     },
     {
       question: "What is PRP therapy and how does it work?",
       answer:
-        "PRP stands for platelet-rich plasma. We draw a small amount of your own blood and spin it in a centrifuge to concentrate the platelets, which carry growth factors that signal your body to repair tissue. That concentrate is then injected into — or microneedled over — the treatment area: the scalp for hair, the face for skin quality, the under-eye area for hollowing and crepey skin, or a joint or tendon for orthopedic recovery. Because PRP is autologous (from your own body), there's no risk of allergic reaction or rejection.",
+        "PRP stands for platelet-rich plasma. We draw a small amount of your own blood and spin it in a centrifuge to concentrate the platelets, which carry growth factors that signal your body to repair tissue. That concentrate is then injected into (or microneedled over) the treatment area: the scalp for hair, the face for skin quality, the under-eye area for hollowing and crepey skin, or a joint or tendon for orthopedic recovery. Because PRP is autologous (from your own body), there's no risk of allergic reaction or rejection.",
     },
     {
       question: "What does PRP treat at Strong Health Miami?",
       answer:
-        "Our Miami PRP program covers four main areas: (1) PRP hair restoration — scalp injections for androgenetic (pattern) hair thinning in men and women; (2) PRP facials and PRP with microneedling — for skin texture, tone, and early aging; (3) PRP under-eye rejuvenation — for dark, hollow, or crepey periorbital skin; and (4) PRP injections for joints, tendons, and sports injuries — knee, shoulder, elbow, and Achilles among them. A physician confirms PRP is appropriate for your specific goal before treating.",
+        "Our Miami PRP program covers four main areas: (1) PRP hair restoration, meaning scalp injections for androgenetic (pattern) hair thinning in men and women; (2) PRP facials and PRP with microneedling, for skin texture, tone, and early aging; (3) PRP under-eye rejuvenation, for dark, hollow, or crepey periorbital skin; and (4) PRP injections for joints, tendons, and sports injuries, with knee, shoulder, elbow, and Achilles among them. A physician confirms PRP is appropriate for your specific goal before treating.",
     },
     {
       question: "How much does PRP cost in Miami?",
       answer:
-        "At Strong Health Miami, PRP hair restoration typically runs $600–$900 per session, PRP facials with microneedling $650–$950, PRP under-eye treatment $600–$850, and PRP joint or tendon injections $700–$1,200 per site. Most cosmetic PRP goals need a series of about 3 sessions spaced 4–6 weeks apart, with maintenance afterward, and package pricing is available. PRP is elective and rarely covered by insurance. We confirm your full price up front — no memberships, no subscriptions, no surprises.",
+        "At Strong Health Miami, PRP hair restoration typically runs $600–$900 per session, PRP facials with microneedling $650–$950, PRP under-eye treatment $600–$850, and PRP joint or tendon injections $700–$1,200 per site. Most cosmetic PRP goals need a series of about 3 sessions spaced 4–6 weeks apart, with maintenance afterward, and package pricing is available. PRP is elective and rarely covered by insurance. We confirm your full price up front, and there are no memberships or subscriptions.",
     },
     {
       question: "Does PRP really work for hair loss?",
       answer:
-        "For androgenetic alopecia (male- and female-pattern thinning), published systematic reviews and meta-analyses report that PRP scalp injections can increase hair density and thickness, especially in earlier-stage thinning where the follicles are miniaturized but not gone. It works best as part of a series with maintenance, and often alongside proven therapies like minoxidil or finasteride. PRP will not regrow hair on a scalp that is completely bald in an area, and results vary between patients — which is exactly why we start with a physician assessment rather than selling a package sight unseen.",
+        "For androgenetic alopecia (male- and female-pattern thinning), published systematic reviews and meta-analyses report that PRP scalp injections can increase hair density and thickness, especially in earlier-stage thinning where the follicles are miniaturized but not gone. It works best as part of a series with maintenance, and often alongside proven therapies like minoxidil or finasteride. PRP will not regrow hair on a scalp that is completely bald in an area, and results vary between patients, which is why we start with a physician assessment rather than selling a package sight unseen.",
     },
     {
       question: "How many PRP sessions will I need and when will I see results?",
       answer:
-        "Most cosmetic PRP protocols — hair, facial, and under-eye — start with a series of about 3 sessions spaced 4–6 weeks apart, followed by maintenance every 4–6 months. Hair results are gradual: reduced shedding first, then visible density changes over 3–6 months. Skin and under-eye improvements in texture and brightness typically show over 4–12 weeks. Joint and tendon injections are often 1–3 sessions, with recovery measured over weeks to a few months. We track your progress with standardized photos at each visit.",
+        "Most cosmetic PRP protocols (hair, facial, and under-eye) start with a series of about 3 sessions spaced 4–6 weeks apart, followed by maintenance every 4–6 months. Hair results are gradual: reduced shedding first, then visible density changes over 3–6 months. Skin and under-eye improvements in texture and brightness typically show over 4–12 weeks. Joint and tendon injections are often 1–3 sessions, with recovery measured over weeks to a few months. We track your progress with standardized photos at each visit.",
     },
     {
       question: "Is PRP painful, and is there downtime?",
@@ -347,28 +347,28 @@ export const MIAMI_PRP_CONFIG: CityPRPConfig = {
     {
       question: "Is PRP safe?",
       answer:
-        "Because PRP is made from your own blood, the safety profile is favorable — there's no risk of allergic reaction or rejection to a foreign substance. The most common effects are temporary: injection-site soreness, redness, swelling, or minor bruising. As with any injection, there is a small risk of infection or bruising, which is minimized by drawing and processing blood under proper medical conditions and having a physician perform the treatment. We screen for contraindications (certain blood disorders, active infection, some medications) during your consultation.",
+        "Because PRP is made from your own blood, the safety profile is favorable: there's no risk of allergic reaction or rejection to a foreign substance. The most common effects are temporary: injection-site soreness, redness, swelling, or minor bruising. As with any injection, there is a small risk of infection or bruising, which is minimized by drawing and processing blood under proper medical conditions and having a physician perform the treatment. We screen for contraindications (certain blood disorders, active infection, some medications) during your consultation.",
     },
     {
       question: "Can PRP be combined with microneedling or other treatments?",
       answer:
-        "Yes. PRP with medical microneedling is one of our most popular Miami facial protocols — the microneedling creates controlled micro-channels that let the platelet growth factors reach deeper into the skin. For hair, PRP is often combined with topical or oral therapies. And for men addressing hair thinning alongside low energy or libido, PRP hair restoration pairs naturally with a hormone (TRT) or peptide workup — all available at the same Brickell clinic and coordinated by the same physicians.",
+        "Yes. PRP with medical microneedling is one of our most popular Miami facial protocols; the microneedling creates controlled micro-channels that let the platelet growth factors reach deeper into the skin. For hair, PRP is often combined with topical or oral therapies. And for men dealing with hair thinning alongside low energy or libido, PRP hair restoration pairs naturally with a hormone (TRT) or peptide workup, all available at the same Brickell clinic and coordinated by the same physicians.",
     },
     {
       question: "How is PRP different from fillers or a hair transplant?",
       answer:
-        "Dermal fillers add synthetic volume (usually hyaluronic acid) instantly; PRP instead stimulates your own tissue to improve quality and thickness gradually, using no foreign material. For hair, a transplant surgically relocates follicles and is a one-time procedure for advanced loss, whereas PRP is a non-surgical, injection-based treatment best suited to earlier thinning or to support a transplant's results. These are complementary tools, not competitors — during your consultation a physician will tell you honestly which one actually fits your situation.",
+        "Dermal fillers add synthetic volume (usually hyaluronic acid) instantly; PRP instead stimulates your own tissue to improve quality and thickness gradually, with no foreign material. For hair, a transplant surgically relocates follicles and is a one-time procedure for advanced loss, whereas PRP is a non-surgical, injection-based treatment best suited to earlier thinning or to support a transplant's results. The two approaches complement each other, and during your consultation a physician will tell you honestly which one fits your situation.",
     },
     {
       question: "Do you offer Spanish-speaking PRP consultations in Miami?",
       answer:
-        "Yes. Our Brickell clinic offers bilingual care in English and Spanish. Dr. Rivera and several team members are fluent in Spanish, reflecting the Miami-Dade communities we serve. Consultations, treatments, and follow-ups can all be conducted in Spanish if you prefer.",
+        "Yes. Our Brickell clinic offers care in English and Spanish. Dr. Rivera and several team members are fluent in Spanish, and consultations, treatments, and follow-ups can all be conducted in Spanish if you prefer.",
     },
   ],
 
   finalCtaHeading: "Ready to talk to a Miami physician about PRP?",
   finalCtaCopy:
-    "Book a consultation at our Brickell clinic. A physician will assess your scalp, skin, or joint and tell you honestly whether PRP is the right treatment — before you commit to anything.",
+    "Book a consultation at our Brickell clinic. A physician will assess your scalp, skin, or joint and tell you honestly whether PRP is the right treatment before you commit to anything.",
   physicalClinic: true,
   parkingTransit:
     "Located at 1000 Brickell Plaza in Brickell, Miami. Parking at the Brickell Plaza garage; Metrorail/Metromover Brickell station is about 0.3 mi away. I-95 exit 1A, then east on SW 13th St.",

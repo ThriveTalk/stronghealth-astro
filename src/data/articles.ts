@@ -21,7 +21,7 @@ export interface ArticleMeta {
 export const articles: ArticleMeta[] = [
   {
     title: "Peptides for Women: What the Evidence Actually Shows",
-    subtitle: "A physician-reviewed look at peptides in women — from FDA-approved GLP-1s and bremelanotide to collagen — with safety by life stage and the shifting 2026 rules.",
+    subtitle: "A physician-reviewed look at peptides in women, covering FDA-approved GLP-1s, bremelanotide, and collagen, with safety notes by life stage and the shifting 2026 rules.",
     path: "/peptides-for-women/",
     category: "Peptide Therapy",
     readTime: "12 min read",
@@ -37,7 +37,7 @@ export const articles: ArticleMeta[] = [
   },
   {
     title: "Peptides for Weight Loss: GLP-1, GH Secretagogues, and Fat-Loss Protocols",
-    subtitle: "How GLP-1 medications and GH-secretagogue peptides support medical weight loss — and how they protect lean mass along the way.",
+    subtitle: "How GLP-1 medications and GH-secretagogue peptides support medical weight loss, and how they protect lean mass along the way.",
     path: "/peptides-for-weight-loss/",
     category: "Peptide Therapy",
     readTime: "10 min read",
@@ -53,7 +53,7 @@ export const articles: ArticleMeta[] = [
   },
   {
     title: "Peptides for Testosterone: What the Science Actually Says",
-    subtitle: "The difference between peptides that nudge your body to make more of its own testosterone — like kisspeptin — and GH peptides that don't touch it at all, plus how both compare to TRT.",
+    subtitle: "The difference between peptides that nudge your body to make more of its own testosterone (like kisspeptin) and GH peptides that don't touch it at all, plus how both compare to TRT.",
     path: "/peptides-for-testosterone/",
     category: "Peptide Therapy",
     readTime: "9 min read",
@@ -69,7 +69,7 @@ export const articles: ArticleMeta[] = [
   },
   {
     title: "Peptides for Gut Health: BPC-157 and the Gut Lining",
-    subtitle: "BPC-157 is derived from a protein in gastric juice — so it's no surprise it's the peptide most associated with the gut. What it's studied to do for the gut lining, and where standard care still comes first.",
+    subtitle: "BPC-157 is derived from a protein in gastric juice, so it's no surprise it's the peptide most associated with the gut. What it's studied to do for the gut lining, and where standard care still comes first.",
     path: "/peptides-for-gut-health/",
     category: "Peptide Therapy",
     readTime: "8 min read",
@@ -77,7 +77,7 @@ export const articles: ArticleMeta[] = [
   },
   {
     title: "Peptides for Energy & Fatigue: What Actually Helps",
-    subtitle: "Chronic low energy has many causes, and the honest first step is finding yours — not reaching for a vial. Where mitochondrial peptides like MOTS-c may fit, and why a proper work-up comes first.",
+    subtitle: "Chronic low energy has many causes, and the first step is finding yours rather than reaching for a vial. Where mitochondrial peptides like MOTS-c may fit, and why a proper work-up comes first.",
     path: "/peptides-for-energy/",
     category: "Peptide Therapy",
     readTime: "8 min read",
@@ -85,7 +85,7 @@ export const articles: ArticleMeta[] = [
   },
   {
     title: "Peptides for Brain, Focus & Mood: What to Know",
-    subtitle: "A handful of peptides — most prominently Selank — are studied for anxiety, clarity, and mood. An honest look at what they may do, how early the evidence is, and why they're an adjunct to real care.",
+    subtitle: "A handful of peptides, most prominently Selank, are studied for anxiety, clarity, and mood. What they may do, how early the evidence is, and why they're an adjunct to real care.",
     path: "/peptides-for-brain/",
     category: "Peptide Therapy",
     readTime: "8 min read",
@@ -101,7 +101,7 @@ export const articles: ArticleMeta[] = [
   },
   {
     title: "Peptides for Hair Growth: Copper Peptides & the Evidence",
-    subtitle: "Copper peptides show up in a lot of hair-growth serums — but how much can they really do, and how do they compare with treatments proven to regrow hair? A realistic, physician-reviewed look.",
+    subtitle: "Copper peptides show up in a lot of hair-growth serums, but how much can they really do, and how do they compare with treatments proven to regrow hair? A realistic, physician-reviewed look.",
     path: "/peptides-for-hair-growth/",
     category: "Peptide Therapy",
     readTime: "8 min read",
@@ -109,7 +109,7 @@ export const articles: ArticleMeta[] = [
   },
   {
     title: "Peptides for Acne: An Honest Look at What Helps",
-    subtitle: "Acne is driven by oil, bacteria, inflammation, and hormones — and peptides aren't first-line for any of them. Where peptides might play a supporting role, and where proven treatments still win.",
+    subtitle: "Acne is driven by oil, bacteria, inflammation, and hormones, and peptides aren't first-line for any of them. Where peptides might play a supporting role, and where proven treatments still win.",
     path: "/peptides-for-acne/",
     category: "Peptide Therapy",
     readTime: "8 min read",
@@ -117,7 +117,7 @@ export const articles: ArticleMeta[] = [
   },
   {
     title: "Peptides for Tanning: Melanotan, Risks & the Facts",
-    subtitle: "Melanotan peptides promise a tan from a vial — but this is one area where we urge real caution. What these melanocortin peptides are, the serious safety concerns, and why we don't offer them.",
+    subtitle: "Melanotan peptides promise a tan from a vial, but this is one area where we urge real caution. What these melanocortin peptides are, the serious safety concerns, and why we don't offer them.",
     path: "/peptides-for-tanning/",
     category: "Peptide Therapy",
     readTime: "7 min read",
@@ -125,7 +125,7 @@ export const articles: ArticleMeta[] = [
   },
   {
     title: "Pollotarianism: The Complete Guide to the Pollotarian Diet",
-    subtitle: "Poultry stays, every other meat goes. What the research shows about swapping red meat for chicken — heart health, cancer risk, weight, and how to do it right.",
+    subtitle: "Poultry stays, every other meat goes. What the research shows about swapping red meat for chicken: heart health, cancer risk, weight, and how to do it right.",
     path: "/diet/pollotarianism/",
     category: "Diet & Nutrition",
     readTime: "15 min read",
@@ -133,7 +133,7 @@ export const articles: ArticleMeta[] = [
   },
   {
     title: "Detox Diets: What the Evidence Actually Says About Cleansing Your Body",
-    subtitle: "Your liver, kidneys, and gut already detoxify you around the clock. Here's what a detox diet can and can't do — and the honest, evidence-based version worth keeping.",
+    subtitle: "Your liver, kidneys, and gut already detoxify you around the clock. Here's what a detox diet can and can't do, and the honest, evidence-based version worth keeping.",
     path: "/diet/detox/",
     category: "Diet & Nutrition",
     readTime: "12 min read",
@@ -149,7 +149,7 @@ export const articles: ArticleMeta[] = [
   },
   {
     title: "Semaglutide Diet: Complete Guide for Weight Loss (2026)",
-    subtitle: "What to eat, what to avoid, and how to structure your nutrition for maximum results on semaglutide — backed by STEP trial data and clinical evidence.",
+    subtitle: "What to eat, what to avoid, and how to structure your nutrition for maximum results on semaglutide, backed by STEP trial data and clinical evidence.",
     path: "/diet/semaglutide/",
     category: "Diet & Nutrition",
     readTime: "18 min read",
@@ -189,7 +189,7 @@ export const articles: ArticleMeta[] = [
   },
   {
     title: "NAC Benefits for Men: Liver Detox, Testosterone Support & Antioxidant Defense",
-    subtitle: "N-Acetyl Cysteine is one of the most versatile supplements available, supporting liver function, fertility, and hormonal health in men.",
+    subtitle: "N-Acetyl Cysteine is one of the most versatile supplements available. In men it supports liver function, fertility, and hormonal health.",
     path: "/nac-benefits-men/",
     category: "Nutrients & Supplements",
     readTime: "9 min read",
@@ -197,7 +197,7 @@ export const articles: ArticleMeta[] = [
   },
   {
     title: "DEXA Scan: The Gold Standard for Body Composition Analysis",
-    subtitle: "Everything you need to know about dual-energy X-ray absorptiometry: what it measures, how it compares to other methods, and why it matters for TRT monitoring.",
+    subtitle: "What dual-energy X-ray absorptiometry measures, how it compares to other body-composition methods, and why it matters for TRT monitoring.",
     path: "/dexa-scan/",
     category: "Services",
     readTime: "14 min read",
@@ -213,7 +213,7 @@ export const articles: ArticleMeta[] = [
   },
   {
     title: "Collagen Peptides: Structural Support for Joints, Skin & Connective Tissue",
-    subtitle: "Collagen peptides support the body's structural framework. Learn about the different types, clinical evidence, and how they complement hormone optimization.",
+    subtitle: "Collagen peptides support the body's structural framework. This guide covers the different types, what the clinical evidence shows, and how they fit alongside hormone optimization.",
     path: "/collagen-peptides/",
     category: "Peptide Therapy",
     readTime: "11 min read",

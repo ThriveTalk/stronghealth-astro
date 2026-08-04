@@ -10,22 +10,22 @@ export const SERMORELIN: MoleculeConfig = {
   metaDescription:
     "Sermorelin is a GHRH analog that prompts your pituitary to release growth hormone. Review its mechanism, evidence, safety, and how Strong Health prescribes it.",
   tagline:
-    "A growth-hormone-releasing hormone analog that stimulates the pituitary to produce its own growth hormone — used to support recovery, body composition, and healthy aging as natural GH output declines.",
+    "A growth-hormone-releasing hormone analog that stimulates the pituitary to produce its own growth hormone, used to support recovery, body composition, and healthy aging as natural GH output declines.",
   primaryUse: "GHRH therapy for age-related GH decline and recovery",
   datePublishedISO: "2026-07-18",
   dateModifiedISO: "2026-07-18",
   whatItIs: [
-    "Sermorelin is a synthetic peptide made of the first 29 amino acids of human growth-hormone-releasing hormone (GHRH) — the fragment, known as GRF(1-29), that carries the full biological activity of the natural hormone. Rather than supplying growth hormone directly, it signals your own pituitary gland to make and release more of its own.",
+    "Sermorelin is a synthetic peptide made of the first 29 amino acids of human growth-hormone-releasing hormone (GHRH), the fragment known as GRF(1-29) that carries the full biological activity of the natural hormone. Rather than supplying growth hormone directly, it signals your own pituitary gland to make and release more of its own.",
     "This is an important distinction. Sermorelin has a notable regulatory history: it was FDA-approved and marketed as Geref for the diagnosis and treatment of growth-hormone deficiency, but the branded product was discontinued (a commercial decision, not a safety withdrawal). Today it is available in the United States only as a pharmacy-compounded preparation prescribed under physician supervision, not as an off-the-shelf FDA-approved drug.",
   ],
   mechanism: [
-    "Sermorelin binds the GHRH receptor on the somatotroph cells of the anterior pituitary, prompting them to synthesize and secrete growth hormone in a natural, pulsatile pattern. Because the pituitary remains in control, output is still governed by the body's own feedback loops — including somatostatin, the hormone that brakes GH release — which is thought to reduce the risk of the sustained, supraphysiologic levels seen with injected growth hormone itself.",
+    "Sermorelin binds the GHRH receptor on the somatotroph cells of the anterior pituitary, prompting them to synthesize and secrete growth hormone in a natural, pulsatile pattern. Because the pituitary remains in control, output is still governed by the body's own feedback loops, including somatostatin, the hormone that brakes GH release. That feedback is thought to reduce the risk of the sustained, supraphysiologic levels seen with injected growth hormone itself.",
     "The released growth hormone in turn stimulates the liver to produce insulin-like growth factor 1 (IGF-1), the downstream mediator of many of GH's effects on tissue repair, lean-mass maintenance, and metabolism. Because sermorelin works upstream at the pituitary, it depends on a functioning gland to produce an effect.",
   ],
   usedFor: [
     {
       heading: "Age-related GH decline",
-      desc: "The most common reason patients ask about sermorelin — supporting the gradual, age-associated fall in natural growth-hormone output (sometimes called somatopause) in adults who want a more physiologic approach than injected GH.",
+      desc: "The most common reason patients ask about sermorelin: supporting the gradual, age-associated fall in natural growth-hormone output (sometimes called somatopause) in adults who want a more physiologic approach than injected GH.",
     },
     {
       heading: "Recovery & body composition",
@@ -42,16 +42,16 @@ export const SERMORELIN: MoleculeConfig = {
   ],
   evidence: [
     "Sermorelin has a longer clinical track record than most peptides in this category, precisely because it was developed and studied as an approved drug. It was validated as a diagnostic agent for growth-hormone deficiency and studied in the treatment of GH-deficient children, where it increased GH and IGF-1 levels and supported growth [1][2].",
-    "In adults, the evidence for anti-aging and body-composition goals is thinner and more mixed. GHRH analogs can raise GH and IGF-1 in older adults, and some studies report modest effects on body composition [3] — but large, long-term trials establishing durable functional benefits or safety for these off-label uses are limited.",
+    "In adults, the evidence for anti-aging and body-composition goals is thinner and more mixed. GHRH analogs can raise GH and IGF-1 in older adults, and some studies report modest effects on body composition [3], but large, long-term trials establishing durable functional benefits or safety for these off-label uses are limited.",
     "We present this honestly. Sermorelin's mechanism and diagnostic-era data are well characterized, but its use for healthy aging and recovery rests more on physiologic rationale and short-term hormonal endpoints than on definitive outcome trials. That distinction matters when you are deciding whether it fits your goals.",
   ],
   dosingContext: [
     "Sermorelin is administered by subcutaneous injection, most often at night to align with the body's natural nocturnal GH pulse and to avoid the competing effect of food-related insulin and blood glucose. Protocols in clinical use are individualized and typically run over months, with periodic reassessment.",
-    "The specific dose, timing, and duration are set by the prescribing physician based on your goals, labs (including IGF-1), and response — which is why we frame this as clinical context, not a self-dosing guide. Sermorelin obtained without a prescription (research-only vials, gray-market powders) carries no guarantee of identity, purity, or sterility, and the peptide is also sensitive to handling and storage.",
+    "The specific dose, timing, and duration are set by the prescribing physician based on your goals, labs (including IGF-1), and response, which is why we frame this as clinical context, not a self-dosing guide. Sermorelin obtained without a prescription (research-only vials, gray-market powders) carries no guarantee of identity, purity, or sterility, and the peptide is also sensitive to handling and storage.",
   ],
   safety: [
     "Sermorelin's safety profile is relatively well characterized from its history as an approved product. Because it stimulates the pituitary rather than flooding the body with exogenous growth hormone, and because natural feedback mechanisms remain intact, it is generally considered to carry a lower risk of GH excess than injected growth hormone.",
-    "That said, it still raises GH and IGF-1, so we screen carefully before prescribing and monitor throughout a course — including IGF-1 levels. The most important safety principle is source control: a pharmacy-compounded product from a licensed 503A/503B pharmacy is a fundamentally different risk profile than a research vial of unknown origin.",
+    "That said, it still raises GH and IGF-1, so we screen carefully before prescribing and monitor throughout a course, including IGF-1 levels. The most important safety principle is source control: a pharmacy-compounded product from a licensed 503A/503B pharmacy is a fundamentally different risk profile than a research vial of unknown origin.",
   ],
   commonSideEffects: [
     "Injection-site redness, swelling, or irritation",
@@ -73,7 +73,7 @@ export const SERMORELIN: MoleculeConfig = {
     {
       question: "Is sermorelin FDA-approved?",
       answer:
-        "Sermorelin was previously FDA-approved and sold as Geref for growth-hormone deficiency, but that branded product has since been discontinued — a commercial decision, not a safety withdrawal. Today it is available in the United States only as a pharmacy-compounded preparation prescribed under physician supervision. Strong Health works exclusively with licensed 503A and 503B pharmacies.",
+        "Sermorelin was previously FDA-approved and sold as Geref for growth-hormone deficiency, but that branded product has since been discontinued, a commercial decision rather than a safety withdrawal. Today it is available in the United States only as a pharmacy-compounded preparation prescribed under physician supervision. Strong Health works exclusively with licensed 503A and 503B pharmacies.",
     },
     {
       question: "How is sermorelin different from growth hormone (HGH)?",
@@ -83,7 +83,7 @@ export const SERMORELIN: MoleculeConfig = {
     {
       question: "How long does sermorelin take to work?",
       answer:
-        "Hormonal changes in GH and IGF-1 can appear within weeks, but goals like recovery, body composition, and sleep are judged over months. Because durable outcome data for anti-aging uses are limited, we set expectations conservatively and track your response — including IGF-1 labs — at scheduled physician reviews rather than promising a fixed timeline.",
+        "Hormonal changes in GH and IGF-1 can appear within weeks, but goals like recovery, body composition, and sleep are judged over months. Because durable outcome data for anti-aging uses are limited, we set expectations conservatively and track your response, including IGF-1 labs, at scheduled physician reviews rather than promising a fixed timeline.",
     },
     {
       question: "Can sermorelin be combined with ipamorelin?",
@@ -114,5 +114,5 @@ export const SERMORELIN: MoleculeConfig = {
     },
   ],
   regulatoryNote:
-    "Sermorelin was formerly FDA-approved (Geref, since discontinued) and is now available only as a pharmacy-compounded preparation. Content on this page is clinical context for physician-supervised use — not a dosing guide or a substitute for medical advice.",
+    "Sermorelin was formerly FDA-approved (Geref, since discontinued) and is now available only as a pharmacy-compounded preparation. Content on this page is clinical context for physician-supervised use, not a dosing guide or a substitute for medical advice.",
 };
