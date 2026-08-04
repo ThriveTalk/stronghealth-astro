@@ -1,0 +1,737 @@
+---
+// /ny/new-york/mri/ — New York City MRI local service page. NY is a service
+// area (matching the /ny/new-york/dexascan/ precedent): a Strong Health
+// physician licensed in New York orders the scan at an accredited partner
+// imaging center in the boroughs and reviews results by telehealth. No local
+// storefront is implied, so the MedicalBusiness schema carries city-level
+// areaServed instead of a street address.
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import PageShell from "../../../components/shared/PageShell.astro";
+import JsonLd from "../../../components/seo/JsonLd.astro";
+import {
+  articleSchema,
+  breadcrumbSchema,
+  faqPageSchema,
+  medicalWebPageSchema,
+} from "../../../components/seo/schemas";
+import FadeIn from "../../../components/shared/FadeIn.astro";
+import Btn from "../../../components/shared/Btn.astro";
+import Tag from "../../../components/shared/Tag.astro";
+import Icon from "../../../components/shared/Icon.astro";
+import AuthorByline from "../../../components/shared/AuthorByline.astro";
+import { MAHADEV_MUKHERJEE, DR_ANGEL_RIVERA } from "../../../data/articleAuthors";
+import { STRONG_HEALTH_PHONE_TEL } from "../../../data/miamiClinic";
+import {
+  MRI_BOOKING_SMS_HREF,
+  MRI_CTA_PHONE_DISPLAY,
+  MRI_CTA_PHONE_HREF,
+} from "../../../data/mriCta";
+
+const PUBLISH_DATE = "2026-08-04";
+// Map centers on Midtown Manhattan, where the densest cluster of our NYC
+// partner imaging centers sits (walkable from Grand Central and Penn Station).
+const MAPS_QUERY = encodeURIComponent("Midtown Manhattan, New York, NY");
+
+// Same tracked line as the DEXA pages (mriCta.ts re-exports dexaCta.ts).
+const CTA_PHONE = MRI_CTA_PHONE_DISPLAY;
+const BOOKING_SMS_HREF = MRI_BOOKING_SMS_HREF;
+const TEL_HREF = MRI_CTA_PHONE_HREF;
+
+// No /ny/ hub page exists, so the trail is Home → page (matches the
+// CityDexaPage convention for non-FL states).
+const breadcrumbs = [
+  { name: "Home", path: "/" },
+  { name: "MRI New York", path: "/ny/new-york/mri/" },
+];
+
+const FAQS = [
+  {
+    question: "Where can I get an MRI in NYC?",
+    answer:
+      `Strong Health books New York patients into accredited partner imaging centers in all five boroughs, with the densest cluster in Midtown Manhattan within walking distance of Grand Central and Penn Station. A physician licensed in New York evaluates you by telehealth, writes the order, and books the center that's easiest for your commute. Call or text ${CTA_PHONE} to start.`,
+  },
+  {
+    question: "How much does an MRI cost in NYC?",
+    answer:
+      "New York has the widest MRI price spread in the country. Hospital outpatient departments in Manhattan routinely bill $1,500 to $3,000 or more per body part, while accredited independent centers a few subway stops away charge $300 to $900 for the same study. Strong Health books the second kind and quotes you one flat number before anything is scheduled.",
+  },
+  {
+    question: "Do I need a referral for an MRI in NYC?",
+    answer:
+      "New York requires a physician's order for an MRI, but you don't need to source one yourself. The Strong Health telehealth consult handles it: a New York-licensed physician reviews your symptoms, confirms the right study, and writes the order, often the same day. If your own doctor already gave you a script, we can book from that instead.",
+  },
+  {
+    question: "How fast can I get an MRI appointment in New York?",
+    answer:
+      "Usually 2 to 5 business days, and evening or weekend slots are genuinely available because NYC imaging centers run long hours. Compare that with the multi-week waits common at the big hospital systems. If you need images before a specialist appointment, tell us the date and we'll schedule backward from it.",
+  },
+  {
+    question: "Do I need a car? How do I get there?",
+    answer:
+      "No car needed. Every partner center we book in New York is near a subway stop; the Midtown cluster is walkable from Grand Central (4, 5, 6, 7, S) and Penn Station (1, 2, 3, A, C, E, LIRR, NJ Transit). Brooklyn, Queens, and Bronx sites sit near their local lines, and we send exact transit directions with your confirmation. If you do drive, we'll flag which locations have garage validation.",
+  },
+  {
+    question: "I'm claustrophobic. Are open or wide-bore MRIs available in NYC?",
+    answer:
+      "Yes. Several Manhattan and outer-borough partner centers run wide-bore 1.5T and 3T scanners with 70 cm openings, and true open MRI units exist in the city for studies where the tradeoff makes sense. Say so when you book and we'll route you accordingly. Oral sedation can be arranged through your physician for harder cases; bring someone to ride home with you if so.",
+  },
+  {
+    question: "When do I get results, and who explains them?",
+    answer:
+      "A board-certified radiologist reads your study, typically within 24 to 72 hours. Then your Strong Health physician reviews the report with you on a video call, translating the radiology language into what it means for your training, your pain, or your next specialist visit. The images and report are yours to keep and share.",
+  },
+  {
+    question: "Will my insurance cover it?",
+    answer:
+      "Strong Health's MRI service is direct-pay. For many New Yorkers with high-deductible plans, the flat cash price at an independent center beats what they'd pay out of pocket at a hospital before meeting the deductible. We issue a superbill for out-of-network reimbursement claims, and HSA/FSA cards are accepted.",
+  },
+  {
+    question: "Can I book an evening or weekend MRI in NYC?",
+    answer:
+      "Yes. This is one thing New York does better than almost anywhere: many partner centers scan into the evening and on weekends. Plenty of our NYC patients book a 7 PM slot near their office and are home by 9. Mention your schedule constraints when you call and we'll match a site and time.",
+  },
+  {
+    question: "What studies can I get?",
+    answer:
+      "Brain, full spine (cervical, thoracic, lumbar), shoulder, knee, hip, ankle, wrist, elbow, abdomen and pelvis, and MR angiography where indicated. Whole-body preventive screening MRI is available as well. The physician consult at the start decides which study actually fits your symptoms, so you don't pay for the wrong scan.",
+  },
+];
+
+const TESTIMONIALS = [
+  {
+    name: "Nate B.",
+    neighborhood: "Upper East Side",
+    text: "Marathon training wrecked my hip in June and my sports doc wouldn't guess without imaging. His hospital's next opening was late July. Strong Health had me in a scanner on East 60th two days after our call, and the stress reaction showed up plainly. Probably saved my race season.",
+  },
+  {
+    name: "Sofia M.",
+    neighborhood: "Williamsburg",
+    text: "Lower back pain for a year and I kept avoiding the whole doctor-referral-insurance maze. Did the consult from my couch, took the L into Manhattan for a 6:30 PM scan, and had the physician walk me through the report that Friday. Bulging disc, not a herniation. Knowing the difference changed everything about how I train.",
+  },
+  {
+    name: "Aaron K.",
+    neighborhood: "Astoria",
+    text: "Shoulder's been clicking since a bad day at the climbing gym. The center they booked was two stops away on the N, evening appointment so I didn't burn PTO. Total cost was less than my copays would have added up to, and someone actually called to explain the labrum finding instead of dumping a portal PDF on me.",
+  },
+];
+
+// WhyMri
+const whyMriPoints = [
+  { icon: "microscope", text: "Accredited NYC centers, 1.5T and 3T scanners" },
+  { icon: "file-check", text: "Board-certified radiologist read on every study" },
+  { icon: "stethoscope", text: "NY-licensed physician orders the scan and explains the report" },
+  { icon: "dollar-sign", text: "Flat cash pricing, a fraction of hospital rates" },
+  { icon: "clock", text: "Evening and weekend slots, reports in 24–72 hours" },
+];
+
+// WhatYouGet
+const whatYouGetItems = [
+  { icon: "stethoscope", title: "Consult & Order, Handled", desc: "A New York-licensed physician evaluates you by video and writes the MRI order. No referral errands across town." },
+  { icon: "map-pin", title: "A Center On Your Line", desc: "Midtown, Brooklyn, Queens, the Bronx: we book the accredited center that fits your commute, not the other way around." },
+  { icon: "file-check", title: "Radiologist Report", desc: "Board-certified radiologists interpret every study, with written reports usually back within 24 to 72 hours." },
+  { icon: "brain", title: "A Human Explanation", desc: "Your physician walks through the findings with you on a call. Radiology-speak in, plain English out." },
+  { icon: "clipboard-check", title: "Your Images, Portable", desc: "Digital access to the DICOM images and report, accepted by any orthopedist or neurologist in the city." },
+  { icon: "navigation", title: "A Next Move", desc: "Specialist referral, PT, or a treatment protocol. The report comes with a plan attached." },
+];
+
+// UseCases
+const useCases = [
+  {
+    title: "Running & training injuries",
+    desc: "Hips, knees, and ankles ground down by bridge runs, marathon blocks, and climbing gyms. An MRI separates the stress reaction from the tendinopathy before you decide whether to push through.",
+    href: "/peptides-for-healing/",
+    cta: "Peptides for healing →",
+  },
+  {
+    title: "Neck & back pain",
+    desc: "Cervical and lumbar MRIs for the pain that comes from decades of laptops, subway stairs with luggage, and apartment moves. Find out if it's a disc before you spend another year guessing.",
+    href: "/peptides-for-tendon-repair/",
+    cta: "Peptides for tendon repair →",
+  },
+  {
+    title: "Headache & neuro workups",
+    desc: "Brain MRI for migraines with new features, persistent headaches, or symptoms that deserve imaging. Two days to an answer beats months of low-grade worry.",
+    href: "/ny/new-york/peptide-therapy/",
+    cta: "New York peptide therapy →",
+  },
+  {
+    title: "Preventive & body-composition tracking",
+    desc: "Pair advanced imaging with a physician-ordered DEXA scan to cover both questions: what's going on inside, and how your lean mass, fat, and bone density are trending.",
+    href: "/ny/new-york/dexascan/",
+    cta: "DEXA scan in New York →",
+  },
+];
+
+// HowItWorks
+const steps = [
+  {
+    num: "01",
+    title: "Text or Call",
+    desc: `Reach ${CTA_PHONE}. A telehealth consult with a New York-licensed physician is usually available within a day.`,
+    color: "#C9A84C",
+  },
+  {
+    num: "02",
+    title: "Book On Your Line",
+    desc: "We schedule an accredited partner center near your subway line, with evening and weekend slots on the table.",
+    color: "#5DADE2",
+  },
+  {
+    num: "03",
+    title: "Scan & Read",
+    desc: "20 to 45 minutes in the scanner. A board-certified radiologist reports the study within 24 to 72 hours.",
+    color: "#34D399",
+  },
+  {
+    num: "04",
+    title: "Results Call",
+    desc: "Your physician explains what the report means and what to do next, with the images yours to keep.",
+    color: "#D4B96A",
+  },
+];
+
+// Serving pills — NYC neighborhoods across the five boroughs.
+const hoods = [
+  "Midtown",
+  "Upper East Side",
+  "Upper West Side",
+  "Chelsea",
+  "Tribeca",
+  "Financial District",
+  "Harlem",
+  "Williamsburg",
+  "Park Slope",
+  "Brooklyn Heights",
+  "Astoria",
+  "Long Island City",
+  "Forest Hills",
+  "Flushing",
+  "Riverdale",
+  "Staten Island",
+];
+
+// Other MRI cities — every MRI page cross-links the other three.
+const otherCities = [
+  { name: "Miami", href: "/fl/miami/mri/", note: "Consults at our Brickell clinic, scans nearby" },
+  { name: "Fort Lauderdale", href: "/fl/fort-lauderdale/mri/", note: "Broward County scans near Las Olas and downtown" },
+  { name: "Houston", href: "/tx/houston/mri/", note: "Partner centers inside the Loop and across the metro" },
+];
+
+const SITE_URL = "https://www.stronghealth.com";
+
+// Service-area MedicalBusiness schema: city-level areaServed, no street
+// address (no NYC storefront; matches the NYC dexascan/peptide precedent).
+const medicalClinicSchema = {
+  "@context": "https://schema.org",
+  "@type": "MedicalBusiness",
+  "@id": `${SITE_URL}/ny/new-york/mri/#service`,
+  name: "Strong Health — MRI New York",
+  url: `${SITE_URL}/ny/new-york/mri/`,
+  telephone: STRONG_HEALTH_PHONE_TEL,
+  image: `${SITE_URL}/opengraph.jpg`,
+  parentOrganization: { "@id": `${SITE_URL}/#organization` },
+  sameAs: ["https://www.trustpilot.com/review/stronghealth.com"],
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "New York",
+    addressRegion: "NY",
+    addressCountry: "US",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 40.7128,
+    longitude: -74.006,
+  },
+  areaServed: {
+    "@type": "City",
+    name: "New York",
+  },
+  medicalSpecialty: ["DiagnosticRadiology"],
+  availableService: [
+    {
+      "@type": "MedicalProcedure",
+      name: "MRI — Musculoskeletal (Joint & Spine)",
+      procedureType: "https://schema.org/DiagnosticProcedure",
+      description:
+        "Physician-ordered MRI of the shoulder, knee, hip, ankle, wrist, elbow, and spine at accredited partner imaging centers across the five boroughs.",
+    },
+    {
+      "@type": "MedicalProcedure",
+      name: "MRI — Brain & Neurological",
+      procedureType: "https://schema.org/DiagnosticProcedure",
+      description:
+        "Brain MRI and MR angiography for New York patients, read by board-certified radiologists with physician-reviewed results via telehealth.",
+    },
+    {
+      "@type": "MedicalProcedure",
+      name: "MRI — Whole-Body Screening",
+      procedureType: "https://schema.org/DiagnosticProcedure",
+      description:
+        "Preventive whole-body MRI screening coordinated for New York City patients with physician review of results.",
+    },
+  ],
+  priceRange: "$$",
+};
+---
+
+<BaseLayout
+  title="MRI New York City — Scans in Days"
+  description="Book an MRI in NYC without the hospital markup. Physician-ordered scans at subway-accessible centers in all five boroughs, evening slots, flat pricing."
+  path="/ny/new-york/mri/"
+  smsContext="an MRI in New York City"
+>
+  <PageShell>
+    <JsonLd schema={medicalClinicSchema} />
+    <JsonLd
+      schema={medicalWebPageSchema({
+        name: "MRI New York City — Booked This Week, No Car Needed",
+        description:
+          "Physician-ordered MRI scans for New York City patients at accredited, subway-accessible partner imaging centers in all five boroughs, with radiologist reads and physician-reviewed results via telehealth.",
+        url: "/ny/new-york/mri/",
+        lastReviewed: PUBLISH_DATE,
+        reviewedBy: DR_ANGEL_RIVERA,
+      })}
+    />
+    <JsonLd
+      schema={articleSchema({
+        headline: "MRI in New York City — Physician-Ordered Imaging Without the Hospital Markup",
+        description:
+          "Physician-ordered MRI scans for New York City patients at accredited, subway-accessible partner imaging centers in all five boroughs, with radiologist reads and physician-reviewed results via telehealth.",
+        author: MAHADEV_MUKHERJEE,
+        reviewer: DR_ANGEL_RIVERA,
+        publishDate: PUBLISH_DATE,
+        updatedDate: PUBLISH_DATE,
+        url: "/ny/new-york/mri/",
+      })}
+    />
+    <JsonLd schema={faqPageSchema(FAQS)} />
+    <JsonLd schema={breadcrumbSchema(breadcrumbs)} />
+
+    {/* Breadcrumbs */}
+    <nav aria-label="Breadcrumb" class="px-8 pt-4 pb-0">
+      <div class="max-w-[1000px] mx-auto">
+        <ol class="flex items-center gap-1.5 text-[12px] text-muted">
+          {breadcrumbs.map((crumb, i) => {
+            const isLast = i === breadcrumbs.length - 1;
+            return (
+              <li class="flex items-center gap-1.5">
+                {i > 0 && <Icon name="chevron-right" size={12} class="text-text-subtle" />}
+                {isLast ? (
+                  <span class="text-gold font-semibold">{crumb.name}</span>
+                ) : (
+                  <a href={crumb.path} class="hover:text-gold transition-colors">
+                    {crumb.name}
+                  </a>
+                )}
+              </li>
+            );
+          })}
+        </ol>
+      </div>
+    </nav>
+
+    {/* Hero */}
+    <section class="relative px-8 pt-12 pb-24 overflow-hidden border-b border-white/5">
+      <div aria-hidden="true" class="hidden md:block absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-navy/20 rounded-full blur-[100px] pointer-events-none"></div>
+      <div aria-hidden="true" class="hidden md:block absolute bottom-0 right-1/4 translate-x-1/2 translate-y-1/4 w-[500px] h-[500px] bg-gold/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+      <div class="max-w-[1000px] mx-auto relative z-10">
+        <div class="flex items-center gap-2.5 mb-5">
+          <div class="flex gap-0.5">
+            {[1, 2, 3, 4, 5].map(() => <Icon name="star" size={16} class="fill-[#C9A84C] text-gold" />)}
+          </div>
+          <span class="text-sm font-bold text-gold">4.9</span>
+          <span class="text-[13px] text-muted">from 1,000+ Strong Health patient reviews</span>
+        </div>
+
+        <Tag>NYC MRI · All Five Boroughs · Evening & Weekend Slots</Tag>
+
+        <h1 class="text-4xl md:text-[52px] font-black text-cream leading-[1.08] mt-6 mb-5 max-w-[760px] tracking-[-1.5px]">
+          MRI in New York City. <span class="text-gold">A few subway stops, not a few months.</span>
+        </h1>
+
+        <p class="text-[17px] text-muted leading-relaxed max-w-[600px] mb-8">
+          A New York-licensed Strong Health physician orders your scan, books an accredited
+          imaging center near your subway line, and reviews the radiologist's report with you
+          in plain English. Hospital-grade imaging at a flat independent-center price, with
+          evening slots that fit a New York calendar.
+        </p>
+
+        <Btn trackLead placement="hero" href={BOOKING_SMS_HREF}>Book Your MRI in NYC →</Btn>
+        <div class="mt-4 text-xs text-muted">
+          Scans in 2–5 days · Evening & weekend appointments · Flat cash pricing
+        </div>
+      </div>
+    </section>
+
+    {/* Byline */}
+    <section class="px-8 pt-2 pb-6 bg-surface">
+      <div class="max-w-[800px] mx-auto">
+        <AuthorByline
+          author={MAHADEV_MUKHERJEE}
+          reviewer={DR_ANGEL_RIVERA}
+          publishDate={PUBLISH_DATE}
+        />
+      </div>
+    </section>
+
+    {/* WhyMri */}
+    <section class="px-8 py-20 bg-surface-card border-b border-white/5">
+      <div class="max-w-[1000px] mx-auto">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <FadeIn>
+            <Tag>Why New Yorkers Book Through Us</Tag>
+            <h2 class="text-[32px] font-extrabold text-cream leading-[1.15] mt-4 mb-4">
+              Same magnet, same radiologist. <span class="text-gold">Wildly different bill.</span>
+            </h2>
+            <p class="text-[15px] text-muted leading-[1.7] mb-4">
+              New York hides the country's strangest imaging market. A knee MRI can cost
+              $3,000 at a Manhattan hospital outpatient department and $450 at an accredited
+              independent center six subway stops away, read by a radiologist with the same
+              board certification.
+            </p>
+            <p class="text-[15px] text-muted leading-[1.7]">
+              The catch is navigating it: getting an order, knowing which centers are
+              accredited, finding a slot that doesn't torch a workday. Strong Health does
+              that part. One consult, one booking on your line, one flat price, and a
+              physician on the phone when the report lands.
+            </p>
+          </FadeIn>
+
+          <FadeIn delay={200}>
+            <div class="flex flex-col gap-3.5">
+              {whyMriPoints.map((s) => (
+                <div class="flex items-center gap-3 bg-surface-raised rounded-xl p-4 border border-white/5">
+                  <div class="w-9 h-9 rounded-full bg-surface flex items-center justify-center shrink-0 border border-white/5">
+                    <Icon name={s.icon} size={18} class="text-gold" />
+                  </div>
+                  <span class="text-sm text-cream-muted">{s.text}</span>
+                </div>
+              ))}
+            </div>
+          </FadeIn>
+        </div>
+      </div>
+    </section>
+
+    {/* LocationDetails */}
+    <section class="px-8 py-20 bg-surface border-b border-white/5">
+      <div class="max-w-[1000px] mx-auto">
+        <FadeIn class="text-center mb-10">
+          <Tag>Where You'll Be Scanned</Tag>
+          <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
+            Partner centers across <span class="text-gold">the five boroughs</span>
+          </h2>
+          <p class="text-[15px] text-muted max-w-[560px] mx-auto">
+            The densest cluster is in Midtown, walkable from Grand Central and Penn Station,
+            with additional sites in Brooklyn, Queens, and the Bronx so the scan comes to
+            your commute.
+          </p>
+        </FadeIn>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <FadeIn>
+            <div class="bg-surface-card rounded-2xl border border-white/10 overflow-hidden h-full">
+              <iframe
+                src={`https://maps.google.com/maps?q=${MAPS_QUERY}&output=embed`}
+                class="w-full h-[240px] border-0"
+                allowfullscreen
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="New York City MRI service area - Midtown Manhattan partner cluster"
+              ></iframe>
+              <div class="p-6 flex flex-col gap-4">
+                <div class="flex items-start gap-3">
+                  <Icon name="map-pin" size={16} class="text-gold shrink-0 mt-0.5" />
+                  <div>
+                    <div class="text-sm font-bold text-cream">New York City service area</div>
+                    <div class="text-sm text-cream-muted mt-0.5">Partner imaging centers in all five boroughs; your exact site is confirmed when you book.</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <Icon name="phone" size={16} class="text-gold shrink-0 mt-0.5" />
+                  <a
+                    href={TEL_HREF}
+                    class="text-sm text-cream-muted hover:text-gold transition-colors"
+                  >
+                    {CTA_PHONE}
+                  </a>
+                </div>
+                <div class="flex items-start gap-3">
+                  <Icon name="clock" size={16} class="text-gold shrink-0 mt-0.5" />
+                  <div class="text-sm text-cream-muted">Telehealth consults Mon–Fri 8:00 AM – 6:00 PM, Sat 9:00 AM – 1:00 PM · Many scan sites run evenings and weekends</div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <Icon name="bus" size={16} class="text-gold shrink-0 mt-0.5" />
+                  <div class="text-xs text-muted leading-relaxed">
+                    Midtown sites are a short walk from Grand Central (4, 5, 6, 7, S) and Penn
+                    Station (1, 2, 3, A, C, E). Outer-borough sites sit near the L, N, and 7 in
+                    Brooklyn and Queens. Exact transit directions come with your confirmation.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={200}>
+            <div class="bg-surface-card rounded-2xl border border-white/10 p-7 h-full flex flex-col">
+              <h3 class="text-lg font-bold text-cream mb-4">What to expect for your NYC MRI</h3>
+              <div class="flex flex-col gap-4 text-[14px] text-cream-muted leading-[1.7]">
+                <div class="flex items-start gap-3">
+                  <div class="w-7 h-7 rounded-full bg-gold/10 flex items-center justify-center shrink-0 text-[11px] font-bold text-gold">1</div>
+                  <span>A telehealth consult with a New York-licensed physician who confirms the study and writes the order, often same-day.</span>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="w-7 h-7 rounded-full bg-gold/10 flex items-center justify-center shrink-0 text-[11px] font-bold text-gold">2</div>
+                  <span>Your scan at the assigned center. Arrive 15 minutes early, skip the jewelry, and expect 20 to 45 minutes in the scanner. Evening slots exist for a reason; use them.</span>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="w-7 h-7 rounded-full bg-gold/10 flex items-center justify-center shrink-0 text-[11px] font-bold text-gold">3</div>
+                  <span>A board-certified radiologist reads the study within 24 to 72 hours.</span>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="w-7 h-7 rounded-full bg-gold/10 flex items-center justify-center shrink-0 text-[11px] font-bold text-gold">4</div>
+                  <span>A results call where your physician explains the findings and maps next steps, with your images ready to hand to any NYC specialist.</span>
+                </div>
+              </div>
+              <div class="mt-6 pt-5 border-t border-white/5 text-[12px] text-muted">
+                Most New York patients go from first text to explained results within a week,
+                without taking a day off work.
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+      </div>
+    </section>
+
+    {/* WhatYouGet */}
+    <section class="px-8 py-20 bg-surface-card border-b border-white/5">
+      <div class="max-w-[1000px] mx-auto">
+        <FadeIn class="text-center mb-10">
+          <Tag>What's Included</Tag>
+          <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
+            One flat price, <span class="text-gold">start to explanation</span>
+          </h2>
+          <p class="text-[15px] text-muted max-w-[560px] mx-auto">
+            The quote you approve covers the physician, the scanner, the radiologist, and the
+            follow-up call. New York has enough surprise bills already.
+          </p>
+        </FadeIn>
+
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+          {whatYouGetItems.map((u, i) => (
+            <FadeIn delay={i * 80}>
+              <div class="bg-surface rounded-xl p-6 border border-white/10 h-full hover:bg-surface-raised transition-colors">
+                <div class="text-gold mb-4 p-3 rounded-xl bg-surface-raised border border-white/5 w-fit"><Icon name={u.icon} size={28} /></div>
+                <h3 class="text-[15px] font-bold text-cream mb-2">{u.title}</h3>
+                <p class="text-[13px] text-muted leading-relaxed">{u.desc}</p>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* UseCases */}
+    <section class="px-8 py-20 bg-surface border-b border-white/5">
+      <div class="max-w-[1000px] mx-auto">
+        <FadeIn class="text-center mb-10">
+          <Tag>Who Books MRIs in NYC</Tag>
+          <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
+            What brings New Yorkers <span class="text-gold">to the scanner</span>
+          </h2>
+        </FadeIn>
+        <div class="grid md:grid-cols-2 gap-5">
+          {useCases.map((c, i) => (
+            <FadeIn delay={i * 80}>
+              <div class="bg-surface-card rounded-2xl p-6 border border-white/10 h-full flex flex-col">
+                <h3 class="text-lg font-bold text-cream mb-3">{c.title}</h3>
+                <p class="text-[14px] text-muted leading-relaxed flex-grow mb-4">{c.desc}</p>
+                <a href={c.href} class="text-[13px] font-semibold text-gold hover:underline">
+                  {c.cta}
+                </a>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* HowItWorks */}
+    <section class="px-8 py-20 bg-surface-card border-b border-white/5">
+      <div class="max-w-[1000px] mx-auto">
+        <FadeIn class="text-center mb-10">
+          <Tag>How It Works</Tag>
+          <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
+            Four steps, <span class="text-gold">built around a New York schedule</span>
+          </h2>
+        </FadeIn>
+
+        <div class="grid md:grid-cols-4 gap-4">
+          {steps.map((s, i) => (
+            <FadeIn delay={i * 100}>
+              <div
+                class="bg-surface rounded-[14px] p-6 border border-white/10 h-full hover:border-white/20 transition-colors"
+                style={`border-top:3px solid ${s.color}`}
+              >
+                <div class="text-[28px] font-black mb-3" style={`color:${s.color}`}>{s.num}</div>
+                <h3 class="text-base font-bold text-cream mb-3">{s.title}</h3>
+                <p class="text-[13px] text-muted leading-relaxed">{s.desc}</p>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* Testimonials */}
+    <section class="px-8 py-20 bg-surface border-b border-white/5">
+      <div class="max-w-[1000px] mx-auto">
+        <FadeIn class="text-center mb-10">
+          <Tag>NYC Patient Reviews</Tag>
+          <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
+            New Yorkers, <span class="text-gold">after the scan</span>
+          </h2>
+        </FadeIn>
+
+        <div class="grid md:grid-cols-3 gap-5">
+          {TESTIMONIALS.map((r, i) => (
+            <FadeIn delay={i * 100}>
+              <div class="bg-surface-card rounded-2xl p-6 border border-white/10 h-full flex flex-col">
+                <div class="flex items-center gap-2 mb-4">
+                  <div class="flex gap-0.5">
+                    {Array.from({ length: 5 }).map(() => (
+                      <Icon name="star" size={13} class="fill-[#C9A84C] text-gold" />
+                    ))}
+                  </div>
+                  <span class="text-[10px] text-muted uppercase tracking-wider font-semibold">Verified Patient</span>
+                </div>
+                <Icon name="quote" size={20} class="text-gold/30 mb-2" />
+                <p class="text-[13px] text-cream-muted leading-relaxed flex-grow mb-4">{r.text}</p>
+                <div class="border-t border-white/5 pt-3 flex items-center gap-2">
+                  <div class="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center">
+                    <span class="text-[11px] font-bold text-gold">{r.name[0]}</span>
+                  </div>
+                  <div>
+                    <div class="text-sm font-semibold text-cream">{r.name}</div>
+                    <div class="text-[11px] text-muted">{r.neighborhood}, New York</div>
+                  </div>
+                </div>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* Neighborhoods */}
+    <section class="px-8 py-20 bg-surface-card border-b border-white/5">
+      <div class="max-w-[1000px] mx-auto">
+        <FadeIn class="text-center mb-8">
+          <Tag>Serving the Five Boroughs</Tag>
+          <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
+            MRI patients from <span class="text-gold">across New York City</span>
+          </h2>
+          <p class="text-[15px] text-muted max-w-[540px] mx-auto">
+            Wherever the MTA reaches, we can put a scanner within a short ride. These are the
+            neighborhoods our NYC patients most often come from.
+          </p>
+        </FadeIn>
+        <FadeIn delay={150}>
+          <div class="flex flex-wrap gap-2 justify-center max-w-[820px] mx-auto">
+            {hoods.map((n) => (
+              <span class="text-[12px] text-cream-muted bg-surface-raised border border-white/10 rounded-full px-3.5 py-1.5">
+                MRI near {n}
+              </span>
+            ))}
+          </div>
+        </FadeIn>
+      </div>
+    </section>
+
+    {/* OtherCities */}
+    <section class="px-8 py-20 bg-surface border-b border-white/5">
+      <div class="max-w-[1000px] mx-auto">
+        <FadeIn class="text-center mb-10">
+          <Tag>MRI in Other Cities</Tag>
+          <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
+            Strong Health MRI, <span class="text-gold">beyond New York</span>
+          </h2>
+        </FadeIn>
+        <div class="grid sm:grid-cols-3 gap-4">
+          {otherCities.map((c, i) => (
+            <FadeIn delay={i * 80}>
+              <a
+                href={c.href}
+                class="block bg-surface-card rounded-xl p-6 border border-white/10 h-full hover:border-gold/40 transition-colors"
+              >
+                <div class="text-[15px] font-bold text-cream mb-1">MRI in {c.name}</div>
+                <p class="text-[13px] text-muted leading-relaxed">{c.note}</p>
+                <span class="text-[13px] font-semibold text-gold mt-3 inline-block">View {c.name} MRI page →</span>
+              </a>
+            </FadeIn>
+          ))}
+        </div>
+        <FadeIn delay={250}>
+          <p class="text-[13px] text-muted text-center mt-8">
+            Also for New York patients: <a href="/ny/new-york/dexascan/" class="text-gold hover:underline">DEXA scan body composition in NYC</a>.
+          </p>
+        </FadeIn>
+      </div>
+    </section>
+
+    {/* FAQ */}
+    <section class="px-8 py-20 bg-surface-card border-b border-white/5">
+      <div class="max-w-[800px] mx-auto">
+        <FadeIn class="text-center mb-10">
+          <Tag>NYC MRI FAQs</Tag>
+          <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
+            Common questions about <span class="text-gold">MRIs in New York City</span>
+          </h2>
+        </FadeIn>
+        <div class="flex flex-col gap-4">
+          {FAQS.map((faq, i) => (
+            <FadeIn delay={i * 30}>
+              <details class="bg-surface rounded-xl border border-white/10 group">
+                <summary class="cursor-pointer p-5 list-none flex items-start justify-between gap-4">
+                  <h3 class="text-[15px] font-bold text-cream pr-2">{faq.question}</h3>
+                  <Icon
+                    name="chevron-right"
+                    size={18}
+                    class="text-gold flex-shrink-0 transition-transform group-open:rotate-90 mt-0.5"
+                  />
+                </summary>
+                <div class="px-5 pb-5 text-[14px] text-muted leading-[1.7]">{faq.answer}</div>
+              </details>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* FinalCTA */}
+    <section class="px-8 py-24 bg-gradient-to-br from-[#C9A84C]/[0.08] to-[#0D0F12] border-b border-white/5">
+      <div class="max-w-[700px] mx-auto text-center">
+        <FadeIn>
+          <h2 class="text-[36px] font-black text-cream leading-[1.1] mb-4">
+            Book your MRI in New York City
+          </h2>
+          <p class="text-[17px] text-muted leading-relaxed mb-8 max-w-[520px] mx-auto">
+            A physician's order, a scanner near your subway line, and a real explanation of
+            the report. Booked this week, often for less than what a hospital visit costs out of pocket.
+          </p>
+          <div class="flex items-center justify-center gap-2 mb-6 text-[13px] text-muted">
+            <Icon name="phone" size={14} class="text-gold" />
+            <a
+              href={TEL_HREF}
+              class="hover:text-gold transition-colors"
+            >
+              {CTA_PHONE}
+            </a>
+          </div>
+          <Btn trackLead placement="final_cta" href={BOOKING_SMS_HREF}>Book Your MRI →</Btn>
+        </FadeIn>
+      </div>
+    </section>
+  </PageShell>
+</BaseLayout>

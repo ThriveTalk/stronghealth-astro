@@ -1,5 +1,8 @@
 ---
-// /fl/miami/dexascan/ — port of src/pages/local/MiamiDexaScan.tsx (source monorepo).
+// /fl/miami/mri/ — Miami MRI local service page, modeled on /fl/miami/dexascan/.
+// Consults and physician orders run through the Brickell clinic; the scan
+// itself happens at an accredited partner imaging center nearby, with the
+// report reviewed by a Strong Health physician.
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import PageShell from "../../../components/shared/PageShell.astro";
 import JsonLd from "../../../components/seo/JsonLd.astro";
@@ -17,144 +20,143 @@ import AuthorByline from "../../../components/shared/AuthorByline.astro";
 import { MAHADEV_MUKHERJEE, DR_ANGEL_RIVERA } from "../../../data/articleAuthors";
 import { MIAMI_BRICKELL_CLINIC, MIAMI_BRICKELL_FULL_ADDRESS } from "../../../data/miamiClinic";
 import {
-  DEXA_BOOKING_SMS_HREF,
-  DEXA_CTA_PHONE_DISPLAY,
-  DEXA_CTA_PHONE_HREF,
-} from "../../../data/dexaCta";
-import { MIAMI_DEXA_NEIGHBORHOODS } from "../../../data/local/dexaNeighborhoods";
+  MRI_BOOKING_SMS_HREF,
+  MRI_CTA_PHONE_DISPLAY,
+  MRI_CTA_PHONE_HREF,
+} from "../../../data/mriCta";
 
 const CLINIC = MIAMI_BRICKELL_CLINIC;
 const FULL_ADDRESS = MIAMI_BRICKELL_FULL_ADDRESS;
-const PUBLISH_DATE = "2026-05-01";
+const PUBLISH_DATE = "2026-08-04";
 const MAPS_QUERY = encodeURIComponent(`${CLINIC.name}, ${FULL_ADDRESS}`);
 
-// DEXA pages call and text their own tracked line (see src/data/dexaCta.ts),
-// not the site-wide clinic number.
-const CTA_PHONE = DEXA_CTA_PHONE_DISPLAY;
-const BOOKING_SMS_HREF = DEXA_BOOKING_SMS_HREF;
-const TEL_HREF = DEXA_CTA_PHONE_HREF;
+// MRI pages call and text the same tracked line as the DEXA pages
+// (src/data/mriCta.ts re-exports it from dexaCta.ts) — never a new number.
+const CTA_PHONE = MRI_CTA_PHONE_DISPLAY;
+const BOOKING_SMS_HREF = MRI_BOOKING_SMS_HREF;
+const TEL_HREF = MRI_CTA_PHONE_HREF;
 
 const breadcrumbs = [
   { name: "Home", path: "/" },
   { name: "Florida", path: "/fl/" },
-  { name: "DEXA Scan Miami", path: "/fl/miami/dexascan/" },
+  { name: "MRI Miami", path: "/fl/miami/mri/" },
 ];
 
 const FAQS = [
   {
-    question: "Where can I get a DEXA scan in Miami?",
+    question: "Where can I get an MRI in Miami?",
     answer:
-      `Strong Health offers DEXA scan body composition analysis at our Brickell clinic at 1000 Brickell Plaza, Miami, FL 33131. The clinic is in Miami's financial district with validated parking and Metrorail access (Brickell station, 0.3 mi). Walk-ins are welcome and same-week appointments are typically available. Call ${CTA_PHONE} to book.`,
+      `Strong Health coordinates MRI scans for Miami patients from our Brickell clinic at 1000 Brickell Plaza, Miami, FL 33131. A Strong Health physician evaluates you, orders the study, and books you into an accredited partner imaging center a short drive from Brickell. The clinic is 0.3 miles from the Brickell Metrorail station with validated parking at the Brickell Plaza garage. Call or text ${CTA_PHONE} to get started.`,
   },
   {
-    question: "How much does a DEXA scan cost in Miami?",
+    question: "How much does an MRI cost in Miami?",
     answer:
-      "A body composition DEXA scan at our Miami clinic is competitively priced for the South Florida market, with transparent direct-pay pricing and no hidden fees. Most patients pay under $200 per scan, and bundled pricing is available if you plan to track progress with multiple scans over the year. Bone density DEXA scans (for osteoporosis screening) may be covered by insurance for eligible patients.",
+      "Cash-pay MRI pricing in Miami-Dade typically runs $400 to $900 per body part at independent imaging centers, while the same scan billed through a hospital can exceed $2,000 once facility fees land. Strong Health quotes you a flat price before you book, so the number you agree to is the number you pay. Contrast, if your physician orders it, is quoted up front too.",
   },
   {
-    question: "What does a DEXA scan measure?",
+    question: "Do I need a referral for an MRI in Miami?",
     answer:
-      "A DEXA (Dual-Energy X-ray Absorptiometry) scan precisely measures three things across your entire body: lean muscle mass (in pounds, broken down by limb and trunk), fat mass (total and visceral), and bone mineral density. It's the clinical gold standard for body composition with a margin of error of roughly 1–2%, far more accurate than BIA scales or skinfold calipers.",
+      "Every MRI in Florida requires a physician's order, but you don't need to bring one. The evaluation and the order are part of the service: a Strong Health physician reviews your symptoms and history, decides whether MRI is the right study, and writes the order. If you already have an order from another doctor, we can schedule you off that instead.",
   },
   {
-    question: "How long does a DEXA scan take at your Miami clinic?",
+    question: "How fast can I get an MRI appointment in Miami?",
     answer:
-      "The actual scan takes 10–15 minutes. Plan for about 30 minutes total at our Brickell location, including check-in, the scan itself, and a brief consultation to walk through your results. There are no injections, no enclosed spaces, and the radiation dose is roughly 1/10th of a standard chest X-ray.",
+      "Most Miami patients scan within 2 to 5 business days of their consult. Hospital systems in Miami often quote two to four weeks for non-urgent outpatient MRIs, which is the main reason patients come to us. If your case is time-sensitive, tell us when you call and we'll look for a next-day slot.",
   },
   {
-    question: "Do I need a doctor's referral for a DEXA scan in Miami?",
+    question: "How long does an MRI take?",
     answer:
-      "No referral is needed for a body composition DEXA scan at our Miami clinic. We accept walk-ins and self-pay patients. If you're already a Strong Health patient on a TRT, peptide, or weight loss protocol, your physician can order the scan as part of your treatment plan and review the results with you at your next visit.",
+      "Plan on 20 to 45 minutes in the scanner depending on the body part, plus about 15 minutes for check-in and screening. A knee or shoulder is usually on the shorter end; a multi-region spine study or a contrast protocol takes longer. You'll get an exact time estimate when your specific study is booked.",
   },
   {
-    question: "How should I prepare for my DEXA scan?",
+    question: "I'm claustrophobic. Are open or wide-bore MRI machines available in Miami?",
     answer:
-      "Wear comfortable clothing without metal (no zippers, underwire bras, or metal buttons). Avoid eating a large meal within 2 hours of the scan, hydrate normally, skip calcium supplements for 24 hours, and avoid intense exercise the night before. Consistency between scans matters more than perfect prep, so try to repeat the same conditions for follow-up scans.",
+      "Yes. Several of our Miami partner centers run wide-bore 1.5T and 3T scanners with a 70 cm opening, and true open MRI is available when image-quality tradeoffs are acceptable for your study. Tell us about claustrophobia when you book and we'll match you to the right scanner. Mild oral sedation can also be arranged through your physician for tough cases.",
   },
   {
-    question: "How often should I get a DEXA scan?",
+    question: "Where do I park, and can I take the Metrorail?",
     answer:
-      "For active body recomposition (TRT, peptides, weight loss program), every 3–6 months is ideal. For general health monitoring, once per year is sufficient. Scanning more frequently than every 90 days rarely shows meaningful changes and wastes resources. We recommend using our Miami clinic for every follow-up scan, as the same scanner produces the most reliable trend data.",
+      "For your consult at the Brickell clinic, park in the Brickell Plaza garage (validated) or ride the Metrorail to Brickell station, a 5-minute walk away. Partner imaging centers we use in Miami have their own free or validated patient parking; we send the address and parking notes with your scan confirmation.",
   },
   {
-    question: "Is DEXA the best body composition test in Miami?",
+    question: "When will I get my MRI results?",
     answer:
-      "DEXA is widely considered the clinical gold standard for body composition analysis. Compared to BIA scales (5–8% error), skinfold calipers (highly operator-dependent), and InBody machines (sensitive to hydration), DEXA offers 1–2% precision with regional breakdowns that no other commonly available method can match. Underwater hydrostatic weighing is comparable but rarely available in Miami.",
+      "A board-certified radiologist reads your scan and the written report is usually ready within 24 to 72 hours. Then your Strong Health physician goes through it with you, in person at Brickell or over a telehealth call, and explains what the findings actually mean for treatment. You keep the digital images and the report.",
   },
   {
-    question: "Can a DEXA scan track results from TRT or GLP-1 weight loss?",
+    question: "Will my insurance cover an MRI in Miami?",
     answer:
-      "Yes. DEXA is the most accurate way to verify that testosterone therapy is producing real lean mass gains and that GLP-1 weight loss (semaglutide, tirzepatide) is preserving muscle while reducing fat. The scale only tells you total weight; DEXA tells you exactly where it's coming from. Many of our Miami TRT and weight loss patients use DEXA scans every 3–6 months to track progress objectively.",
+      "Strong Health's MRI service is direct-pay, which is often cheaper than an insured hospital MRI once deductibles and facility fees are counted. We give you an itemized receipt (superbill) you can submit to your insurer for possible out-of-network reimbursement, and HSA and FSA cards are accepted.",
   },
   {
-    question: "Is the DEXA scan safe?",
+    question: "What body parts can you scan?",
     answer:
-      "Yes. A DEXA scan uses an extremely low dose of ionizing radiation, roughly 1/10th of a standard chest X-ray and less than a single day of natural background exposure in South Florida. It's FDA-approved for repeated use and considered one of the safest medical imaging technologies available.",
+      "Brain, cervical, thoracic and lumbar spine, shoulder, knee, hip, ankle, wrist, elbow, abdomen and pelvis, and MR angiography where indicated. Whole-body screening MRI is available for preventive workups. If you're not sure which study you need, that's exactly what the physician consult sorts out before anything is booked.",
   },
 ];
 
 const TESTIMONIALS = [
   {
-    name: "Carlos M.",
-    neighborhood: "Brickell",
-    text: "I've been on TRT for eight months. The scale only moved 6 lbs but my DEXA showed I gained 14 lbs of lean mass and lost 20 lbs of fat. I would have given up without that data. The Brickell location is five minutes from my condo.",
-  },
-  {
-    name: "Andrea P.",
+    name: "Daniela R.",
     neighborhood: "Coral Gables",
-    text: "I was on tirzepatide and worried I was losing muscle. Strong Health's DEXA scan confirmed I'd kept almost all my lean mass while losing 32 lbs of fat. That's exactly what I needed to see to keep going.",
+    text: "I tore something in my shoulder playing tennis at Salvadore Park and my orthopedist wanted an MRI before he'd talk surgery. Strong Health had me scanned in three days and the doctor called me the morning the report came in. The hospital had quoted me three weeks and $2,400.",
   },
   {
-    name: "Marco T.",
-    neighborhood: "Coconut Grove",
-    text: "I've used InBody scales at my gym for years and the numbers were all over the place. The DEXA report I got from Strong Health was on a different level: broken down by arm, leg, trunk, plus visceral fat and bone density. Worth every dollar.",
+    name: "Yusuf H.",
+    neighborhood: "Wynwood",
+    text: "Two years of lower back pain and every doctor just handed me ibuprofen. The consult at Brickell took 20 minutes, the lumbar MRI was that same Friday, and I finally had an answer: a herniated disc at L4-L5. Having someone sit down and explain the images to me was worth the price by itself.",
+  },
+  {
+    name: "Melissa G.",
+    neighborhood: "Key Biscayne",
+    text: "My migraines got worse this spring and I wanted a brain MRI for peace of mind without fighting my insurance for a referral. One text, one consult, scanned the next week. Everything came back clean, and the radiologist's report was in my inbox two days later.",
   },
 ];
 
-// WhyDexa
-const whyDexaPoints = [
-  { icon: "chart-line", text: "1–2% margin of error vs. 5–8% for BIA scales" },
-  { icon: "activity", text: "Region-by-region breakdown (arms, legs, trunk)" },
-  { icon: "bone", text: "Bone density scoring (T-score, Z-score)" },
-  { icon: "scale", text: "Visceral fat measurement, not just total body fat" },
-  { icon: "heart-pulse", text: "FDA-approved, low-dose, repeatable for trend data" },
+// WhyMri
+const whyMriPoints = [
+  { icon: "microscope", text: "1.5T and 3T scanners at ACR-accredited partner centers" },
+  { icon: "file-check", text: "Every study read by a board-certified radiologist" },
+  { icon: "stethoscope", text: "A physician orders the scan and explains the report to you" },
+  { icon: "dollar-sign", text: "Flat cash pricing quoted before you book" },
+  { icon: "clock", text: "Scans within days, reports within 24–72 hours" },
 ];
 
 // WhatYouGet
 const whatYouGetItems = [
-  { icon: "microscope", title: "Total & Regional Body Fat %", desc: "Body fat broken down by arms, legs, trunk, and android/gynoid regions. Track exactly where you're losing fat." },
-  { icon: "activity", title: "Lean Muscle Mass", desc: "Pound-precise lean mass for each limb. Verify TRT, peptide, or training programs are actually building muscle." },
-  { icon: "scale", title: "Visceral Adipose Tissue", desc: "The dangerous fat around your organs, separated from subcutaneous. The single best metric for metabolic risk." },
-  { icon: "bone", title: "Bone Mineral Density", desc: "T-score and Z-score for hip and spine. Catch early osteopenia before it becomes osteoporosis." },
-  { icon: "shield-check", title: "Symmetry Analysis", desc: "Left vs. right comparisons by limb. Spot muscle imbalances from old injuries or training asymmetries." },
-  { icon: "clipboard-check", title: "Trend Tracking", desc: "Side-by-side comparison reports across every scan, so you can see real change over months and years." },
+  { icon: "stethoscope", title: "Physician Evaluation & Order", desc: "A Strong Health physician reviews your symptoms and writes the MRI order. You don't have to chase down a referral first." },
+  { icon: "microscope", title: "High-Field Imaging", desc: "Your scan runs on a 1.5T or 3T magnet at an accredited Miami imaging center matched to your study and your comfort." },
+  { icon: "file-check", title: "Radiologist Report", desc: "A board-certified radiologist reads every study. The written report is typically ready within 24 to 72 hours." },
+  { icon: "brain", title: "A Physician Walkthrough", desc: "Your physician goes through the images and report with you at Brickell or by telehealth, so you leave knowing what the findings mean." },
+  { icon: "clipboard-check", title: "Your Images, Yours to Keep", desc: "Digital access to the full DICOM images and report, ready to share with any orthopedist, neurologist, or surgeon." },
+  { icon: "navigation", title: "A Next Step, Not a Dead End", desc: "Whether the answer is physical therapy, a specialist referral, or a treatment protocol at our clinic, you get a concrete plan." },
 ];
 
 // UseCases
 const useCases = [
   {
-    title: "Muscle-growth protocols",
-    desc: "Verify that a GH-secretagogue protocol is producing real lean mass gains and reducing fat, not just moving the scale.",
-    href: "/peptides-for-muscle-growth/",
-    cta: "Peptides for muscle growth →",
+    title: "Sports & orthopedic injuries",
+    desc: "Shoulder, knee, hip, and ankle MRIs for the injuries Miami's tennis courts, gyms, and running paths hand out. Know whether it's a strain or a tear before you decide on treatment.",
+    href: "/peptides-for-healing/",
+    cta: "Peptides for healing →",
   },
   {
-    title: "GLP-1 weight loss",
-    desc: "Make sure semaglutide or tirzepatide is preserving muscle while you lose fat. Critical for long-term metabolic health.",
-    href: "/peptides-for-weight-loss/",
-    cta: "Peptides for weight loss →",
+    title: "Back & neck pain",
+    desc: "Lumbar and cervical spine imaging to find out whether that pain is a disc, a nerve, or something else, instead of guessing through months of ibuprofen.",
+    href: "/peptides-for-tendon-repair/",
+    cta: "Peptides for tendon repair →",
   },
   {
-    title: "Peptide therapy",
-    desc: "Quantify body composition changes from peptides like CJC-1295/ipamorelin, BPC-157, or growth hormone secretagogues.",
+    title: "Headache & neurological workups",
+    desc: "Brain MRI for persistent headaches, migraines with new features, or symptoms your primary doctor wants imaged. Answers beat worry.",
     href: "/fl/miami/peptide-therapy/",
     cta: "Miami peptide therapy →",
   },
   {
-    title: "Athletes & lifters",
-    desc: "Get the same body composition data professional sports nutritionists use. Track muscle gain by limb, identify imbalances.",
-    href: "/dexa-scan/",
-    cta: "Read the full DEXA guide →",
+    title: "Preventive & body-composition tracking",
+    desc: "Pair advanced imaging with a DEXA scan at our Brickell clinic for a full picture: what's inside, plus precise lean mass, fat, and bone density.",
+    href: "/fl/miami/dexascan/",
+    cta: "DEXA scan in Miami →",
   },
 ];
 
@@ -162,43 +164,67 @@ const useCases = [
 const steps = [
   {
     num: "01",
-    title: "Book Your Miami Scan",
-    desc: `Reserve a time online or call ${CTA_PHONE}. Same-week appointments are typically available at our Brickell clinic.`,
+    title: "Consult at Brickell",
+    desc: `Call or text ${CTA_PHONE}. A physician reviews your symptoms in person at 1000 Brickell Plaza or by telehealth and orders the right study.`,
     color: "#C9A84C",
   },
   {
     num: "02",
-    title: "10–15 Minute Scan",
-    desc: "Lie flat on an open table while the scanner arm passes over you. No injections, no enclosed space, ultra-low radiation.",
+    title: "Scan Within Days",
+    desc: "We book you into an accredited Miami partner imaging center, usually within 2 to 5 business days. Wide-bore scanners available.",
     color: "#5DADE2",
   },
   {
     num: "03",
-    title: "Get Your Detailed Report",
-    desc: "Full PDF report within 24 hours: lean mass, body fat % by region, visceral fat, bone density, symmetry analysis.",
+    title: "Radiologist Read",
+    desc: "A board-certified radiologist interprets your study. The written report is typically back within 24 to 72 hours.",
     color: "#34D399",
   },
   {
     num: "04",
-    title: "Track Progress Over Time",
-    desc: "Re-scan every 3–6 months on active protocols. Side-by-side trend reports show what's actually changing.",
+    title: "Results, Explained",
+    desc: "Your physician goes through the report with you and maps the next step: specialist, therapy, or treatment at our clinic.",
     color: "#D4B96A",
   },
 ];
 
-// Neighborhoods — each pill links to its dedicated child page
-// (/fl/miami/dexascan/{slug}/), driven by the same config as the pages.
-const hoods = MIAMI_DEXA_NEIGHBORHOODS;
+// Serving pills — Miami-Dade neighborhoods our Brickell clinic draws from.
+const hoods = [
+  "Brickell",
+  "Downtown Miami",
+  "Coral Gables",
+  "Coconut Grove",
+  "Wynwood",
+  "Edgewater",
+  "Midtown Miami",
+  "Little Havana",
+  "The Roads",
+  "Key Biscayne",
+  "South Beach",
+  "Miami Beach",
+  "Doral",
+  "Kendall",
+  "Coral Way",
+  "Aventura",
+];
+
+// Other MRI cities — every MRI page cross-links the other three.
+const otherCities = [
+  { name: "Fort Lauderdale", href: "/fl/fort-lauderdale/mri/", note: "Broward County scans near Las Olas and downtown" },
+  { name: "Houston", href: "/tx/houston/mri/", note: "Partner centers inside the Loop and across the metro" },
+  { name: "New York City", href: "/ny/new-york/mri/", note: "Subway-accessible imaging in all five boroughs" },
+];
 
 const SITE_URL = "https://www.stronghealth.com";
 
-// Port of MedicalClinicJsonLd (MedicalBusiness schema) — key order matches the TSX.
+// MedicalBusiness schema for the MRI service, anchored on the real Brickell
+// clinic NAP (schema telephone stays the site-wide number per dexaCta.ts).
 const medicalClinicSchema = {
   "@context": "https://schema.org",
   "@type": "MedicalBusiness",
-  "@id": `${SITE_URL}/fl/miami/dexascan/#clinic`,
-  name: `${CLINIC.name} — DEXA Scan`,
-  url: `${SITE_URL}/fl/miami/dexascan/`,
+  "@id": `${SITE_URL}/fl/miami/mri/#clinic`,
+  name: `${CLINIC.name} — MRI`,
+  url: `${SITE_URL}/fl/miami/mri/`,
   telephone: CLINIC.phoneTel,
   image: `${SITE_URL}/opengraph.jpg`,
   parentOrganization: { "@id": `${SITE_URL}/#organization` },
@@ -226,21 +252,28 @@ const medicalClinicSchema = {
     "@type": "City",
     name: "Miami",
   },
-  medicalSpecialty: ["DiagnosticRadiology", "PreventiveMedicine"],
+  medicalSpecialty: ["DiagnosticRadiology"],
   availableService: [
     {
       "@type": "MedicalProcedure",
-      name: "DEXA Scan — Body Composition Analysis",
+      name: "MRI — Musculoskeletal (Joint & Spine)",
       procedureType: "https://schema.org/DiagnosticProcedure",
       description:
-        "Dual-Energy X-ray Absorptiometry scan for precise measurement of lean mass, body fat percentage, visceral adipose tissue, and bone mineral density.",
+        "Physician-ordered magnetic resonance imaging of the shoulder, knee, hip, ankle, wrist, elbow, and cervical/thoracic/lumbar spine at accredited Miami partner imaging centers.",
     },
     {
       "@type": "MedicalProcedure",
-      name: "DEXA Scan — Bone Density",
+      name: "MRI — Brain & Neurological",
       procedureType: "https://schema.org/DiagnosticProcedure",
       description:
-        "Bone mineral density scanning (T-score and Z-score) for osteopenia and osteoporosis screening.",
+        "Brain MRI and MR angiography for headache, migraine, and neurological workups, read by board-certified radiologists with physician review of results.",
+    },
+    {
+      "@type": "MedicalProcedure",
+      name: "MRI — Whole-Body Screening",
+      procedureType: "https://schema.org/DiagnosticProcedure",
+      description:
+        "Preventive whole-body MRI screening coordinated through the Strong Health Brickell clinic with physician-reviewed results.",
     },
   ],
   openingHoursSpecification: [
@@ -257,36 +290,38 @@ const medicalClinicSchema = {
       closes: CLINIC.hoursSaturday.closes,
     },
   ],
-  priceRange: "$",
+  priceRange: "$$",
 };
 ---
 
 <BaseLayout
-  title="DEXA Scan Miami — Body Composition"
-  description="Clinical DEXA scan in Miami at our Brickell clinic. Precise body composition, lean mass, body fat %, visceral fat & bone density. Walk-ins welcome."
-  path="/fl/miami/dexascan/"
+  title="MRI Miami — Physician-Ordered Scans in Days"
+  description="MRI in Miami without the hospital wait. Physician-ordered scans at accredited centers near Brickell, flat pricing, results explained. Call (786) 420-6630."
+  path="/fl/miami/mri/"
+  smsContext="an MRI in Miami, Florida"
 >
   <PageShell>
     <JsonLd schema={medicalClinicSchema} />
     <JsonLd
       schema={medicalWebPageSchema({
-        name: "DEXA Scan Miami — Body Composition",
+        name: "MRI Miami — Physician-Ordered Scans in Days",
         description:
-          "Physician-supervised DEXA scan body composition analysis in Miami at our Brickell clinic. Lean mass, body fat percentage, visceral fat, and bone density.",
-        url: "/fl/miami/dexascan/",
+          "Physician-ordered MRI scans for Miami patients, coordinated from the Strong Health Brickell clinic at accredited partner imaging centers, with radiologist reads and physician-reviewed results.",
+        url: "/fl/miami/mri/",
         lastReviewed: PUBLISH_DATE,
         reviewedBy: DR_ANGEL_RIVERA,
       })}
     />
     <JsonLd
       schema={articleSchema({
-        headline: "DEXA Scan Miami — Body Composition & Bone Density",
+        headline: "MRI in Miami — Physician-Ordered Imaging Without the Hospital Wait",
         description:
-          "Physician-supervised DEXA scan body composition analysis in Miami at our Brickell clinic. Lean mass, body fat percentage, visceral fat, and bone density.",
+          "Physician-ordered MRI scans for Miami patients, coordinated from the Strong Health Brickell clinic at accredited partner imaging centers, with radiologist reads and physician-reviewed results.",
         author: MAHADEV_MUKHERJEE,
         reviewer: DR_ANGEL_RIVERA,
         publishDate: PUBLISH_DATE,
-        url: "/fl/miami/dexascan/",
+        updatedDate: PUBLISH_DATE,
+        url: "/fl/miami/mri/",
       })}
     />
     <JsonLd schema={faqPageSchema(FAQS)} />
@@ -329,21 +364,22 @@ const medicalClinicSchema = {
           <span class="text-[13px] text-muted">from 850+ Miami patient reviews</span>
         </div>
 
-        <Tag>Miami DEXA Scan · Brickell Clinic · Walk-Ins Welcome</Tag>
+        <Tag>Miami MRI · Ordered From Our Brickell Clinic · Scans in Days</Tag>
 
         <h1 class="text-4xl md:text-[52px] font-black text-cream leading-[1.08] mt-6 mb-5 max-w-[760px] tracking-[-1.5px]">
-          DEXA Scan in Miami. <span class="text-gold">Gold-standard body composition, in 15 minutes.</span>
+          MRI in Miami. <span class="text-gold">Ordered by a physician, scanned this week.</span>
         </h1>
 
         <p class="text-[17px] text-muted leading-relaxed max-w-[600px] mb-8">
-          Walk into our Brickell clinic for a precise, physician-supervised DEXA scan. See exactly
-          how much lean muscle, body fat, visceral fat, and bone density you carry, broken down
-          region by region. It is the most accurate body composition test available in Miami.
+          Skip the referral hunt and the month-long hospital queue. A Strong Health physician evaluates
+          you at our Brickell clinic, orders the right MRI, and books you into an accredited
+          imaging center nearby. A radiologist reads the study, and your physician explains
+          what it means.
         </p>
 
-        <Btn trackLead placement="hero" href={BOOKING_SMS_HREF}>Book Your DEXA Scan in Miami →</Btn>
+        <Btn trackLead placement="hero" href={BOOKING_SMS_HREF}>Book Your MRI in Miami →</Btn>
         <div class="mt-4 text-xs text-muted">
-          15–20 min visit · Same-week appointments · No referral needed
+          Scans in 2–5 days · Flat cash pricing · Results explained by a physician
         </div>
       </div>
     </section>
@@ -359,30 +395,31 @@ const medicalClinicSchema = {
       </div>
     </section>
 
-    {/* WhyDexa */}
+    {/* WhyMri */}
     <section class="px-8 py-20 bg-surface-card border-b border-white/5">
       <div class="max-w-[1000px] mx-auto">
         <div class="grid md:grid-cols-2 gap-12 items-center">
           <FadeIn>
-            <Tag>Why DEXA in Miami</Tag>
+            <Tag>Why Book Your MRI Through Strong Health</Tag>
             <h2 class="text-[32px] font-extrabold text-cream leading-[1.15] mt-4 mb-4">
-              The scale lies. <span class="text-gold">DEXA tells the truth.</span>
+              An MRI is easy. <span class="text-gold">Getting one in Miami isn't.</span>
             </h2>
             <p class="text-[15px] text-muted leading-[1.7] mb-4">
-              Miami is full of body composition gimmicks: InBody scales at the gym, calipers
-              at "longevity" clinics, smart scales at home. None of them come close to the
-              precision of a clinical DEXA scan.
+              Try to book an MRI through a Miami hospital system and you'll meet the routine:
+              find a doctor willing to refer you, wait weeks for an outpatient slot, then open
+              a bill with a facility fee nobody warned you about. Meanwhile the shoulder still
+              hurts.
             </p>
             <p class="text-[15px] text-muted leading-[1.7]">
-              At Strong Health Miami, you get the same scan technology used in clinical
-              research, performed at our Brickell clinic, with results you can use to track
-              real progress on TRT, GLP-1 weight loss, peptide therapy, or your own training.
+              We collapsed that into one visit. The physician consult, the order, the booking
+              at an accredited imaging center near Brickell, and the results review all run
+              through one clinic and one flat price you approve before anything is scheduled.
             </p>
           </FadeIn>
 
           <FadeIn delay={200}>
             <div class="flex flex-col gap-3.5">
-              {whyDexaPoints.map((s) => (
+              {whyMriPoints.map((s) => (
                 <div class="flex items-center gap-3 bg-surface-raised rounded-xl p-4 border border-white/5">
                   <div class="w-9 h-9 rounded-full bg-surface flex items-center justify-center shrink-0 border border-white/5">
                     <Icon name={s.icon} size={18} class="text-gold" />
@@ -400,13 +437,14 @@ const medicalClinicSchema = {
     <section class="px-8 py-20 bg-surface border-b border-white/5">
       <div class="max-w-[1000px] mx-auto">
         <FadeIn class="text-center mb-10">
-          <Tag>Our Miami DEXA Clinic</Tag>
+          <Tag>Your Miami MRI Home Base</Tag>
           <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
-            Visit Us in <span class="text-gold">{CLINIC.area}</span>
+            Start at Our <span class="text-gold">Brickell Clinic</span>
           </h2>
           <p class="text-[15px] text-muted max-w-[540px] mx-auto">
-            Centrally located in Miami's Brickell financial district with easy access from I-95,
-            the Metrorail, and validated parking. DEXA scans by appointment or walk-in.
+            Consults and results reviews happen at 1000 Brickell Plaza, off I-95 exit 1A and a
+            5-minute walk from the Brickell Metrorail station. Your scan runs at an accredited
+            partner imaging center a short drive away.
           </p>
         </FadeIn>
 
@@ -452,28 +490,28 @@ const medicalClinicSchema = {
 
           <FadeIn delay={200}>
             <div class="bg-surface-card rounded-2xl border border-white/10 p-7 h-full flex flex-col">
-              <h3 class="text-lg font-bold text-cream mb-4">What to expect at your Miami DEXA appointment</h3>
+              <h3 class="text-lg font-bold text-cream mb-4">What to expect for your Miami MRI</h3>
               <div class="flex flex-col gap-4 text-[14px] text-cream-muted leading-[1.7]">
                 <div class="flex items-start gap-3">
                   <div class="w-7 h-7 rounded-full bg-gold/10 flex items-center justify-center shrink-0 text-[11px] font-bold text-gold">1</div>
-                  <span>Quick check-in at our Brickell front desk. Wear comfortable, metal-free clothing.</span>
+                  <span>A physician consult at Brickell (or by telehealth) to review your symptoms and confirm MRI is the right study.</span>
                 </div>
                 <div class="flex items-start gap-3">
                   <div class="w-7 h-7 rounded-full bg-gold/10 flex items-center justify-center shrink-0 text-[11px] font-bold text-gold">2</div>
-                  <span>10–15 minute scan on an open table. No injections, no enclosed space, no discomfort.</span>
+                  <span>Your scan at an accredited partner center nearby. Leave metal at home, arrive 15 minutes early for screening, and plan 20 to 45 minutes in the scanner.</span>
                 </div>
                 <div class="flex items-start gap-3">
                   <div class="w-7 h-7 rounded-full bg-gold/10 flex items-center justify-center shrink-0 text-[11px] font-bold text-gold">3</div>
-                  <span>Detailed PDF report emailed within 24 hours, plus a brief in-person review of the highlights before you leave.</span>
+                  <span>A board-certified radiologist reads the study, usually within 24 to 72 hours.</span>
                 </div>
                 <div class="flex items-start gap-3">
                   <div class="w-7 h-7 rounded-full bg-gold/10 flex items-center justify-center shrink-0 text-[11px] font-bold text-gold">4</div>
-                  <span>Optional 20-minute physician consultation to set baselines and a follow-up cadence (every 3–6 months for active protocols).</span>
+                  <span>A results visit where your physician walks through the images, answers your questions, and sets the next step.</span>
                 </div>
               </div>
               <div class="mt-6 pt-5 border-t border-white/5 text-[12px] text-muted">
-                Most patients are seen within 5 business days of booking. Walk-ins accepted on
-                Saturday mornings (9 AM – 1 PM) at our Brickell clinic.
+                Most Miami patients go from first call to completed scan inside a week.
+                Saturday morning consults (9 AM – 1 PM) are available at Brickell.
               </div>
             </div>
           </FadeIn>
@@ -485,13 +523,12 @@ const medicalClinicSchema = {
     <section class="px-8 py-20 bg-surface-card border-b border-white/5">
       <div class="max-w-[1000px] mx-auto">
         <FadeIn class="text-center mb-10">
-          <Tag>Your Report</Tag>
+          <Tag>What's Included</Tag>
           <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
-            What you get from a <span class="text-gold">Strong Health DEXA scan</span>
+            Everything between <span class="text-gold">"something hurts" and "here's the plan"</span>
           </h2>
           <p class="text-[15px] text-muted max-w-[560px] mx-auto">
-            Your DEXA report goes far beyond a body fat percentage. Here's everything included
-            with every scan at our Miami clinic.
+            One flat price covers the full path, not just the minutes inside the magnet.
           </p>
         </FadeIn>
 
@@ -513,9 +550,9 @@ const medicalClinicSchema = {
     <section class="px-8 py-20 bg-surface border-b border-white/5">
       <div class="max-w-[1000px] mx-auto">
         <FadeIn class="text-center mb-10">
-          <Tag>Who Books DEXA in Miami</Tag>
+          <Tag>Who Books MRIs in Miami</Tag>
           <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
-            Built for Miami men and women on <span class="text-gold">real protocols</span>
+            The scans Miami patients <span class="text-gold">actually come in for</span>
           </h2>
         </FadeIn>
         <div class="grid md:grid-cols-2 gap-5">
@@ -540,7 +577,7 @@ const medicalClinicSchema = {
         <FadeIn class="text-center mb-10">
           <Tag>How It Works</Tag>
           <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
-            Four steps. <span class="text-gold">Real data.</span>
+            One week. <span class="text-gold">One answer.</span>
           </h2>
         </FadeIn>
 
@@ -567,7 +604,7 @@ const medicalClinicSchema = {
         <FadeIn class="text-center mb-10">
           <Tag>Miami Patient Reviews</Tag>
           <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
-            Real data from <span class="text-gold">real Miami patients</span>
+            What Miami patients say <span class="text-gold">after the scan</span>
           </h2>
         </FadeIn>
 
@@ -607,41 +644,69 @@ const medicalClinicSchema = {
         <FadeIn class="text-center mb-8">
           <Tag>Serving Miami-Dade</Tag>
           <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
-            DEXA scan patients from <span class="text-gold">across Miami</span>
+            MRI patients from <span class="text-gold">across Miami</span>
           </h2>
           <p class="text-[15px] text-muted max-w-[540px] mx-auto">
-            Our Brickell clinic is centrally located for patients across the greater Miami area.
-            Find directions, transit options, and local FAQs for your neighborhood.
+            Brickell sits at the center of Miami-Dade's road and rail network, which is why
+            patients come to us from both sides of the bay.
           </p>
         </FadeIn>
         <FadeIn delay={150}>
           <div class="flex flex-wrap gap-2 justify-center max-w-[820px] mx-auto">
             {hoods.map((n) => (
-              <a
-                href={`/fl/miami/dexascan/${n.slug}/`}
-                class="text-[12px] text-cream-muted bg-surface-raised border border-white/10 rounded-full px-3.5 py-1.5 hover:border-gold/40 hover:text-gold transition-colors"
-              >
-                DEXA scan near {n.name}
-              </a>
+              <span class="text-[12px] text-cream-muted bg-surface-raised border border-white/10 rounded-full px-3.5 py-1.5">
+                MRI near {n}
+              </span>
             ))}
           </div>
         </FadeIn>
       </div>
     </section>
 
-    {/* FAQ */}
+    {/* OtherCities */}
     <section class="px-8 py-20 bg-surface border-b border-white/5">
+      <div class="max-w-[1000px] mx-auto">
+        <FadeIn class="text-center mb-10">
+          <Tag>MRI in Other Cities</Tag>
+          <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
+            Strong Health MRI, <span class="text-gold">beyond Miami</span>
+          </h2>
+        </FadeIn>
+        <div class="grid sm:grid-cols-3 gap-4">
+          {otherCities.map((c, i) => (
+            <FadeIn delay={i * 80}>
+              <a
+                href={c.href}
+                class="block bg-surface-card rounded-xl p-6 border border-white/10 h-full hover:border-gold/40 transition-colors"
+              >
+                <div class="text-[15px] font-bold text-cream mb-1">MRI in {c.name}</div>
+                <p class="text-[13px] text-muted leading-relaxed">{c.note}</p>
+                <span class="text-[13px] font-semibold text-gold mt-3 inline-block">View {c.name} MRI page →</span>
+              </a>
+            </FadeIn>
+          ))}
+        </div>
+        <FadeIn delay={250}>
+          <p class="text-[13px] text-muted text-center mt-8">
+            Also at our Brickell clinic: <a href="/fl/miami/dexascan/" class="text-gold hover:underline">DEXA scan body composition in Miami</a>.
+          </p>
+        </FadeIn>
+      </div>
+    </section>
+
+    {/* FAQ */}
+    <section class="px-8 py-20 bg-surface-card border-b border-white/5">
       <div class="max-w-[800px] mx-auto">
         <FadeIn class="text-center mb-10">
-          <Tag>Miami DEXA FAQs</Tag>
+          <Tag>Miami MRI FAQs</Tag>
           <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
-            Common questions about <span class="text-gold">DEXA scans in Miami</span>
+            Common questions about <span class="text-gold">MRIs in Miami</span>
           </h2>
         </FadeIn>
         <div class="flex flex-col gap-4">
           {FAQS.map((faq, i) => (
             <FadeIn delay={i * 30}>
-              <details class="bg-surface-card rounded-xl border border-white/10 group">
+              <details class="bg-surface rounded-xl border border-white/10 group">
                 <summary class="cursor-pointer p-5 list-none flex items-start justify-between gap-4">
                   <h3 class="text-[15px] font-bold text-cream pr-2">{faq.question}</h3>
                   <Icon
@@ -655,14 +720,6 @@ const medicalClinicSchema = {
             </FadeIn>
           ))}
         </div>
-        <FadeIn delay={300}>
-          <p class="text-[13px] text-muted text-center mt-8">
-            Want a deeper dive on the science? Read our full <a href="/dexa-scan/" class="text-gold hover:underline">guide to DEXA scans</a>.
-          </p>
-          <p class="text-[13px] text-muted text-center mt-3">
-            Need diagnostic imaging instead? We also coordinate <a href="/fl/miami/mri/" class="text-gold hover:underline">MRI scans in Miami</a> from the same Brickell clinic.
-          </p>
-        </FadeIn>
       </div>
     </section>
 
@@ -671,11 +728,11 @@ const medicalClinicSchema = {
       <div class="max-w-[700px] mx-auto text-center">
         <FadeIn>
           <h2 class="text-[36px] font-black text-cream leading-[1.1] mb-4">
-            Book your DEXA scan in Miami
+            Book your MRI in Miami
           </h2>
           <p class="text-[17px] text-muted leading-relaxed mb-8 max-w-[520px] mx-auto">
-            Walk into our Brickell clinic for the most accurate body composition test in Miami.
-            15 minutes. No referral needed. Detailed report within 24 hours.
+            One consult at Brickell, one scan at an accredited center nearby, and a physician
+            who explains the report instead of mailing it to you.
           </p>
           <div class="flex items-center justify-center gap-2 mb-6 text-[13px] text-muted">
             <Icon name="phone" size={14} class="text-gold" />
@@ -686,7 +743,7 @@ const medicalClinicSchema = {
               {CTA_PHONE}
             </a>
           </div>
-          <Btn trackLead placement="final_cta" href={BOOKING_SMS_HREF}>Book Your DEXA Scan →</Btn>
+          <Btn trackLead placement="final_cta" href={BOOKING_SMS_HREF}>Book Your MRI →</Btn>
         </FadeIn>
       </div>
     </section>
