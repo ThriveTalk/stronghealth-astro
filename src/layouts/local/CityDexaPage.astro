@@ -29,7 +29,7 @@ import FAQSection from "../../components/shared/FAQSection.astro";
 import { MAHADEV_MUKHERJEE, DR_ANGEL_RIVERA } from "../../data/articleAuthors";
 import type { CityPeptideConfig } from "../../data/local/cityPeptideConfig";
 import {
-  DEXA_BOOKING_SMS_HREF,
+  dexaBookingSmsHref,
   DEXA_CTA_PHONE_DISPLAY,
   DEXA_CTA_PHONE_HREF,
 } from "../../data/dexaCta";
@@ -53,7 +53,7 @@ const metro = config.neighborhoodAreaName;
 // not config.clinic.phone — that number stays the NAP for the peptide pages.
 const phone = DEXA_CTA_PHONE_DISPLAY;
 const TEL_HREF = DEXA_CTA_PHONE_HREF;
-const BOOKING_SMS_HREF = DEXA_BOOKING_SMS_HREF;
+const BOOKING_SMS_HREF = dexaBookingSmsHref(city);
 
 const seoTitle = `DEXA Scan ${city} — Body Composition`;
 const seoDescription = `Physician-ordered DEXA scans for ${city}, ${stateAbbr} patients at partner imaging centers near you. Lean mass, body fat %, visceral fat & bone density.`;

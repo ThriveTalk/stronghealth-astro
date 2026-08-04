@@ -17,7 +17,7 @@ import AuthorByline from "../../../components/shared/AuthorByline.astro";
 import { MAHADEV_MUKHERJEE, DR_ANGEL_RIVERA } from "../../../data/articleAuthors";
 import { MIAMI_BRICKELL_CLINIC, MIAMI_BRICKELL_FULL_ADDRESS } from "../../../data/miamiClinic";
 import {
-  DEXA_BOOKING_SMS_HREF,
+  dexaBookingSmsHref,
   DEXA_CTA_PHONE_DISPLAY,
   DEXA_CTA_PHONE_HREF,
 } from "../../../data/dexaCta";
@@ -31,7 +31,7 @@ const MAPS_QUERY = encodeURIComponent(`${CLINIC.name}, ${FULL_ADDRESS}`);
 // DEXA pages call and text their own tracked line (see src/data/dexaCta.ts),
 // not the site-wide clinic number.
 const CTA_PHONE = DEXA_CTA_PHONE_DISPLAY;
-const BOOKING_SMS_HREF = DEXA_BOOKING_SMS_HREF;
+const BOOKING_SMS_HREF = dexaBookingSmsHref("Miami");
 const TEL_HREF = DEXA_CTA_PHONE_HREF;
 
 const breadcrumbs = [
