@@ -642,6 +642,20 @@
         "priority": "0.8"
       }
     },
+    "/fl/miami/vo2-max-testing/": {
+      "title": "VO2 Max Testing Miami — Cardio Fitness Test | Strong Health",
+      "description": "Clinical VO2 max test in Miami at our Brickell clinic. Measure your cardiorespiratory fitness, training zones & metabolic health. Same-week appointments.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/fl/miami/vo2-max-testing/",
+      "h1": "VO2 Max Testing in Miami. Know your engine. Train with real numbers.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-08-05",
+        "priority": "0.8"
+      }
+    },
     "/fl/pompano-beach/peptide-therapy/": {
       "title": "Peptide Therapy in Pompano Beach, FL | Strong Health",
       "description": "Physician-supervised peptide therapy for Pompano Beach, FL — telehealth, in-person labs at our Miami Brickell clinic. BPC-157, CJC-1295, PT-141. Bilingual care.",
