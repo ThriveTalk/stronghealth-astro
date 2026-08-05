@@ -32,7 +32,7 @@ import type {
   DexaNeighborhoodConfig,
 } from "../../data/local/dexaNeighborhoods";
 import {
-  DEXA_BOOKING_SMS_HREF,
+  dexaBookingSmsHref,
   DEXA_CTA_PHONE_DISPLAY,
   DEXA_CTA_PHONE_HREF,
 } from "../../data/dexaCta";
@@ -56,12 +56,14 @@ const MAPS_QUERY = encodeURIComponent(`${clinic.name}, ${FULL_ADDRESS}`);
 // not clinic.phoneTel — that stays the clinic NAP used by schema.
 const CTA_PHONE = DEXA_CTA_PHONE_DISPLAY;
 const TEL_HREF = DEXA_CTA_PHONE_HREF;
-const BOOKING_SMS_HREF = DEXA_BOOKING_SMS_HREF;
 
 // "Downtown Miami — Miami" reads badly; drop the city suffix when the
 // neighborhood name already contains it. Title budget: check-seo enforces
 // ≤60 chars including " | Strong Health".
 const nameHasCity = hood.name.includes(city.cityName);
+const BOOKING_SMS_HREF = dexaBookingSmsHref(
+  nameHasCity ? hood.name : `${hood.name}, ${city.cityName}`,
+);
 const seoTitle = nameHasCity
   ? `DEXA Scan Near ${hood.name}`
   : `DEXA Scan Near ${hood.name} — ${city.cityName}`;

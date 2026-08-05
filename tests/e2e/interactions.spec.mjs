@@ -119,7 +119,7 @@ test.describe("sms booking CTAs", () => {
     const hrefs = await page.$$eval('a[href^="sms:"]', (as) =>
       as.map((a) => a.getAttribute("href")),
     );
-    const dexaBookingHrefs = hrefs.filter((h) => h.includes("book%20a%20Dexascan"));
+    const dexaBookingHrefs = hrefs.filter((h) => h.includes("book%20a%20DEXA%20scan"));
     expect(dexaBookingHrefs.length, "expected DEXA booking CTAs").toBeGreaterThan(0);
     for (const href of dexaBookingHrefs) {
       expect(href.startsWith(DEXA_SMS_PREFIX), `bad DEXA sms href: ${href}`).toBe(true);

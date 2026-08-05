@@ -12,8 +12,15 @@ export const DEXA_CTA_PHONE_DISPLAY = "(786) 420-6630";
 export const DEXA_CTA_PHONE_TEL = "+17864206630";
 export const DEXA_CTA_PHONE_HREF = `tel:${DEXA_CTA_PHONE_TEL}`;
 
-/** Pre-filled booking text. "?&body=" is the form that fills on both iOS and Android. */
-export const DEXA_BOOKING_SMS_BODY = "I would like to book a Dexascan with Strong Health";
-export const DEXA_BOOKING_SMS_HREF = `sms:${DEXA_CTA_PHONE_TEL}?&body=${encodeURIComponent(
-  DEXA_BOOKING_SMS_BODY,
-)}`;
+/**
+ * Pre-filled booking text, named for the page's location so the clinic knows
+ * where the lead came from. "?&body=" is the form that fills on both iOS and
+ * Android.
+ */
+export function dexaBookingSmsBody(location: string): string {
+  return `I would like to book a DEXA scan in ${location} with Strong Health`;
+}
+
+export function dexaBookingSmsHref(location: string): string {
+  return `sms:${DEXA_CTA_PHONE_TEL}?&body=${encodeURIComponent(dexaBookingSmsBody(location))}`;
+}
