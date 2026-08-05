@@ -8,7 +8,7 @@
  */
 import { articles } from "../../data/articles";
 import { ALL_PEPTIDE_CITIES } from "../../data/local/cityPeptideConfig";
-import DexaLocationsBlock from "./DexaLocationsBlock.astro";
+import DiagnosticsLocationsBlock from "./DiagnosticsLocationsBlock.astro";
 
 type FooterLinkItem = { label: string; to: string };
 
@@ -64,7 +64,7 @@ const linkClass = "text-xs text-muted hover:text-cream transition-colors w-fit";
 const year = new Date().getFullYear();
 ---
 
-<DexaLocationsBlock />
+<DiagnosticsLocationsBlock />
 
 <footer class="bg-surface-dark px-8 pt-16 pb-8 border-t border-white/5">
   <div class="max-w-[1000px] mx-auto">

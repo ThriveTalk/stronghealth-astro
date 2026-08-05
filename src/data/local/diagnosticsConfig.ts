@@ -1,12 +1,12 @@
 /**
- * Registry behind the /diagnostics/ hub page. Every live diagnostic city page
- * (DEXA, VO2 max, RMR, calcium score, MRI) is listed here, grouped by test
- * category.
+ * Registry behind the /diagnostics/ hub page and the sitewide pre-footer
+ * DiagnosticsLocationsBlock. Every live diagnostic city page (DEXA, VO2 max,
+ * RMR, calcium score, MRI) is listed here, grouped by test category.
  *
  * When a new diagnostic city page ships:
  *  - DEXA pages appear automatically — locations are derived from
- *    ALL_PEPTIDE_CITIES, the same `/dexascan/` cross-link signal
- *    DexaLocationsBlock uses, so the list can't drift from the live pages.
+ *    ALL_PEPTIDE_CITIES, the same `/dexascan/` cross-link signal the city
+ *    pages themselves use, so the list can't drift from the live pages.
  *  - MRI / VO2 max / RMR / calcium score pages must be added to the category's
  *    `locations` array below (these pages live outside cityPeptideConfig).
  *

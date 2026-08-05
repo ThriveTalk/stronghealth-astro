@@ -1,0 +1,77 @@
+---
+/**
+ * Sitewide diagnostics block rendered directly above the footer (included by
+ * Footer.astro so it appears on every page). One row per test category — DEXA
+ * first, then RMR, VO2 max, MRI, calcium score — each linking every live city
+ * diagnostic page. Link lists come from DIAGNOSTIC_CATEGORIES, the same
+ * registry the /diagnostics/ hub renders, so this block can never drift from
+ * the live pages.
+ */
+import Icon from "./Icon.astro";
+import { DIAGNOSTIC_CATEGORIES } from "../../data/local/diagnosticsConfig";
+
+const CATEGORY_ORDER = ["dexa", "rmr", "vo2max", "mri", "calcium"] as const;
+
+const categories = CATEGORY_ORDER.flatMap((key) => {
+  const category = DIAGNOSTIC_CATEGORIES.find((c) => c.key === key);
+  return category && category.locations.length > 0 ? [category] : [];
+});
+---
+
+<section
+  aria-label="Diagnostic testing locations"
+  class="bg-surface-card/40 border-t border-white/5 px-8 py-12"
+>
+  <div class="max-w-[1000px] mx-auto">
+    <div class="flex items-center justify-between flex-wrap gap-3 mb-2">
+      <h2 class="text-lg font-bold text-cream flex items-center gap-2">
+        <Icon name="activity" size={18} class="text-gold shrink-0" />
+        Diagnostic testing near you
+      </h2>
+      <a
+        href="/diagnostics/"
+        class="text-[12px] font-semibold text-gold hover:text-gold-hover transition-colors"
+      >
+        All diagnostics →
+      </a>
+    </div>
+    <p class="text-[13px] text-muted leading-relaxed mb-6 max-w-[620px]">
+      Body composition, metabolism, cardiorespiratory fitness, and imaging —
+      ordered by a Strong Health physician and reviewed with you. Pick the test,
+      then the city nearest you.
+    </p>
+    <div class="flex flex-col gap-5">
+      {
+        categories.map((category) => (
+          <div>
+            <div class="flex items-center gap-2 flex-wrap mb-2.5">
+              <h3 class="text-[13px] font-bold text-cream flex items-center gap-2">
+                <Icon name={category.icon} size={14} class="text-gold shrink-0" />
+                {category.name}
+              </h3>
+              {category.guide && (
+                <a
+                  href={category.guide.href}
+                  class="text-[11px] font-semibold text-gold hover:text-gold-hover transition-colors"
+                >
+                  {category.guide.label} →
+                </a>
+              )}
+            </div>
+            <div class="flex flex-wrap gap-2.5">
+              {category.locations.map((loc) => (
+                <a
+                  href={loc.href}
+                  class="inline-flex items-center gap-1.5 rounded-lg border border-white/10 bg-surface-card/60 px-3.5 py-2 text-[12px] font-semibold text-cream hover:border-gold/40 hover:text-gold transition-colors"
+                >
+                  <Icon name="map-pin" size={12} class="text-gold shrink-0" />
+                  {category.name} {loc.cityName}, {loc.state}
+                </a>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
