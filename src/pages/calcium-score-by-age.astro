@@ -1,0 +1,132 @@
+---
+// /calcium-score-by-age/ — national informational asset for the calcium score
+// cluster. Carries the "average calcium score by age" query set and funnels
+// readers to the Miami city page (/fl/miami/calcium-score-test/) for booking.
+import BlogArticleLayoutV2 from "../layouts/BlogArticleLayoutV2.astro";
+import { MAHADEV_MUKHERJEE, DR_ANGEL_RIVERA } from "../data/articleAuthors";
+import body from "../content/fragments/calcium-score-by-age.html?raw";
+
+const tocItems = [
+  { id: "what-the-score-measures", title: "What a Calcium Score Measures" },
+  { id: "average-by-age", title: "Average Calcium Score by Age and Sex" },
+  { id: "age-40", title: "Average Calcium Score at 40" },
+  { id: "age-50", title: "Average Calcium Score at 50" },
+  { id: "age-60", title: "Average Calcium Score at 60" },
+  { id: "age-70", title: "Average Calcium Score at 70 and Older" },
+  { id: "percentiles", title: "Why Percentiles Beat Averages" },
+  { id: "normal-vs-concerning", title: "What's Normal vs. Concerning" },
+  { id: "above-average", title: "If Your Score Is Above Average" },
+  { id: "faq", title: "Frequently Asked Questions" },
+];
+
+const faqs = [
+  {
+    question: "What is a normal calcium score for my age?",
+    answer:
+      "The ideal calcium score at every age is 0. Statistically typical scores rise with age: the median is 0 for men under 50 and women under 60, roughly 25 for men at 60, and roughly 130 for men in their early 70s. A score at or above the 75th percentile for your age and sex is considered high regardless of the absolute number.",
+  },
+  {
+    question: "What is the average calcium score for a 60-year-old?",
+    answer:
+      "Based on MESA reference data, the median calcium score for a 60-year-old man is roughly 25 Agatston units, and the median for a 60-year-old woman is 0. About two thirds of men have some detectable coronary calcium by 60, while most women do not.",
+  },
+  {
+    question: "Is a calcium score of 100 bad for a 50-year-old?",
+    answer:
+      "A score of 100 at age 50 is well above the 90th percentile for both men and women, indicating premature atherosclerosis. It isn't an emergency, but it's a clear signal to start treatment. Guidelines treat a score of 100 or more as favoring statin therapy at any age.",
+  },
+  {
+    question: "Does a calcium score of 0 mean I have no heart disease?",
+    answer:
+      "A score of 0 means no calcified plaque, which carries a very low event risk over the following five years or so. It cannot completely rule out soft (non-calcified) plaque, which is more common in smokers and adults under 45. It remains the strongest single negative risk marker available in preventive cardiology.",
+  },
+  {
+    question: "Can my calcium score go down with treatment?",
+    answer:
+      "No. Calcified plaque is permanent, and statin therapy can actually raise the score slightly as it stabilizes plaque by densifying it. The goal of treatment is to slow the score's growth rate and prevent plaque rupture, not to shrink the number.",
+  },
+  {
+    question: "How often should I repeat a calcium score test?",
+    answer:
+      "With a score of 0, retesting in about 5 years is reasonable. With a positive score, most physicians treat based on the result rather than re-scanning, since the score is expected to rise; a repeat at 3 to 5 years is sometimes used to check the pace of progression in untreated patients.",
+  },
+];
+
+const citations = [
+  {
+    id: 1,
+    authors: "Agatston AS, Janowitz WR, Hildner FJ, Zusmer NR, Viamonte M, Detrano R",
+    title: "Quantification of coronary artery calcium using ultrafast computed tomography",
+    journal: "Journal of the American College of Cardiology",
+    year: 1990,
+    url: "https://pubmed.ncbi.nlm.nih.gov/2407762/",
+  },
+  {
+    id: 2,
+    authors: "McClelland RL, Chung H, Detrano R, Post W, Kronmal RA",
+    title: "Distribution of coronary artery calcium by race, gender, and age: results from the Multi-Ethnic Study of Atherosclerosis (MESA)",
+    journal: "Circulation",
+    year: 2006,
+    url: "https://pubmed.ncbi.nlm.nih.gov/16418446/",
+  },
+  {
+    id: 3,
+    authors: "Budoff MJ, Young R, Burke G, et al.",
+    title: "Ten-year association of coronary artery calcium with atherosclerotic cardiovascular disease events: the Multi-Ethnic Study of Atherosclerosis (MESA)",
+    journal: "European Heart Journal",
+    year: 2018,
+    url: "https://pubmed.ncbi.nlm.nih.gov/29688297/",
+  },
+  {
+    id: 4,
+    authors: "Grundy SM, Stone NJ, Bailey AL, et al.",
+    title: "2018 AHA/ACC Guideline on the Management of Blood Cholesterol",
+    journal: "Circulation",
+    year: 2019,
+    url: "https://pubmed.ncbi.nlm.nih.gov/30586774/",
+  },
+  {
+    id: 5,
+    authors: "Blaha M, Budoff MJ, Shaw LJ, et al.",
+    title: "Absence of coronary artery calcification and all-cause mortality",
+    journal: "JACC: Cardiovascular Imaging",
+    year: 2009,
+    url: "https://pubmed.ncbi.nlm.nih.gov/19356544/",
+  },
+  {
+    id: 6,
+    authors: "Detrano R, Guerci AD, Carr JJ, et al.",
+    title: "Coronary calcium as a predictor of coronary events in four racial or ethnic groups",
+    journal: "New England Journal of Medicine",
+    year: 2008,
+    url: "https://pubmed.ncbi.nlm.nih.gov/18367736/",
+  },
+];
+
+const relatedLinks = [
+  { url: "/fl/miami/calcium-score-test/", label: "Calcium Score Test in Miami: Book at Our Brickell Clinic" },
+  { url: "/fl/miami/rmr-testing/", label: "RMR Testing in Miami: Measure Your Real Metabolism" },
+  { url: "/fl/miami/dexascan/", label: "DEXA Scan in Miami: Strong Health Clinic" },
+  { url: "/dexa-scan/", label: "DEXA Scan: The Gold Standard for Body Composition Analysis" },
+  { url: "/peptides-for-weight-loss/", label: "Peptides for Weight Loss: GLP-1 and Fat-Loss Protocols" },
+];
+---
+
+<BlogArticleLayoutV2
+  tag="Heart Health"
+  title="Average Calcium Score by Age: Charts for 40, 50, 60, and 70+"
+  seoTitle="Average Calcium Score by Age (40 to 70+)"
+  subtitle="What a typical coronary calcium score looks like at 40, 50, 60, and 70+, why percentiles matter more than averages, and what to do when your score is above the norm for your age."
+  path="/calcium-score-by-age/"
+  seoDescription="Average coronary calcium scores by age and sex, with MESA-based charts for 40, 50, 60, and 70+. See where your CAC score falls and what to do about it."
+  author={MAHADEV_MUKHERJEE}
+  reviewer={DR_ANGEL_RIVERA}
+  publishDate="2026-08-04"
+  tocItems={tocItems}
+  faqs={faqs}
+  citations={citations}
+  ctaVariant="consultation"
+  relatedLinks={relatedLinks}
+>
+  <Fragment set:html={body} />
+</BlogArticleLayoutV2>

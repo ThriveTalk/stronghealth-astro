@@ -1,0 +1,662 @@
+---
+// /fl/miami/calcium-score-test/ — city conversion page for the calcium score
+// cluster. The national asset (/calcium-score-by-age/) carries the
+// informational volume; this page wins the localized "near me" SERP and
+// converts cash-pay bookings. Template note: only the intro sentence, cost
+// section, locations module, and one local proof point are Miami-specific —
+// everything else stays identical when this page is cloned for future cities.
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import PageShell from "../../../components/shared/PageShell.astro";
+import JsonLd from "../../../components/seo/JsonLd.astro";
+import {
+  articleSchema,
+  breadcrumbSchema,
+  faqPageSchema,
+  medicalWebPageSchema,
+} from "../../../components/seo/schemas";
+import FadeIn from "../../../components/shared/FadeIn.astro";
+import Btn from "../../../components/shared/Btn.astro";
+import Tag from "../../../components/shared/Tag.astro";
+import Icon from "../../../components/shared/Icon.astro";
+import AuthorByline from "../../../components/shared/AuthorByline.astro";
+import { MAHADEV_MUKHERJEE, DR_ANGEL_RIVERA } from "../../../data/articleAuthors";
+import {
+  MIAMI_BRICKELL_CLINIC,
+  MIAMI_BRICKELL_FULL_ADDRESS,
+  STRONG_HEALTH_PHONE_DISPLAY,
+  STRONG_HEALTH_PHONE_HREF,
+} from "../../../data/miamiClinic";
+import { BOOKING_SMS_NUMBER } from "../../../lib/booking";
+
+const CLINIC = MIAMI_BRICKELL_CLINIC;
+const FULL_ADDRESS = MIAMI_BRICKELL_FULL_ADDRESS;
+const PUBLISH_DATE = "2026-08-04";
+const MAPS_QUERY = encodeURIComponent(`${CLINIC.name}, ${FULL_ADDRESS}`);
+const SITE_URL = "https://www.stronghealth.com";
+const PAGE_PATH = "/fl/miami/calcium-score-test/";
+
+const CTA_PHONE = STRONG_HEALTH_PHONE_DISPLAY;
+const TEL_HREF = STRONG_HEALTH_PHONE_HREF;
+const BOOKING_SMS_HREF = `sms:${BOOKING_SMS_NUMBER}?&body=${encodeURIComponent(
+  "I would like to book a calcium score test with Strong Health",
+)}`;
+
+const breadcrumbs = [
+  { name: "Home", path: "/" },
+  { name: "Florida", path: "/fl/" },
+  { name: "Calcium Score Test Miami", path: PAGE_PATH },
+];
+
+// Snippet-bait score bands (H2 #5). Absolute Agatston ranges; the national
+// asset handles age/sex percentiles.
+const SCORE_BANDS = [
+  { score: "0", burden: "No detectable plaque", meaning: "Very low 10-year risk. A statin is rarely needed on this basis alone." },
+  { score: "1–99", burden: "Mild", meaning: "Plaque is present. Time to treat risk factors before it grows." },
+  { score: "100–399", burden: "Moderate", meaning: "A statin is generally recommended. Follow-up with a physician." },
+  { score: "400+", burden: "Extensive", meaning: "High event risk. See a cardiologist and treat aggressively." },
+];
+
+const COMPARISON_ROWS = [
+  {
+    test: "Calcium score",
+    shows: "Calcified plaque burden (Agatston score)",
+    bestFor: "First-line screening when you have no symptoms",
+    notes: "10 minutes, no needles, no contrast, lowest cost",
+  },
+  {
+    test: "CT angiogram",
+    shows: "Soft and calcified plaque, plus blockages",
+    bestFor: "Symptoms, or a high score that needs a closer look",
+    notes: "Uses IV contrast dye and more radiation",
+  },
+  {
+    test: "Stress test",
+    shows: "Whether blood flow limits the heart under load",
+    bestFor: "Diagnosing symptoms like chest pain on exertion",
+    notes: "Detects advanced blockages, misses early plaque",
+  },
+];
+
+const WHO_SHOULD = [
+  { icon: "user", text: "Men 40+ and women 45+ who have never had plaque measured" },
+  { icon: "users", text: "Anyone with a family history of early heart disease" },
+  { icon: "chart-line", text: "Borderline or high cholesterol, undecided on a statin" },
+  { icon: "activity", text: "Longevity-focused patients already tracking DEXA and VO2 max" },
+  { icon: "pill", text: "GLP-1 patients who want a cardiac baseline alongside the weight data" },
+];
+
+const FAQS = [
+  {
+    question: "Is a calcium score of 0 a guarantee I won't have a heart attack?",
+    answer:
+      "No test offers a guarantee, but 0 is the strongest negative risk marker in preventive cardiology. Event rates stay very low for roughly five years after a zero score. The main caveat: the scan can't see soft (non-calcified) plaque, which matters most in smokers and adults under 45.",
+  },
+  {
+    question: "How often should I repeat a calcium score test?",
+    answer:
+      "If your score is 0, retest in about 5 years. If it's positive, your physician will usually treat based on the result rather than re-scan, since the score is expected to rise over time. A repeat at 3 to 5 years is sometimes used to gauge how fast plaque is progressing.",
+  },
+  {
+    question: "Does the scan hurt?",
+    answer:
+      "No. You lie on an open CT table, fully clothed, and hold your breath for a few seconds while the scanner takes images. There are no needles, no contrast dye, and no enclosed tube. Most patients are in and out of the scanner in about 10 minutes.",
+  },
+  {
+    question: "Should I start a statin if my score is above 100?",
+    answer:
+      "Guidelines generally favor statin therapy at a score of 100 or higher, or at any score above the 75th percentile for your age and sex. The decision still depends on your full picture (LDL, blood pressure, family history), which is why every Strong Health result includes a physician review to talk through exactly this question.",
+  },
+  {
+    question: "Can I get a calcium score test in Miami without a doctor's order?",
+    answer:
+      `Yes. You don't need to bring a referral: the physician order is part of the service at Strong Health. Book directly, get scanned at our Brickell clinic, and a physician reviews your result with you. Call ${CTA_PHONE} or text us to schedule.`,
+  },
+  {
+    question: "Is the radiation from a calcium score scan safe?",
+    answer:
+      "The dose is about 1 millisievert, similar to a mammogram and roughly a third of the natural background radiation the average person absorbs in a year. For a test most people repeat every five years at most, the exposure is considered minimal relative to the information it provides.",
+  },
+];
+
+// MedicalBusiness node for the Brickell clinic offering this test — same
+// pattern as /fl/miami/dexascan/, keyed to this page's URL.
+const clinicSchema = {
+  "@context": "https://schema.org",
+  "@type": "MedicalBusiness",
+  "@id": `${SITE_URL}${PAGE_PATH}#clinic`,
+  name: `${CLINIC.name} — Calcium Score Test`,
+  url: `${SITE_URL}${PAGE_PATH}`,
+  telephone: CLINIC.phoneTel,
+  image: `${SITE_URL}/opengraph.jpg`,
+  parentOrganization: { "@id": `${SITE_URL}/#organization` },
+  branchOf: { "@id": CLINIC.schemaId },
+  sameAs: [
+    "https://www.trustpilot.com/review/stronghealth.com",
+    `https://www.google.com/maps/search/?api=1&query=${MAPS_QUERY}`,
+  ],
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: CLINIC.streetAddress,
+    addressLocality: CLINIC.city,
+    addressRegion: CLINIC.state,
+    postalCode: CLINIC.postalCode,
+    addressCountry: "US",
+  },
+  geo: { "@type": "GeoCoordinates", latitude: CLINIC.lat, longitude: CLINIC.lng },
+  areaServed: { "@type": "City", name: "Miami" },
+  medicalSpecialty: ["Cardiovascular", "PreventiveMedicine"],
+  availableService: [
+    {
+      "@type": "MedicalTest",
+      name: "CT Coronary Calcium Score Test",
+      description:
+        "Low-dose CT scan measuring calcified plaque in the coronary arteries, reported as an Agatston score with physician review.",
+    },
+  ],
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: CLINIC.hoursWeekday.opens,
+      closes: CLINIC.hoursWeekday.closes,
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Saturday"],
+      opens: CLINIC.hoursSaturday.opens,
+      closes: CLINIC.hoursSaturday.closes,
+    },
+  ],
+  priceRange: "$$",
+};
+
+// MedicalTest (ImagingTest) node describing the test itself.
+const medicalTestSchema = {
+  "@context": "https://schema.org",
+  "@type": "ImagingTest",
+  name: "Coronary Artery Calcium (CAC) Score Test",
+  alternateName: ["Calcium Score Test", "CT Calcium Score", "Cardiac Calcium Scoring", "Heart Scan"],
+  description:
+    "A low-dose, non-contrast CT scan that measures calcified plaque in the coronary arteries. Results are reported in Agatston units (0 to 400+) and predict heart disease risk more directly than cholesterol testing alone.",
+  imagingTechnique: "https://schema.org/CT",
+  usesDevice: { "@type": "MedicalDevice", name: "Computed tomography (CT) scanner" },
+  usedToDiagnose: {
+    "@type": "MedicalCondition",
+    name: "Coronary artery disease",
+  },
+  normalRange: "0 Agatston units (no detectable coronary calcium)",
+};
+---
+
+<BaseLayout
+  title="CT Calcium Score Test in Miami, FL"
+  description="Get a CT coronary calcium score test in Miami. A 10-minute scan, no needles, physician-reviewed results, and same-week appointments in Brickell."
+  path={PAGE_PATH}
+  smsContext="a calcium score test in Miami, Florida"
+>
+  <PageShell>
+    <JsonLd schema={clinicSchema} />
+    <JsonLd schema={medicalTestSchema} />
+    <JsonLd
+      schema={medicalWebPageSchema({
+        name: "CT Calcium Score Test in Miami, FL",
+        description:
+          "CT coronary calcium score testing in Miami at Strong Health's Brickell clinic. A 10-minute scan measures the plaque in your arteries, with every result reviewed by a physician.",
+        url: PAGE_PATH,
+        lastReviewed: PUBLISH_DATE,
+        reviewedBy: DR_ANGEL_RIVERA,
+      })}
+    />
+    <JsonLd
+      schema={articleSchema({
+        headline: "Calcium Score Test in Miami, FL",
+        description:
+          "CT coronary calcium score testing in Miami at Strong Health's Brickell clinic. A 10-minute scan measures the plaque in your arteries, with every result reviewed by a physician.",
+        author: MAHADEV_MUKHERJEE,
+        reviewer: DR_ANGEL_RIVERA,
+        publishDate: PUBLISH_DATE,
+        url: PAGE_PATH,
+      })}
+    />
+    <JsonLd schema={faqPageSchema(FAQS)} />
+    <JsonLd schema={breadcrumbSchema(breadcrumbs)} />
+
+    {/* Breadcrumbs */}
+    <nav aria-label="Breadcrumb" class="px-8 pt-4 pb-0">
+      <div class="max-w-[1000px] mx-auto">
+        <ol class="flex items-center gap-1.5 text-[12px] text-muted">
+          {breadcrumbs.map((crumb, i) => {
+            const isLast = i === breadcrumbs.length - 1;
+            return (
+              <li class="flex items-center gap-1.5">
+                {i > 0 && <Icon name="chevron-right" size={12} class="text-text-subtle" />}
+                {isLast ? (
+                  <span class="text-gold font-semibold">{crumb.name}</span>
+                ) : (
+                  <a href={crumb.path} class="hover:text-gold transition-colors">
+                    {crumb.name}
+                  </a>
+                )}
+              </li>
+            );
+          })}
+        </ol>
+      </div>
+    </nav>
+
+    {/* Hero / Intro */}
+    <section class="relative px-8 pt-12 pb-20 overflow-hidden border-b border-white/5">
+      <div aria-hidden="true" class="hidden md:block absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-navy/20 rounded-full blur-[100px] pointer-events-none"></div>
+      <div aria-hidden="true" class="hidden md:block absolute bottom-0 right-1/4 translate-x-1/2 translate-y-1/4 w-[500px] h-[500px] bg-gold/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+      <div class="max-w-[1000px] mx-auto relative z-10">
+        <Tag>Miami Calcium Score Test · Brickell Clinic · No Referral Needed</Tag>
+
+        <h1 class="text-4xl md:text-[52px] font-black text-cream leading-[1.08] mt-6 mb-5 max-w-[780px] tracking-[-1.5px]">
+          Calcium Score Test in Miami, FL
+        </h1>
+
+        <p class="text-[17px] text-muted leading-relaxed max-w-[640px] mb-4">
+          Your cholesterol panel estimates your heart disease risk. A coronary calcium score
+          measures it: the scan counts the actual plaque in your arteries, so you and your
+          physician stop guessing. At our Brickell clinic the whole visit takes about
+          10 minutes, with no needles and no contrast dye, and a physician reviews every
+          result.
+        </p>
+
+        <Btn trackLead placement="hero" href={BOOKING_SMS_HREF}>Book Your Calcium Score Test →</Btn>
+        <div class="mt-4 text-xs text-muted">
+          10-minute scan · Same-week appointments · Physician-reviewed results
+        </div>
+      </div>
+    </section>
+
+    {/* Byline */}
+    <section class="px-8 pt-2 pb-6 bg-surface">
+      <div class="max-w-[800px] mx-auto">
+        <AuthorByline
+          author={MAHADEV_MUKHERJEE}
+          reviewer={DR_ANGEL_RIVERA}
+          publishDate={PUBLISH_DATE}
+        />
+      </div>
+    </section>
+
+    {/* What the score measures */}
+    <section class="px-8 py-16 bg-surface-card border-b border-white/5">
+      <div class="max-w-[800px] mx-auto">
+        <FadeIn>
+          <Tag>The Test</Tag>
+          <h2 class="text-[30px] font-extrabold text-cream leading-[1.15] mt-4 mb-4">
+            What a coronary calcium score <span class="text-gold">actually measures</span>
+          </h2>
+          <p class="text-[15px] text-muted leading-[1.7] mb-4">
+            A CT calcium score test uses a low-dose CT scanner to find calcified plaque in the
+            arteries that feed your heart. The result is a single number, the Agatston score,
+            that runs from 0 (no detectable calcium) into the thousands. Calcium only appears
+            where atherosclerosis has already started, so the score is direct evidence of
+            disease rather than a statistical estimate.
+          </p>
+          <p class="text-[15px] text-muted leading-[1.7] mb-4">
+            That's the difference from a lipid panel. Plenty of people with "fine" cholesterol
+            carry significant plaque, and plenty of people with scary LDL numbers have clean
+            arteries. In the MESA study of more than 6,800 adults, the coronary calcium score
+            test predicted heart events better than any traditional risk factor, cholesterol
+            included.
+          </p>
+          <p class="text-[15px] text-muted leading-[1.7]">
+            Wondering how your number compares to other people your age? See our
+            <a href="/calcium-score-by-age/" class="text-gold hover:underline"> average calcium score by age charts</a> for
+            percentile tables at 40, 50, 60, and 70+.
+          </p>
+        </FadeIn>
+      </div>
+    </section>
+
+    {/* Who should get one */}
+    <section class="px-8 py-16 bg-surface border-b border-white/5">
+      <div class="max-w-[1000px] mx-auto">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <FadeIn>
+            <Tag>Who It's For</Tag>
+            <h2 class="text-[30px] font-extrabold text-cream leading-[1.15] mt-4 mb-4">
+              The tie-breaker test for the <span class="text-gold">statin decision</span>
+            </h2>
+            <p class="text-[15px] text-muted leading-[1.7] mb-4">
+              The classic candidate is someone in their 40s or 50s with borderline cholesterol
+              who has been going back and forth with their doctor about starting a statin. A
+              score of 0 supports waiting; a score of 100+ usually settles the question the
+              other way. Cardiology guidelines endorse exactly this use.
+            </p>
+            <p class="text-[15px] text-muted leading-[1.7]">
+              The other group we see a lot: people already tracking body composition with DEXA
+              and testing VO2 max who want the same clarity about their arteries. If you're
+              optimizing healthspan, this is the cardiac data point the others don't give you.
+            </p>
+          </FadeIn>
+
+          <FadeIn delay={200}>
+            <div class="flex flex-col gap-3.5">
+              {WHO_SHOULD.map((s) => (
+                <div class="flex items-center gap-3 bg-surface-raised rounded-xl p-4 border border-white/5">
+                  <div class="w-9 h-9 rounded-full bg-surface flex items-center justify-center shrink-0 border border-white/5">
+                    <Icon name={s.icon} size={18} class="text-gold" />
+                  </div>
+                  <span class="text-sm text-cream-muted">{s.text}</span>
+                </div>
+              ))}
+            </div>
+          </FadeIn>
+        </div>
+      </div>
+    </section>
+
+    {/* How the scan works */}
+    <section class="px-8 py-16 bg-surface-card border-b border-white/5">
+      <div class="max-w-[800px] mx-auto">
+        <FadeIn>
+          <Tag>The Scan</Tag>
+          <h2 class="text-[30px] font-extrabold text-cream leading-[1.15] mt-4 mb-4">
+            How the scan works: <span class="text-gold">10 minutes, no needles</span>
+          </h2>
+          <p class="text-[15px] text-muted leading-[1.7] mb-4">
+            You lie on an open CT table, fully clothed, and hold your breath for a few seconds
+            while the scanner images your heart. That's the entire test. There is no IV, no
+            contrast dye, no fasting beforehand, and no enclosed tube. If you can lie still
+            for ten minutes, you can do this scan.
+          </p>
+          <p class="text-[15px] text-muted leading-[1.7]">
+            Radiation exposure is about 1 millisievert: similar to a mammogram, and roughly a
+            third of the background radiation the average person absorbs in a year just by
+            existing. For a scan most people repeat every five years at most, that dose buys a
+            lot of information.
+          </p>
+        </FadeIn>
+      </div>
+    </section>
+
+    {/* Understanding your score */}
+    <section class="px-8 py-16 bg-surface border-b border-white/5">
+      <div class="max-w-[800px] mx-auto">
+        <FadeIn>
+          <Tag>Your Result</Tag>
+          <h2 class="text-[30px] font-extrabold text-cream leading-[1.15] mt-4 mb-4">
+            Understanding your <span class="text-gold">calcium score</span>
+          </h2>
+          <p class="text-[15px] text-muted leading-[1.7] mb-5">
+            Calcium scores fall into four bands: 0 means no detectable plaque, 1–99 is mild,
+            100–399 is moderate, and 400+ is extensive.
+          </p>
+          <div class="overflow-x-auto rounded-xl border border-white/10 mb-5">
+            <table class="w-full text-left text-sm min-w-[520px]">
+              <caption class="sr-only">Coronary calcium score ranges and what each means</caption>
+              <thead>
+                <tr class="bg-white/[0.04] text-cream text-xs uppercase tracking-wider">
+                  <th scope="col" class="px-4 py-3 font-semibold">Score</th>
+                  <th scope="col" class="px-4 py-3 font-semibold">Plaque burden</th>
+                  <th scope="col" class="px-4 py-3 font-semibold">What it means</th>
+                </tr>
+              </thead>
+              <tbody class="text-muted divide-y divide-white/5">
+                {SCORE_BANDS.map((b) => (
+                  <tr>
+                    <td class="px-4 py-3 font-bold text-gold whitespace-nowrap">{b.score}</td>
+                    <td class="px-4 py-3 text-cream-muted whitespace-nowrap">{b.burden}</td>
+                    <td class="px-4 py-3">{b.meaning}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p class="text-[14px] text-muted leading-[1.7]">
+            The same number means different things at different ages: a 200 at 45 is alarming,
+            a 200 at 75 is below average. Our
+            <a href="/calcium-score-by-age/" class="text-gold hover:underline"> calcium score by age guide</a> covers
+            the percentiles in detail.
+          </p>
+        </FadeIn>
+      </div>
+    </section>
+
+    {/* High score — now what */}
+    <section class="px-8 py-16 bg-surface-card border-b border-white/5">
+      <div class="max-w-[800px] mx-auto">
+        <FadeIn>
+          <Tag>Next Steps</Tag>
+          <h2 class="text-[30px] font-extrabold text-cream leading-[1.15] mt-4 mb-4">
+            My score is high — <span class="text-gold">now what?</span>
+          </h2>
+          <p class="text-[15px] text-cream-muted leading-[1.7] mb-4 font-medium">
+            Treatment for a high calcium score centers on statin therapy, blood pressure
+            control, and lifestyle changes, not surgery. A statin stabilizes existing plaque
+            and slows new growth, and scores of 400+ warrant a cardiology evaluation for
+            further testing.
+          </p>
+          <p class="text-[15px] text-muted leading-[1.7] mb-4">
+            One honest thing to know upfront: you can't lower the score itself. Calcified
+            plaque is permanent, and statins can even nudge the number up slightly as they
+            harden and stabilize plaque. The goal is stopping progression and preventing
+            rupture, which is what causes heart attacks. On that measure, treatment works
+            extremely well.
+          </p>
+          <p class="text-[15px] text-muted leading-[1.7] mb-4">
+            The standard playbook: a statin matched to your score and risk factors, LDL
+            targets confirmed with follow-up labs, blood pressure under 130/80, and regular
+            aerobic exercise. Follow-up imaging is occasionally used to track progression, but
+            most physicians treat based on the first result.
+          </p>
+          <p class="text-[15px] text-muted leading-[1.7]">
+            Every scan at Strong Health includes a physician review of your result. If your
+            score comes back elevated, we'll walk through your options in plain terms, and
+            our <a href="/fl/miami/peptide-therapy/" class="text-gold hover:underline">Miami physicians</a> can
+            manage the follow-up plan with you by telehealth.
+          </p>
+        </FadeIn>
+      </div>
+    </section>
+
+    {/* Cost in Miami */}
+    <section class="px-8 py-16 bg-surface border-b border-white/5">
+      <div class="max-w-[800px] mx-auto">
+        <FadeIn>
+          <Tag>Pricing</Tag>
+          <h2 class="text-[30px] font-extrabold text-cream leading-[1.15] mt-4 mb-4">
+            What a calcium score test costs <span class="text-gold">in Miami</span>
+          </h2>
+          <p class="text-[15px] text-muted leading-[1.7] mb-4">
+            Calcium score testing at our Brickell clinic is transparent, direct-pay pricing:
+            most patients pay between $100 and $200, which covers the scan and the physician
+            review of your result. No facility fees, no surprise bill three weeks later.
+          </p>
+          <p class="text-[15px] text-muted leading-[1.7] mb-4">
+            Insurance rarely covers screening calcium scores: most carriers classify the scan
+            as preventive imaging and decline it, even though the test often costs less than
+            the copays on the appointments it replaces. Direct pay keeps it simple: one price
+            and no pre-authorization paperwork.
+          </p>
+          <p class="text-[15px] text-muted leading-[1.7]">
+            Call <a href={TEL_HREF} class="text-gold hover:underline">{CTA_PHONE}</a> or text
+            us for current pricing and same-week availability.
+          </p>
+        </FadeIn>
+      </div>
+    </section>
+
+    {/* Comparison table */}
+    <section class="px-8 py-16 bg-surface-card border-b border-white/5">
+      <div class="max-w-[900px] mx-auto">
+        <FadeIn>
+          <Tag>Choosing a Test</Tag>
+          <h2 class="text-[30px] font-extrabold text-cream leading-[1.15] mt-4 mb-4">
+            Calcium score vs. CT angiogram <span class="text-gold">vs. stress test</span>
+          </h2>
+          <p class="text-[15px] text-muted leading-[1.7] mb-5">
+            For a person with no symptoms, the calcium score is the right first step: it's the
+            cheapest and simplest of the three, and its result determines whether the others
+            are worth doing at all.
+          </p>
+          <div class="overflow-x-auto rounded-xl border border-white/10">
+            <table class="w-full text-left text-sm min-w-[640px]">
+              <caption class="sr-only">Comparison of calcium score, CT angiogram, and stress test</caption>
+              <thead>
+                <tr class="bg-white/[0.04] text-cream text-xs uppercase tracking-wider">
+                  <th scope="col" class="px-4 py-3 font-semibold">Test</th>
+                  <th scope="col" class="px-4 py-3 font-semibold">What it shows</th>
+                  <th scope="col" class="px-4 py-3 font-semibold">Best for</th>
+                  <th scope="col" class="px-4 py-3 font-semibold">Trade-offs</th>
+                </tr>
+              </thead>
+              <tbody class="text-muted divide-y divide-white/5">
+                {COMPARISON_ROWS.map((r) => (
+                  <tr>
+                    <td class="px-4 py-3 font-bold text-cream whitespace-nowrap">{r.test}</td>
+                    <td class="px-4 py-3">{r.shows}</td>
+                    <td class="px-4 py-3">{r.bestFor}</td>
+                    <td class="px-4 py-3">{r.notes}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </FadeIn>
+      </div>
+    </section>
+
+    {/* Location + booking */}
+    <section class="px-8 py-16 bg-surface border-b border-white/5">
+      <div class="max-w-[1000px] mx-auto">
+        <FadeIn class="text-center mb-10">
+          <Tag>Our Miami Clinic</Tag>
+          <h2 class="text-[32px] font-extrabold text-cream mt-4 mb-3">
+            Get scanned in <span class="text-gold">{CLINIC.area}</span>
+          </h2>
+          <p class="text-[15px] text-muted max-w-[540px] mx-auto">
+            Our clinic sits in Miami's Brickell financial district, with validated parking and
+            the Brickell Metrorail station a three-block walk away.
+          </p>
+        </FadeIn>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <FadeIn>
+            <div class="bg-surface-card rounded-2xl border border-white/10 overflow-hidden h-full">
+              <iframe
+                src={`https://maps.google.com/maps?q=${MAPS_QUERY}&output=embed`}
+                class="w-full h-[240px] border-0"
+                allowfullscreen
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title={`Map to ${CLINIC.name} calcium score testing at ${CLINIC.streetAddress}`}
+              ></iframe>
+              <div class="p-6 flex flex-col gap-4">
+                <div class="flex items-start gap-3">
+                  <Icon name="map-pin" size={16} class="text-gold shrink-0 mt-0.5" />
+                  <div>
+                    <div class="text-sm font-bold text-cream">{CLINIC.name}</div>
+                    <div class="text-sm text-cream-muted mt-0.5">{FULL_ADDRESS}</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <Icon name="phone" size={16} class="text-gold shrink-0 mt-0.5" />
+                  <a href={TEL_HREF} class="text-sm text-cream-muted hover:text-gold transition-colors">
+                    {CTA_PHONE}
+                  </a>
+                </div>
+                <div class="flex items-start gap-3">
+                  <Icon name="clock" size={16} class="text-gold shrink-0 mt-0.5" />
+                  <div class="text-sm text-cream-muted">{CLINIC.hours}</div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <Icon name="navigation" size={16} class="text-gold shrink-0 mt-0.5" />
+                  <div class="text-xs text-muted leading-relaxed">{CLINIC.directions}</div>
+                </div>
+              </div>
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={200}>
+            <div class="bg-surface-card rounded-2xl border border-white/10 p-7 h-full flex flex-col">
+              <h3 class="text-lg font-bold text-cream mb-4">What to expect at your appointment</h3>
+              <div class="flex flex-col gap-4 text-[14px] text-cream-muted leading-[1.7]">
+                <div class="flex items-start gap-3">
+                  <div class="w-7 h-7 rounded-full bg-gold/10 flex items-center justify-center shrink-0 text-[11px] font-bold text-gold">1</div>
+                  <span>Quick check-in at the Brickell front desk. No fasting or prep needed; skip caffeine that morning if you can.</span>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="w-7 h-7 rounded-full bg-gold/10 flex items-center justify-center shrink-0 text-[11px] font-bold text-gold">2</div>
+                  <span>The scan itself: about 10 minutes on an open CT table with a few short breath-holds.</span>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="w-7 h-7 rounded-full bg-gold/10 flex items-center justify-center shrink-0 text-[11px] font-bold text-gold">3</div>
+                  <span>A physician reviews your Agatston score and percentile, then goes over the result and next steps with you.</span>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="w-7 h-7 rounded-full bg-gold/10 flex items-center justify-center shrink-0 text-[11px] font-bold text-gold">4</div>
+                  <span>Pair it with a <a href="/fl/miami/dexascan/" class="text-gold hover:underline">DEXA scan</a> or <a href="/fl/miami/rmr-testing/" class="text-gold hover:underline">RMR test</a> in the same visit for a full metabolic and cardiac baseline.</span>
+                </div>
+              </div>
+              <div class="mt-6 pt-5 border-t border-white/5 text-[12px] text-muted">
+                Same-week appointments are typically available, including Saturday mornings
+                (9 AM – 1 PM).
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+      </div>
+    </section>
+
+    {/* FAQ */}
+    <section class="px-8 py-16 bg-surface-card border-b border-white/5">
+      <div class="max-w-[800px] mx-auto">
+        <FadeIn class="text-center mb-10">
+          <Tag>Calcium Score FAQs</Tag>
+          <h2 class="text-[32px] font-extrabold text-cream mt-4 mb-3">
+            Common questions about <span class="text-gold">calcium score testing</span>
+          </h2>
+        </FadeIn>
+        <div class="flex flex-col gap-4">
+          {FAQS.map((faq, i) => (
+            <FadeIn delay={i * 30}>
+              <details class="bg-surface rounded-xl border border-white/10 group">
+                <summary class="cursor-pointer p-5 list-none flex items-start justify-between gap-4">
+                  <h3 class="text-[15px] font-bold text-cream pr-2">{faq.question}</h3>
+                  <Icon
+                    name="chevron-right"
+                    size={18}
+                    class="text-gold flex-shrink-0 transition-transform group-open:rotate-90 mt-0.5"
+                  />
+                </summary>
+                <div class="px-5 pb-5 text-[14px] text-muted leading-[1.7]">{faq.answer}</div>
+              </details>
+            </FadeIn>
+          ))}
+        </div>
+        <FadeIn delay={300}>
+          <p class="text-[13px] text-muted text-center mt-8">
+            Want the full data on typical scores at every age? Read our
+            <a href="/calcium-score-by-age/" class="text-gold hover:underline"> average calcium score by age guide</a>.
+          </p>
+        </FadeIn>
+      </div>
+    </section>
+
+    {/* FinalCTA */}
+    <section class="px-8 py-24 bg-gradient-to-br from-[#C9A84C]/[0.08] to-[#0D0F12] border-b border-white/5">
+      <div class="max-w-[700px] mx-auto text-center">
+        <FadeIn>
+          <h2 class="text-[36px] font-black text-cream leading-[1.1] mb-4">
+            Book your calcium score test in Miami
+          </h2>
+          <p class="text-[17px] text-muted leading-relaxed mb-8 max-w-[520px] mx-auto">
+            Ten minutes at our Brickell clinic, and you'll know what's actually in your
+            arteries. No referral needed, physician-reviewed, same-week booking.
+          </p>
+          <div class="flex items-center justify-center gap-2 mb-6 text-[13px] text-muted">
+            <Icon name="phone" size={14} class="text-gold" />
+            <a href={TEL_HREF} class="hover:text-gold transition-colors">{CTA_PHONE}</a>
+          </div>
+          <Btn trackLead placement="final_cta" href={BOOKING_SMS_HREF}>Book Your Calcium Score Test →</Btn>
+        </FadeIn>
+      </div>
+    </section>
+  </PageShell>
+</BaseLayout>
