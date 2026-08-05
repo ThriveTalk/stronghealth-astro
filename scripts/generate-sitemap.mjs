@@ -195,6 +195,8 @@ const HISTORICAL_LASTMOD = {
   "/fl/pompano-beach/peptide-therapy/": "2026-07-26",
   // National "peptide therapy near me" locations hub.
   "/peptide-therapy/": "2026-07-23",
+  // Diagnostics hub (DEXA / VO2 max / RMR / MRI city-page directory).
+  "/diagnostics/": "2026-08-05",
   "/hipaa-policy/": "2026-05-27",
   // Post-cutover addition (US-N2/US-N4): NYC peptide-therapy launch date.
   "/ny/new-york/peptide-therapy/": "2026-07-14",

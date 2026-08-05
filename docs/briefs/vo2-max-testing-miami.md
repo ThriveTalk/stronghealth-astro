@@ -87,7 +87,7 @@ Plus `breadcrumbSchema`. Schema key order and structure copied from
 
 Reuses the shared component system: `BaseLayout`, `PageShell`, `JsonLd`, `FadeIn`,
 `Btn`, `Tag`, `Icon`, `AuthorByline`. Booking CTA is the standard SMS deep link
-(`+17542636026`) with body: `"I would like to book a VO2 Max test with Strong Health"`,
+(`+17542636026`) with body: `"I would like to book a VO2 Max test in Miami with Strong Health"`,
 using the same `?&body=` form as the other pages. All phone/address copy reads from
 `miamiClinic.ts` — no hardcoded NAP.
 

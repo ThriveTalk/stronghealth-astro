@@ -208,6 +208,20 @@
         "priority": "0.8"
       }
     },
+    "/diagnostics/": {
+      "title": "Diagnostics — DEXA, VO2 Max, RMR & MRI | Strong Health",
+      "description": "Strong Health diagnostic testing by city: DEXA scans, VO2 max testing, RMR testing, and physician-ordered MRI. Find the test and location nearest you.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/diagnostics/",
+      "h1": "Diagnostics: measure first, then optimize.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-08-05",
+        "priority": "0.8"
+      }
+    },
     "/diet/detox/": {
       "title": "Detox Diet: What Works, What Doesn't | Strong Health",
       "description": "Do detox diets actually remove toxins? A physician-reviewed look at how your body really detoxifies, which foods help, and what the evidence shows works.",
@@ -317,6 +331,20 @@
       "sitemap": {
         "changefreq": "monthly",
         "lastmod": "2026-05-27",
+        "priority": "0.8"
+      }
+    },
+    "/fl/fort-lauderdale/mri/": {
+      "title": "MRI Fort Lauderdale — Scans in 2–4 Days | Strong Health",
+      "description": "Book an MRI in Fort Lauderdale without the hospital markup. Physician-ordered scans at Broward imaging centers, flat pricing, results explained. (786) 420-6630.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/fl/fort-lauderdale/mri/",
+      "h1": "MRI in Fort Lauderdale. Scanned near home, this week.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-08-04",
         "priority": "0.8"
       }
     },
@@ -583,6 +611,20 @@
       "sitemap": {
         "changefreq": "monthly",
         "lastmod": "2026-08-02",
+        "priority": "0.8"
+      }
+    },
+    "/fl/miami/mri/": {
+      "title": "MRI Miami — Physician-Ordered Scans in Days | Strong Health",
+      "description": "MRI in Miami without the hospital wait. Physician-ordered scans at accredited centers near Brickell, flat pricing, results explained. Call (786) 420-6630.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/fl/miami/mri/",
+      "h1": "MRI in Miami. Ordered by a physician, scanned this week.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-08-04",
         "priority": "0.8"
       }
     },
@@ -891,6 +933,20 @@
       "sitemap": {
         "changefreq": "monthly",
         "lastmod": "2026-07-18",
+        "priority": "0.8"
+      }
+    },
+    "/ny/new-york/mri/": {
+      "title": "MRI New York City — Scans in Days | Strong Health",
+      "description": "Book an MRI in NYC without the hospital markup. Physician-ordered scans at subway-accessible centers in all five boroughs, evening slots, flat pricing.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/ny/new-york/mri/",
+      "h1": "MRI in New York City. A few subway stops, not a few months.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-08-04",
         "priority": "0.8"
       }
     },
@@ -1619,6 +1675,20 @@
       "sitemap": {
         "changefreq": "monthly",
         "lastmod": "2026-07-15",
+        "priority": "0.8"
+      }
+    },
+    "/tx/houston/mri/": {
+      "title": "MRI Houston — Skip the Medical Center Wait | Strong Health",
+      "description": "Physician-ordered MRI in Houston at accredited centers near you: Heights, Katy, Sugar Land, The Woodlands. Flat cash pricing, results explained. (786) 420-6630.",
+      "robots": "index, follow, max-image-preview:large",
+      "lang": "en",
+      "canonical_path": "/tx/houston/mri/",
+      "h1": "MRI in Houston. Skip the Medical Center wait entirely.",
+      "jsonld": {},
+      "sitemap": {
+        "changefreq": "monthly",
+        "lastmod": "2026-08-04",
         "priority": "0.8"
       }
     },
