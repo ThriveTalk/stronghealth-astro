@@ -178,6 +178,11 @@ const HISTORICAL_LASTMOD = {
   "/fl/": "2026-06-22",
   "/fl/delray-beach/peptide-therapy/": "2026-05-27",
   "/fl/miami/dexascan/": "2026-06-22",
+  // Calcium score + RMR testing launch (Miami city pages + national
+  // calcium-by-age asset).
+  "/fl/miami/calcium-score-test/": "2026-08-04",
+  "/fl/miami/rmr-testing/": "2026-08-04",
+  "/calcium-score-by-age/": "2026-08-04",
   "/fl/miami/peptide-therapy/": "2026-05-27",
   // Post-cutover Miami PRP (platelet-rich plasma) therapy launch.
   "/fl/miami/prp-therapy/": "2026-07-17",

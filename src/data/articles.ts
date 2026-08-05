@@ -196,6 +196,14 @@ export const articles: ArticleMeta[] = [
     datePublished: "2026-03-28",
   },
   {
+    title: "Average Calcium Score by Age: Charts for 40, 50, 60, and 70+",
+    subtitle: "What a typical coronary calcium score looks like at each age, why percentiles matter more than averages, and what to do when your score is above the norm.",
+    path: "/calcium-score-by-age/",
+    category: "Services",
+    readTime: "11 min read",
+    datePublished: "2026-08-04",
+  },
+  {
     title: "DEXA Scan: The Gold Standard for Body Composition Analysis",
     subtitle: "What dual-energy X-ray absorptiometry measures, how it compares to other body-composition methods, and why it matters for TRT monitoring.",
     path: "/dexa-scan/",
