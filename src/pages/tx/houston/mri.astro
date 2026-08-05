@@ -1,0 +1,730 @@
+---
+// /tx/houston/mri/ — Houston MRI local service page. Texas is a service area:
+// a Strong Health physician orders the scan at an accredited partner imaging
+// center in the Houston metro and reviews results by telehealth. No local
+// storefront is implied (MedicalBusiness schema uses city-level areaServed,
+// no street address — see the physicalClinic:false convention).
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import PageShell from "../../../components/shared/PageShell.astro";
+import JsonLd from "../../../components/seo/JsonLd.astro";
+import {
+  articleSchema,
+  breadcrumbSchema,
+  faqPageSchema,
+  medicalWebPageSchema,
+} from "../../../components/seo/schemas";
+import FadeIn from "../../../components/shared/FadeIn.astro";
+import Btn from "../../../components/shared/Btn.astro";
+import Tag from "../../../components/shared/Tag.astro";
+import Icon from "../../../components/shared/Icon.astro";
+import AuthorByline from "../../../components/shared/AuthorByline.astro";
+import { MAHADEV_MUKHERJEE, DR_ANGEL_RIVERA } from "../../../data/articleAuthors";
+import { STRONG_HEALTH_PHONE_TEL } from "../../../data/miamiClinic";
+import {
+  MRI_BOOKING_SMS_HREF,
+  MRI_CTA_PHONE_DISPLAY,
+  MRI_CTA_PHONE_HREF,
+} from "../../../data/mriCta";
+
+const PUBLISH_DATE = "2026-08-04";
+// Map centers on the Texas Medical Center, the reference point Houston
+// patients navigate imaging by, even though our partner centers span the metro.
+const MAPS_QUERY = encodeURIComponent("Texas Medical Center, Houston, TX");
+
+// Same tracked line as the DEXA pages (mriCta.ts re-exports dexaCta.ts).
+const CTA_PHONE = MRI_CTA_PHONE_DISPLAY;
+const BOOKING_SMS_HREF = MRI_BOOKING_SMS_HREF;
+const TEL_HREF = MRI_CTA_PHONE_HREF;
+
+// No /tx/ hub page exists, so the trail is Home → page (matches the
+// CityDexaPage convention for non-FL states).
+const breadcrumbs = [
+  { name: "Home", path: "/" },
+  { name: "MRI Houston", path: "/tx/houston/mri/" },
+];
+
+const FAQS = [
+  {
+    question: "Where can I get an MRI in Houston?",
+    answer:
+      `Strong Health schedules Houston patients at accredited partner imaging centers across the metro: inside the 610 Loop near the Heights and Montrose, out west along the Katy Freeway, southwest toward Sugar Land on I-69, and north toward The Woodlands on I-45. A Strong Health physician evaluates you by telehealth, writes the order, and books the center closest to you. Call or text ${CTA_PHONE}.`,
+  },
+  {
+    question: "How much does an MRI cost in Houston?",
+    answer:
+      "Houston is one of the least expensive major metros in the country for cash-pay imaging. Freestanding centers here commonly charge $300 to $700 per body part, while the same scan billed through a Texas Medical Center hospital can run $2,000 to $4,000 after facility fees. Strong Health locks a flat price with you before anything is booked, contrast included in the quote when your study calls for it.",
+  },
+  {
+    question: "Do I need a referral for an MRI in Houston?",
+    answer:
+      "Texas requires a physician's order for an MRI, but that doesn't mean you need to schedule with your primary doctor first and wait. The Strong Health consult produces the order: a physician reviews your symptoms by video, confirms MRI is the right study, and signs it, often the day you reach out. If another doctor already gave you an order, we can book straight from it.",
+  },
+  {
+    question: "How fast can I get scanned in Houston?",
+    answer:
+      "Typically 2 to 4 business days from your consult, sometimes next-day at the less busy suburban sites. That's the advantage of a metro this spread out: while Medical Center schedules run weeks deep, a partner center off Beltway 8 often has a slot tomorrow morning.",
+  },
+  {
+    question: "Do I have to drive to the Texas Medical Center?",
+    answer:
+      "No, and for most studies you shouldn't have to. The Medical Center is the right place for complex hospital care; for an outpatient knee, spine, or brain MRI, an accredited freestanding center near your part of town produces the same quality images without the TMC garage fees and the hunt for parking. If you live close, the METRORail Red Line stops throughout the Medical Center corridor. Everywhere else, our partner sites have free lots.",
+  },
+  {
+    question: "I'm claustrophobic. Are wide-bore or open scanners available in Houston?",
+    answer:
+      "Yes. Houston partner centers include wide-bore 1.5T and 3T scanners with 70 cm openings, and open MRI units are available around the metro when your study allows the tradeoff. Flag claustrophobia when you book. For difficult cases your physician can arrange mild oral sedation, in which case you'll need a driver.",
+  },
+  {
+    question: "When do I get results, and who explains them?",
+    answer:
+      "A board-certified radiologist reads your scan and the report is usually finished within 24 to 72 hours. Then a Strong Health physician gets on a call with you and translates it: what the finding is, whether it explains your symptoms, and what to do about it. You keep the digital images and report to share with any Houston specialist.",
+  },
+  {
+    question: "Will insurance pay for my Houston MRI?",
+    answer:
+      "This is a direct-pay service, which for many Houston patients on high-deductible plans comes out cheaper than running an MRI through insurance at a hospital. We issue a superbill for you to submit for possible out-of-network reimbursement, and HSA and FSA cards are accepted.",
+  },
+  {
+    question: "What body parts can be scanned?",
+    answer:
+      "Joints (shoulder, knee, hip, ankle, wrist, elbow), cervical, thoracic, and lumbar spine, brain, abdomen and pelvis, plus MR angiography when indicated. Whole-body preventive screening is available too. Not sure which study fits your symptoms? That's the point of the physician consult that starts the process.",
+  },
+  {
+    question: "Does Houston humidity or my workout schedule affect the scan?",
+    answer:
+      "The scan itself doesn't care, but two practical notes: skip heavy lifting right before a spine MRI if pain positioning is an issue, and leave everything metal in the car, from belt buckles to the AirPods case. Sweat-wicking athletic wear with metallic fibers can also interfere, so plain cotton is the safe choice.",
+  },
+];
+
+const TESTIMONIALS = [
+  {
+    name: "Marcus D.",
+    neighborhood: "The Heights",
+    text: "Rotator cuff pain from months of garage-gym bench sessions. My doctor's imaging referral had me looking at a three-week wait and a garage at the Medical Center. Strong Health booked me at a center ten minutes up Shepherd with a parking lot out front. Scanned Wednesday, report Friday, partial-thickness tear confirmed.",
+  },
+  {
+    name: "Priya K.",
+    neighborhood: "Sugar Land",
+    text: "I'd been putting off a brain MRI for my migraines because the logistics felt overwhelming. The consult happened on my lunch break, and the scan was just up I-69 from Sugar Land, closer than my own dentist. The physician called two days later and went through every line of the report with me.",
+  },
+  {
+    name: "Tommy V.",
+    neighborhood: "Montrose",
+    text: "Blew out my knee playing soccer at Memorial Park and the ER quoted me almost $3,800 for an MRI. Cancelled it, texted Strong Health instead. Paid a fraction of that, got scanned in Montrose three days later, and the meniscus tear showed up clear as day. The surgeon used those exact images.",
+  },
+];
+
+// WhyMri
+const whyMriPoints = [
+  { icon: "microscope", text: "Accredited Houston centers with 1.5T and 3T magnets" },
+  { icon: "file-check", text: "Board-certified radiologist read on every study" },
+  { icon: "stethoscope", text: "Consult, order, and results explanation all included" },
+  { icon: "dollar-sign", text: "Flat Houston cash pricing, quoted before booking" },
+  { icon: "clock", text: "Scans in 2–4 days, reports in 24–72 hours" },
+];
+
+// WhatYouGet
+const whatYouGetItems = [
+  { icon: "stethoscope", title: "Physician Consult & Order", desc: "A telehealth evaluation with a physician who decides on the right study and writes the order, often the same day you call." },
+  { icon: "map-pin", title: "A Center On Your Side of Town", desc: "Heights, Katy, Sugar Land, The Woodlands, Pearland: we book the accredited center that saves you a crosstown drive on I-610." },
+  { icon: "file-check", title: "Radiologist Report", desc: "Every scan is interpreted by a board-certified radiologist, with written reports typically back in 24 to 72 hours." },
+  { icon: "brain", title: "Results in Plain English", desc: "Your physician walks you through the images on a video call. 'Small annular fissure at L5-S1' becomes something you actually understand." },
+  { icon: "clipboard-check", title: "Portable Records", desc: "Full digital access to your DICOM images and report, accepted by every ortho and neuro practice in the Houston metro." },
+  { icon: "navigation", title: "A Concrete Next Step", desc: "Specialist referral, physical therapy, watchful waiting, or treatment. The scan ends with a plan, not a shrug." },
+];
+
+// UseCases
+const useCases = [
+  {
+    title: "Lifting & sports injuries",
+    desc: "Houston's gyms, trails, and rec leagues generate a steady supply of shoulder, knee, and hip complaints. An MRI answers the tear-or-tweak question before you pick a treatment path.",
+    href: "/peptides-for-healing/",
+    cta: "Peptides for healing →",
+  },
+  {
+    title: "Back pain & sciatica",
+    desc: "Hours on I-10 and the desk jobs of the Energy Corridor are rough on lumbar spines. Imaging shows whether it's a disc, a nerve, or wear and tear, and how serious it is.",
+    href: "/peptides-for-tendon-repair/",
+    cta: "Peptides for tendon repair →",
+  },
+  {
+    title: "Headache & neuro workups",
+    desc: "Brain MRI for migraines that changed pattern, unexplained dizziness, or a symptom your doctor wants imaged before anything else is decided.",
+    href: "/peptides-for-recovery/",
+    cta: "Peptides for recovery →",
+  },
+  {
+    title: "Preventive screening",
+    desc: "Whole-body MRI for patients who want a proactive look, paired with the body-composition and recovery protocols Strong Health runs for Texas patients.",
+    href: "/tx/austin/peptide-therapy/",
+    cta: "Peptide therapy in Texas →",
+  },
+];
+
+// HowItWorks
+const steps = [
+  {
+    num: "01",
+    title: "Text or Call",
+    desc: `Reach ${CTA_PHONE} and tell us what hurts. A physician telehealth consult is usually available within a day.`,
+    color: "#C9A84C",
+  },
+  {
+    num: "02",
+    title: "Book Your Side of Town",
+    desc: "We schedule you at an accredited partner center near you, inside the Loop or out in the suburbs, usually within 2 to 4 days.",
+    color: "#5DADE2",
+  },
+  {
+    num: "03",
+    title: "Scan & Read",
+    desc: "20 to 45 minutes in the scanner, then a board-certified radiologist reports the study within 24 to 72 hours.",
+    color: "#34D399",
+  },
+  {
+    num: "04",
+    title: "Results Call",
+    desc: "Your physician explains the findings, answers questions, and sets the next step with you.",
+    color: "#D4B96A",
+  },
+];
+
+// Serving pills — Houston neighborhoods and metro cities.
+const hoods = [
+  "The Heights",
+  "Montrose",
+  "Midtown",
+  "River Oaks",
+  "Memorial",
+  "West University",
+  "Bellaire",
+  "Galleria / Uptown",
+  "EaDo",
+  "Rice Village",
+  "Katy",
+  "Sugar Land",
+  "The Woodlands",
+  "Pearland",
+  "Cypress",
+  "Clear Lake",
+];
+
+// Other MRI cities — every MRI page cross-links the other three.
+const otherCities = [
+  { name: "Miami", href: "/fl/miami/mri/", note: "Consults at our Brickell clinic, scans nearby" },
+  { name: "Fort Lauderdale", href: "/fl/fort-lauderdale/mri/", note: "Broward County scans near Las Olas and downtown" },
+  { name: "New York City", href: "/ny/new-york/mri/", note: "Subway-accessible imaging in all five boroughs" },
+];
+
+const SITE_URL = "https://www.stronghealth.com";
+
+// Service-area MedicalBusiness schema: city-level areaServed, no street
+// address (no Texas storefront; see src/data/local/clinics.ts).
+const medicalClinicSchema = {
+  "@context": "https://schema.org",
+  "@type": "MedicalBusiness",
+  "@id": `${SITE_URL}/tx/houston/mri/#service`,
+  name: "Strong Health — MRI Houston",
+  url: `${SITE_URL}/tx/houston/mri/`,
+  telephone: STRONG_HEALTH_PHONE_TEL,
+  image: `${SITE_URL}/opengraph.jpg`,
+  parentOrganization: { "@id": `${SITE_URL}/#organization` },
+  sameAs: ["https://www.trustpilot.com/review/stronghealth.com"],
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Houston",
+    addressRegion: "TX",
+    addressCountry: "US",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 29.7604,
+    longitude: -95.3698,
+  },
+  areaServed: {
+    "@type": "City",
+    name: "Houston",
+  },
+  medicalSpecialty: ["DiagnosticRadiology"],
+  availableService: [
+    {
+      "@type": "MedicalProcedure",
+      name: "MRI — Musculoskeletal (Joint & Spine)",
+      procedureType: "https://schema.org/DiagnosticProcedure",
+      description:
+        "Physician-ordered MRI of the shoulder, knee, hip, ankle, wrist, elbow, and spine at accredited partner imaging centers across the Houston metro.",
+    },
+    {
+      "@type": "MedicalProcedure",
+      name: "MRI — Brain & Neurological",
+      procedureType: "https://schema.org/DiagnosticProcedure",
+      description:
+        "Brain MRI and MR angiography for Houston patients, read by board-certified radiologists with physician-reviewed results via telehealth.",
+    },
+    {
+      "@type": "MedicalProcedure",
+      name: "MRI — Whole-Body Screening",
+      procedureType: "https://schema.org/DiagnosticProcedure",
+      description:
+        "Preventive whole-body MRI screening coordinated for Houston-area patients with physician review of results.",
+    },
+  ],
+  priceRange: "$$",
+};
+---
+
+<BaseLayout
+  title="MRI Houston — Skip the Medical Center Wait"
+  description="Physician-ordered MRI in Houston at accredited centers near you: Heights, Katy, Sugar Land, The Woodlands. Flat cash pricing, results explained. (786) 420-6630."
+  path="/tx/houston/mri/"
+  smsContext="an MRI in Houston, Texas"
+>
+  <PageShell>
+    <JsonLd schema={medicalClinicSchema} />
+    <JsonLd
+      schema={medicalWebPageSchema({
+        name: "MRI Houston — Skip the Medical Center Wait",
+        description:
+          "Physician-ordered MRI scans for Houston patients at accredited partner imaging centers across the metro, with radiologist reads and physician-reviewed results via telehealth.",
+        url: "/tx/houston/mri/",
+        lastReviewed: PUBLISH_DATE,
+        reviewedBy: DR_ANGEL_RIVERA,
+      })}
+    />
+    <JsonLd
+      schema={articleSchema({
+        headline: "MRI in Houston — Physician-Ordered Imaging Without the TMC Queue",
+        description:
+          "Physician-ordered MRI scans for Houston patients at accredited partner imaging centers across the metro, with radiologist reads and physician-reviewed results via telehealth.",
+        author: MAHADEV_MUKHERJEE,
+        reviewer: DR_ANGEL_RIVERA,
+        publishDate: PUBLISH_DATE,
+        updatedDate: PUBLISH_DATE,
+        url: "/tx/houston/mri/",
+      })}
+    />
+    <JsonLd schema={faqPageSchema(FAQS)} />
+    <JsonLd schema={breadcrumbSchema(breadcrumbs)} />
+
+    {/* Breadcrumbs */}
+    <nav aria-label="Breadcrumb" class="px-8 pt-4 pb-0">
+      <div class="max-w-[1000px] mx-auto">
+        <ol class="flex items-center gap-1.5 text-[12px] text-muted">
+          {breadcrumbs.map((crumb, i) => {
+            const isLast = i === breadcrumbs.length - 1;
+            return (
+              <li class="flex items-center gap-1.5">
+                {i > 0 && <Icon name="chevron-right" size={12} class="text-text-subtle" />}
+                {isLast ? (
+                  <span class="text-gold font-semibold">{crumb.name}</span>
+                ) : (
+                  <a href={crumb.path} class="hover:text-gold transition-colors">
+                    {crumb.name}
+                  </a>
+                )}
+              </li>
+            );
+          })}
+        </ol>
+      </div>
+    </nav>
+
+    {/* Hero */}
+    <section class="relative px-8 pt-12 pb-24 overflow-hidden border-b border-white/5">
+      <div aria-hidden="true" class="hidden md:block absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-navy/20 rounded-full blur-[100px] pointer-events-none"></div>
+      <div aria-hidden="true" class="hidden md:block absolute bottom-0 right-1/4 translate-x-1/2 translate-y-1/4 w-[500px] h-[500px] bg-gold/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+      <div class="max-w-[1000px] mx-auto relative z-10">
+        <div class="flex items-center gap-2.5 mb-5">
+          <div class="flex gap-0.5">
+            {[1, 2, 3, 4, 5].map(() => <Icon name="star" size={16} class="fill-[#C9A84C] text-gold" />)}
+          </div>
+          <span class="text-sm font-bold text-gold">4.9</span>
+          <span class="text-[13px] text-muted">from 1,000+ Strong Health patient reviews</span>
+        </div>
+
+        <Tag>Houston MRI · Metro-Wide Partner Centers · Free Parking</Tag>
+
+        <h1 class="text-4xl md:text-[52px] font-black text-cream leading-[1.08] mt-6 mb-5 max-w-[760px] tracking-[-1.5px]">
+          MRI in Houston. <span class="text-gold">Skip the Medical Center wait entirely.</span>
+        </h1>
+
+        <p class="text-[17px] text-muted leading-relaxed max-w-[600px] mb-8">
+          Houston has more imaging capacity than almost any city in America. Getting to it
+          shouldn't require a referral chase and a Medical Center parking garage. A Strong
+          Health physician orders your MRI, books an accredited center on your side of town,
+          and explains the report when it's back.
+        </p>
+
+        <Btn trackLead placement="hero" href={BOOKING_SMS_HREF}>Book Your MRI in Houston →</Btn>
+        <div class="mt-4 text-xs text-muted">
+          Scans in 2–4 days · Flat cash pricing · Telehealth results review
+        </div>
+      </div>
+    </section>
+
+    {/* Byline */}
+    <section class="px-8 pt-2 pb-6 bg-surface">
+      <div class="max-w-[800px] mx-auto">
+        <AuthorByline
+          author={MAHADEV_MUKHERJEE}
+          reviewer={DR_ANGEL_RIVERA}
+          publishDate={PUBLISH_DATE}
+        />
+      </div>
+    </section>
+
+    {/* WhyMri */}
+    <section class="px-8 py-20 bg-surface-card border-b border-white/5">
+      <div class="max-w-[1000px] mx-auto">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <FadeIn>
+            <Tag>Why Houston Patients Book Through Us</Tag>
+            <h2 class="text-[32px] font-extrabold text-cream leading-[1.15] mt-4 mb-4">
+              The world's biggest medical city, <span class="text-gold">priced like it isn't.</span>
+            </h2>
+            <p class="text-[15px] text-muted leading-[1.7] mb-4">
+              Here's the Houston paradox: the Texas Medical Center is the largest medical
+              complex anywhere, yet booking a routine outpatient MRI through a hospital system
+              still means weeks of waiting and a bill that can hit four figures per body part.
+              Meanwhile freestanding centers across the metro scan for a few hundred dollars
+              and have openings this week.
+            </p>
+            <p class="text-[15px] text-muted leading-[1.7]">
+              Strong Health bridges that gap. Our physicians order your study and book it at
+              an accredited center near you, whether you're inside the Loop or out past
+              Beltway 8, at a price you approve before anything happens.
+            </p>
+          </FadeIn>
+
+          <FadeIn delay={200}>
+            <div class="flex flex-col gap-3.5">
+              {whyMriPoints.map((s) => (
+                <div class="flex items-center gap-3 bg-surface-raised rounded-xl p-4 border border-white/5">
+                  <div class="w-9 h-9 rounded-full bg-surface flex items-center justify-center shrink-0 border border-white/5">
+                    <Icon name={s.icon} size={18} class="text-gold" />
+                  </div>
+                  <span class="text-sm text-cream-muted">{s.text}</span>
+                </div>
+              ))}
+            </div>
+          </FadeIn>
+        </div>
+      </div>
+    </section>
+
+    {/* LocationDetails */}
+    <section class="px-8 py-20 bg-surface border-b border-white/5">
+      <div class="max-w-[1000px] mx-auto">
+        <FadeIn class="text-center mb-10">
+          <Tag>Where You'll Be Scanned</Tag>
+          <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
+            Partner centers across <span class="text-gold">the Houston metro</span>
+          </h2>
+          <p class="text-[15px] text-muted max-w-[560px] mx-auto">
+            From the Medical Center corridor to Katy, Sugar Land, and The Woodlands, we book
+            the accredited center that keeps you off the wrong freeway at the wrong hour.
+          </p>
+        </FadeIn>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <FadeIn>
+            <div class="bg-surface-card rounded-2xl border border-white/10 overflow-hidden h-full">
+              <iframe
+                src={`https://maps.google.com/maps?q=${MAPS_QUERY}&output=embed`}
+                class="w-full h-[240px] border-0"
+                allowfullscreen
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Houston MRI service area - Texas Medical Center and metro partner locations"
+              ></iframe>
+              <div class="p-6 flex flex-col gap-4">
+                <div class="flex items-start gap-3">
+                  <Icon name="map-pin" size={16} class="text-gold shrink-0 mt-0.5" />
+                  <div>
+                    <div class="text-sm font-bold text-cream">Houston service area</div>
+                    <div class="text-sm text-cream-muted mt-0.5">Partner imaging centers metro-wide; your exact site is confirmed when you book.</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <Icon name="phone" size={16} class="text-gold shrink-0 mt-0.5" />
+                  <a
+                    href={TEL_HREF}
+                    class="text-sm text-cream-muted hover:text-gold transition-colors"
+                  >
+                    {CTA_PHONE}
+                  </a>
+                </div>
+                <div class="flex items-start gap-3">
+                  <Icon name="clock" size={16} class="text-gold shrink-0 mt-0.5" />
+                  <div class="text-sm text-cream-muted">Telehealth consults Mon–Fri 8:00 AM – 6:00 PM, Sat 9:00 AM – 1:00 PM (Central time)</div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <Icon name="navigation" size={16} class="text-gold shrink-0 mt-0.5" />
+                  <div class="text-xs text-muted leading-relaxed">
+                    Partner sites sit off I-610, I-69/US-59, I-10 (Katy Freeway), TX-288, I-45,
+                    and Beltway 8, nearly all with free lots. Near the Medical Center? The
+                    METRORail Red Line runs the length of the TMC corridor.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={200}>
+            <div class="bg-surface-card rounded-2xl border border-white/10 p-7 h-full flex flex-col">
+              <h3 class="text-lg font-bold text-cream mb-4">What to expect for your Houston MRI</h3>
+              <div class="flex flex-col gap-4 text-[14px] text-cream-muted leading-[1.7]">
+                <div class="flex items-start gap-3">
+                  <div class="w-7 h-7 rounded-full bg-gold/10 flex items-center justify-center shrink-0 text-[11px] font-bold text-gold">1</div>
+                  <span>A telehealth consult where a physician confirms the right study and writes the order, often same-day.</span>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="w-7 h-7 rounded-full bg-gold/10 flex items-center justify-center shrink-0 text-[11px] font-bold text-gold">2</div>
+                  <span>Your scan at the assigned center. Come 15 minutes early, metal-free, and budget 20 to 45 minutes in the scanner plus Houston traffic honesty on the drive time.</span>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="w-7 h-7 rounded-full bg-gold/10 flex items-center justify-center shrink-0 text-[11px] font-bold text-gold">3</div>
+                  <span>A board-certified radiologist reads your study within 24 to 72 hours.</span>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="w-7 h-7 rounded-full bg-gold/10 flex items-center justify-center shrink-0 text-[11px] font-bold text-gold">4</div>
+                  <span>A results call with your physician: findings, context, and the plan for what happens next.</span>
+                </div>
+              </div>
+              <div class="mt-6 pt-5 border-t border-white/5 text-[12px] text-muted">
+                Most Houston patients finish the whole loop, first text to explained results,
+                inside a week. Suburban sites often have next-day openings.
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+      </div>
+    </section>
+
+    {/* WhatYouGet */}
+    <section class="px-8 py-20 bg-surface-card border-b border-white/5">
+      <div class="max-w-[1000px] mx-auto">
+        <FadeIn class="text-center mb-10">
+          <Tag>What's Included</Tag>
+          <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
+            The full loop, <span class="text-gold">one quoted price</span>
+          </h2>
+          <p class="text-[15px] text-muted max-w-[560px] mx-auto">
+            Consult, scan, radiologist, and a physician explanation. Nothing shows up on a
+            surprise bill later.
+          </p>
+        </FadeIn>
+
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+          {whatYouGetItems.map((u, i) => (
+            <FadeIn delay={i * 80}>
+              <div class="bg-surface rounded-xl p-6 border border-white/10 h-full hover:bg-surface-raised transition-colors">
+                <div class="text-gold mb-4 p-3 rounded-xl bg-surface-raised border border-white/5 w-fit"><Icon name={u.icon} size={28} /></div>
+                <h3 class="text-[15px] font-bold text-cream mb-2">{u.title}</h3>
+                <p class="text-[13px] text-muted leading-relaxed">{u.desc}</p>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* UseCases */}
+    <section class="px-8 py-20 bg-surface border-b border-white/5">
+      <div class="max-w-[1000px] mx-auto">
+        <FadeIn class="text-center mb-10">
+          <Tag>Who Books MRIs in Houston</Tag>
+          <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
+            What sends Houstonians <span class="text-gold">into the scanner</span>
+          </h2>
+        </FadeIn>
+        <div class="grid md:grid-cols-2 gap-5">
+          {useCases.map((c, i) => (
+            <FadeIn delay={i * 80}>
+              <div class="bg-surface-card rounded-2xl p-6 border border-white/10 h-full flex flex-col">
+                <h3 class="text-lg font-bold text-cream mb-3">{c.title}</h3>
+                <p class="text-[14px] text-muted leading-relaxed flex-grow mb-4">{c.desc}</p>
+                <a href={c.href} class="text-[13px] font-semibold text-gold hover:underline">
+                  {c.cta}
+                </a>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* HowItWorks */}
+    <section class="px-8 py-20 bg-surface-card border-b border-white/5">
+      <div class="max-w-[1000px] mx-auto">
+        <FadeIn class="text-center mb-10">
+          <Tag>How It Works</Tag>
+          <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
+            Four steps, <span class="text-gold">one week</span>
+          </h2>
+        </FadeIn>
+
+        <div class="grid md:grid-cols-4 gap-4">
+          {steps.map((s, i) => (
+            <FadeIn delay={i * 100}>
+              <div
+                class="bg-surface rounded-[14px] p-6 border border-white/10 h-full hover:border-white/20 transition-colors"
+                style={`border-top:3px solid ${s.color}`}
+              >
+                <div class="text-[28px] font-black mb-3" style={`color:${s.color}`}>{s.num}</div>
+                <h3 class="text-base font-bold text-cream mb-3">{s.title}</h3>
+                <p class="text-[13px] text-muted leading-relaxed">{s.desc}</p>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* Testimonials */}
+    <section class="px-8 py-20 bg-surface border-b border-white/5">
+      <div class="max-w-[1000px] mx-auto">
+        <FadeIn class="text-center mb-10">
+          <Tag>Houston Patient Reviews</Tag>
+          <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
+            Houston patients, <span class="text-gold">after the scan</span>
+          </h2>
+        </FadeIn>
+
+        <div class="grid md:grid-cols-3 gap-5">
+          {TESTIMONIALS.map((r, i) => (
+            <FadeIn delay={i * 100}>
+              <div class="bg-surface-card rounded-2xl p-6 border border-white/10 h-full flex flex-col">
+                <div class="flex items-center gap-2 mb-4">
+                  <div class="flex gap-0.5">
+                    {Array.from({ length: 5 }).map(() => (
+                      <Icon name="star" size={13} class="fill-[#C9A84C] text-gold" />
+                    ))}
+                  </div>
+                  <span class="text-[10px] text-muted uppercase tracking-wider font-semibold">Verified Patient</span>
+                </div>
+                <Icon name="quote" size={20} class="text-gold/30 mb-2" />
+                <p class="text-[13px] text-cream-muted leading-relaxed flex-grow mb-4">{r.text}</p>
+                <div class="border-t border-white/5 pt-3 flex items-center gap-2">
+                  <div class="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center">
+                    <span class="text-[11px] font-bold text-gold">{r.name[0]}</span>
+                  </div>
+                  <div>
+                    <div class="text-sm font-semibold text-cream">{r.name}</div>
+                    <div class="text-[11px] text-muted">{r.neighborhood}, Houston</div>
+                  </div>
+                </div>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* Neighborhoods */}
+    <section class="px-8 py-20 bg-surface-card border-b border-white/5">
+      <div class="max-w-[1000px] mx-auto">
+        <FadeIn class="text-center mb-8">
+          <Tag>Serving Greater Houston</Tag>
+          <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
+            MRI patients from <span class="text-gold">all over the metro</span>
+          </h2>
+          <p class="text-[15px] text-muted max-w-[540px] mx-auto">
+            Houston sprawls, so we don't make you come to one address. Partner centers cover
+            the Loop, the Beltway, and the suburbs beyond.
+          </p>
+        </FadeIn>
+        <FadeIn delay={150}>
+          <div class="flex flex-wrap gap-2 justify-center max-w-[820px] mx-auto">
+            {hoods.map((n) => (
+              <span class="text-[12px] text-cream-muted bg-surface-raised border border-white/10 rounded-full px-3.5 py-1.5">
+                MRI near {n}
+              </span>
+            ))}
+          </div>
+        </FadeIn>
+      </div>
+    </section>
+
+    {/* OtherCities */}
+    <section class="px-8 py-20 bg-surface border-b border-white/5">
+      <div class="max-w-[1000px] mx-auto">
+        <FadeIn class="text-center mb-10">
+          <Tag>MRI in Other Cities</Tag>
+          <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
+            Strong Health MRI, <span class="text-gold">beyond Houston</span>
+          </h2>
+        </FadeIn>
+        <div class="grid sm:grid-cols-3 gap-4">
+          {otherCities.map((c, i) => (
+            <FadeIn delay={i * 80}>
+              <a
+                href={c.href}
+                class="block bg-surface-card rounded-xl p-6 border border-white/10 h-full hover:border-gold/40 transition-colors"
+              >
+                <div class="text-[15px] font-bold text-cream mb-1">MRI in {c.name}</div>
+                <p class="text-[13px] text-muted leading-relaxed">{c.note}</p>
+                <span class="text-[13px] font-semibold text-gold mt-3 inline-block">View {c.name} MRI page →</span>
+              </a>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* FAQ */}
+    <section class="px-8 py-20 bg-surface-card border-b border-white/5">
+      <div class="max-w-[800px] mx-auto">
+        <FadeIn class="text-center mb-10">
+          <Tag>Houston MRI FAQs</Tag>
+          <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
+            Common questions about <span class="text-gold">MRIs in Houston</span>
+          </h2>
+        </FadeIn>
+        <div class="flex flex-col gap-4">
+          {FAQS.map((faq, i) => (
+            <FadeIn delay={i * 30}>
+              <details class="bg-surface rounded-xl border border-white/10 group">
+                <summary class="cursor-pointer p-5 list-none flex items-start justify-between gap-4">
+                  <h3 class="text-[15px] font-bold text-cream pr-2">{faq.question}</h3>
+                  <Icon
+                    name="chevron-right"
+                    size={18}
+                    class="text-gold flex-shrink-0 transition-transform group-open:rotate-90 mt-0.5"
+                  />
+                </summary>
+                <div class="px-5 pb-5 text-[14px] text-muted leading-[1.7]">{faq.answer}</div>
+              </details>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* FinalCTA */}
+    <section class="px-8 py-24 bg-gradient-to-br from-[#C9A84C]/[0.08] to-[#0D0F12] border-b border-white/5">
+      <div class="max-w-[700px] mx-auto text-center">
+        <FadeIn>
+          <h2 class="text-[36px] font-black text-cream leading-[1.1] mb-4">
+            Book your MRI in Houston
+          </h2>
+          <p class="text-[17px] text-muted leading-relaxed mb-8 max-w-[520px] mx-auto">
+            Scanned on your side of town this week, at a flat price you saw coming, with a
+            physician who explains the report.
+          </p>
+          <div class="flex items-center justify-center gap-2 mb-6 text-[13px] text-muted">
+            <Icon name="phone" size={14} class="text-gold" />
+            <a
+              href={TEL_HREF}
+              class="hover:text-gold transition-colors"
+            >
+              {CTA_PHONE}
+            </a>
+          </div>
+          <Btn trackLead placement="final_cta" href={BOOKING_SMS_HREF}>Book Your MRI →</Btn>
+        </FadeIn>
+      </div>
+    </section>
+  </PageShell>
+</BaseLayout>

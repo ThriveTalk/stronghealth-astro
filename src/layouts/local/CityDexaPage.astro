@@ -36,9 +36,15 @@ import {
 
 interface Props {
   config: CityPeptideConfig;
+  /**
+   * Path of this city's MRI page (e.g. "/ny/new-york/mri/"). When set, a
+   * cross-link is rendered under the FAQ section. Opt-in per city so cities
+   * without an MRI page render exactly as before.
+   */
+  mriHref?: string;
 }
 
-const { config } = Astro.props;
+const { config, mriHref } = Astro.props;
 
 const PUBLISH_DATE = "2026-07-18";
 
@@ -448,6 +454,12 @@ const steps = [
           <p class="text-[13px] text-muted text-center mt-4">
             Want more detail on the science? Read our full <a href="/dexa-scan/" class="text-gold hover:underline">guide to DEXA scans</a>.
           </p>
+          {mriHref && (
+            <p class="text-[13px] text-muted text-center mt-3">
+              Need diagnostic imaging instead? We also coordinate{" "}
+              <a href={mriHref} class="text-gold hover:underline">MRI scans in {city}</a>.
+            </p>
+          )}
         </FadeIn>
       </div>
     </section>

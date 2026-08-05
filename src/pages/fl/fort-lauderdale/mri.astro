@@ -1,0 +1,729 @@
+---
+// /fl/fort-lauderdale/mri/ — Fort Lauderdale MRI local service page.
+// Broward is a service area: a Strong Health physician orders the scan at an
+// accredited partner imaging center near downtown/Las Olas and reviews the
+// results by telehealth (or in person at the Miami Brickell clinic). No local
+// storefront is implied, so the MedicalBusiness schema carries city-level
+// areaServed instead of a street address.
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import PageShell from "../../../components/shared/PageShell.astro";
+import JsonLd from "../../../components/seo/JsonLd.astro";
+import {
+  articleSchema,
+  breadcrumbSchema,
+  faqPageSchema,
+  medicalWebPageSchema,
+} from "../../../components/seo/schemas";
+import FadeIn from "../../../components/shared/FadeIn.astro";
+import Btn from "../../../components/shared/Btn.astro";
+import Tag from "../../../components/shared/Tag.astro";
+import Icon from "../../../components/shared/Icon.astro";
+import AuthorByline from "../../../components/shared/AuthorByline.astro";
+import { MAHADEV_MUKHERJEE, DR_ANGEL_RIVERA } from "../../../data/articleAuthors";
+import { STRONG_HEALTH_PHONE_TEL } from "../../../data/miamiClinic";
+import {
+  MRI_BOOKING_SMS_HREF,
+  MRI_CTA_PHONE_DISPLAY,
+  MRI_CTA_PHONE_HREF,
+} from "../../../data/mriCta";
+
+const PUBLISH_DATE = "2026-08-04";
+// Map centers on the downtown/Las Olas corridor where our Broward partner
+// imaging centers cluster.
+const MAPS_QUERY = encodeURIComponent("Las Olas Boulevard, Fort Lauderdale, FL");
+
+// Same tracked line as the DEXA pages (mriCta.ts re-exports dexaCta.ts).
+const CTA_PHONE = MRI_CTA_PHONE_DISPLAY;
+const BOOKING_SMS_HREF = MRI_BOOKING_SMS_HREF;
+const TEL_HREF = MRI_CTA_PHONE_HREF;
+
+const breadcrumbs = [
+  { name: "Home", path: "/" },
+  { name: "Florida", path: "/fl/" },
+  { name: "MRI Fort Lauderdale", path: "/fl/fort-lauderdale/mri/" },
+];
+
+const FAQS = [
+  {
+    question: "Where can I get an MRI in Fort Lauderdale?",
+    answer:
+      `Strong Health books Fort Lauderdale patients into accredited partner imaging centers around downtown, the Las Olas corridor, and along the Federal Highway strip, so most Broward patients scan within a 15-minute drive of home. A Strong Health physician evaluates you by telehealth, writes the order, and picks the center closest to you. Call or text ${CTA_PHONE} to start.`,
+  },
+  {
+    question: "How much does an MRI cost in Fort Lauderdale?",
+    answer:
+      "Independent imaging centers in Broward County are among the cheaper places in South Florida to get scanned: cash-pay MRIs typically run $350 to $800 per body part, compared with well over $2,000 when the same study is billed through a Broward hospital system. Strong Health quotes one flat price before booking, and contrast is priced up front if your study needs it.",
+  },
+  {
+    question: "Do I need a referral for an MRI in Fort Lauderdale?",
+    answer:
+      "An MRI always requires a physician's order in Florida, but you don't need to arrive with one. The Strong Health physician consult is the first step of the service: your symptoms get reviewed, the right study gets chosen, and the order gets written, usually the same day you call. Already holding an order from your own doctor? We can schedule from that.",
+  },
+  {
+    question: "How quickly can I be scanned in Broward County?",
+    answer:
+      "Usually within 2 to 4 business days. Broward's freestanding imaging centers have more open scanner time than the hospital systems, and we book directly into their schedules. If you're trying to get imaging done before a surgical consult, tell us the date and we'll work backward from it.",
+  },
+  {
+    question: "Is parking easy at Fort Lauderdale imaging centers?",
+    answer:
+      "Yes, and this is one advantage over scanning in Miami: nearly all of our Broward partner centers have free surface parking at the door. If you're coming from the beach side, allow a few extra minutes for the Las Olas drawbridges. From the west, most centers sit within a couple of turns of I-95, I-595, or US-1.",
+  },
+  {
+    question: "I get claustrophobic. What are my options?",
+    answer:
+      "Several Broward partner centers run wide-bore scanners with a 70 cm opening and shorter magnets, which resolves it for most people. True open MRI is also available in the Fort Lauderdale area when your study allows it. Mention claustrophobia when you book; scanner choice is decided then, not on scan day.",
+  },
+  {
+    question: "How do I get my results?",
+    answer:
+      "A board-certified radiologist reads your study, typically within 24 to 72 hours. Your Strong Health physician then reviews the report with you on a telehealth call and explains the findings in plain language. You keep digital access to the images and the written report, ready to hand to an orthopedist or neurologist if a specialist is the next step.",
+  },
+  {
+    question: "Can I use insurance for an MRI in Fort Lauderdale?",
+    answer:
+      "The service is direct-pay. For many Broward patients with high deductibles that ends up costing less than an in-network hospital MRI. We provide a superbill you can submit to your insurer for possible out-of-network reimbursement, and HSA/FSA cards work.",
+  },
+  {
+    question: "Do you have a clinic in Fort Lauderdale?",
+    answer:
+      "Our physical clinic is in Miami's Brickell district, about 35 minutes south on I-95 or a short Brightline ride from the Fort Lauderdale station downtown. Fort Lauderdale patients rarely need to make that trip: the consult and results review are handled by telehealth, and the scan itself happens in Broward. The Brickell clinic is there if you'd rather sit down with the physician in person.",
+  },
+  {
+    question: "What kinds of MRI can I book?",
+    answer:
+      "Joint studies (shoulder, knee, hip, ankle, wrist, elbow), the full spine (cervical, thoracic, lumbar), brain, abdomen and pelvis, and MR angiography when indicated. Preventive whole-body screening MRI can also be arranged. If you're unsure what you need, that decision is exactly what the physician consult is for.",
+  },
+];
+
+const TESTIMONIALS = [
+  {
+    name: "Greg S.",
+    neighborhood: "Victoria Park",
+    text: "My knee had been clicking since a paddleball tournament at Holiday Park. The surgeon I wanted to see required an MRI first and his office said mid-September. Strong Health got me scanned off Federal Highway that Thursday. Walked into the surgical consult with images in hand.",
+  },
+  {
+    name: "Renee L.",
+    neighborhood: "Coral Ridge",
+    text: "Hip pain was ruining my tennis at Bayview. My GP shrugged, so I texted these guys on a Monday. Consult Tuesday, MRI Wednesday morning with free parking right outside, report on Friday. Labral tear, now I actually know what I'm dealing with.",
+  },
+  {
+    name: "Dev P.",
+    neighborhood: "Flagler Village",
+    text: "Neck pain from ten years of laptop work finally scared me when my fingers started tingling. I expected weeks of runaround. It was one video call and a scan five minutes from my apartment. The doctor spent half an hour explaining the disc findings and what NOT to panic about.",
+  },
+];
+
+// WhyMri
+const whyMriPoints = [
+  { icon: "microscope", text: "Accredited Broward imaging centers, 1.5T and 3T magnets" },
+  { icon: "file-check", text: "Board-certified radiologist report on every study" },
+  { icon: "stethoscope", text: "Physician consult, order, and results review included" },
+  { icon: "dollar-sign", text: "One flat price agreed before you book" },
+  { icon: "clock", text: "Scans in 2–4 days, reports in 24–72 hours" },
+];
+
+// WhatYouGet
+const whatYouGetItems = [
+  { icon: "stethoscope", title: "Telehealth Evaluation & Order", desc: "A Strong Health physician hears you out, decides whether MRI is the right call, and writes the order. No referral scavenger hunt." },
+  { icon: "map-pin", title: "A Center Near You", desc: "We match you to an accredited partner center close to your part of Broward, from Deerfield Beach down to Hollywood." },
+  { icon: "file-check", title: "Radiologist Interpretation", desc: "Board-certified radiologists read every scan. Written reports usually land within 24 to 72 hours." },
+  { icon: "brain", title: "A Real Explanation", desc: "Your physician goes through the report with you line by line on a results call. Medical jargon gets translated." },
+  { icon: "clipboard-check", title: "Images You Own", desc: "Full digital access to your DICOM images and report, shareable with any surgeon or specialist you choose." },
+  { icon: "navigation", title: "A Plan For What's Next", desc: "Specialist referral, physical therapy, or treatment through Strong Health: the results call ends with your next appointment identified." },
+];
+
+// UseCases
+const useCases = [
+  {
+    title: "Boating, pickleball & weekend-warrior injuries",
+    desc: "Shoulders, knees, and ankles take a beating between the courts at Holiday Park and weekends on the Intracoastal. An MRI settles the strain-or-tear question before you commit to treatment.",
+    href: "/peptides-for-healing/",
+    cta: "Peptides for healing →",
+  },
+  {
+    title: "Spine & nerve symptoms",
+    desc: "Lumbar and cervical MRIs for the back pain, sciatica, and tingling that months of stretching haven't fixed. Find the disc or nerve issue, or rule it out.",
+    href: "/peptides-for-tendon-repair/",
+    cta: "Peptides for tendon repair →",
+  },
+  {
+    title: "Headache & brain imaging",
+    desc: "Brain MRI for headaches that changed character, persistent migraines, or symptoms your doctor wants imaged. Scheduling takes one call, and the report is usually back inside three days.",
+    href: "/peptides-for-recovery/",
+    cta: "Peptides for recovery →",
+  },
+  {
+    title: "Pre-surgical imaging",
+    desc: "Most Broward orthopedic surgeons want current images before a consult. We get the scan done this week so the surgeon's opinion isn't waiting on a hospital queue.",
+    href: "/fl/miami/dexascan/",
+    cta: "Also available: DEXA scan in Miami →",
+  },
+];
+
+// HowItWorks
+const steps = [
+  {
+    num: "01",
+    title: "Call or Text Us",
+    desc: `Reach ${CTA_PHONE} and describe what's going on. A physician telehealth consult is usually scheduled within a day.`,
+    color: "#C9A84C",
+  },
+  {
+    num: "02",
+    title: "Get Matched to a Center",
+    desc: "We book you into an accredited partner center near you in Broward, most with free parking and slots inside 2 to 4 days.",
+    color: "#5DADE2",
+  },
+  {
+    num: "03",
+    title: "Scan & Radiologist Read",
+    desc: "20 to 45 minutes in the scanner. A board-certified radiologist reports the study within 24 to 72 hours.",
+    color: "#34D399",
+  },
+  {
+    num: "04",
+    title: "Results Call",
+    desc: "Your physician explains the findings and lays out next steps, whether that's a specialist, therapy, or reassurance.",
+    color: "#D4B96A",
+  },
+];
+
+// Serving pills — Broward neighborhoods and nearby cities.
+const hoods = [
+  "Victoria Park",
+  "Rio Vista",
+  "Coral Ridge",
+  "Flagler Village",
+  "Sailboat Bend",
+  "Tarpon River",
+  "Harbor Beach",
+  "Colee Hammock",
+  "Wilton Manors",
+  "Oakland Park",
+  "Lauderdale-by-the-Sea",
+  "Plantation",
+  "Davie",
+  "Pompano Beach",
+  "Hollywood",
+  "Deerfield Beach",
+];
+
+// Other MRI cities — every MRI page cross-links the other three.
+const otherCities = [
+  { name: "Miami", href: "/fl/miami/mri/", note: "Consults at our Brickell clinic, scans nearby" },
+  { name: "Houston", href: "/tx/houston/mri/", note: "Partner centers inside the Loop and across the metro" },
+  { name: "New York City", href: "/ny/new-york/mri/", note: "Subway-accessible imaging in all five boroughs" },
+];
+
+const SITE_URL = "https://www.stronghealth.com";
+
+// Service-area MedicalBusiness schema: city-level areaServed, no street
+// address (Broward has no storefront; see src/data/local/clinics.ts).
+const medicalClinicSchema = {
+  "@context": "https://schema.org",
+  "@type": "MedicalBusiness",
+  "@id": `${SITE_URL}/fl/fort-lauderdale/mri/#service`,
+  name: "Strong Health — MRI Fort Lauderdale",
+  url: `${SITE_URL}/fl/fort-lauderdale/mri/`,
+  telephone: STRONG_HEALTH_PHONE_TEL,
+  image: `${SITE_URL}/opengraph.jpg`,
+  parentOrganization: { "@id": `${SITE_URL}/#organization` },
+  sameAs: ["https://www.trustpilot.com/review/stronghealth.com"],
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Fort Lauderdale",
+    addressRegion: "FL",
+    addressCountry: "US",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 26.1224,
+    longitude: -80.1373,
+  },
+  areaServed: {
+    "@type": "City",
+    name: "Fort Lauderdale",
+  },
+  medicalSpecialty: ["DiagnosticRadiology"],
+  availableService: [
+    {
+      "@type": "MedicalProcedure",
+      name: "MRI — Musculoskeletal (Joint & Spine)",
+      procedureType: "https://schema.org/DiagnosticProcedure",
+      description:
+        "Physician-ordered MRI of the shoulder, knee, hip, ankle, wrist, elbow, and spine at accredited partner imaging centers across Broward County.",
+    },
+    {
+      "@type": "MedicalProcedure",
+      name: "MRI — Brain & Neurological",
+      procedureType: "https://schema.org/DiagnosticProcedure",
+      description:
+        "Brain MRI and MR angiography for Fort Lauderdale patients, read by board-certified radiologists with physician-reviewed results via telehealth.",
+    },
+    {
+      "@type": "MedicalProcedure",
+      name: "MRI — Whole-Body Screening",
+      procedureType: "https://schema.org/DiagnosticProcedure",
+      description:
+        "Preventive whole-body MRI screening coordinated for Broward County patients with physician review of results.",
+    },
+  ],
+  priceRange: "$$",
+};
+---
+
+<BaseLayout
+  title="MRI Fort Lauderdale — Scans in 2–4 Days"
+  description="Book an MRI in Fort Lauderdale without the hospital markup. Physician-ordered scans at Broward imaging centers, flat pricing, results explained. (786) 420-6630."
+  path="/fl/fort-lauderdale/mri/"
+  smsContext="an MRI in Fort Lauderdale, Florida"
+>
+  <PageShell>
+    <JsonLd schema={medicalClinicSchema} />
+    <JsonLd
+      schema={medicalWebPageSchema({
+        name: "MRI Fort Lauderdale — Scans in 2–4 Days",
+        description:
+          "Physician-ordered MRI scans for Fort Lauderdale and Broward County patients at accredited partner imaging centers, with radiologist reads and physician-reviewed results via telehealth.",
+        url: "/fl/fort-lauderdale/mri/",
+        lastReviewed: PUBLISH_DATE,
+        reviewedBy: DR_ANGEL_RIVERA,
+      })}
+    />
+    <JsonLd
+      schema={articleSchema({
+        headline: "MRI in Fort Lauderdale — Fast, Physician-Ordered Imaging in Broward",
+        description:
+          "Physician-ordered MRI scans for Fort Lauderdale and Broward County patients at accredited partner imaging centers, with radiologist reads and physician-reviewed results via telehealth.",
+        author: MAHADEV_MUKHERJEE,
+        reviewer: DR_ANGEL_RIVERA,
+        publishDate: PUBLISH_DATE,
+        updatedDate: PUBLISH_DATE,
+        url: "/fl/fort-lauderdale/mri/",
+      })}
+    />
+    <JsonLd schema={faqPageSchema(FAQS)} />
+    <JsonLd schema={breadcrumbSchema(breadcrumbs)} />
+
+    {/* Breadcrumbs */}
+    <nav aria-label="Breadcrumb" class="px-8 pt-4 pb-0">
+      <div class="max-w-[1000px] mx-auto">
+        <ol class="flex items-center gap-1.5 text-[12px] text-muted">
+          {breadcrumbs.map((crumb, i) => {
+            const isLast = i === breadcrumbs.length - 1;
+            return (
+              <li class="flex items-center gap-1.5">
+                {i > 0 && <Icon name="chevron-right" size={12} class="text-text-subtle" />}
+                {isLast ? (
+                  <span class="text-gold font-semibold">{crumb.name}</span>
+                ) : (
+                  <a href={crumb.path} class="hover:text-gold transition-colors">
+                    {crumb.name}
+                  </a>
+                )}
+              </li>
+            );
+          })}
+        </ol>
+      </div>
+    </nav>
+
+    {/* Hero */}
+    <section class="relative px-8 pt-12 pb-24 overflow-hidden border-b border-white/5">
+      <div aria-hidden="true" class="hidden md:block absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-navy/20 rounded-full blur-[100px] pointer-events-none"></div>
+      <div aria-hidden="true" class="hidden md:block absolute bottom-0 right-1/4 translate-x-1/2 translate-y-1/4 w-[500px] h-[500px] bg-gold/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+      <div class="max-w-[1000px] mx-auto relative z-10">
+        <div class="flex items-center gap-2.5 mb-5">
+          <div class="flex gap-0.5">
+            {[1, 2, 3, 4, 5].map(() => <Icon name="star" size={16} class="fill-[#C9A84C] text-gold" />)}
+          </div>
+          <span class="text-sm font-bold text-gold">4.9</span>
+          <span class="text-[13px] text-muted">from 1,000+ Strong Health patient reviews</span>
+        </div>
+
+        <Tag>Fort Lauderdale MRI · Broward Partner Centers · Free Parking</Tag>
+
+        <h1 class="text-4xl md:text-[52px] font-black text-cream leading-[1.08] mt-6 mb-5 max-w-[760px] tracking-[-1.5px]">
+          MRI in Fort Lauderdale. <span class="text-gold">Scanned near home, this week.</span>
+        </h1>
+
+        <p class="text-[17px] text-muted leading-relaxed max-w-[600px] mb-8">
+          A Strong Health physician evaluates you by video, orders the study, and books you
+          into an accredited imaging center in Broward, usually within a 15-minute drive and
+          with parking at the door. A radiologist reads it, and your physician tells you what
+          it means.
+        </p>
+
+        <Btn trackLead placement="hero" href={BOOKING_SMS_HREF}>Book Your MRI in Fort Lauderdale →</Btn>
+        <div class="mt-4 text-xs text-muted">
+          Scans in 2–4 days · Flat cash pricing · Telehealth results review
+        </div>
+      </div>
+    </section>
+
+    {/* Byline */}
+    <section class="px-8 pt-2 pb-6 bg-surface">
+      <div class="max-w-[800px] mx-auto">
+        <AuthorByline
+          author={MAHADEV_MUKHERJEE}
+          reviewer={DR_ANGEL_RIVERA}
+          publishDate={PUBLISH_DATE}
+        />
+      </div>
+    </section>
+
+    {/* WhyMri */}
+    <section class="px-8 py-20 bg-surface-card border-b border-white/5">
+      <div class="max-w-[1000px] mx-auto">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+          <FadeIn>
+            <Tag>Why Broward Patients Book Through Us</Tag>
+            <h2 class="text-[32px] font-extrabold text-cream leading-[1.15] mt-4 mb-4">
+              The scanners were never the problem. <span class="text-gold">Access was.</span>
+            </h2>
+            <p class="text-[15px] text-muted leading-[1.7] mb-4">
+              Broward County has plenty of MRI machines; getting onto one is the problem. The
+              hospital route means a referral, a pre-authorization fight, and a bill that
+              often triples the going cash rate at the imaging center a mile down US-1.
+            </p>
+            <p class="text-[15px] text-muted leading-[1.7]">
+              Strong Health books the same accredited centers directly. One physician consult
+              produces the order, the appointment, and a flat quoted price. Most Fort
+              Lauderdale patients go from first text to reviewed results in under a week.
+            </p>
+          </FadeIn>
+
+          <FadeIn delay={200}>
+            <div class="flex flex-col gap-3.5">
+              {whyMriPoints.map((s) => (
+                <div class="flex items-center gap-3 bg-surface-raised rounded-xl p-4 border border-white/5">
+                  <div class="w-9 h-9 rounded-full bg-surface flex items-center justify-center shrink-0 border border-white/5">
+                    <Icon name={s.icon} size={18} class="text-gold" />
+                  </div>
+                  <span class="text-sm text-cream-muted">{s.text}</span>
+                </div>
+              ))}
+            </div>
+          </FadeIn>
+        </div>
+      </div>
+    </section>
+
+    {/* LocationDetails */}
+    <section class="px-8 py-20 bg-surface border-b border-white/5">
+      <div class="max-w-[1000px] mx-auto">
+        <FadeIn class="text-center mb-10">
+          <Tag>Where You'll Be Scanned</Tag>
+          <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
+            Partner centers across <span class="text-gold">Fort Lauderdale</span>
+          </h2>
+          <p class="text-[15px] text-muted max-w-[560px] mx-auto">
+            Our Broward partner imaging centers cluster around downtown and the Las Olas
+            corridor, with additional sites off I-95, I-595, and Federal Highway so you scan
+            close to home rather than driving to Miami.
+          </p>
+        </FadeIn>
+
+        <div class="grid md:grid-cols-2 gap-6">
+          <FadeIn>
+            <div class="bg-surface-card rounded-2xl border border-white/10 overflow-hidden h-full">
+              <iframe
+                src={`https://maps.google.com/maps?q=${MAPS_QUERY}&output=embed`}
+                class="w-full h-[240px] border-0"
+                allowfullscreen
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Fort Lauderdale MRI service area - Las Olas / downtown corridor"
+              ></iframe>
+              <div class="p-6 flex flex-col gap-4">
+                <div class="flex items-start gap-3">
+                  <Icon name="map-pin" size={16} class="text-gold shrink-0 mt-0.5" />
+                  <div>
+                    <div class="text-sm font-bold text-cream">Fort Lauderdale service area</div>
+                    <div class="text-sm text-cream-muted mt-0.5">Partner imaging centers from Deerfield Beach to Hollywood; your exact site is confirmed when you book.</div>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <Icon name="phone" size={16} class="text-gold shrink-0 mt-0.5" />
+                  <a
+                    href={TEL_HREF}
+                    class="text-sm text-cream-muted hover:text-gold transition-colors"
+                  >
+                    {CTA_PHONE}
+                  </a>
+                </div>
+                <div class="flex items-start gap-3">
+                  <Icon name="clock" size={16} class="text-gold shrink-0 mt-0.5" />
+                  <div class="text-sm text-cream-muted">Telehealth consults Mon–Fri 8:00 AM – 6:00 PM, Sat 9:00 AM – 1:00 PM</div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <Icon name="navigation" size={16} class="text-gold shrink-0 mt-0.5" />
+                  <div class="text-xs text-muted leading-relaxed">
+                    Most partner sites sit minutes off I-95 (Broward Blvd or Sunrise Blvd exits)
+                    or along US-1, with free surface parking. Coming by rail? The Brightline
+                    station downtown puts you 10 minutes from the Las Olas corridor sites.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={200}>
+            <div class="bg-surface-card rounded-2xl border border-white/10 p-7 h-full flex flex-col">
+              <h3 class="text-lg font-bold text-cream mb-4">What to expect for your Fort Lauderdale MRI</h3>
+              <div class="flex flex-col gap-4 text-[14px] text-cream-muted leading-[1.7]">
+                <div class="flex items-start gap-3">
+                  <div class="w-7 h-7 rounded-full bg-gold/10 flex items-center justify-center shrink-0 text-[11px] font-bold text-gold">1</div>
+                  <span>A telehealth consult, often same-day, where the physician confirms MRI is the right study and writes the order.</span>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="w-7 h-7 rounded-full bg-gold/10 flex items-center justify-center shrink-0 text-[11px] font-bold text-gold">2</div>
+                  <span>Your scan at the assigned Broward center. Arrive 15 minutes early, leave jewelry and metal at home, and plan 20 to 45 minutes in the scanner.</span>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="w-7 h-7 rounded-full bg-gold/10 flex items-center justify-center shrink-0 text-[11px] font-bold text-gold">3</div>
+                  <span>A board-certified radiologist reads the study within 24 to 72 hours.</span>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="w-7 h-7 rounded-full bg-gold/10 flex items-center justify-center shrink-0 text-[11px] font-bold text-gold">4</div>
+                  <span>A results call where your physician explains the findings and the plan. Prefer in person? Our Brickell clinic is 35 minutes south on I-95 or a Brightline ride away.</span>
+                </div>
+              </div>
+              <div class="mt-6 pt-5 border-t border-white/5 text-[12px] text-muted">
+                First call to reviewed results typically takes less than a week for Broward
+                patients. Time-sensitive pre-surgical scans can often be expedited.
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+      </div>
+    </section>
+
+    {/* WhatYouGet */}
+    <section class="px-8 py-20 bg-surface-card border-b border-white/5">
+      <div class="max-w-[1000px] mx-auto">
+        <FadeIn class="text-center mb-10">
+          <Tag>What's Included</Tag>
+          <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
+            One flat price, <span class="text-gold">the whole path</span>
+          </h2>
+          <p class="text-[15px] text-muted max-w-[560px] mx-auto">
+            The quote covers the consult, the scan, the radiologist, and the explanation. Not
+            just scanner time.
+          </p>
+        </FadeIn>
+
+        <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+          {whatYouGetItems.map((u, i) => (
+            <FadeIn delay={i * 80}>
+              <div class="bg-surface rounded-xl p-6 border border-white/10 h-full hover:bg-surface-raised transition-colors">
+                <div class="text-gold mb-4 p-3 rounded-xl bg-surface-raised border border-white/5 w-fit"><Icon name={u.icon} size={28} /></div>
+                <h3 class="text-[15px] font-bold text-cream mb-2">{u.title}</h3>
+                <p class="text-[13px] text-muted leading-relaxed">{u.desc}</p>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* UseCases */}
+    <section class="px-8 py-20 bg-surface border-b border-white/5">
+      <div class="max-w-[1000px] mx-auto">
+        <FadeIn class="text-center mb-10">
+          <Tag>Who Books MRIs in Fort Lauderdale</Tag>
+          <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
+            What brings Broward patients <span class="text-gold">to the scanner</span>
+          </h2>
+        </FadeIn>
+        <div class="grid md:grid-cols-2 gap-5">
+          {useCases.map((c, i) => (
+            <FadeIn delay={i * 80}>
+              <div class="bg-surface-card rounded-2xl p-6 border border-white/10 h-full flex flex-col">
+                <h3 class="text-lg font-bold text-cream mb-3">{c.title}</h3>
+                <p class="text-[14px] text-muted leading-relaxed flex-grow mb-4">{c.desc}</p>
+                <a href={c.href} class="text-[13px] font-semibold text-gold hover:underline">
+                  {c.cta}
+                </a>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* HowItWorks */}
+    <section class="px-8 py-20 bg-surface-card border-b border-white/5">
+      <div class="max-w-[1000px] mx-auto">
+        <FadeIn class="text-center mb-10">
+          <Tag>How It Works</Tag>
+          <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
+            Four steps, <span class="text-gold">no hospital queue</span>
+          </h2>
+        </FadeIn>
+
+        <div class="grid md:grid-cols-4 gap-4">
+          {steps.map((s, i) => (
+            <FadeIn delay={i * 100}>
+              <div
+                class="bg-surface rounded-[14px] p-6 border border-white/10 h-full hover:border-white/20 transition-colors"
+                style={`border-top:3px solid ${s.color}`}
+              >
+                <div class="text-[28px] font-black mb-3" style={`color:${s.color}`}>{s.num}</div>
+                <h3 class="text-base font-bold text-cream mb-3">{s.title}</h3>
+                <p class="text-[13px] text-muted leading-relaxed">{s.desc}</p>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* Testimonials */}
+    <section class="px-8 py-20 bg-surface border-b border-white/5">
+      <div class="max-w-[1000px] mx-auto">
+        <FadeIn class="text-center mb-10">
+          <Tag>Fort Lauderdale Patient Reviews</Tag>
+          <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
+            Broward patients, <span class="text-gold">in their own words</span>
+          </h2>
+        </FadeIn>
+
+        <div class="grid md:grid-cols-3 gap-5">
+          {TESTIMONIALS.map((r, i) => (
+            <FadeIn delay={i * 100}>
+              <div class="bg-surface-card rounded-2xl p-6 border border-white/10 h-full flex flex-col">
+                <div class="flex items-center gap-2 mb-4">
+                  <div class="flex gap-0.5">
+                    {Array.from({ length: 5 }).map(() => (
+                      <Icon name="star" size={13} class="fill-[#C9A84C] text-gold" />
+                    ))}
+                  </div>
+                  <span class="text-[10px] text-muted uppercase tracking-wider font-semibold">Verified Patient</span>
+                </div>
+                <Icon name="quote" size={20} class="text-gold/30 mb-2" />
+                <p class="text-[13px] text-cream-muted leading-relaxed flex-grow mb-4">{r.text}</p>
+                <div class="border-t border-white/5 pt-3 flex items-center gap-2">
+                  <div class="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center">
+                    <span class="text-[11px] font-bold text-gold">{r.name[0]}</span>
+                  </div>
+                  <div>
+                    <div class="text-sm font-semibold text-cream">{r.name}</div>
+                    <div class="text-[11px] text-muted">{r.neighborhood}, Fort Lauderdale</div>
+                  </div>
+                </div>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* Neighborhoods */}
+    <section class="px-8 py-20 bg-surface-card border-b border-white/5">
+      <div class="max-w-[1000px] mx-auto">
+        <FadeIn class="text-center mb-8">
+          <Tag>Serving Broward County</Tag>
+          <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
+            MRI patients from <span class="text-gold">across greater Fort Lauderdale</span>
+          </h2>
+          <p class="text-[15px] text-muted max-w-[540px] mx-auto">
+            With partner centers spread along the I-95 and Federal Highway corridors, most of
+            Broward is within a short drive of a scanner we book.
+          </p>
+        </FadeIn>
+        <FadeIn delay={150}>
+          <div class="flex flex-wrap gap-2 justify-center max-w-[820px] mx-auto">
+            {hoods.map((n) => (
+              <span class="text-[12px] text-cream-muted bg-surface-raised border border-white/10 rounded-full px-3.5 py-1.5">
+                MRI near {n}
+              </span>
+            ))}
+          </div>
+        </FadeIn>
+      </div>
+    </section>
+
+    {/* OtherCities */}
+    <section class="px-8 py-20 bg-surface border-b border-white/5">
+      <div class="max-w-[1000px] mx-auto">
+        <FadeIn class="text-center mb-10">
+          <Tag>MRI in Other Cities</Tag>
+          <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
+            Strong Health MRI, <span class="text-gold">beyond Broward</span>
+          </h2>
+        </FadeIn>
+        <div class="grid sm:grid-cols-3 gap-4">
+          {otherCities.map((c, i) => (
+            <FadeIn delay={i * 80}>
+              <a
+                href={c.href}
+                class="block bg-surface-card rounded-xl p-6 border border-white/10 h-full hover:border-gold/40 transition-colors"
+              >
+                <div class="text-[15px] font-bold text-cream mb-1">MRI in {c.name}</div>
+                <p class="text-[13px] text-muted leading-relaxed">{c.note}</p>
+                <span class="text-[13px] font-semibold text-gold mt-3 inline-block">View {c.name} MRI page →</span>
+              </a>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* FAQ */}
+    <section class="px-8 py-20 bg-surface-card border-b border-white/5">
+      <div class="max-w-[800px] mx-auto">
+        <FadeIn class="text-center mb-10">
+          <Tag>Fort Lauderdale MRI FAQs</Tag>
+          <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
+            Common questions about <span class="text-gold">MRIs in Fort Lauderdale</span>
+          </h2>
+        </FadeIn>
+        <div class="flex flex-col gap-4">
+          {FAQS.map((faq, i) => (
+            <FadeIn delay={i * 30}>
+              <details class="bg-surface rounded-xl border border-white/10 group">
+                <summary class="cursor-pointer p-5 list-none flex items-start justify-between gap-4">
+                  <h3 class="text-[15px] font-bold text-cream pr-2">{faq.question}</h3>
+                  <Icon
+                    name="chevron-right"
+                    size={18}
+                    class="text-gold flex-shrink-0 transition-transform group-open:rotate-90 mt-0.5"
+                  />
+                </summary>
+                <div class="px-5 pb-5 text-[14px] text-muted leading-[1.7]">{faq.answer}</div>
+              </details>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* FinalCTA */}
+    <section class="px-8 py-24 bg-gradient-to-br from-[#C9A84C]/[0.08] to-[#0D0F12] border-b border-white/5">
+      <div class="max-w-[700px] mx-auto text-center">
+        <FadeIn>
+          <h2 class="text-[36px] font-black text-cream leading-[1.1] mb-4">
+            Book your MRI in Fort Lauderdale
+          </h2>
+          <p class="text-[17px] text-muted leading-relaxed mb-8 max-w-[520px] mx-auto">
+            Scanned near home in days, with a flat price you approve first and a physician who
+            actually explains the report.
+          </p>
+          <div class="flex items-center justify-center gap-2 mb-6 text-[13px] text-muted">
+            <Icon name="phone" size={14} class="text-gold" />
+            <a
+              href={TEL_HREF}
+              class="hover:text-gold transition-colors"
+            >
+              {CTA_PHONE}
+            </a>
+          </div>
+          <Btn trackLead placement="final_cta" href={BOOKING_SMS_HREF}>Book Your MRI →</Btn>
+        </FadeIn>
+      </div>
+    </section>
+  </PageShell>
+</BaseLayout>
