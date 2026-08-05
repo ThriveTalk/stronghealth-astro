@@ -22,7 +22,7 @@ export interface DiagnosticLocation {
 }
 
 export interface DiagnosticCategory {
-  key: "dexa" | "vo2max" | "rmr" | "mri";
+  key: "dexa" | "vo2max" | "rmr" | "mri" | "calcium";
   name: string;
   /** One-line "what it measures / why it matters" shown under the name. */
   tagline: string;
@@ -64,7 +64,16 @@ export const DIAGNOSTIC_CATEGORIES: DiagnosticCategory[] = [
     tagline:
       "Resting metabolic rate: how many calories your body actually burns at rest, so nutrition targets are built on data instead of formulas.",
     icon: "zap",
-    locations: [],
+    locations: [{ cityName: "Miami", state: "FL", href: "/fl/miami/rmr-testing/" }],
+  },
+  {
+    key: "calcium",
+    name: "Calcium Score Test",
+    tagline:
+      "Low-dose CT scan of the coronary arteries that measures actual plaque burden — a direct read on heart disease risk, not an estimate.",
+    icon: "heart",
+    guide: { label: "Average calcium score by age", href: "/calcium-score-by-age/" },
+    locations: [{ cityName: "Miami", state: "FL", href: "/fl/miami/calcium-score-test/" }],
   },
   {
     key: "mri",
