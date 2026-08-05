@@ -281,6 +281,12 @@ export const MIAMI_PEPTIDE_CONFIG: CityPeptideConfig = {
       cta: "Miami DEXA scan →",
     },
     {
+      name: "VO2 Max Testing in Miami",
+      desc: "Baseline your cardiorespiratory fitness at our Brickell clinic and re-test on protocol — the strongest longevity biomarker you can train.",
+      href: "/fl/miami/vo2-max-testing/",
+      cta: "Miami VO2 max test →",
+    },
+    {
       name: "PRP Therapy in Miami",
       desc: "Physician-performed platelet-rich plasma for joint, tendon, and aesthetic indications, frequently paired with healing-peptide protocols.",
       href: "/fl/miami/prp-therapy/",
