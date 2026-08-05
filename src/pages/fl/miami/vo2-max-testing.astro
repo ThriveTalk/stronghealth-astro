@@ -1,5 +1,9 @@
 ---
-// /fl/miami/dexascan/ — port of src/pages/local/MiamiDexaScan.tsx (source monorepo).
+// /fl/miami/vo2-max-testing/ — hyper-localized Miami VO2 max testing page.
+// Self-contained (like the Miami DEXA page): reuses the shared component
+// system + JsonLd schema builders. Targets the "vo2 max test miami" /
+// "vo2 max testing near me" local cluster; build plan in
+// docs/briefs/vo2-max-testing-miami.md.
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import PageShell from "../../../components/shared/PageShell.astro";
 import JsonLd from "../../../components/seo/JsonLd.astro";
@@ -16,145 +20,145 @@ import Icon from "../../../components/shared/Icon.astro";
 import AuthorByline from "../../../components/shared/AuthorByline.astro";
 import { MAHADEV_MUKHERJEE, DR_ANGEL_RIVERA } from "../../../data/articleAuthors";
 import { MIAMI_BRICKELL_CLINIC, MIAMI_BRICKELL_FULL_ADDRESS } from "../../../data/miamiClinic";
-import {
-  dexaBookingSmsHref,
-  DEXA_CTA_PHONE_DISPLAY,
-  DEXA_CTA_PHONE_HREF,
-} from "../../../data/dexaCta";
 import { MIAMI_DEXA_NEIGHBORHOODS } from "../../../data/local/dexaNeighborhoods";
 
 const CLINIC = MIAMI_BRICKELL_CLINIC;
 const FULL_ADDRESS = MIAMI_BRICKELL_FULL_ADDRESS;
-const PUBLISH_DATE = "2026-05-01";
+const PUBLISH_DATE = "2026-08-05";
 const MAPS_QUERY = encodeURIComponent(`${CLINIC.name}, ${FULL_ADDRESS}`);
 
-// DEXA pages call and text their own tracked line (see src/data/dexaCta.ts),
-// not the site-wide clinic number.
-const CTA_PHONE = DEXA_CTA_PHONE_DISPLAY;
-const BOOKING_SMS_HREF = dexaBookingSmsHref("Miami");
-const TEL_HREF = DEXA_CTA_PHONE_HREF;
+const BOOKING_SMS_NUMBER = "+17542636026";
+const BOOKING_SMS_BODY = "I would like to book a VO2 Max test with Strong Health";
+// Use the "?&body=" form so the pre-filled message works on both iOS and Android.
+const BOOKING_SMS_HREF = `sms:${BOOKING_SMS_NUMBER}?&body=${encodeURIComponent(
+  BOOKING_SMS_BODY,
+)}`;
+
+const TEL_HREF = `tel:${CLINIC.phone.replace(/[^\d+]/g, "")}`;
+const PAGE_PATH = "/fl/miami/vo2-max-testing/";
+const SITE_URL = "https://www.stronghealth.com";
 
 const breadcrumbs = [
   { name: "Home", path: "/" },
   { name: "Florida", path: "/fl/" },
-  { name: "DEXA Scan Miami", path: "/fl/miami/dexascan/" },
+  { name: "VO2 Max Testing Miami", path: PAGE_PATH },
 ];
 
 const FAQS = [
   {
-    question: "Where can I get a DEXA scan in Miami?",
+    question: "Where can I get a VO2 max test in Miami?",
     answer:
-      `Strong Health offers DEXA scan body composition analysis at our Brickell clinic at 1000 Brickell Plaza, Miami, FL 33131. The clinic is in Miami's financial district with validated parking and Metrorail access (Brickell station, 0.3 mi). Walk-ins are welcome and same-week appointments are typically available. Call ${CTA_PHONE} to book.`,
+      "Strong Health offers physician-supervised VO2 max testing at our Brickell clinic at 1000 Brickell Plaza, Miami, FL 33131. We're centrally located in Miami's financial district with validated parking and Metrorail access (Brickell station, 0.3 mi). Same-week appointments are typically available. Call (754) 263-6026 to book.",
   },
   {
-    question: "How much does a DEXA scan cost in Miami?",
+    question: "How much does a VO2 max test cost in Miami?",
     answer:
-      "A body composition DEXA scan at our Miami clinic is competitively priced for the South Florida market, with transparent direct-pay pricing and no hidden fees. Most patients pay under $200 per scan, and bundled pricing is available if you plan to track progress with multiple scans over the year. Bone density DEXA scans (for osteoporosis screening) may be covered by insurance for eligible patients.",
+      "VO2 max testing at our Miami clinic uses transparent direct-pay pricing with no hidden fees — no insurance runaround, no surprise charges. Bundled pricing is available if you pair the test with a DEXA scan or plan to re-test over the year to track training progress. Call (754) 263-6026 for current rates and bundle options.",
   },
   {
-    question: "What does a DEXA scan measure?",
+    question: "What does a VO2 max test measure?",
     answer:
-      "A DEXA (Dual-Energy X-ray Absorptiometry) scan precisely measures three things across your entire body: lean muscle mass (in pounds, broken down by limb and trunk), fat mass (total and visceral), and bone mineral density. It's the clinical gold standard for body composition with a margin of error of roughly 1–2%, far more accurate than BIA scales or skinfold calipers.",
+      "VO2 max is the maximum rate at which your body can take in and use oxygen during exercise, measured in milliliters of oxygen per kilogram of body weight per minute (ml/kg/min). During the test, a metabolic cart analyzes every breath you take to measure it directly. Your report also includes your ventilatory thresholds (VT1 and VT2), personalized heart-rate training zones, and your fitness percentile for your age and sex.",
   },
   {
-    question: "How long does a DEXA scan take at your Miami clinic?",
+    question: "How accurate is a VO2 max test vs. my Apple Watch or Garmin?",
     answer:
-      "The actual scan takes 10–15 minutes. Plan for about 30 minutes total at our Brickell location, including check-in, the scan itself, and a brief consultation to walk through your results. There are no injections, no enclosed spaces, and the radiation dose is roughly 1/10th of a standard chest X-ray.",
+      "Wearables estimate VO2 max from heart rate and pace data, and those estimates can be off by 10% or more — often flattering you. A clinical VO2 max test measures your actual oxygen consumption breath by breath with a metabolic cart, which is the gold standard used in exercise physiology labs. It's the difference between a guess and a measurement.",
   },
   {
-    question: "Do I need a doctor's referral for a DEXA scan in Miami?",
+    question: "How long does a VO2 max test take at your Brickell clinic?",
     answer:
-      "No referral is needed for a body composition DEXA scan at our Miami clinic. We accept walk-ins and self-pay patients. If you're already a Strong Health patient on a TRT, peptide, or weight loss protocol, your physician can order the scan as part of your treatment plan and review the results with you at your next visit.",
+      "The graded ramp portion of the test takes 10–15 minutes. Plan for about 45 minutes total at our Brickell location, including check-in, a resting baseline, mask fitting, the test itself, cool-down, and a results review where we walk through your VO2 max, thresholds, and training zones before you leave.",
   },
   {
-    question: "How should I prepare for my DEXA scan?",
+    question: "How should I prepare for a VO2 max test?",
     answer:
-      "Wear comfortable clothing without metal (no zippers, underwire bras, or metal buttons). Avoid eating a large meal within 2 hours of the scan, hydrate normally, skip calcium supplements for 24 hours, and avoid intense exercise the night before. Consistency between scans matters more than perfect prep, so try to repeat the same conditions for follow-up scans.",
+      "Arrive rested: skip hard training for 24 hours before the test, avoid caffeine for 3 hours, and don't eat a large meal within 2–3 hours. Wear athletic clothing and running shoes, and hydrate normally — especially important in Miami heat. If you re-test later, repeating the same conditions gives you the most reliable comparison.",
   },
   {
-    question: "How often should I get a DEXA scan?",
+    question: "Do I need to be fit to take a VO2 max test? Is it safe?",
     answer:
-      "For active body recomposition (TRT, peptides, weight loss program), every 3–6 months is ideal. For general health monitoring, once per year is sufficient. Scanning more frequently than every 90 days rarely shows meaningful changes and wastes resources. We recommend using our Miami clinic for every follow-up scan, as the same scanner produces the most reliable trend data.",
+      "You don't need to be an athlete. The protocol is graded — it starts easy and ramps up gradually to your maximum, whatever that is today — and it's physician-supervised with a health screening beforehand. You can stop at any point. Many of our Miami patients book their first test specifically because they're just starting a training or weight loss program and want a baseline.",
   },
   {
-    question: "Is DEXA the best body composition test in Miami?",
+    question: "What is a good VO2 max for my age?",
     answer:
-      "DEXA is widely considered the clinical gold standard for body composition analysis. Compared to BIA scales (5–8% error), skinfold calipers (highly operator-dependent), and InBody machines (sensitive to hydration), DEXA offers 1–2% precision with regional breakdowns that no other commonly available method can match. Underwater hydrostatic weighing is comparable but rarely available in Miami.",
+      "VO2 max norms depend on age and sex. As a rough guide, an average 40-year-old man measures in the mid-30s to low-40s ml/kg/min and a 40-year-old woman in the low-30s, while trained endurance athletes commonly measure in the 50s and 60s. Your Strong Health report places your result in a percentile for your age and sex cohort, so you know exactly where you stand and what to aim for.",
   },
   {
-    question: "Can a DEXA scan track results from TRT or GLP-1 weight loss?",
+    question: "Can I do a VO2 max test and a DEXA scan on the same visit?",
     answer:
-      "Yes. DEXA is the most accurate way to verify that testosterone therapy is producing real lean mass gains and that GLP-1 weight loss (semaglutide, tirzepatide) is preserving muscle while reducing fat. The scale only tells you total weight; DEXA tells you exactly where it's coming from. Many of our Miami TRT and weight loss patients use DEXA scans every 3–6 months to track progress objectively.",
+      "Yes — and it's the combination we recommend. A DEXA scan tells you what your body is made of (lean mass, fat mass, bone density), and a VO2 max test tells you what your engine can do. Together they're the most complete fitness and longevity baseline available at our Miami clinic. Book both in a single Brickell visit and re-test on the same schedule to track real change.",
   },
   {
-    question: "Is the DEXA scan safe?",
+    question: "How often should I re-test my VO2 max?",
     answer:
-      "Yes. A DEXA scan uses an extremely low dose of ionizing radiation, roughly 1/10th of a standard chest X-ray and less than a single day of natural background exposure in South Florida. It's FDA-approved for repeated use and considered one of the safest medical imaging technologies available.",
+      "Every 4–6 months is ideal if you're actively training or on a protocol aimed at improving fitness — that's enough time for structured zone training to move the number meaningfully. For general health monitoring, once a year is sufficient. Re-testing at the same Miami clinic on the same equipment gives you the most reliable trend data.",
   },
 ];
 
 const TESTIMONIALS = [
   {
-    name: "Carlos M.",
+    name: "Daniel R.",
     neighborhood: "Brickell",
-    text: "I've been on TRT for eight months. The scale only moved 6 lbs but my DEXA showed I gained 14 lbs of lean mass and lost 20 lbs of fat. I would have given up without that data. The Brickell location is five minutes from my condo.",
+    text: "Training for the Miami Marathon, my watch had my VO2 max at 52. The lab test at Strong Health measured 47 — and more importantly gave me real thresholds. I rebuilt my zones around VT2 and my long runs finally stopped falling apart at mile 16.",
   },
   {
-    name: "Andrea P.",
+    name: "Melissa G.",
     neighborhood: "Coral Gables",
-    text: "I was on tirzepatide and worried I was losing muscle. Strong Health's DEXA scan confirmed I'd kept almost all my lean mass while losing 32 lbs of fat. That's exactly what I needed to see to keep going.",
+    text: "Running in Miami heat, I was always guessing at effort. Knowing my actual thresholds changed everything — I slowed my easy days down, sped my interval days up, and my half-marathon time dropped six minutes in one season.",
   },
   {
-    name: "Marco T.",
+    name: "Javier S.",
     neighborhood: "Coconut Grove",
-    text: "I've used InBody scales at my gym for years and the numbers were all over the place. The DEXA report I got from Strong Health was on a different level: broken down by arm, leg, trunk, plus visceral fat and bone density. Worth every dollar.",
+    text: "I ride the Rickenbacker three mornings a week. After the test I started doing my causeway intervals right at VT2 instead of just hammering. Re-tested five months later: VO2 max up four points. Data beats guessing.",
   },
 ];
 
-// WhyDexa
-const whyDexaPoints = [
-  { icon: "chart-line", text: "1–2% margin of error vs. 5–8% for BIA scales" },
-  { icon: "activity", text: "Region-by-region breakdown (arms, legs, trunk)" },
-  { icon: "bone", text: "Bone density scoring (T-score, Z-score)" },
-  { icon: "scale", text: "Visceral fat measurement, not just total body fat" },
-  { icon: "heart-pulse", text: "FDA-approved, low-dose, repeatable for trend data" },
+// WhyVo2Max
+const whyVo2Points = [
+  { icon: "chart-line", text: "Direct breath-by-breath measurement, not a wrist estimate" },
+  { icon: "activity", text: "Ventilatory thresholds (VT1 & VT2) for precise zone training" },
+  { icon: "trending-up", text: "Percentile ranking vs. your age and sex cohort" },
+  { icon: "stethoscope", text: "Physician-supervised, graded protocol — safe at any fitness level" },
+  { icon: "heart-pulse", text: "Repeatable every 4–6 months for real trend data" },
 ];
 
 // WhatYouGet
 const whatYouGetItems = [
-  { icon: "microscope", title: "Total & Regional Body Fat %", desc: "Body fat broken down by arms, legs, trunk, and android/gynoid regions. Track exactly where you're losing fat." },
-  { icon: "activity", title: "Lean Muscle Mass", desc: "Pound-precise lean mass for each limb. Verify TRT, peptide, or training programs are actually building muscle." },
-  { icon: "scale", title: "Visceral Adipose Tissue", desc: "The dangerous fat around your organs, separated from subcutaneous. The single best metric for metabolic risk." },
-  { icon: "bone", title: "Bone Mineral Density", desc: "T-score and Z-score for hip and spine. Catch early osteopenia before it becomes osteoporosis." },
-  { icon: "shield-check", title: "Symmetry Analysis", desc: "Left vs. right comparisons by limb. Spot muscle imbalances from old injuries or training asymmetries." },
-  { icon: "clipboard-check", title: "Trend Tracking", desc: "Side-by-side comparison reports across every scan, so you can see real change over months and years." },
+  { icon: "heart-pulse", title: "Your VO2 Max Score", desc: "Measured directly in ml/kg/min (plus METs) — the single strongest fitness predictor of long-term health and longevity." },
+  { icon: "trending-up", title: "Age & Sex Percentile", desc: "See exactly where you rank against your cohort — your \"fitness age\" — and what moving up a bracket would take." },
+  { icon: "activity", title: "Ventilatory Thresholds", desc: "VT1 and VT2, the two physiological breakpoints that define easy, steady, and hard effort for your body specifically." },
+  { icon: "zap", title: "Personal Training Zones", desc: "Heart-rate zones 1–5 anchored to your measured thresholds — not a generic 220-minus-age formula." },
+  { icon: "flask-conical", title: "Fuel Utilization", desc: "Calorie burn and your fat-vs-carbohydrate crossover point, so you know what your body actually burns at each intensity." },
+  { icon: "clipboard-check", title: "Trend Tracking", desc: "Side-by-side comparison reports across re-tests, so you can see your engine improving over months and years." },
 ];
 
 // UseCases
 const useCases = [
   {
-    title: "Muscle-growth protocols",
-    desc: "Verify that a GH-secretagogue protocol is producing real lean mass gains and reducing fat, not just moving the scale.",
-    href: "/peptides-for-muscle-growth/",
-    cta: "Peptides for muscle growth →",
+    title: "Runners, cyclists & triathletes",
+    desc: "Training for the Miami Marathon, riding the Rickenbacker, or racing on Key Biscayne? Anchor your zones to measured thresholds and stop guessing at pace in the heat.",
+    href: "/fl/miami/dexascan/",
+    cta: "Pair it with a DEXA scan →",
   },
   {
-    title: "GLP-1 weight loss",
-    desc: "Make sure semaglutide or tirzepatide is preserving muscle while you lose fat. Critical for long-term metabolic health.",
-    href: "/peptides-for-weight-loss/",
-    cta: "Peptides for weight loss →",
-  },
-  {
-    title: "Peptide therapy",
-    desc: "Quantify body composition changes from peptides like CJC-1295/ipamorelin, BPC-157, or growth hormone secretagogues.",
+    title: "Longevity & healthspan",
+    desc: "VO2 max is one of the strongest known predictors of long-term health and all-cause mortality. Baseline it, then train it up deliberately as part of a physician-supervised plan.",
     href: "/fl/miami/peptide-therapy/",
     cta: "Miami peptide therapy →",
   },
   {
-    title: "Athletes & lifters",
-    desc: "Get the same body composition data professional sports nutritionists use. Then pair it with a VO2 max test at our Brickell clinic for the complete fitness baseline.",
-    href: "/fl/miami/vo2-max-testing/",
-    cta: "VO2 max testing in Miami →",
+    title: "GLP-1 & weight loss",
+    desc: "Losing weight on semaglutide or tirzepatide? Verify your cardio fitness is improving as the scale drops — not just your body weight.",
+    href: "/peptides-for-weight-loss/",
+    cta: "Peptides for weight loss →",
+  },
+  {
+    title: "Energy & performance protocols",
+    desc: "Starting a peptide or hormone protocol aimed at energy and performance? Measure your aerobic capacity before and after so results are proven, not assumed.",
+    href: "/peptides-for-energy/",
+    cta: "Peptides for energy →",
   },
 ];
 
@@ -162,43 +166,41 @@ const useCases = [
 const steps = [
   {
     num: "01",
-    title: "Book Your Miami Scan",
-    desc: `Reserve a time online or call ${CTA_PHONE}. Same-week appointments are typically available at our Brickell clinic.`,
+    title: "Book Your Miami Test",
+    desc: "Reserve a time online or call (754) 263-6026. Same-week appointments are typically available at our Brickell clinic.",
     color: "#C9A84C",
   },
   {
     num: "02",
-    title: "10–15 Minute Scan",
-    desc: "Lie flat on an open table while the scanner arm passes over you. No injections, no enclosed space, ultra-low radiation.",
+    title: "The 10–15 Minute Ramp",
+    desc: "Treadmill or bike, mask on, effort ramps gradually from easy to your max while the metabolic cart measures every breath.",
     color: "#5DADE2",
   },
   {
     num: "03",
-    title: "Get Your Detailed Report",
-    desc: "Full PDF report within 24 hours: lean mass, body fat % by region, visceral fat, bone density, symmetry analysis.",
+    title: "Same-Day Results Review",
+    desc: "Walk out knowing your VO2 max, your thresholds, and your personalized heart-rate training zones.",
     color: "#34D399",
   },
   {
     num: "04",
-    title: "Track Progress Over Time",
-    desc: "Re-scan every 3–6 months on active protocols. Side-by-side trend reports show what's actually changing.",
+    title: "Re-Test & Track",
+    desc: "Re-test every 4–6 months while training or on a protocol. Side-by-side reports show your engine getting bigger.",
     color: "#D4B96A",
   },
 ];
 
-// Neighborhoods — each pill links to its dedicated child page
-// (/fl/miami/dexascan/{slug}/), driven by the same config as the pages.
+// Neighborhood pills are intentionally NOT links: VO2 max neighborhood child
+// pages don't exist yet (see docs/briefs/vo2-max-testing-miami.md §9).
 const hoods = MIAMI_DEXA_NEIGHBORHOODS;
 
-const SITE_URL = "https://www.stronghealth.com";
-
-// Port of MedicalClinicJsonLd (MedicalBusiness schema) — key order matches the TSX.
+// MedicalBusiness schema — same shape/key order as the Miami DEXA page.
 const medicalClinicSchema = {
   "@context": "https://schema.org",
   "@type": "MedicalBusiness",
-  "@id": `${SITE_URL}/fl/miami/dexascan/#clinic`,
-  name: `${CLINIC.name} — DEXA Scan`,
-  url: `${SITE_URL}/fl/miami/dexascan/`,
+  "@id": `${SITE_URL}${PAGE_PATH}#clinic`,
+  name: `${CLINIC.name} — VO2 Max Testing`,
+  url: `${SITE_URL}${PAGE_PATH}`,
   telephone: CLINIC.phoneTel,
   image: `${SITE_URL}/opengraph.jpg`,
   parentOrganization: { "@id": `${SITE_URL}/#organization` },
@@ -226,21 +228,14 @@ const medicalClinicSchema = {
     "@type": "City",
     name: "Miami",
   },
-  medicalSpecialty: ["DiagnosticRadiology", "PreventiveMedicine"],
+  medicalSpecialty: ["Cardiovascular", "PreventiveMedicine"],
   availableService: [
     {
       "@type": "MedicalProcedure",
-      name: "DEXA Scan — Body Composition Analysis",
+      name: "VO2 Max Test — Cardiorespiratory Fitness Assessment",
       procedureType: "https://schema.org/DiagnosticProcedure",
       description:
-        "Dual-Energy X-ray Absorptiometry scan for precise measurement of lean mass, body fat percentage, visceral adipose tissue, and bone mineral density.",
-    },
-    {
-      "@type": "MedicalProcedure",
-      name: "DEXA Scan — Bone Density",
-      procedureType: "https://schema.org/DiagnosticProcedure",
-      description:
-        "Bone mineral density scanning (T-score and Z-score) for osteopenia and osteoporosis screening.",
+        "Physician-supervised graded exercise test with breath-by-breath metabolic gas-exchange analysis. Measures VO2 max, ventilatory thresholds (VT1/VT2), and personalized heart-rate training zones.",
     },
   ],
   openingHoursSpecification: [
@@ -262,31 +257,32 @@ const medicalClinicSchema = {
 ---
 
 <BaseLayout
-  title="DEXA Scan Miami — Body Composition"
-  description="Clinical DEXA scan in Miami at our Brickell clinic. Precise body composition, lean mass, body fat %, visceral fat & bone density. Walk-ins welcome."
-  path="/fl/miami/dexascan/"
+  title="VO2 Max Testing Miami — Cardio Fitness Test"
+  description="Clinical VO2 max test in Miami at our Brickell clinic. Measure your cardiorespiratory fitness, training zones & metabolic health. Same-week appointments."
+  path={PAGE_PATH}
 >
   <PageShell>
     <JsonLd schema={medicalClinicSchema} />
     <JsonLd
       schema={medicalWebPageSchema({
-        name: "DEXA Scan Miami — Body Composition",
+        name: "VO2 Max Testing Miami — Cardio Fitness Test",
         description:
-          "Physician-supervised DEXA scan body composition analysis in Miami at our Brickell clinic. Lean mass, body fat percentage, visceral fat, and bone density.",
-        url: "/fl/miami/dexascan/",
+          "Physician-supervised VO2 max testing in Miami at our Brickell clinic. Cardiorespiratory fitness, ventilatory thresholds, and personalized heart-rate training zones.",
+        url: PAGE_PATH,
         lastReviewed: PUBLISH_DATE,
         reviewedBy: DR_ANGEL_RIVERA,
       })}
     />
     <JsonLd
       schema={articleSchema({
-        headline: "DEXA Scan Miami — Body Composition & Bone Density",
+        headline: "VO2 Max Testing Miami — Cardiorespiratory Fitness & Training Zones",
         description:
-          "Physician-supervised DEXA scan body composition analysis in Miami at our Brickell clinic. Lean mass, body fat percentage, visceral fat, and bone density.",
+          "Physician-supervised VO2 max testing in Miami at our Brickell clinic. Cardiorespiratory fitness, ventilatory thresholds, and personalized heart-rate training zones.",
         author: MAHADEV_MUKHERJEE,
         reviewer: DR_ANGEL_RIVERA,
         publishDate: PUBLISH_DATE,
-        url: "/fl/miami/dexascan/",
+        updatedDate: PUBLISH_DATE,
+        url: PAGE_PATH,
       })}
     />
     <JsonLd schema={faqPageSchema(FAQS)} />
@@ -329,21 +325,22 @@ const medicalClinicSchema = {
           <span class="text-[13px] text-muted">from 850+ Miami patient reviews</span>
         </div>
 
-        <Tag>Miami DEXA Scan · Brickell Clinic · Walk-Ins Welcome</Tag>
+        <Tag>Miami VO2 Max Testing · Brickell Clinic · Same-Week Appointments</Tag>
 
         <h1 class="text-4xl md:text-[52px] font-black text-cream leading-[1.08] mt-6 mb-5 max-w-[760px] tracking-[-1.5px]">
-          DEXA Scan in Miami. <span class="text-gold">Gold-standard body composition, in 15 minutes.</span>
+          VO2 Max Testing in Miami. <span class="text-gold">Know your engine. Train with real numbers.</span>
         </h1>
 
         <p class="text-[17px] text-muted leading-relaxed max-w-[600px] mb-8">
-          Walk into our Brickell clinic for a precise, physician-supervised DEXA scan. See exactly
-          how much lean muscle, body fat, visceral fat, and bone density you carry, broken down
-          region by region. It is the most accurate body composition test available in Miami.
+          Get a physician-supervised VO2 max test in Miami, FL at our Brickell clinic. A
+          metabolic cart measures your aerobic capacity breath by breath — your true VO2 max,
+          your ventilatory thresholds, and heart-rate training zones built for your
+          physiology, not a formula.
         </p>
 
-        <Btn trackLead placement="hero" href={BOOKING_SMS_HREF}>Book Your DEXA Scan in Miami →</Btn>
+        <Btn trackLead placement="hero" href={BOOKING_SMS_HREF}>Book Your VO2 Max Test in Miami →</Btn>
         <div class="mt-4 text-xs text-muted">
-          15–20 min visit · Same-week appointments · No referral needed
+          45-min visit · Same-week appointments · No referral needed
         </div>
       </div>
     </section>
@@ -359,30 +356,31 @@ const medicalClinicSchema = {
       </div>
     </section>
 
-    {/* WhyDexa */}
+    {/* WhyVo2Max */}
     <section class="px-8 py-20 bg-surface-card border-b border-white/5">
       <div class="max-w-[1000px] mx-auto">
         <div class="grid md:grid-cols-2 gap-12 items-center">
           <FadeIn>
-            <Tag>Why DEXA in Miami</Tag>
+            <Tag>Why VO2 Max in Miami</Tag>
             <h2 class="text-[32px] font-extrabold text-cream leading-[1.15] mt-4 mb-4">
-              The scale lies. <span class="text-gold">DEXA tells the truth.</span>
+              Your watch estimates. <span class="text-gold">A lab test measures.</span>
             </h2>
             <p class="text-[15px] text-muted leading-[1.7] mb-4">
-              Miami is full of body composition gimmicks: InBody scales at the gym, calipers
-              at "longevity" clinics, smart scales at home. None of them come close to the
-              precision of a clinical DEXA scan.
+              Every Miami runner and cyclist has a VO2 max number on their wrist — and most
+              of those numbers are off by 10% or more. Wearables guess from heart rate and
+              pace. A clinical test measures the oxygen you actually use, breath by breath.
             </p>
             <p class="text-[15px] text-muted leading-[1.7]">
-              At Strong Health Miami, you get the same scan technology used in clinical
-              research, performed at our Brickell clinic, with results you can use to track
-              real progress on TRT, GLP-1 weight loss, peptide therapy, or your own training.
+              VO2 max is also one of the strongest known predictors of long-term health and
+              all-cause mortality. At Strong Health Miami, you get the same graded exercise
+              protocol used in exercise physiology labs, performed at our Brickell clinic,
+              with results you can train on the same day.
             </p>
           </FadeIn>
 
           <FadeIn delay={200}>
             <div class="flex flex-col gap-3.5">
-              {whyDexaPoints.map((s) => (
+              {whyVo2Points.map((s) => (
                 <div class="flex items-center gap-3 bg-surface-raised rounded-xl p-4 border border-white/5">
                   <div class="w-9 h-9 rounded-full bg-surface flex items-center justify-center shrink-0 border border-white/5">
                     <Icon name={s.icon} size={18} class="text-gold" />
@@ -400,13 +398,13 @@ const medicalClinicSchema = {
     <section class="px-8 py-20 bg-surface border-b border-white/5">
       <div class="max-w-[1000px] mx-auto">
         <FadeIn class="text-center mb-10">
-          <Tag>Our Miami DEXA Clinic</Tag>
+          <Tag>Our Miami Testing Clinic</Tag>
           <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
             Visit Us in <span class="text-gold">{CLINIC.area}</span>
           </h2>
           <p class="text-[15px] text-muted max-w-[540px] mx-auto">
-            Centrally located in Miami's Brickell financial district with easy access from I-95,
-            the Metrorail, and validated parking. DEXA scans by appointment or walk-in.
+            Centrally located in Miami's Brickell financial district with easy access from
+            I-95, the Metrorail, and validated parking. VO2 max tests by appointment.
           </p>
         </FadeIn>
 
@@ -435,7 +433,7 @@ const medicalClinicSchema = {
                     href={TEL_HREF}
                     class="text-sm text-cream-muted hover:text-gold transition-colors"
                   >
-                    {CTA_PHONE}
+                    {CLINIC.phone}
                   </a>
                 </div>
                 <div class="flex items-start gap-3">
@@ -452,28 +450,28 @@ const medicalClinicSchema = {
 
           <FadeIn delay={200}>
             <div class="bg-surface-card rounded-2xl border border-white/10 p-7 h-full flex flex-col">
-              <h3 class="text-lg font-bold text-cream mb-4">What to expect at your Miami DEXA appointment</h3>
+              <h3 class="text-lg font-bold text-cream mb-4">What to expect at your Miami VO2 max test</h3>
               <div class="flex flex-col gap-4 text-[14px] text-cream-muted leading-[1.7]">
                 <div class="flex items-start gap-3">
                   <div class="w-7 h-7 rounded-full bg-gold/10 flex items-center justify-center shrink-0 text-[11px] font-bold text-gold">1</div>
-                  <span>Quick check-in at our Brickell front desk. Wear comfortable, metal-free clothing.</span>
+                  <span>Check-in and a quick health screen at our Brickell front desk, then a short resting baseline. Come rested — no hard training 24 hours before, no caffeine for 3 hours.</span>
                 </div>
                 <div class="flex items-start gap-3">
                   <div class="w-7 h-7 rounded-full bg-gold/10 flex items-center justify-center shrink-0 text-[11px] font-bold text-gold">2</div>
-                  <span>10–15 minute scan on an open table. No injections, no enclosed space, no discomfort.</span>
+                  <span>Mask fitting on the treadmill or bike ergometer. The mask connects to a metabolic cart that analyzes every breath — no needles, nothing invasive.</span>
                 </div>
                 <div class="flex items-start gap-3">
                   <div class="w-7 h-7 rounded-full bg-gold/10 flex items-center justify-center shrink-0 text-[11px] font-bold text-gold">3</div>
-                  <span>Detailed PDF report emailed within 24 hours, plus a brief in-person review of the highlights before you leave.</span>
+                  <span>A 10–15 minute graded ramp from easy effort to your max, physician-supervised the whole way. You can stop at any point.</span>
                 </div>
                 <div class="flex items-start gap-3">
                   <div class="w-7 h-7 rounded-full bg-gold/10 flex items-center justify-center shrink-0 text-[11px] font-bold text-gold">4</div>
-                  <span>Optional 20-minute physician consultation to set baselines and a follow-up cadence (every 3–6 months for active protocols).</span>
+                  <span>Cool-down and a same-day results review: your VO2 max, ventilatory thresholds, and personalized heart-rate training zones before you leave.</span>
                 </div>
               </div>
               <div class="mt-6 pt-5 border-t border-white/5 text-[12px] text-muted">
-                Most patients are seen within 5 business days of booking. Walk-ins accepted on
-                Saturday mornings (9 AM – 1 PM) at our Brickell clinic.
+                Wear athletic clothing and running shoes. Most patients are seen within 5
+                business days of booking at our Brickell clinic.
               </div>
             </div>
           </FadeIn>
@@ -487,11 +485,11 @@ const medicalClinicSchema = {
         <FadeIn class="text-center mb-10">
           <Tag>Your Report</Tag>
           <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
-            What you get from a <span class="text-gold">Strong Health DEXA scan</span>
+            What you get from a <span class="text-gold">Strong Health VO2 max test</span>
           </h2>
           <p class="text-[15px] text-muted max-w-[560px] mx-auto">
-            Your DEXA report goes far beyond a body fat percentage. Here's everything included
-            with every scan at our Miami clinic.
+            Your report goes far beyond a single number. Here's everything included with
+            every VO2 max test at our Miami clinic.
           </p>
         </FadeIn>
 
@@ -513,9 +511,9 @@ const medicalClinicSchema = {
     <section class="px-8 py-20 bg-surface border-b border-white/5">
       <div class="max-w-[1000px] mx-auto">
         <FadeIn class="text-center mb-10">
-          <Tag>Who Books DEXA in Miami</Tag>
+          <Tag>Who Books VO2 Max Testing in Miami</Tag>
           <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
-            Built for Miami men and women on <span class="text-gold">real protocols</span>
+            Built for Miami athletes and <span class="text-gold">anyone training for the long game</span>
           </h2>
         </FadeIn>
         <div class="grid md:grid-cols-2 gap-5">
@@ -540,7 +538,7 @@ const medicalClinicSchema = {
         <FadeIn class="text-center mb-10">
           <Tag>How It Works</Tag>
           <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
-            Four steps. <span class="text-gold">Real data.</span>
+            Four steps. <span class="text-gold">Real numbers.</span>
           </h2>
         </FadeIn>
 
@@ -567,7 +565,7 @@ const medicalClinicSchema = {
         <FadeIn class="text-center mb-10">
           <Tag>Miami Patient Reviews</Tag>
           <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
-            Real data from <span class="text-gold">real Miami patients</span>
+            Real numbers from <span class="text-gold">real Miami athletes</span>
           </h2>
         </FadeIn>
 
@@ -607,22 +605,19 @@ const medicalClinicSchema = {
         <FadeIn class="text-center mb-8">
           <Tag>Serving Miami-Dade</Tag>
           <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
-            DEXA scan patients from <span class="text-gold">across Miami</span>
+            VO2 max testing for athletes <span class="text-gold">across Miami</span>
           </h2>
           <p class="text-[15px] text-muted max-w-[540px] mx-auto">
-            Our Brickell clinic is centrally located for patients across the greater Miami area.
-            Find directions, transit options, and local FAQs for your neighborhood.
+            Our Brickell clinic is centrally located for runners, cyclists, and patients
+            across the greater Miami area — from the Rickenbacker Causeway to Coral Gables.
           </p>
         </FadeIn>
         <FadeIn delay={150}>
           <div class="flex flex-wrap gap-2 justify-center max-w-[820px] mx-auto">
             {hoods.map((n) => (
-              <a
-                href={`/fl/miami/dexascan/${n.slug}/`}
-                class="text-[12px] text-cream-muted bg-surface-raised border border-white/10 rounded-full px-3.5 py-1.5 hover:border-gold/40 hover:text-gold transition-colors"
-              >
-                DEXA scan near {n.name}
-              </a>
+              <span class="text-[12px] text-cream-muted bg-surface-raised border border-white/10 rounded-full px-3.5 py-1.5">
+                VO2 max testing near {n.name}
+              </span>
             ))}
           </div>
         </FadeIn>
@@ -633,9 +628,9 @@ const medicalClinicSchema = {
     <section class="px-8 py-20 bg-surface border-b border-white/5">
       <div class="max-w-[800px] mx-auto">
         <FadeIn class="text-center mb-10">
-          <Tag>Miami DEXA FAQs</Tag>
+          <Tag>Miami VO2 Max FAQs</Tag>
           <h2 class="text-[34px] font-extrabold text-cream mt-4 mb-3">
-            Common questions about <span class="text-gold">DEXA scans in Miami</span>
+            Common questions about <span class="text-gold">VO2 max testing in Miami</span>
           </h2>
         </FadeIn>
         <div class="flex flex-col gap-4">
@@ -657,10 +652,7 @@ const medicalClinicSchema = {
         </div>
         <FadeIn delay={300}>
           <p class="text-[13px] text-muted text-center mt-8">
-            Want a deeper dive on the science? Read our full <a href="/dexa-scan/" class="text-gold hover:underline">guide to DEXA scans</a>.
-          </p>
-          <p class="text-[13px] text-muted text-center mt-3">
-            Need diagnostic imaging instead? We also coordinate <a href="/fl/miami/mri/" class="text-gold hover:underline">MRI scans in Miami</a> from the same Brickell clinic.
+            Tracking body composition too? Pair your test with a <a href="/fl/miami/dexascan/" class="text-gold hover:underline">DEXA scan at our Miami clinic</a>.
           </p>
         </FadeIn>
       </div>
@@ -671,11 +663,11 @@ const medicalClinicSchema = {
       <div class="max-w-[700px] mx-auto text-center">
         <FadeIn>
           <h2 class="text-[36px] font-black text-cream leading-[1.1] mb-4">
-            Book your DEXA scan in Miami
+            Book your VO2 max test in Miami
           </h2>
           <p class="text-[17px] text-muted leading-relaxed mb-8 max-w-[520px] mx-auto">
-            Walk into our Brickell clinic for the most accurate body composition test in Miami.
-            15 minutes. No referral needed. Detailed report within 24 hours.
+            Walk into our Brickell clinic and walk out knowing your true aerobic capacity,
+            your thresholds, and the exact zones to train in. 45 minutes. No referral needed.
           </p>
           <div class="flex items-center justify-center gap-2 mb-6 text-[13px] text-muted">
             <Icon name="phone" size={14} class="text-gold" />
@@ -683,10 +675,10 @@ const medicalClinicSchema = {
               href={TEL_HREF}
               class="hover:text-gold transition-colors"
             >
-              {CTA_PHONE}
+              {CLINIC.phone}
             </a>
           </div>
-          <Btn trackLead placement="final_cta" href={BOOKING_SMS_HREF}>Book Your DEXA Scan →</Btn>
+          <Btn trackLead placement="final_cta" href={BOOKING_SMS_HREF}>Book Your VO2 Max Test →</Btn>
         </FadeIn>
       </div>
     </section>

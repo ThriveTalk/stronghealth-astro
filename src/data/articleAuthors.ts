@@ -35,6 +35,7 @@ export const ARTICLE_AUTHORSHIP: Record<
 > = {
   "/dexa-scan/": { author: MAHADEV_MUKHERJEE, reviewer: DR_ANGEL_RIVERA },
   "/fl/miami/dexascan/": { author: MAHADEV_MUKHERJEE, reviewer: DR_ANGEL_RIVERA },
+  "/fl/miami/vo2-max-testing/": { author: MAHADEV_MUKHERJEE, reviewer: DR_ANGEL_RIVERA },
   "/calcium-score-by-age/": { author: MAHADEV_MUKHERJEE, reviewer: DR_ANGEL_RIVERA },
   "/fl/miami/calcium-score-test/": { author: MAHADEV_MUKHERJEE, reviewer: DR_ANGEL_RIVERA },
   "/fl/miami/rmr-testing/": { author: MAHADEV_MUKHERJEE, reviewer: DR_ANGEL_RIVERA },
