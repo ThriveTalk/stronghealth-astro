@@ -209,8 +209,8 @@
       }
     },
     "/diagnostics/": {
-      "title": "Diagnostics — DEXA, VO2 Max, RMR & MRI | Strong Health",
-      "description": "Strong Health diagnostic testing by city: DEXA scans, VO2 max testing, RMR testing, and physician-ordered MRI. Find the test and location nearest you.",
+      "title": "Diagnostics — DEXA, VO2, RMR, Calcium & MRI | Strong Health",
+      "description": "Strong Health diagnostic testing by city: DEXA scans, VO2 max, RMR, calcium score tests, and physician-ordered MRI. Find the test and location nearest you.",
       "robots": "index, follow, max-image-preview:large",
       "lang": "en",
       "canonical_path": "/diagnostics/",

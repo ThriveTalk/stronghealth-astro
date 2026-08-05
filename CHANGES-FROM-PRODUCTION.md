@@ -251,3 +251,18 @@ byte-parity capture is no longer the spec (see "Parity suite re-baseline").
   aggregation — the old regex had missed pollotarianism).
 - Parity baseline regenerated (`pnpm test:parity:baseline`); the two
   existing desktop visual snapshots renamed to the new route names.
+
+## 2026-08-05 — Diagnostics hub lists every live city page
+
+- The `/diagnostics/` hub's VO2 max category now links the live
+  `/fl/miami/vo2-max-testing/` page (it had shipped as "coming soon" while the
+  page merged separately), and the hub's title, meta description, schema
+  names, and hero copy now include the calcium score category that was
+  registered alongside RMR.
+- `/fl/miami/vo2-max-testing/` registered in the sitemap `HISTORICAL_LASTMOD`
+  launch registry (2026-08-05).
+- Remaining inbound links from the VO2 page plan
+  (`docs/briefs/vo2-max-testing-miami.md` §7): a related-services card on the
+  Miami peptide-therapy page (`cityPeptideConfig.ts`) and on
+  `/fl/miami/stem-cell-therapy/`.
+- Parity baseline regenerated (`pnpm test:parity:baseline`).

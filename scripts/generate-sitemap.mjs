@@ -183,6 +183,8 @@ const HISTORICAL_LASTMOD = {
   "/fl/miami/calcium-score-test/": "2026-08-04",
   "/fl/miami/rmr-testing/": "2026-08-04",
   "/calcium-score-by-age/": "2026-08-04",
+  // VO2 max testing Miami city page launch.
+  "/fl/miami/vo2-max-testing/": "2026-08-05",
   "/fl/miami/peptide-therapy/": "2026-05-27",
   // Post-cutover Miami PRP (platelet-rich plasma) therapy launch.
   "/fl/miami/prp-therapy/": "2026-07-17",

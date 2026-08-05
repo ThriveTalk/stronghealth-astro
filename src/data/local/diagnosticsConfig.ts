@@ -1,13 +1,14 @@
 /**
  * Registry behind the /diagnostics/ hub page. Every live diagnostic city page
- * (DEXA, VO2 max, RMR, MRI) is listed here, grouped by test category.
+ * (DEXA, VO2 max, RMR, calcium score, MRI) is listed here, grouped by test
+ * category.
  *
  * When a new diagnostic city page ships:
  *  - DEXA pages appear automatically — locations are derived from
  *    ALL_PEPTIDE_CITIES, the same `/dexascan/` cross-link signal
  *    DexaLocationsBlock uses, so the list can't drift from the live pages.
- *  - MRI / VO2 max / RMR pages must be added to the category's `locations`
- *    array below (these pages live outside cityPeptideConfig).
+ *  - MRI / VO2 max / RMR / calcium score pages must be added to the category's
+ *    `locations` array below (these pages live outside cityPeptideConfig).
  *
  * Peptide-therapy city pages do NOT belong here — this hub is diagnostics only.
  */
@@ -56,7 +57,7 @@ export const DIAGNOSTIC_CATEGORIES: DiagnosticCategory[] = [
     tagline:
       "Cardiorespiratory fitness measured directly — the single strongest lab predictor of longevity and endurance capacity.",
     icon: "heart-pulse",
-    locations: [],
+    locations: [{ cityName: "Miami", state: "FL", href: "/fl/miami/vo2-max-testing/" }],
   },
   {
     key: "rmr",

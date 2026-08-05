@@ -1,6 +1,7 @@
 ---
 // /diagnostics/ — hub page for Strong Health's diagnostic testing category.
-// One section per test (DEXA, VO2 max, RMR, MRI) linking every live city page.
+// One section per test (DEXA, VO2 max, RMR, calcium score, MRI) linking every
+// live city page.
 // The link lists come from src/data/local/diagnosticsConfig.ts — publish a new
 // diagnostic city page, register it there, and it shows up here.
 import BaseLayout from "../../layouts/BaseLayout.astro";
@@ -38,17 +39,17 @@ const collectionItems = DIAGNOSTIC_CATEGORIES.flatMap((category) =>
 ---
 
 <BaseLayout
-  title="Diagnostics — DEXA, VO2 Max, RMR & MRI"
-  description="Strong Health diagnostic testing by city: DEXA scans, VO2 max testing, RMR testing, and physician-ordered MRI. Find the test and location nearest you."
+  title="Diagnostics — DEXA, VO2, RMR, Calcium & MRI"
+  description="Strong Health diagnostic testing by city: DEXA scans, VO2 max, RMR, calcium score tests, and physician-ordered MRI. Find the test and location nearest you."
   path="/diagnostics/"
   smsContext="diagnostic testing"
 >
   <PageShell>
     <JsonLd
       schema={medicalWebPageSchema({
-        name: "Diagnostics — Strong Health DEXA, VO2 Max, RMR & MRI Locations",
+        name: "Diagnostics — Strong Health DEXA, VO2 Max, RMR, Calcium Score & MRI Locations",
         description:
-          "Hub for Strong Health diagnostic testing: DEXA body composition scans, VO2 max testing, resting metabolic rate (RMR) testing, and physician-ordered MRI across our locations.",
+          "Hub for Strong Health diagnostic testing: DEXA body composition scans, VO2 max testing, resting metabolic rate (RMR) testing, coronary calcium score tests, and physician-ordered MRI across our locations.",
         url: "/diagnostics/",
         lastReviewed: "2026-08-05",
         reviewedBy: {
@@ -98,8 +99,9 @@ const collectionItems = DIAGNOSTIC_CATEGORIES.flatMap((category) =>
           Diagnostics: <span class="text-gold">measure first,</span> then optimize.
         </h1>
         <p class="text-[17px] text-muted leading-relaxed max-w-[620px] mb-8">
-          Body composition, cardiorespiratory fitness, metabolism, and imaging —
-          the baseline numbers every serious health protocol is built on.
+          Body composition, cardiorespiratory fitness, metabolism, heart-disease
+          risk, and imaging — the baseline numbers every serious health protocol
+          is built on.
           {totalLocations} diagnostic pages across {liveCategories.length} test
           types. Pick your test, then the city nearest you.
         </p>
