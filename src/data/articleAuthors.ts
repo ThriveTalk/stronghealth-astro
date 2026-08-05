@@ -35,6 +35,7 @@ export const ARTICLE_AUTHORSHIP: Record<
 > = {
   "/dexa-scan/": { author: MAHADEV_MUKHERJEE, reviewer: DR_ANGEL_RIVERA },
   "/fl/miami/dexascan/": { author: MAHADEV_MUKHERJEE, reviewer: DR_ANGEL_RIVERA },
+  "/fl/miami/vo2-max-testing/": { author: MAHADEV_MUKHERJEE, reviewer: DR_ANGEL_RIVERA },
   "/foods-that-lower-testosterone/": { author: MAHADEV_MUKHERJEE, reviewer: DR_ANGEL_RIVERA },
   "/lysine-benefit-men-health/": { author: MAHADEV_MUKHERJEE, reviewer: DR_ANGEL_RIVERA },
   "/nac-benefits-men/": { author: MAHADEV_MUKHERJEE, reviewer: DR_ANGEL_RIVERA },
